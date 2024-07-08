@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Website Penerimaan Peserta Didik Baru (PPDB) 2018-2019 SMA Regina Pacis Surakarta">
+        <meta name="author" content="Yayasan Winayabhakti Solo">
+        <link rel="icon" href="<?php echo base_url(); ?>resource/scriptmedia/images/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url(); ?>resource/scriptmedia/images/apple-touch-icon-144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url(); ?>resource/scriptmedia/images/apple-touch-icon-114.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url(); ?>resource/scriptmedia/images/apple-touch-icon-72.png">
+        <link rel="apple-touch-icon-precomposed" href="<?php echo base_url(); ?>resource/scriptmedia/images/apple-touch-icon-57.png">
+        <title>PPDB SMA Regina Pacis Surakarta</title>
+        <link href="<?php echo base_url(); ?>resource/js/jquery/themes/base/jquery-ui.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>resource/scriptmedia/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>resource/scriptmedia/css/font-awesome.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>resource/scriptmedia/css/style.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>resource/admin/vendor/toaster/toastr.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>resource/css/admin/upload/css/upload.css" rel="stylesheet">
+        <!--link_tag('resource/css/admin/upload/css/upload.css') . "\n" .-->
+        <script type="text/javascript">
+            function getBaseURL() {
+                return "<?php echo base_url(); ?>";
+            }
+        </script>
+        <!--// script header//-->
+        <?php echo $headscript; ?>
+
+        <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>resource/ajax/ajaxhomepage.js"></script>
+
+    </head>
+
+    <body>
+
+        <header class="bg-regina">
+            <!-- top bar -->
+            <div class="container-fluid top-bar bg-ursuline">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-white text-center text-md-left"><strong>PPDB SMA Regina Pacis Surakarta</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container px-0">
+                <!-- fixed navbar -->
+                <nav class="navbar navbar-expand-md navbar-dark bg-regina">
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>resource/scriptmedia/images/apple-touch-icon-57.png"/></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item <?php echo (isset($active1)) ? $active1 : ''; ?>">
+                                <a class="nav-link" href="<?php echo base_url(); ?>">Beranda</a>
+                            </li>
+                            <li class="nav-item  <?php echo (isset($active2)) ? $active2 : ''; ?> dropdown">
+                                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Persyaratan</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                    <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/show/persyaratan">Persyaratan Pendaftaran</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/show/persyaratan2">Persyaratan Daftar Ulang</a>
+                                    <!--<div class="dropdown-divider"></div>-->
+                                    <!--<a class="dropdown-item" href="<?php echo base_url(); ?>index.php/show/persyaratan3">Persyaratan Diterima</a>-->
+                                </div>
+                            </li>
+                            <li class="nav-item <?php echo (isset($active3)) ? $active3 : ''; ?>">
+                                <a class="nav-link" href="<?php echo base_url(); ?>index.php/show/prosedur">Prosedur Pendaftaran</a>
+                            </li>
+
+                            <?php
+                            if (!empty($this->session->userdata('idsiswa'))) {
+                                if ($this->session->userdata('idgelombang') != $gelombang) {
+                                    ?>
+                                    <li class="nav-item <?php echo (isset($active5)) ? $active5 : ''; ?>">
+                                        <a class="nav-link" href="<?php echo base_url(); ?>index.php/Pengumuman">Pengumuman</a>
+                                    </li>
+                                    <?php
+                                }
+                                ?>
+                                <li class="nav-item dropdown <?php echo (isset($active6)) ? $active6 : ''; ?>">
+                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $nama; ?></a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                        <?php
+                                        if ($this->session->userdata('idgelombang') == $gelombang) {
+                                            ?>
+                                            <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/myaccount">Biodata Calon Siswa</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/Ctrunggahsyarat">Unggah Syarat</a>
+                                            <div class="dropdown-divider"></div>
+                                            <?php
+                                        }
+                                        ?>
+                                        <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/Dokumen">Unduh Data Siswa</a>
+                                        <div class="dropdown-divider"></div>
+
+                                        <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/show/logout">Keluar</a>
+                                    </div>
+                                </li>
+                            <?php } else { ?>
+                                <li class="nav-item <?php echo (isset($active4)) ? $active4 : ''; ?>">
+                                    <a class="nav-link" href="<?php echo base_url(); ?>index.php/show/pendaftaran">Pendaftaran</a>
+                                </li>
+                                <li class="nav-item <?php echo (isset($active5)) ? $active5 : ''; ?>"  >
+                                    <a class="nav-link" href="<?php echo base_url(); ?>index.php/show/login">Masuk</a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+

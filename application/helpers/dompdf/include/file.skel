@@ -1,0 +1,21 @@
+<<<<<<< HEAD
+<?php
+/**
+ * @package dompdf
+ * @link    http://www.dompdf.com/
+ * @author  Benj Carson <benjcarson@digitaljunkies.ca>
+ * @author  ...
+ * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
+ * @version $Id: file.skel 448 2011-11-13 13:00:03Z fabien.menager $
+ */
+=======
+<?php
+/**
+ * @package dompdf
+ * @link    http://www.dompdf.com/
+ * @author  Benj Carson <benjcarson@digitaljunkies.ca>
+ * @author  ...
+ * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
+ * @version $Id: file.skel 448 2011-11-13 13:00:03Z fabien.menager $
+ */
+>>>>>>> b61756899b83b6141ccf2939e6e7b7948cf0ced4

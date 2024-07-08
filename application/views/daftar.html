@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Website Penerimaan Peserta Didik Baru (PPDB) 2018-2019 SMA Regina Pacis Surakarta">
+    <meta name="author" content="Yayasan Winata Bhakti Solo">
+    <link rel="icon" href="img/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72.png">
+    <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57.png">
+    <title>PPDB SMA Regina Pacis Surakarta</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+  
+    <header class="bg-regina">
+    	<!-- top bar -->
+    	<div class="container-fluid top-bar bg-ursuline">
+    	<div class="container">
+        <div class="row">
+          <div class="col">
+          	<p class="text-white text-center text-md-left">PPDB SMA Regina Pacis Surakarta</p>
+          </div>
+        </div>
+    	</div>
+    	</div>
+    	<div class="container px-0">
+      <!-- fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark bg-regina">
+        <a class="navbar-brand" href="index.html"><img src="img/apple-touch-icon-57.png"/></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Beranda</a>
+            </li>
+            <li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="javascript:void(0)" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Persyaratan</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown01">
+								<a class="dropdown-item" href="#">Action</a>
+								<a class="dropdown-item" href="#">Another action</a>
+								<a class="dropdown-item" href="#">Something else here</a>
+							</div>
+						</li>
+            <li class="nav-item">
+              <a class="nav-link" href="prosedur.html">Prosedur Pendaftaran</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="daftar.html">Pendaftaran</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Login</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    	</div>
+    </header>
+		
+    <!-- page content -->
+    <main role="main" class="container daftar p-5">
+    	<div class="row mb-4">
+    		<div class="col text-center">
+					<h3>Registrasi Awal</h3> 
+					<p class="text-muted">Silahkan isi formulir registrasi awal berikut ini:</p>
+					<hr>
+    		</div>
+			</div>
+                
+    	<form>
+    	
+				<div class="form-group row">
+					<label for="jenis" class="col-sm-4 col-form-label">Jenis Pendaftaran</label>
+					<div class="col-sm-8">
+						<select class="custom-select">
+							<option selected>Pilih:</option>
+							<option value="baru">Peserta Didik Baru</option>
+							<option value="pindahan">Peserta Didik Pindahan</option>
+							<option value="kembali">Kembali Bersekolah</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="nama" class="col-sm-4 col-form-label">Nama Peserta Didik</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="nama" placeholder="Nama Lengkap">
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="nama" class="col-sm-4 col-form-label">Tanggal Lahir</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="nama" placeholder="01/12/1997">
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="nama" class="col-sm-4 col-form-label">Jenis Kelamin</label>
+					<div class="col-sm-8">
+						<div class="custom-control custom-radio custom-control-inline align-items-center">
+							<input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+							<label class="custom-control-label" for="customRadioInline1">Laki-laki</label>
+						</div>						
+						<div class="custom-control custom-radio custom-control-inline align-items-center">
+							<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+							<label class="custom-control-label" for="customRadioInline2">Perempuan</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="nama" class="col-sm-4 col-form-label">Pas Foto 4x6</label>
+					<div class="col-sm-8 custom-file">
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="customFile">
+							<label class="custom-file-label" for="customFile">Pilih Foto</label>
+						</div>
+					</div>
+				</div>
+
+			  <div class="form-group row mt-5">
+			    <div class="col text-center">
+			      <button type="submit" class="btn btn-lg btn-ursuline px-5">Daftar</button>
+					</div>
+				</div>
+		  
+		</form>
+		
+    </main>
+    
+		<!-- footer -->
+    <footer class="footer">
+      <div class="container">
+        <span class="text-white">&copy; Yayasan Winata Bhakti Solo 2018</span>
+      </div>
+    </footer>
+    
+    <!-- script -->
+    <script src="js/jquery.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script> 
+    
+  </body>
+</html>
