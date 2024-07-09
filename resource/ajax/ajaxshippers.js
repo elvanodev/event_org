@@ -44,8 +44,6 @@
        $("#edidx").val(json.idx); 
        $("#edname").val(json.name);
 $("#edshipper_price").val(json.shipper_price);
-$("#edcreated_at").val(json.created_at);
-$("#edupdated_at").val(json.updated_at);
 
      }, 
  error: function (xmlHttpRequest, textStatus, errorThrown) { 
@@ -61,8 +59,6 @@ function doClearshippers(){
  $("#edidx").val("0"); 
  $("#edname").val(""); 
 $("#edshipper_price").val(""); 
-$("#edcreated_at").val(""); 
-$("#edupdated_at").val(""); 
  
   }); 
  } 
@@ -71,7 +67,7 @@ function dosimpanshippers(){
          $(document).ready(function(){ 
            $.ajax({ 
                  url: getBaseURL()+"index.php/ctrshippers/simpanshippers/", 
-   data: "edidx="+$("#edidx").val()+"&edname="+$("#edname").val()+"&edshipper_price="+$("#edshipper_price").val()+"&edcreated_at="+$("#edcreated_at").val()+"&edupdated_at="+$("#edupdated_at").val(), 
+   data: "edidx="+$("#edidx").val()+"&edname="+$("#edname").val()+"&edshipper_price="+$("#edshipper_price").val()+"&edcreated_at="+$("#edcreated_at").val(), 
                  cache: false, 
                  dataType: 'json', 
                  type: 'POST', 

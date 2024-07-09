@@ -67,10 +67,6 @@ $xBufResult .= setForm('member_name','member_name',form_input_(getArrayObj('edme
 
 $xBufResult .= setForm('payment_unique_id','payment_unique_id',form_input_(getArrayObj('edpayment_unique_id','','200'),'',' placeholder="payment_unique_id" ')).'<div class="spacer"></div>';
 
-$xBufResult .= setForm('created_at','created_at',form_input_(getArrayObj('edcreated_at','','200'),'',' placeholder="created_at" ')).'<div class="spacer"></div>';
-
-$xBufResult .= setForm('updated_at','updated_at',form_input_(getArrayObj('edupdated_at','','200'),'',' placeholder="updated_at" ')).'<div class="spacer"></div>';
-
 $xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doClearcoupons();"').form_button('btSimpan','Simpan','onclick="dosimpancoupons();"').form_button('btTabel','Tabel','onclick="dosearchcoupons(0);"').'<div class="spacer"></div></div><div id="tabledatacoupons">'.$this->getlistcoupons(0, ''). '</div><div class="spacer"></div>'; 
        return $xBufResult;
 
@@ -94,8 +90,6 @@ tbaddcellhead('valid_until','','data-field="valid_until" data-sortable="true" wi
 tbaddcellhead('registration_id','','data-field="registration_id" data-sortable="true" width=10%').
 tbaddcellhead('member_name','','data-field="member_name" data-sortable="true" width=10%').
 tbaddcellhead('payment_unique_id','','data-field="payment_unique_id" data-sortable="true" width=10%').
-tbaddcellhead('created_at','','data-field="created_at" data-sortable="true" width=10%').
-tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" width=10%').
 
             tbaddcellhead('Action','padding:5px;width:10%;text-align:center;','col-md-2'),'',TRUE);
          $this->load->model('modelcoupons');
@@ -120,8 +114,6 @@ tbaddcell($row->valid_until).
 tbaddcell($row->registration_id).
 tbaddcell($row->member_name).
 tbaddcell($row->payment_unique_id).
-tbaddcell($row->created_at).
-tbaddcell($row->updated_at).
 
             tbaddcell($xButtonEdit.$xButtonHapus));
             }
@@ -171,8 +163,6 @@ $this->json_data['valid_until'] = $row->valid_until;
 $this->json_data['registration_id'] = $row->registration_id;
 $this->json_data['member_name'] = $row->member_name;
 $this->json_data['payment_unique_id'] = $row->payment_unique_id;
-$this->json_data['created_at'] = $row->created_at;
-$this->json_data['updated_at'] = $row->updated_at;
 
             echo json_encode($this->json_data);
    }
@@ -237,16 +227,14 @@ $xvalid_until = $_POST['edvalid_until'];
 $xregistration_id = $_POST['edregistration_id'];
 $xmember_name = $_POST['edmember_name'];
 $xpayment_unique_id = $_POST['edpayment_unique_id'];
-$xcreated_at = $_POST['edcreated_at'];
-$xupdated_at = $_POST['edupdated_at'];
           
              $this->load->model('modelcoupons'); 
         $xidpegawai = $this->session->userdata('idpegawai'); 
         if(!empty($xidpegawai)){ 
-        if($xidx!='0'){   $xStr =  $this->modelcoupons->setUpdatecoupons($xidx,$xedition_id,$xcoupon_number,$xqr_code,$xcoupon_price,$xshipper_price,$xtotal_price,$xis_winner,$xpayment_status_id,$xpayment_confirm_receipt,$xvalid_until,$xregistration_id,$xmember_name,$xpayment_unique_id,$xcreated_at,$xupdated_at); 
+        if($xidx!='0'){   $xStr =  $this->modelcoupons->setUpdatecoupons($xidx,$xedition_id,$xcoupon_number,$xqr_code,$xcoupon_price,$xshipper_price,$xtotal_price,$xis_winner,$xpayment_status_id,$xpayment_confirm_receipt,$xvalid_until,$xregistration_id,$xmember_name,$xpayment_unique_id); 
          } else 
          { 
-           $xStr =  $this->modelcoupons->setInsertcoupons($xidx,$xedition_id,$xcoupon_number,$xqr_code,$xcoupon_price,$xshipper_price,$xtotal_price,$xis_winner,$xpayment_status_id,$xpayment_confirm_receipt,$xvalid_until,$xregistration_id,$xmember_name,$xpayment_unique_id,$xcreated_at,$xupdated_at); 
+           $xStr =  $this->modelcoupons->setInsertcoupons($xidx,$xedition_id,$xcoupon_number,$xqr_code,$xcoupon_price,$xshipper_price,$xtotal_price,$xis_winner,$xpayment_status_id,$xpayment_confirm_receipt,$xvalid_until,$xregistration_id,$xmember_name,$xpayment_unique_id); 
          }} 
                echo json_encode(null);
     } }

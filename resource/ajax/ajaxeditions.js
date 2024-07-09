@@ -51,8 +51,6 @@ $("#edvenue_city").val(json.venue_city);
 $("#eddescriptions").val(json.descriptions);
 $("#edquota").val(json.quota);
 $("#edcoupon_price").val(json.coupon_price);
-$("#edcreated_at").val(json.created_at);
-$("#edupdated_at").val(json.updated_at);
 
      }, 
  error: function (xmlHttpRequest, textStatus, errorThrown) { 
@@ -75,8 +73,6 @@ $("#edvenue_city").val("");
 $("#eddescriptions").val(""); 
 $("#edquota").val(""); 
 $("#edcoupon_price").val(""); 
-$("#edcreated_at").val(""); 
-$("#edupdated_at").val(""); 
  
   }); 
  } 
@@ -85,7 +81,7 @@ function dosimpaneditions(){
          $(document).ready(function(){ 
            $.ajax({ 
                  url: getBaseURL()+"index.php/ctreditions/simpaneditions/", 
-   data: "edidx="+$("#edidx").val()+"&edevent_id="+$("#edevent_id").val()+"&edname="+$("#edname").val()+"&edstarted_at="+$("#edstarted_at").val()+"&edended_at="+$("#edended_at").val()+"&edvenue_address="+$("#edvenue_address").val()+"&edvenue_city="+$("#edvenue_city").val()+"&eddescriptions="+$("#eddescriptions").val()+"&edquota="+$("#edquota").val()+"&edcoupon_price="+$("#edcoupon_price").val()+"&edcreated_at="+$("#edcreated_at").val()+"&edupdated_at="+$("#edupdated_at").val(), 
+   data: "edidx="+$("#edidx").val()+"&edevent_id="+$("#edevent_id").val()+"&edname="+$("#edname").val()+"&edstarted_at="+$("#edstarted_at").val()+"&edended_at="+$("#edended_at").val()+"&edvenue_address="+$("#edvenue_address").val()+"&edvenue_city="+$("#edvenue_city").val()+"&eddescriptions="+$("#eddescriptions").val()+"&edquota="+$("#edquota").val()+"&edcoupon_price="+$("#edcoupon_price").val()+"&edcreated_at="+$("#edcreated_at").val(), 
                  cache: false, 
                  dataType: 'json', 
                  type: 'POST', 

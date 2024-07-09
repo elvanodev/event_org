@@ -52,8 +52,6 @@ $("#edphone").val(json.phone);
 $("#edinstagram_link").val(json.instagram_link);
 $("#edtwitter_link").val(json.twitter_link);
 $("#edemail").val(json.email);
-$("#edcreated_at").val(json.created_at);
-$("#edupdated_at").val(json.updated_at);
 
      }, 
  error: function (xmlHttpRequest, textStatus, errorThrown) { 
@@ -77,8 +75,6 @@ $("#edphone").val("");
 $("#edinstagram_link").val(""); 
 $("#edtwitter_link").val(""); 
 $("#edemail").val(""); 
-$("#edcreated_at").val(""); 
-$("#edupdated_at").val(""); 
  
   }); 
  } 
@@ -87,7 +83,7 @@ function dosimpanartists(){
          $(document).ready(function(){ 
            $.ajax({ 
                  url: getBaseURL()+"index.php/ctrartists/simpanartists/", 
-   data: "edidx="+$("#edidx").val()+"&edname="+$("#edname").val()+"&edbirth_date="+$("#edbirth_date").val()+"&edbirth_place="+$("#edbirth_place").val()+"&edbio="+$("#edbio").val()+"&edquote="+$("#edquote").val()+"&edposter_img="+$("#edposter_img").val()+"&edphone="+$("#edphone").val()+"&edinstagram_link="+$("#edinstagram_link").val()+"&edtwitter_link="+$("#edtwitter_link").val()+"&edemail="+$("#edemail").val()+"&edcreated_at="+$("#edcreated_at").val()+"&edupdated_at="+$("#edupdated_at").val(), 
+   data: "edidx="+$("#edidx").val()+"&edname="+$("#edname").val()+"&edbirth_date="+$("#edbirth_date").val()+"&edbirth_place="+$("#edbirth_place").val()+"&edbio="+$("#edbio").val()+"&edquote="+$("#edquote").val()+"&edposter_img="+$("#edposter_img").val()+"&edphone="+$("#edphone").val()+"&edinstagram_link="+$("#edinstagram_link").val()+"&edtwitter_link="+$("#edtwitter_link").val()+"&edemail="+$("#edemail").val()+"&edcreated_at="+$("#edcreated_at").val(), 
                  cache: false, 
                  dataType: 'json', 
                  type: 'POST', 

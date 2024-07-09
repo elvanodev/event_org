@@ -49,10 +49,6 @@ $xBufResult .= setForm('password','password',form_input_(getArrayObj('edpassword
 
 $xBufResult .= setForm('address','address',form_input_(getArrayObj('edaddress','','200'),'',' placeholder="address" ')).'<div class="spacer"></div>';
 
-$xBufResult .= setForm('created_at','created_at',form_input_(getArrayObj('edcreated_at','','200'),'',' placeholder="created_at" ')).'<div class="spacer"></div>';
-
-$xBufResult .= setForm('updated_at','updated_at',form_input_(getArrayObj('edupdated_at','','200'),'',' placeholder="updated_at" ')).'<div class="spacer"></div>';
-
 $xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doClearmembers();"').form_button('btSimpan','Simpan','onclick="dosimpanmembers();"').form_button('btTabel','Tabel','onclick="dosearchmembers(0);"').'<div class="spacer"></div></div><div id="tabledatamembers">'.$this->getlistmembers(0, ''). '</div><div class="spacer"></div>'; 
        return $xBufResult;
 
@@ -67,8 +63,6 @@ tbaddcellhead('name','','data-field="name" data-sortable="true" width=10%').
 tbaddcellhead('email','','data-field="email" data-sortable="true" width=10%').
 tbaddcellhead('password','','data-field="password" data-sortable="true" width=10%').
 tbaddcellhead('address','','data-field="address" data-sortable="true" width=10%').
-tbaddcellhead('created_at','','data-field="created_at" data-sortable="true" width=10%').
-tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" width=10%').
 
             tbaddcellhead('Action','padding:5px;width:10%;text-align:center;','col-md-2'),'',TRUE);
          $this->load->model('modelmembers');
@@ -84,8 +78,6 @@ tbaddcell($row->name).
 tbaddcell($row->email).
 tbaddcell($row->password).
 tbaddcell($row->address).
-tbaddcell($row->created_at).
-tbaddcell($row->updated_at).
 
             tbaddcell($xButtonEdit.$xButtonHapus));
             }
@@ -126,8 +118,6 @@ $this->json_data['name'] = $row->name;
 $this->json_data['email'] = $row->email;
 $this->json_data['password'] = $row->password;
 $this->json_data['address'] = $row->address;
-$this->json_data['created_at'] = $row->created_at;
-$this->json_data['updated_at'] = $row->updated_at;
 
             echo json_encode($this->json_data);
    }
@@ -183,16 +173,14 @@ $xname = $_POST['edname'];
 $xemail = $_POST['edemail'];
 $xpassword = $_POST['edpassword'];
 $xaddress = $_POST['edaddress'];
-$xcreated_at = $_POST['edcreated_at'];
-$xupdated_at = $_POST['edupdated_at'];
           
              $this->load->model('modelmembers'); 
         $xidpegawai = $this->session->userdata('idpegawai'); 
         if(!empty($xidpegawai)){ 
-        if($xidx!='0'){   $xStr =  $this->modelmembers->setUpdatemembers($xidx,$xname,$xemail,$xpassword,$xaddress,$xcreated_at,$xupdated_at); 
+        if($xidx!='0'){   $xStr =  $this->modelmembers->setUpdatemembers($xidx,$xname,$xemail,$xpassword,$xaddress); 
          } else 
          { 
-           $xStr =  $this->modelmembers->setInsertmembers($xidx,$xname,$xemail,$xpassword,$xaddress,$xcreated_at,$xupdated_at); 
+           $xStr =  $this->modelmembers->setInsertmembers($xidx,$xname,$xemail,$xpassword,$xaddress); 
          }} 
                echo json_encode(null);
     } }

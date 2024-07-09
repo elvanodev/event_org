@@ -55,8 +55,6 @@ $("#edvalid_until").val(json.valid_until);
 $("#edregistration_id").val(json.registration_id);
 $("#edmember_name").val(json.member_name);
 $("#edpayment_unique_id").val(json.payment_unique_id);
-$("#edcreated_at").val(json.created_at);
-$("#edupdated_at").val(json.updated_at);
 
      }, 
  error: function (xmlHttpRequest, textStatus, errorThrown) { 
@@ -83,8 +81,6 @@ $("#edvalid_until").val("");
 $("#edregistration_id").val(""); 
 $("#edmember_name").val(""); 
 $("#edpayment_unique_id").val(""); 
-$("#edcreated_at").val(""); 
-$("#edupdated_at").val(""); 
  
   }); 
  } 
@@ -93,7 +89,7 @@ function dosimpancoupons(){
          $(document).ready(function(){ 
            $.ajax({ 
                  url: getBaseURL()+"index.php/ctrcoupons/simpancoupons/", 
-   data: "edidx="+$("#edidx").val()+"&ededition_id="+$("#ededition_id").val()+"&edcoupon_number="+$("#edcoupon_number").val()+"&edqr_code="+$("#edqr_code").val()+"&edcoupon_price="+$("#edcoupon_price").val()+"&edshipper_price="+$("#edshipper_price").val()+"&edtotal_price="+$("#edtotal_price").val()+"&edis_winner="+$("#edis_winner").val()+"&edpayment_status_id="+$("#edpayment_status_id").val()+"&edpayment_confirm_receipt="+$("#edpayment_confirm_receipt").val()+"&edvalid_until="+$("#edvalid_until").val()+"&edregistration_id="+$("#edregistration_id").val()+"&edmember_name="+$("#edmember_name").val()+"&edpayment_unique_id="+$("#edpayment_unique_id").val()+"&edcreated_at="+$("#edcreated_at").val()+"&edupdated_at="+$("#edupdated_at").val(), 
+   data: "edidx="+$("#edidx").val()+"&ededition_id="+$("#ededition_id").val()+"&edcoupon_number="+$("#edcoupon_number").val()+"&edqr_code="+$("#edqr_code").val()+"&edcoupon_price="+$("#edcoupon_price").val()+"&edshipper_price="+$("#edshipper_price").val()+"&edtotal_price="+$("#edtotal_price").val()+"&edis_winner="+$("#edis_winner").val()+"&edpayment_status_id="+$("#edpayment_status_id").val()+"&edpayment_confirm_receipt="+$("#edpayment_confirm_receipt").val()+"&edvalid_until="+$("#edvalid_until").val()+"&edregistration_id="+$("#edregistration_id").val()+"&edmember_name="+$("#edmember_name").val()+"&edpayment_unique_id="+$("#edpayment_unique_id").val()+"&edcreated_at="+$("#edcreated_at").val(), 
                  cache: false, 
                  dataType: 'json', 
                  type: 'POST', 

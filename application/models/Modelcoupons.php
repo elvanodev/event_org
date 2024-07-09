@@ -26,8 +26,6 @@ function getArrayListcoupons(){ /* spertinya perlu lock table*/
 ",registration_id".
 ",member_name".
 ",payment_unique_id".
-",created_at".
-",updated_at".
 
 " FROM coupons   order by idx ASC "; 
  $query = $this->db->query($xStr); 
@@ -57,8 +55,6 @@ if(!empty($xSearch)){
 ",registration_id".
 ",member_name".
 ",payment_unique_id".
-",created_at".
-",updated_at".
 " FROM coupons $xSearch order by idx DESC limit ".$xAwal.",".$xLimit;  
  $query = $this->db->query($xStr);
  return $query ;
@@ -81,8 +77,6 @@ function getDetailcoupons($xidx){
 ",registration_id".
 ",member_name".
 ",payment_unique_id".
-",created_at".
-",updated_at".
 
 " FROM coupons  WHERE idx = '".$xidx."'";
 
@@ -108,8 +102,6 @@ function getLastIndexcoupons(){ /* spertinya perlu lock table*/
 ",registration_id".
 ",member_name".
 ",payment_unique_id".
-",created_at".
-",updated_at".
 
 " FROM coupons order by idx DESC limit 1 ";
  $query = $this->db->query($xStr);
@@ -119,7 +111,7 @@ $row = $query->row();
 
 
   
- Function setInsertcoupons($xidx,$xedition_id,$xcoupon_number,$xqr_code,$xcoupon_price,$xshipper_price,$xtotal_price,$xis_winner,$xpayment_status_id,$xpayment_confirm_receipt,$xvalid_until,$xregistration_id,$xmember_name,$xpayment_unique_id,$xcreated_at,$xupdated_at)
+ Function setInsertcoupons($xidx,$xedition_id,$xcoupon_number,$xqr_code,$xcoupon_price,$xshipper_price,$xtotal_price,$xis_winner,$xpayment_status_id,$xpayment_confirm_receipt,$xvalid_until,$xregistration_id,$xmember_name,$xpayment_unique_id)
 {
   $xStr =  " INSERT INTO coupons( ".
               "idx".
@@ -137,13 +129,12 @@ $row = $query->row();
 ",member_name".
 ",payment_unique_id".
 ",created_at".
-",updated_at".
-") VALUES('".$xidx."','".$xedition_id."','".$xcoupon_number."','".$xqr_code."','".$xcoupon_price."','".$xshipper_price."','".$xtotal_price."','".$xis_winner."','".$xpayment_status_id."','".$xpayment_confirm_receipt."','".$xvalid_until."','".$xregistration_id."','".$xmember_name."','".$xpayment_unique_id."','".$xcreated_at."','".$xupdated_at."')";
+") VALUES('".$xidx."','".$xedition_id."','".$xcoupon_number."','".$xqr_code."','".$xcoupon_price."','".$xshipper_price."','".$xtotal_price."','".$xis_winner."','".$xpayment_status_id."','".$xpayment_confirm_receipt."','".$xvalid_until."','".$xregistration_id."','".$xmember_name."','".$xpayment_unique_id."',NOW())";
 $query = $this->db->query($xStr);
  return $xidx;
 }
 
-Function setUpdatecoupons($xidx,$xedition_id,$xcoupon_number,$xqr_code,$xcoupon_price,$xshipper_price,$xtotal_price,$xis_winner,$xpayment_status_id,$xpayment_confirm_receipt,$xvalid_until,$xregistration_id,$xmember_name,$xpayment_unique_id,$xcreated_at,$xupdated_at)
+Function setUpdatecoupons($xidx,$xedition_id,$xcoupon_number,$xqr_code,$xcoupon_price,$xshipper_price,$xtotal_price,$xis_winner,$xpayment_status_id,$xpayment_confirm_receipt,$xvalid_until,$xregistration_id,$xmember_name,$xpayment_unique_id)
 {
   $xStr =  " UPDATE coupons SET ".
              "idx='".$xidx."'".
@@ -160,8 +151,7 @@ Function setUpdatecoupons($xidx,$xedition_id,$xcoupon_number,$xqr_code,$xcoupon_
  ",registration_id='".$xregistration_id."'".
  ",member_name='".$xmember_name."'".
  ",payment_unique_id='".$xpayment_unique_id."'".
- ",created_at='".$xcreated_at."'".
- ",updated_at='".$xupdated_at."'".
+ ",updated_at=NOW()".
  " WHERE idx = '".$xidx."'";
  $query = $this->db->query($xStr);
  return $xidx;

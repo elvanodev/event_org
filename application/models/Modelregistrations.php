@@ -17,8 +17,6 @@ function getArrayListregistrations(){ /* spertinya perlu lock table*/
 ",member_id".
 ",registered_at".
 ",qr_code".
-",created_at".
-",updated_at".
 
 " FROM registrations   order by idx ASC "; 
  $query = $this->db->query($xStr); 
@@ -39,8 +37,6 @@ if(!empty($xSearch)){
 ",member_id".
 ",registered_at".
 ",qr_code".
-",created_at".
-",updated_at".
 " FROM registrations $xSearch order by idx DESC limit ".$xAwal.",".$xLimit;  
  $query = $this->db->query($xStr);
  return $query ;
@@ -54,8 +50,6 @@ function getDetailregistrations($xidx){
 ",member_id".
 ",registered_at".
 ",qr_code".
-",created_at".
-",updated_at".
 
 " FROM registrations  WHERE idx = '".$xidx."'";
 
@@ -72,8 +66,6 @@ function getLastIndexregistrations(){ /* spertinya perlu lock table*/
 ",member_id".
 ",registered_at".
 ",qr_code".
-",created_at".
-",updated_at".
 
 " FROM registrations order by idx DESC limit 1 ";
  $query = $this->db->query($xStr);
@@ -83,7 +75,7 @@ $row = $query->row();
 
 
   
- Function setInsertregistrations($xidx,$xedition_id,$xmember_id,$xregistered_at,$xqr_code,$xcreated_at,$xupdated_at)
+ Function setInsertregistrations($xidx,$xedition_id,$xmember_id,$xregistered_at,$xqr_code)
 {
   $xStr =  " INSERT INTO registrations( ".
               "idx".
@@ -92,13 +84,12 @@ $row = $query->row();
 ",registered_at".
 ",qr_code".
 ",created_at".
-",updated_at".
-") VALUES('".$xidx."','".$xedition_id."','".$xmember_id."','".$xregistered_at."','".$xqr_code."','".$xcreated_at."','".$xupdated_at."')";
+") VALUES('".$xidx."','".$xedition_id."','".$xmember_id."','".$xregistered_at."','".$xqr_code."',NOW())";
 $query = $this->db->query($xStr);
  return $xidx;
 }
 
-Function setUpdateregistrations($xidx,$xedition_id,$xmember_id,$xregistered_at,$xqr_code,$xcreated_at,$xupdated_at)
+Function setUpdateregistrations($xidx,$xedition_id,$xmember_id,$xregistered_at,$xqr_code)
 {
   $xStr =  " UPDATE registrations SET ".
              "idx='".$xidx."'".
@@ -106,8 +97,7 @@ Function setUpdateregistrations($xidx,$xedition_id,$xmember_id,$xregistered_at,$
  ",member_id='".$xmember_id."'".
  ",registered_at='".$xregistered_at."'".
  ",qr_code='".$xqr_code."'".
- ",created_at='".$xcreated_at."'".
- ",updated_at='".$xupdated_at."'".
+ ",updated_at=NOW()".
  " WHERE idx = '".$xidx."'";
  $query = $this->db->query($xStr);
  return $xidx;

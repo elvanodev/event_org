@@ -21,8 +21,6 @@ function getArrayListevents(){ /* spertinya perlu lock table*/
 ",about2_event".
 ",about3_event".
 ",poster_image".
-",created_at".
-",updated_at".
 
 " FROM events   order by idx ASC "; 
  $query = $this->db->query($xStr); 
@@ -47,8 +45,6 @@ if(!empty($xSearch)){
 ",about2_event".
 ",about3_event".
 ",poster_image".
-",created_at".
-",updated_at".
 " FROM events $xSearch order by idx DESC limit ".$xAwal.",".$xLimit;  
  $query = $this->db->query($xStr);
  return $query ;
@@ -66,8 +62,6 @@ function getDetailevents($xidx){
 ",about2_event".
 ",about3_event".
 ",poster_image".
-",created_at".
-",updated_at".
 
 " FROM events  WHERE idx = '".$xidx."'";
 
@@ -88,8 +82,6 @@ function getLastIndexevents(){ /* spertinya perlu lock table*/
 ",about2_event".
 ",about3_event".
 ",poster_image".
-",created_at".
-",updated_at".
 
 " FROM events order by idx DESC limit 1 ";
  $query = $this->db->query($xStr);
@@ -99,7 +91,7 @@ $row = $query->row();
 
 
   
- Function setInsertevents($xidx,$xname,$xis_active,$xdescriptions,$xabout_event,$xabout1_event,$xabout2_event,$xabout3_event,$xposter_image,$xcreated_at,$xupdated_at)
+ Function setInsertevents($xidx,$xname,$xis_active,$xdescriptions,$xabout_event,$xabout1_event,$xabout2_event,$xabout3_event,$xposter_image)
 {
   $xStr =  " INSERT INTO events( ".
               "idx".
@@ -112,13 +104,12 @@ $row = $query->row();
 ",about3_event".
 ",poster_image".
 ",created_at".
-",updated_at".
-") VALUES('".$xidx."','".$xname."','".$xis_active."','".$xdescriptions."','".$xabout_event."','".$xabout1_event."','".$xabout2_event."','".$xabout3_event."','".$xposter_image."','".$xcreated_at."','".$xupdated_at."')";
+") VALUES('".$xidx."','".$xname."','".$xis_active."','".$xdescriptions."','".$xabout_event."','".$xabout1_event."','".$xabout2_event."','".$xabout3_event."','".$xposter_image."',NOW())";
 $query = $this->db->query($xStr);
  return $xidx;
 }
 
-Function setUpdateevents($xidx,$xname,$xis_active,$xdescriptions,$xabout_event,$xabout1_event,$xabout2_event,$xabout3_event,$xposter_image,$xcreated_at,$xupdated_at)
+Function setUpdateevents($xidx,$xname,$xis_active,$xdescriptions,$xabout_event,$xabout1_event,$xabout2_event,$xabout3_event,$xposter_image)
 {
   $xStr =  " UPDATE events SET ".
              "idx='".$xidx."'".
@@ -130,8 +121,7 @@ Function setUpdateevents($xidx,$xname,$xis_active,$xdescriptions,$xabout_event,$
  ",about2_event='".$xabout2_event."'".
  ",about3_event='".$xabout3_event."'".
  ",poster_image='".$xposter_image."'".
- ",created_at='".$xcreated_at."'".
- ",updated_at='".$xupdated_at."'".
+ ",updated_at=NOW()".
  " WHERE idx = '".$xidx."'";
  $query = $this->db->query($xStr);
  return $xidx;

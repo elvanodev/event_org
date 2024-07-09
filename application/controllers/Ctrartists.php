@@ -61,10 +61,6 @@ $xBufResult .= setForm('twitter_link','twitter_link',form_input_(getArrayObj('ed
 
 $xBufResult .= setForm('email','email',form_input_(getArrayObj('edemail','','200'),'',' placeholder="email" ')).'<div class="spacer"></div>';
 
-$xBufResult .= setForm('created_at','created_at',form_input_(getArrayObj('edcreated_at','','200'),'',' placeholder="created_at" ')).'<div class="spacer"></div>';
-
-$xBufResult .= setForm('updated_at','updated_at',form_input_(getArrayObj('edupdated_at','','200'),'',' placeholder="updated_at" ')).'<div class="spacer"></div>';
-
 $xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doClearartists();"').form_button('btSimpan','Simpan','onclick="dosimpanartists();"').form_button('btTabel','Tabel','onclick="dosearchartists(0);"').'<div class="spacer"></div></div><div id="tabledataartists">'.$this->getlistartists(0, ''). '</div><div class="spacer"></div>'; 
        return $xBufResult;
 
@@ -85,8 +81,6 @@ tbaddcellhead('phone','','data-field="phone" data-sortable="true" width=10%').
 tbaddcellhead('instagram_link','','data-field="instagram_link" data-sortable="true" width=10%').
 tbaddcellhead('twitter_link','','data-field="twitter_link" data-sortable="true" width=10%').
 tbaddcellhead('email','','data-field="email" data-sortable="true" width=10%').
-tbaddcellhead('created_at','','data-field="created_at" data-sortable="true" width=10%').
-tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" width=10%').
 
             tbaddcellhead('Action','padding:5px;width:10%;text-align:center;','col-md-2'),'',TRUE);
          $this->load->model('modelartists');
@@ -108,8 +102,6 @@ tbaddcell($row->phone).
 tbaddcell($row->instagram_link).
 tbaddcell($row->twitter_link).
 tbaddcell($row->email).
-tbaddcell($row->created_at).
-tbaddcell($row->updated_at).
 
             tbaddcell($xButtonEdit.$xButtonHapus));
             }
@@ -156,8 +148,6 @@ $this->json_data['phone'] = $row->phone;
 $this->json_data['instagram_link'] = $row->instagram_link;
 $this->json_data['twitter_link'] = $row->twitter_link;
 $this->json_data['email'] = $row->email;
-$this->json_data['created_at'] = $row->created_at;
-$this->json_data['updated_at'] = $row->updated_at;
 
             echo json_encode($this->json_data);
    }
@@ -219,16 +209,14 @@ $xphone = $_POST['edphone'];
 $xinstagram_link = $_POST['edinstagram_link'];
 $xtwitter_link = $_POST['edtwitter_link'];
 $xemail = $_POST['edemail'];
-$xcreated_at = $_POST['edcreated_at'];
-$xupdated_at = $_POST['edupdated_at'];
           
              $this->load->model('modelartists'); 
         $xidpegawai = $this->session->userdata('idpegawai'); 
         if(!empty($xidpegawai)){ 
-        if($xidx!='0'){   $xStr =  $this->modelartists->setUpdateartists($xidx,$xname,$xbirth_date,$xbirth_place,$xbio,$xquote,$xposter_img,$xphone,$xinstagram_link,$xtwitter_link,$xemail,$xcreated_at,$xupdated_at); 
+        if($xidx!='0'){   $xStr =  $this->modelartists->setUpdateartists($xidx,$xname,$xbirth_date,$xbirth_place,$xbio,$xquote,$xposter_img,$xphone,$xinstagram_link,$xtwitter_link,$xemail); 
          } else 
          { 
-           $xStr =  $this->modelartists->setInsertartists($xidx,$xname,$xbirth_date,$xbirth_place,$xbio,$xquote,$xposter_img,$xphone,$xinstagram_link,$xtwitter_link,$xemail,$xcreated_at,$xupdated_at); 
+           $xStr =  $this->modelartists->setInsertartists($xidx,$xname,$xbirth_date,$xbirth_place,$xbio,$xquote,$xposter_img,$xphone,$xinstagram_link,$xtwitter_link,$xemail); 
          }} 
                echo json_encode(null);
     } }

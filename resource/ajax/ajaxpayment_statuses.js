@@ -44,8 +44,6 @@
        $("#edidx").val(json.idx); 
        $("#edname").val(json.name);
 $("#eddescriptions").val(json.descriptions);
-$("#edcreated_at").val(json.created_at);
-$("#edupdated_at").val(json.updated_at);
 
      }, 
  error: function (xmlHttpRequest, textStatus, errorThrown) { 
@@ -61,8 +59,6 @@ function doClearpayment_statuses(){
  $("#edidx").val("0"); 
  $("#edname").val(""); 
 $("#eddescriptions").val(""); 
-$("#edcreated_at").val(""); 
-$("#edupdated_at").val(""); 
  
   }); 
  } 
@@ -71,7 +67,7 @@ function dosimpanpayment_statuses(){
          $(document).ready(function(){ 
            $.ajax({ 
                  url: getBaseURL()+"index.php/ctrpayment_statuses/simpanpayment_statuses/", 
-   data: "edidx="+$("#edidx").val()+"&edname="+$("#edname").val()+"&eddescriptions="+$("#eddescriptions").val()+"&edcreated_at="+$("#edcreated_at").val()+"&edupdated_at="+$("#edupdated_at").val(), 
+   data: "edidx="+$("#edidx").val()+"&edname="+$("#edname").val()+"&eddescriptions="+$("#eddescriptions").val()+"&edcreated_at="+$("#edcreated_at").val(), 
                  cache: false, 
                  dataType: 'json', 
                  type: 'POST', 

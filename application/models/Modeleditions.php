@@ -22,8 +22,6 @@ function getArrayListeditions(){ /* spertinya perlu lock table*/
 ",descriptions".
 ",quota".
 ",coupon_price".
-",created_at".
-",updated_at".
 
 " FROM editions   order by idx ASC "; 
  $query = $this->db->query($xStr); 
@@ -49,8 +47,6 @@ if(!empty($xSearch)){
 ",descriptions".
 ",quota".
 ",coupon_price".
-",created_at".
-",updated_at".
 " FROM editions $xSearch order by idx DESC limit ".$xAwal.",".$xLimit;  
  $query = $this->db->query($xStr);
  return $query ;
@@ -69,8 +65,6 @@ function getDetaileditions($xidx){
 ",descriptions".
 ",quota".
 ",coupon_price".
-",created_at".
-",updated_at".
 
 " FROM editions  WHERE idx = '".$xidx."'";
 
@@ -92,8 +86,6 @@ function getLastIndexeditions(){ /* spertinya perlu lock table*/
 ",descriptions".
 ",quota".
 ",coupon_price".
-",created_at".
-",updated_at".
 
 " FROM editions order by idx DESC limit 1 ";
  $query = $this->db->query($xStr);
@@ -103,7 +95,7 @@ $row = $query->row();
 
 
   
- Function setInserteditions($xidx,$xevent_id,$xname,$xstarted_at,$xended_at,$xvenue_address,$xvenue_city,$xdescriptions,$xquota,$xcoupon_price,$xcreated_at,$xupdated_at)
+ Function setInserteditions($xidx,$xevent_id,$xname,$xstarted_at,$xended_at,$xvenue_address,$xvenue_city,$xdescriptions,$xquota,$xcoupon_price)
 {
   $xStr =  " INSERT INTO editions( ".
               "idx".
@@ -117,13 +109,12 @@ $row = $query->row();
 ",quota".
 ",coupon_price".
 ",created_at".
-",updated_at".
-") VALUES('".$xidx."','".$xevent_id."','".$xname."','".$xstarted_at."','".$xended_at."','".$xvenue_address."','".$xvenue_city."','".$xdescriptions."','".$xquota."','".$xcoupon_price."','".$xcreated_at."','".$xupdated_at."')";
+") VALUES('".$xidx."','".$xevent_id."','".$xname."','".$xstarted_at."','".$xended_at."','".$xvenue_address."','".$xvenue_city."','".$xdescriptions."','".$xquota."','".$xcoupon_price."',NOW())";
 $query = $this->db->query($xStr);
  return $xidx;
 }
 
-Function setUpdateeditions($xidx,$xevent_id,$xname,$xstarted_at,$xended_at,$xvenue_address,$xvenue_city,$xdescriptions,$xquota,$xcoupon_price,$xcreated_at,$xupdated_at)
+Function setUpdateeditions($xidx,$xevent_id,$xname,$xstarted_at,$xended_at,$xvenue_address,$xvenue_city,$xdescriptions,$xquota,$xcoupon_price)
 {
   $xStr =  " UPDATE editions SET ".
              "idx='".$xidx."'".
@@ -136,8 +127,7 @@ Function setUpdateeditions($xidx,$xevent_id,$xname,$xstarted_at,$xended_at,$xven
  ",descriptions='".$xdescriptions."'".
  ",quota='".$xquota."'".
  ",coupon_price='".$xcoupon_price."'".
- ",created_at='".$xcreated_at."'".
- ",updated_at='".$xupdated_at."'".
+ ",updated_at=NOW()".
  " WHERE idx = '".$xidx."'";
  $query = $this->db->query($xStr);
  return $xidx;

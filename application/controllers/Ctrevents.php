@@ -57,10 +57,6 @@ $xBufResult .= setForm('about3_event','about3_event',form_input_(getArrayObj('ed
 
 $xBufResult .= setForm('poster_image','poster_image',form_input_(getArrayObj('edposter_image','','200'),'',' placeholder="poster_image" ')).'<div class="spacer"></div>';
 
-$xBufResult .= setForm('created_at','created_at',form_input_(getArrayObj('edcreated_at','','200'),'',' placeholder="created_at" ')).'<div class="spacer"></div>';
-
-$xBufResult .= setForm('updated_at','updated_at',form_input_(getArrayObj('edupdated_at','','200'),'',' placeholder="updated_at" ')).'<div class="spacer"></div>';
-
 $xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doClearevents();"').form_button('btSimpan','Simpan','onclick="dosimpanevents();"').form_button('btTabel','Tabel','onclick="dosearchevents(0);"').'<div class="spacer"></div></div><div id="tabledataevents">'.$this->getlistevents(0, ''). '</div><div class="spacer"></div>'; 
        return $xBufResult;
 
@@ -79,8 +75,6 @@ tbaddcellhead('about1_event','','data-field="about1_event" data-sortable="true" 
 tbaddcellhead('about2_event','','data-field="about2_event" data-sortable="true" width=10%').
 tbaddcellhead('about3_event','','data-field="about3_event" data-sortable="true" width=10%').
 tbaddcellhead('poster_image','','data-field="poster_image" data-sortable="true" width=10%').
-tbaddcellhead('created_at','','data-field="created_at" data-sortable="true" width=10%').
-tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" width=10%').
 
             tbaddcellhead('Action','padding:5px;width:10%;text-align:center;','col-md-2'),'',TRUE);
          $this->load->model('modelevents');
@@ -100,8 +94,6 @@ tbaddcell($row->about1_event).
 tbaddcell($row->about2_event).
 tbaddcell($row->about3_event).
 tbaddcell($row->poster_image).
-tbaddcell($row->created_at).
-tbaddcell($row->updated_at).
 
             tbaddcell($xButtonEdit.$xButtonHapus));
             }
@@ -146,8 +138,6 @@ $this->json_data['about1_event'] = $row->about1_event;
 $this->json_data['about2_event'] = $row->about2_event;
 $this->json_data['about3_event'] = $row->about3_event;
 $this->json_data['poster_image'] = $row->poster_image;
-$this->json_data['created_at'] = $row->created_at;
-$this->json_data['updated_at'] = $row->updated_at;
 
             echo json_encode($this->json_data);
    }
@@ -207,16 +197,14 @@ $xabout1_event = $_POST['edabout1_event'];
 $xabout2_event = $_POST['edabout2_event'];
 $xabout3_event = $_POST['edabout3_event'];
 $xposter_image = $_POST['edposter_image'];
-$xcreated_at = $_POST['edcreated_at'];
-$xupdated_at = $_POST['edupdated_at'];
           
              $this->load->model('modelevents'); 
         $xidpegawai = $this->session->userdata('idpegawai'); 
         if(!empty($xidpegawai)){ 
-        if($xidx!='0'){   $xStr =  $this->modelevents->setUpdateevents($xidx,$xname,$xis_active,$xdescriptions,$xabout_event,$xabout1_event,$xabout2_event,$xabout3_event,$xposter_image,$xcreated_at,$xupdated_at); 
+        if($xidx!='0'){   $xStr =  $this->modelevents->setUpdateevents($xidx,$xname,$xis_active,$xdescriptions,$xabout_event,$xabout1_event,$xabout2_event,$xabout3_event,$xposter_image); 
          } else 
          { 
-           $xStr =  $this->modelevents->setInsertevents($xidx,$xname,$xis_active,$xdescriptions,$xabout_event,$xabout1_event,$xabout2_event,$xabout3_event,$xposter_image,$xcreated_at,$xupdated_at); 
+           $xStr =  $this->modelevents->setInsertevents($xidx,$xname,$xis_active,$xdescriptions,$xabout_event,$xabout1_event,$xabout2_event,$xabout3_event,$xposter_image); 
          }} 
                echo json_encode(null);
     } }

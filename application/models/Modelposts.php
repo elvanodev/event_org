@@ -17,8 +17,6 @@ function getArrayListposts(){ /* spertinya perlu lock table*/
 ",name".
 ",uploaded_at".
 ",post_text".
-",created_at".
-",updated_at".
 
 " FROM posts   order by idx ASC "; 
  $query = $this->db->query($xStr); 
@@ -39,8 +37,6 @@ if(!empty($xSearch)){
 ",name".
 ",uploaded_at".
 ",post_text".
-",created_at".
-",updated_at".
 " FROM posts $xSearch order by idx DESC limit ".$xAwal.",".$xLimit;  
  $query = $this->db->query($xStr);
  return $query ;
@@ -54,8 +50,6 @@ function getDetailposts($xidx){
 ",name".
 ",uploaded_at".
 ",post_text".
-",created_at".
-",updated_at".
 
 " FROM posts  WHERE idx = '".$xidx."'";
 
@@ -72,8 +66,6 @@ function getLastIndexposts(){ /* spertinya perlu lock table*/
 ",name".
 ",uploaded_at".
 ",post_text".
-",created_at".
-",updated_at".
 
 " FROM posts order by idx DESC limit 1 ";
  $query = $this->db->query($xStr);
@@ -83,7 +75,7 @@ $row = $query->row();
 
 
   
- Function setInsertposts($xidx,$xevent_id,$xname,$xuploaded_at,$xpost_text,$xcreated_at,$xupdated_at)
+ Function setInsertposts($xidx,$xevent_id,$xname,$xuploaded_at,$xpost_text)
 {
   $xStr =  " INSERT INTO posts( ".
               "idx".
@@ -92,13 +84,12 @@ $row = $query->row();
 ",uploaded_at".
 ",post_text".
 ",created_at".
-",updated_at".
-") VALUES('".$xidx."','".$xevent_id."','".$xname."','".$xuploaded_at."','".$xpost_text."','".$xcreated_at."','".$xupdated_at."')";
+") VALUES('".$xidx."','".$xevent_id."','".$xname."','".$xuploaded_at."','".$xpost_text."',NOW())";
 $query = $this->db->query($xStr);
  return $xidx;
 }
 
-Function setUpdateposts($xidx,$xevent_id,$xname,$xuploaded_at,$xpost_text,$xcreated_at,$xupdated_at)
+Function setUpdateposts($xidx,$xevent_id,$xname,$xuploaded_at,$xpost_text)
 {
   $xStr =  " UPDATE posts SET ".
              "idx='".$xidx."'".
@@ -106,8 +97,7 @@ Function setUpdateposts($xidx,$xevent_id,$xname,$xuploaded_at,$xpost_text,$xcrea
  ",name='".$xname."'".
  ",uploaded_at='".$xuploaded_at."'".
  ",post_text='".$xpost_text."'".
- ",created_at='".$xcreated_at."'".
- ",updated_at='".$xupdated_at."'".
+ ",updated_at=NOW()".
  " WHERE idx = '".$xidx."'";
  $query = $this->db->query($xStr);
  return $xidx;

@@ -46,8 +46,6 @@
 $("#edname").val(json.name);
 $("#eduploaded_at").val(json.uploaded_at);
 $("#edpost_text").val(json.post_text);
-$("#edcreated_at").val(json.created_at);
-$("#edupdated_at").val(json.updated_at);
 
      }, 
  error: function (xmlHttpRequest, textStatus, errorThrown) { 
@@ -65,8 +63,6 @@ function doClearposts(){
 $("#edname").val(""); 
 $("#eduploaded_at").val(""); 
 $("#edpost_text").val(""); 
-$("#edcreated_at").val(""); 
-$("#edupdated_at").val(""); 
  
   }); 
  } 
@@ -75,7 +71,7 @@ function dosimpanposts(){
          $(document).ready(function(){ 
            $.ajax({ 
                  url: getBaseURL()+"index.php/ctrposts/simpanposts/", 
-   data: "edidx="+$("#edidx").val()+"&edevent_id="+$("#edevent_id").val()+"&edname="+$("#edname").val()+"&eduploaded_at="+$("#eduploaded_at").val()+"&edpost_text="+$("#edpost_text").val()+"&edcreated_at="+$("#edcreated_at").val()+"&edupdated_at="+$("#edupdated_at").val(), 
+   data: "edidx="+$("#edidx").val()+"&edevent_id="+$("#edevent_id").val()+"&edname="+$("#edname").val()+"&eduploaded_at="+$("#eduploaded_at").val()+"&edpost_text="+$("#edpost_text").val()+"&edcreated_at="+$("#edcreated_at").val(), 
                  cache: false, 
                  dataType: 'json', 
                  type: 'POST', 

@@ -46,8 +46,6 @@
 $("#edmember_id").val(json.member_id);
 $("#edregistered_at").val(json.registered_at);
 $("#edqr_code").val(json.qr_code);
-$("#edcreated_at").val(json.created_at);
-$("#edupdated_at").val(json.updated_at);
 
      }, 
  error: function (xmlHttpRequest, textStatus, errorThrown) { 
@@ -65,8 +63,6 @@ function doClearregistrations(){
 $("#edmember_id").val(""); 
 $("#edregistered_at").val(""); 
 $("#edqr_code").val(""); 
-$("#edcreated_at").val(""); 
-$("#edupdated_at").val(""); 
  
   }); 
  } 
@@ -75,7 +71,7 @@ function dosimpanregistrations(){
          $(document).ready(function(){ 
            $.ajax({ 
                  url: getBaseURL()+"index.php/ctrregistrations/simpanregistrations/", 
-   data: "edidx="+$("#edidx").val()+"&ededition_id="+$("#ededition_id").val()+"&edmember_id="+$("#edmember_id").val()+"&edregistered_at="+$("#edregistered_at").val()+"&edqr_code="+$("#edqr_code").val()+"&edcreated_at="+$("#edcreated_at").val()+"&edupdated_at="+$("#edupdated_at").val(), 
+   data: "edidx="+$("#edidx").val()+"&ededition_id="+$("#ededition_id").val()+"&edmember_id="+$("#edmember_id").val()+"&edregistered_at="+$("#edregistered_at").val()+"&edqr_code="+$("#edqr_code").val()+"&edcreated_at="+$("#edcreated_at").val(), 
                  cache: false, 
                  dataType: 'json', 
                  type: 'POST', 

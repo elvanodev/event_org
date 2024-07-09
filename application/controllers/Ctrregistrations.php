@@ -49,10 +49,6 @@ $xBufResult .= setForm('registered_at','registered_at',form_input_(getArrayObj('
 
 $xBufResult .= setForm('qr_code','qr_code',form_input_(getArrayObj('edqr_code','','200'),'',' placeholder="qr_code" ')).'<div class="spacer"></div>';
 
-$xBufResult .= setForm('created_at','created_at',form_input_(getArrayObj('edcreated_at','','200'),'',' placeholder="created_at" ')).'<div class="spacer"></div>';
-
-$xBufResult .= setForm('updated_at','updated_at',form_input_(getArrayObj('edupdated_at','','200'),'',' placeholder="updated_at" ')).'<div class="spacer"></div>';
-
 $xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doClearregistrations();"').form_button('btSimpan','Simpan','onclick="dosimpanregistrations();"').form_button('btTabel','Tabel','onclick="dosearchregistrations(0);"').'<div class="spacer"></div></div><div id="tabledataregistrations">'.$this->getlistregistrations(0, ''). '</div><div class="spacer"></div>'; 
        return $xBufResult;
 
@@ -67,8 +63,6 @@ tbaddcellhead('edition_id','','data-field="edition_id" data-sortable="true" widt
 tbaddcellhead('member_id','','data-field="member_id" data-sortable="true" width=10%').
 tbaddcellhead('registered_at','','data-field="registered_at" data-sortable="true" width=10%').
 tbaddcellhead('qr_code','','data-field="qr_code" data-sortable="true" width=10%').
-tbaddcellhead('created_at','','data-field="created_at" data-sortable="true" width=10%').
-tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" width=10%').
 
             tbaddcellhead('Action','padding:5px;width:10%;text-align:center;','col-md-2'),'',TRUE);
          $this->load->model('modelregistrations');
@@ -84,8 +78,6 @@ tbaddcell($row->edition_id).
 tbaddcell($row->member_id).
 tbaddcell($row->registered_at).
 tbaddcell($row->qr_code).
-tbaddcell($row->created_at).
-tbaddcell($row->updated_at).
 
             tbaddcell($xButtonEdit.$xButtonHapus));
             }
@@ -126,8 +118,6 @@ $this->json_data['edition_id'] = $row->edition_id;
 $this->json_data['member_id'] = $row->member_id;
 $this->json_data['registered_at'] = $row->registered_at;
 $this->json_data['qr_code'] = $row->qr_code;
-$this->json_data['created_at'] = $row->created_at;
-$this->json_data['updated_at'] = $row->updated_at;
 
             echo json_encode($this->json_data);
    }
@@ -183,16 +173,14 @@ $xedition_id = $_POST['ededition_id'];
 $xmember_id = $_POST['edmember_id'];
 $xregistered_at = $_POST['edregistered_at'];
 $xqr_code = $_POST['edqr_code'];
-$xcreated_at = $_POST['edcreated_at'];
-$xupdated_at = $_POST['edupdated_at'];
           
              $this->load->model('modelregistrations'); 
         $xidpegawai = $this->session->userdata('idpegawai'); 
         if(!empty($xidpegawai)){ 
-        if($xidx!='0'){   $xStr =  $this->modelregistrations->setUpdateregistrations($xidx,$xedition_id,$xmember_id,$xregistered_at,$xqr_code,$xcreated_at,$xupdated_at); 
+        if($xidx!='0'){   $xStr =  $this->modelregistrations->setUpdateregistrations($xidx,$xedition_id,$xmember_id,$xregistered_at,$xqr_code); 
          } else 
          { 
-           $xStr =  $this->modelregistrations->setInsertregistrations($xidx,$xedition_id,$xmember_id,$xregistered_at,$xqr_code,$xcreated_at,$xupdated_at); 
+           $xStr =  $this->modelregistrations->setInsertregistrations($xidx,$xedition_id,$xmember_id,$xregistered_at,$xqr_code); 
          }} 
                echo json_encode(null);
     } }

@@ -46,8 +46,6 @@
 $("#edemail").val(json.email);
 $("#edpassword").val(json.password);
 $("#edaddress").val(json.address);
-$("#edcreated_at").val(json.created_at);
-$("#edupdated_at").val(json.updated_at);
 
      }, 
  error: function (xmlHttpRequest, textStatus, errorThrown) { 
@@ -65,8 +63,6 @@ function doClearmembers(){
 $("#edemail").val(""); 
 $("#edpassword").val(""); 
 $("#edaddress").val(""); 
-$("#edcreated_at").val(""); 
-$("#edupdated_at").val(""); 
  
   }); 
  } 
@@ -75,7 +71,7 @@ function dosimpanmembers(){
          $(document).ready(function(){ 
            $.ajax({ 
                  url: getBaseURL()+"index.php/ctrmembers/simpanmembers/", 
-   data: "edidx="+$("#edidx").val()+"&edname="+$("#edname").val()+"&edemail="+$("#edemail").val()+"&edpassword="+$("#edpassword").val()+"&edaddress="+$("#edaddress").val()+"&edcreated_at="+$("#edcreated_at").val()+"&edupdated_at="+$("#edupdated_at").val(), 
+   data: "edidx="+$("#edidx").val()+"&edname="+$("#edname").val()+"&edemail="+$("#edemail").val()+"&edpassword="+$("#edpassword").val()+"&edaddress="+$("#edaddress").val()+"&edcreated_at="+$("#edcreated_at").val(), 
                  cache: false, 
                  dataType: 'json', 
                  type: 'POST', 

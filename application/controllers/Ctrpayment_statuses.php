@@ -45,10 +45,6 @@ $xBufResult .= setForm('name','name',form_input_(getArrayObj('edname','','200'),
 
 $xBufResult .= setForm('descriptions','descriptions',form_input_(getArrayObj('eddescriptions','','200'),'',' placeholder="descriptions" ')).'<div class="spacer"></div>';
 
-$xBufResult .= setForm('created_at','created_at',form_input_(getArrayObj('edcreated_at','','200'),'',' placeholder="created_at" ')).'<div class="spacer"></div>';
-
-$xBufResult .= setForm('updated_at','updated_at',form_input_(getArrayObj('edupdated_at','','200'),'',' placeholder="updated_at" ')).'<div class="spacer"></div>';
-
 $xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doClearpayment_statuses();"').form_button('btSimpan','Simpan','onclick="dosimpanpayment_statuses();"').form_button('btTabel','Tabel','onclick="dosearchpayment_statuses(0);"').'<div class="spacer"></div></div><div id="tabledatapayment_statuses">'.$this->getlistpayment_statuses(0, ''). '</div><div class="spacer"></div>'; 
        return $xBufResult;
 
@@ -61,8 +57,6 @@ function getlistpayment_statuses($xAwal,$xSearch){
          $xbufResult1 =tbaddrow(         tbaddcellhead('idx','','data-field="idx" data-sortable="true" width=10%').
 tbaddcellhead('name','','data-field="name" data-sortable="true" width=10%').
 tbaddcellhead('descriptions','','data-field="descriptions" data-sortable="true" width=10%').
-tbaddcellhead('created_at','','data-field="created_at" data-sortable="true" width=10%').
-tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" width=10%').
 
             tbaddcellhead('Action','padding:5px;width:10%;text-align:center;','col-md-2'),'',TRUE);
          $this->load->model('modelpayment_statuses');
@@ -76,8 +70,6 @@ tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" widt
             $xbufResult .= tbaddrow(         tbaddcell($row->idx).
 tbaddcell($row->name).
 tbaddcell($row->descriptions).
-tbaddcell($row->created_at).
-tbaddcell($row->updated_at).
 
             tbaddcell($xButtonEdit.$xButtonHapus));
             }
@@ -116,8 +108,6 @@ tbaddcell($row->updated_at).
       $this->json_data['idx'] = $row->idx;
 $this->json_data['name'] = $row->name;
 $this->json_data['descriptions'] = $row->descriptions;
-$this->json_data['created_at'] = $row->created_at;
-$this->json_data['updated_at'] = $row->updated_at;
 
             echo json_encode($this->json_data);
    }
@@ -171,16 +161,14 @@ function searchpayment_statuses(){
          } 
 $xname = $_POST['edname'];
 $xdescriptions = $_POST['eddescriptions'];
-$xcreated_at = $_POST['edcreated_at'];
-$xupdated_at = $_POST['edupdated_at'];
           
              $this->load->model('modelpayment_statuses'); 
         $xidpegawai = $this->session->userdata('idpegawai'); 
         if(!empty($xidpegawai)){ 
-        if($xidx!='0'){   $xStr =  $this->modelpayment_statuses->setUpdatepayment_statuses($xidx,$xname,$xdescriptions,$xcreated_at,$xupdated_at); 
+        if($xidx!='0'){   $xStr =  $this->modelpayment_statuses->setUpdatepayment_statuses($xidx,$xname,$xdescriptions); 
          } else 
          { 
-           $xStr =  $this->modelpayment_statuses->setInsertpayment_statuses($xidx,$xname,$xdescriptions,$xcreated_at,$xupdated_at); 
+           $xStr =  $this->modelpayment_statuses->setInsertpayment_statuses($xidx,$xname,$xdescriptions); 
          }} 
                echo json_encode(null);
     } }

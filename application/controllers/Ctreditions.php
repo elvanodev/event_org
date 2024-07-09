@@ -59,10 +59,6 @@ $xBufResult .= setForm('quota','quota',form_input_(getArrayObj('edquota','','200
 
 $xBufResult .= setForm('coupon_price','coupon_price',form_input_(getArrayObj('edcoupon_price','','200'),'',' placeholder="coupon_price" ')).'<div class="spacer"></div>';
 
-$xBufResult .= setForm('created_at','created_at',form_input_(getArrayObj('edcreated_at','','200'),'',' placeholder="created_at" ')).'<div class="spacer"></div>';
-
-$xBufResult .= setForm('updated_at','updated_at',form_input_(getArrayObj('edupdated_at','','200'),'',' placeholder="updated_at" ')).'<div class="spacer"></div>';
-
 $xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doCleareditions();"').form_button('btSimpan','Simpan','onclick="dosimpaneditions();"').form_button('btTabel','Tabel','onclick="dosearcheditions(0);"').'<div class="spacer"></div></div><div id="tabledataeditions">'.$this->getlisteditions(0, ''). '</div><div class="spacer"></div>'; 
        return $xBufResult;
 
@@ -82,8 +78,6 @@ tbaddcellhead('venue_city','','data-field="venue_city" data-sortable="true" widt
 tbaddcellhead('descriptions','','data-field="descriptions" data-sortable="true" width=10%').
 tbaddcellhead('quota','','data-field="quota" data-sortable="true" width=10%').
 tbaddcellhead('coupon_price','','data-field="coupon_price" data-sortable="true" width=10%').
-tbaddcellhead('created_at','','data-field="created_at" data-sortable="true" width=10%').
-tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" width=10%').
 
             tbaddcellhead('Action','padding:5px;width:10%;text-align:center;','col-md-2'),'',TRUE);
          $this->load->model('modeleditions');
@@ -104,8 +98,6 @@ tbaddcell($row->venue_city).
 tbaddcell($row->descriptions).
 tbaddcell($row->quota).
 tbaddcell($row->coupon_price).
-tbaddcell($row->created_at).
-tbaddcell($row->updated_at).
 
             tbaddcell($xButtonEdit.$xButtonHapus));
             }
@@ -151,8 +143,6 @@ $this->json_data['venue_city'] = $row->venue_city;
 $this->json_data['descriptions'] = $row->descriptions;
 $this->json_data['quota'] = $row->quota;
 $this->json_data['coupon_price'] = $row->coupon_price;
-$this->json_data['created_at'] = $row->created_at;
-$this->json_data['updated_at'] = $row->updated_at;
 
             echo json_encode($this->json_data);
    }
@@ -213,16 +203,14 @@ $xvenue_city = $_POST['edvenue_city'];
 $xdescriptions = $_POST['eddescriptions'];
 $xquota = $_POST['edquota'];
 $xcoupon_price = $_POST['edcoupon_price'];
-$xcreated_at = $_POST['edcreated_at'];
-$xupdated_at = $_POST['edupdated_at'];
           
              $this->load->model('modeleditions'); 
         $xidpegawai = $this->session->userdata('idpegawai'); 
         if(!empty($xidpegawai)){ 
-        if($xidx!='0'){   $xStr =  $this->modeleditions->setUpdateeditions($xidx,$xevent_id,$xname,$xstarted_at,$xended_at,$xvenue_address,$xvenue_city,$xdescriptions,$xquota,$xcoupon_price,$xcreated_at,$xupdated_at); 
+        if($xidx!='0'){   $xStr =  $this->modeleditions->setUpdateeditions($xidx,$xevent_id,$xname,$xstarted_at,$xended_at,$xvenue_address,$xvenue_city,$xdescriptions,$xquota,$xcoupon_price); 
          } else 
          { 
-           $xStr =  $this->modeleditions->setInserteditions($xidx,$xevent_id,$xname,$xstarted_at,$xended_at,$xvenue_address,$xvenue_city,$xdescriptions,$xquota,$xcoupon_price,$xcreated_at,$xupdated_at); 
+           $xStr =  $this->modeleditions->setInserteditions($xidx,$xevent_id,$xname,$xstarted_at,$xended_at,$xvenue_address,$xvenue_city,$xdescriptions,$xquota,$xcoupon_price); 
          }} 
                echo json_encode(null);
     } }

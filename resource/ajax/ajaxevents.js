@@ -50,8 +50,6 @@ $("#edabout1_event").val(json.about1_event);
 $("#edabout2_event").val(json.about2_event);
 $("#edabout3_event").val(json.about3_event);
 $("#edposter_image").val(json.poster_image);
-$("#edcreated_at").val(json.created_at);
-$("#edupdated_at").val(json.updated_at);
 
      }, 
  error: function (xmlHttpRequest, textStatus, errorThrown) { 
@@ -73,8 +71,6 @@ $("#edabout1_event").val("");
 $("#edabout2_event").val(""); 
 $("#edabout3_event").val(""); 
 $("#edposter_image").val(""); 
-$("#edcreated_at").val(""); 
-$("#edupdated_at").val(""); 
  
   }); 
  } 
@@ -83,7 +79,7 @@ function dosimpanevents(){
          $(document).ready(function(){ 
            $.ajax({ 
                  url: getBaseURL()+"index.php/ctrevents/simpanevents/", 
-   data: "edidx="+$("#edidx").val()+"&edname="+$("#edname").val()+"&edis_active="+$("#edis_active").val()+"&eddescriptions="+$("#eddescriptions").val()+"&edabout_event="+$("#edabout_event").val()+"&edabout1_event="+$("#edabout1_event").val()+"&edabout2_event="+$("#edabout2_event").val()+"&edabout3_event="+$("#edabout3_event").val()+"&edposter_image="+$("#edposter_image").val()+"&edcreated_at="+$("#edcreated_at").val()+"&edupdated_at="+$("#edupdated_at").val(), 
+   data: "edidx="+$("#edidx").val()+"&edname="+$("#edname").val()+"&edis_active="+$("#edis_active").val()+"&eddescriptions="+$("#eddescriptions").val()+"&edabout_event="+$("#edabout_event").val()+"&edabout1_event="+$("#edabout1_event").val()+"&edabout2_event="+$("#edabout2_event").val()+"&edabout3_event="+$("#edabout3_event").val()+"&edposter_image="+$("#edposter_image").val()+"&edcreated_at="+$("#edcreated_at").val(), 
                  cache: false, 
                  dataType: 'json', 
                  type: 'POST', 

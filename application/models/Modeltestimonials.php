@@ -18,8 +18,6 @@ function getArrayListtestimonials(){ /* spertinya perlu lock table*/
 ",event_name".
 ",member_name".
 ",testimoni_text".
-",created_at".
-",updated_at".
 
 " FROM testimonials   order by idx ASC "; 
  $query = $this->db->query($xStr); 
@@ -41,8 +39,6 @@ if(!empty($xSearch)){
 ",event_name".
 ",member_name".
 ",testimoni_text".
-",created_at".
-",updated_at".
 " FROM testimonials $xSearch order by idx DESC limit ".$xAwal.",".$xLimit;  
  $query = $this->db->query($xStr);
  return $query ;
@@ -57,8 +53,6 @@ function getDetailtestimonials($xidx){
 ",event_name".
 ",member_name".
 ",testimoni_text".
-",created_at".
-",updated_at".
 
 " FROM testimonials  WHERE idx = '".$xidx."'";
 
@@ -76,8 +70,6 @@ function getLastIndextestimonials(){ /* spertinya perlu lock table*/
 ",event_name".
 ",member_name".
 ",testimoni_text".
-",created_at".
-",updated_at".
 
 " FROM testimonials order by idx DESC limit 1 ";
  $query = $this->db->query($xStr);
@@ -87,7 +79,7 @@ $row = $query->row();
 
 
   
- Function setInserttestimonials($xidx,$xcoupon_id,$xcoupon_number,$xevent_name,$xmember_name,$xtestimoni_text,$xcreated_at,$xupdated_at)
+ Function setInserttestimonials($xidx,$xcoupon_id,$xcoupon_number,$xevent_name,$xmember_name,$xtestimoni_text)
 {
   $xStr =  " INSERT INTO testimonials( ".
               "idx".
@@ -97,13 +89,12 @@ $row = $query->row();
 ",member_name".
 ",testimoni_text".
 ",created_at".
-",updated_at".
-") VALUES('".$xidx."','".$xcoupon_id."','".$xcoupon_number."','".$xevent_name."','".$xmember_name."','".$xtestimoni_text."','".$xcreated_at."','".$xupdated_at."')";
+") VALUES('".$xidx."','".$xcoupon_id."','".$xcoupon_number."','".$xevent_name."','".$xmember_name."','".$xtestimoni_text."',NOW())";
 $query = $this->db->query($xStr);
  return $xidx;
 }
 
-Function setUpdatetestimonials($xidx,$xcoupon_id,$xcoupon_number,$xevent_name,$xmember_name,$xtestimoni_text,$xcreated_at,$xupdated_at)
+Function setUpdatetestimonials($xidx,$xcoupon_id,$xcoupon_number,$xevent_name,$xmember_name,$xtestimoni_text)
 {
   $xStr =  " UPDATE testimonials SET ".
              "idx='".$xidx."'".
@@ -112,8 +103,7 @@ Function setUpdatetestimonials($xidx,$xcoupon_id,$xcoupon_number,$xevent_name,$x
  ",event_name='".$xevent_name."'".
  ",member_name='".$xmember_name."'".
  ",testimoni_text='".$xtestimoni_text."'".
- ",created_at='".$xcreated_at."'".
- ",updated_at='".$xupdated_at."'".
+ ",updated_at=NOW()".
  " WHERE idx = '".$xidx."'";
  $query = $this->db->query($xStr);
  return $xidx;

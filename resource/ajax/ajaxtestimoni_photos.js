@@ -44,8 +44,6 @@
        $("#edidx").val(json.idx); 
        $("#edtestimoni_id").val(json.testimoni_id);
 $("#edlink_photo").val(json.link_photo);
-$("#edcreated_at").val(json.created_at);
-$("#edupdated_at").val(json.updated_at);
 
      }, 
  error: function (xmlHttpRequest, textStatus, errorThrown) { 
@@ -61,8 +59,6 @@ function doCleartestimoni_photos(){
  $("#edidx").val("0"); 
  $("#edtestimoni_id").val(""); 
 $("#edlink_photo").val(""); 
-$("#edcreated_at").val(""); 
-$("#edupdated_at").val(""); 
  
   }); 
  } 
@@ -71,7 +67,7 @@ function dosimpantestimoni_photos(){
          $(document).ready(function(){ 
            $.ajax({ 
                  url: getBaseURL()+"index.php/ctrtestimoni_photos/simpantestimoni_photos/", 
-   data: "edidx="+$("#edidx").val()+"&edtestimoni_id="+$("#edtestimoni_id").val()+"&edlink_photo="+$("#edlink_photo").val()+"&edcreated_at="+$("#edcreated_at").val()+"&edupdated_at="+$("#edupdated_at").val(), 
+   data: "edidx="+$("#edidx").val()+"&edtestimoni_id="+$("#edtestimoni_id").val()+"&edlink_photo="+$("#edlink_photo").val()+"&edcreated_at="+$("#edcreated_at").val(), 
                  cache: false, 
                  dataType: 'json', 
                  type: 'POST', 

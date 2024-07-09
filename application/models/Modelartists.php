@@ -23,8 +23,6 @@ function getArrayListartists(){ /* spertinya perlu lock table*/
 ",instagram_link".
 ",twitter_link".
 ",email".
-",created_at".
-",updated_at".
 
 " FROM artists   order by idx ASC "; 
  $query = $this->db->query($xStr); 
@@ -51,8 +49,6 @@ if(!empty($xSearch)){
 ",instagram_link".
 ",twitter_link".
 ",email".
-",created_at".
-",updated_at".
 " FROM artists $xSearch order by idx DESC limit ".$xAwal.",".$xLimit;  
  $query = $this->db->query($xStr);
  return $query ;
@@ -72,8 +68,6 @@ function getDetailartists($xidx){
 ",instagram_link".
 ",twitter_link".
 ",email".
-",created_at".
-",updated_at".
 
 " FROM artists  WHERE idx = '".$xidx."'";
 
@@ -96,8 +90,6 @@ function getLastIndexartists(){ /* spertinya perlu lock table*/
 ",instagram_link".
 ",twitter_link".
 ",email".
-",created_at".
-",updated_at".
 
 " FROM artists order by idx DESC limit 1 ";
  $query = $this->db->query($xStr);
@@ -107,7 +99,7 @@ $row = $query->row();
 
 
   
- Function setInsertartists($xidx,$xname,$xbirth_date,$xbirth_place,$xbio,$xquote,$xposter_img,$xphone,$xinstagram_link,$xtwitter_link,$xemail,$xcreated_at,$xupdated_at)
+ Function setInsertartists($xidx,$xname,$xbirth_date,$xbirth_place,$xbio,$xquote,$xposter_img,$xphone,$xinstagram_link,$xtwitter_link,$xemail)
 {
   $xStr =  " INSERT INTO artists( ".
               "idx".
@@ -122,13 +114,12 @@ $row = $query->row();
 ",twitter_link".
 ",email".
 ",created_at".
-",updated_at".
-") VALUES('".$xidx."','".$xname."','".$xbirth_date."','".$xbirth_place."','".$xbio."','".$xquote."','".$xposter_img."','".$xphone."','".$xinstagram_link."','".$xtwitter_link."','".$xemail."','".$xcreated_at."','".$xupdated_at."')";
+") VALUES('".$xidx."','".$xname."','".$xbirth_date."','".$xbirth_place."','".$xbio."','".$xquote."','".$xposter_img."','".$xphone."','".$xinstagram_link."','".$xtwitter_link."','".$xemail."',NOW())";
 $query = $this->db->query($xStr);
  return $xidx;
 }
 
-Function setUpdateartists($xidx,$xname,$xbirth_date,$xbirth_place,$xbio,$xquote,$xposter_img,$xphone,$xinstagram_link,$xtwitter_link,$xemail,$xcreated_at,$xupdated_at)
+Function setUpdateartists($xidx,$xname,$xbirth_date,$xbirth_place,$xbio,$xquote,$xposter_img,$xphone,$xinstagram_link,$xtwitter_link,$xemail)
 {
   $xStr =  " UPDATE artists SET ".
              "idx='".$xidx."'".
@@ -142,8 +133,7 @@ Function setUpdateartists($xidx,$xname,$xbirth_date,$xbirth_place,$xbio,$xquote,
  ",instagram_link='".$xinstagram_link."'".
  ",twitter_link='".$xtwitter_link."'".
  ",email='".$xemail."'".
- ",created_at='".$xcreated_at."'".
- ",updated_at='".$xupdated_at."'".
+ ",updated_at=NOW()".
  " WHERE idx = '".$xidx."'";
  $query = $this->db->query($xStr);
  return $xidx;

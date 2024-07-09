@@ -15,8 +15,6 @@ function getArrayListpayment_statuses(){ /* spertinya perlu lock table*/
  $xStr =  "SELECT ".
       "idx".",name".
 ",descriptions".
-",created_at".
-",updated_at".
 
 " FROM payment_statuses   order by idx ASC "; 
  $query = $this->db->query($xStr); 
@@ -35,8 +33,6 @@ if(!empty($xSearch)){
       "idx".
       ",name".
 ",descriptions".
-",created_at".
-",updated_at".
 " FROM payment_statuses $xSearch order by idx DESC limit ".$xAwal.",".$xLimit;  
  $query = $this->db->query($xStr);
  return $query ;
@@ -48,8 +44,6 @@ function getDetailpayment_statuses($xidx){
       "idx".
    ",name".
 ",descriptions".
-",created_at".
-",updated_at".
 
 " FROM payment_statuses  WHERE idx = '".$xidx."'";
 
@@ -64,8 +58,6 @@ function getLastIndexpayment_statuses(){ /* spertinya perlu lock table*/
       "idx".
       ",name".
 ",descriptions".
-",created_at".
-",updated_at".
 
 " FROM payment_statuses order by idx DESC limit 1 ";
  $query = $this->db->query($xStr);
@@ -75,27 +67,25 @@ $row = $query->row();
 
 
   
- Function setInsertpayment_statuses($xidx,$xname,$xdescriptions,$xcreated_at,$xupdated_at)
+ Function setInsertpayment_statuses($xidx,$xname,$xdescriptions)
 {
   $xStr =  " INSERT INTO payment_statuses( ".
               "idx".
               ",name".
 ",descriptions".
 ",created_at".
-",updated_at".
-") VALUES('".$xidx."','".$xname."','".$xdescriptions."','".$xcreated_at."','".$xupdated_at."')";
+") VALUES('".$xidx."','".$xname."','".$xdescriptions."',NOW())";
 $query = $this->db->query($xStr);
  return $xidx;
 }
 
-Function setUpdatepayment_statuses($xidx,$xname,$xdescriptions,$xcreated_at,$xupdated_at)
+Function setUpdatepayment_statuses($xidx,$xname,$xdescriptions)
 {
   $xStr =  " UPDATE payment_statuses SET ".
              "idx='".$xidx."'".
               ",name='".$xname."'".
  ",descriptions='".$xdescriptions."'".
- ",created_at='".$xcreated_at."'".
- ",updated_at='".$xupdated_at."'".
+ ",updated_at=NOW()".
  " WHERE idx = '".$xidx."'";
  $query = $this->db->query($xStr);
  return $xidx;

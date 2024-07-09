@@ -49,10 +49,6 @@ $xBufResult .= setForm('uploaded_at','uploaded_at',form_input_(getArrayObj('edup
 
 $xBufResult .= setForm('post_text','post_text',form_input_(getArrayObj('edpost_text','','200'),'',' placeholder="post_text" ')).'<div class="spacer"></div>';
 
-$xBufResult .= setForm('created_at','created_at',form_input_(getArrayObj('edcreated_at','','200'),'',' placeholder="created_at" ')).'<div class="spacer"></div>';
-
-$xBufResult .= setForm('updated_at','updated_at',form_input_(getArrayObj('edupdated_at','','200'),'',' placeholder="updated_at" ')).'<div class="spacer"></div>';
-
 $xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doClearposts();"').form_button('btSimpan','Simpan','onclick="dosimpanposts();"').form_button('btTabel','Tabel','onclick="dosearchposts(0);"').'<div class="spacer"></div></div><div id="tabledataposts">'.$this->getlistposts(0, ''). '</div><div class="spacer"></div>'; 
        return $xBufResult;
 
@@ -67,8 +63,6 @@ tbaddcellhead('event_id','','data-field="event_id" data-sortable="true" width=10
 tbaddcellhead('name','','data-field="name" data-sortable="true" width=10%').
 tbaddcellhead('uploaded_at','','data-field="uploaded_at" data-sortable="true" width=10%').
 tbaddcellhead('post_text','','data-field="post_text" data-sortable="true" width=10%').
-tbaddcellhead('created_at','','data-field="created_at" data-sortable="true" width=10%').
-tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" width=10%').
 
             tbaddcellhead('Action','padding:5px;width:10%;text-align:center;','col-md-2'),'',TRUE);
          $this->load->model('modelposts');
@@ -84,8 +78,6 @@ tbaddcell($row->event_id).
 tbaddcell($row->name).
 tbaddcell($row->uploaded_at).
 tbaddcell($row->post_text).
-tbaddcell($row->created_at).
-tbaddcell($row->updated_at).
 
             tbaddcell($xButtonEdit.$xButtonHapus));
             }
@@ -126,8 +118,6 @@ $this->json_data['event_id'] = $row->event_id;
 $this->json_data['name'] = $row->name;
 $this->json_data['uploaded_at'] = $row->uploaded_at;
 $this->json_data['post_text'] = $row->post_text;
-$this->json_data['created_at'] = $row->created_at;
-$this->json_data['updated_at'] = $row->updated_at;
 
             echo json_encode($this->json_data);
    }
@@ -183,16 +173,14 @@ $xevent_id = $_POST['edevent_id'];
 $xname = $_POST['edname'];
 $xuploaded_at = $_POST['eduploaded_at'];
 $xpost_text = $_POST['edpost_text'];
-$xcreated_at = $_POST['edcreated_at'];
-$xupdated_at = $_POST['edupdated_at'];
           
              $this->load->model('modelposts'); 
         $xidpegawai = $this->session->userdata('idpegawai'); 
         if(!empty($xidpegawai)){ 
-        if($xidx!='0'){   $xStr =  $this->modelposts->setUpdateposts($xidx,$xevent_id,$xname,$xuploaded_at,$xpost_text,$xcreated_at,$xupdated_at); 
+        if($xidx!='0'){   $xStr =  $this->modelposts->setUpdateposts($xidx,$xevent_id,$xname,$xuploaded_at,$xpost_text); 
          } else 
          { 
-           $xStr =  $this->modelposts->setInsertposts($xidx,$xevent_id,$xname,$xuploaded_at,$xpost_text,$xcreated_at,$xupdated_at); 
+           $xStr =  $this->modelposts->setInsertposts($xidx,$xevent_id,$xname,$xuploaded_at,$xpost_text); 
          }} 
                echo json_encode(null);
     } }

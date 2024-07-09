@@ -45,10 +45,6 @@ $xBufResult .= setForm('name','name',form_input_(getArrayObj('edname','','200'),
 
 $xBufResult .= setForm('shipper_price','shipper_price',form_input_(getArrayObj('edshipper_price','','200'),'',' placeholder="shipper_price" ')).'<div class="spacer"></div>';
 
-$xBufResult .= setForm('created_at','created_at',form_input_(getArrayObj('edcreated_at','','200'),'',' placeholder="created_at" ')).'<div class="spacer"></div>';
-
-$xBufResult .= setForm('updated_at','updated_at',form_input_(getArrayObj('edupdated_at','','200'),'',' placeholder="updated_at" ')).'<div class="spacer"></div>';
-
 $xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doClearshippers();"').form_button('btSimpan','Simpan','onclick="dosimpanshippers();"').form_button('btTabel','Tabel','onclick="dosearchshippers(0);"').'<div class="spacer"></div></div><div id="tabledatashippers">'.$this->getlistshippers(0, ''). '</div><div class="spacer"></div>'; 
        return $xBufResult;
 
@@ -61,8 +57,6 @@ function getlistshippers($xAwal,$xSearch){
          $xbufResult1 =tbaddrow(         tbaddcellhead('idx','','data-field="idx" data-sortable="true" width=10%').
 tbaddcellhead('name','','data-field="name" data-sortable="true" width=10%').
 tbaddcellhead('shipper_price','','data-field="shipper_price" data-sortable="true" width=10%').
-tbaddcellhead('created_at','','data-field="created_at" data-sortable="true" width=10%').
-tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" width=10%').
 
             tbaddcellhead('Action','padding:5px;width:10%;text-align:center;','col-md-2'),'',TRUE);
          $this->load->model('modelshippers');
@@ -76,8 +70,6 @@ tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" widt
             $xbufResult .= tbaddrow(         tbaddcell($row->idx).
 tbaddcell($row->name).
 tbaddcell($row->shipper_price).
-tbaddcell($row->created_at).
-tbaddcell($row->updated_at).
 
             tbaddcell($xButtonEdit.$xButtonHapus));
             }
@@ -116,8 +108,6 @@ tbaddcell($row->updated_at).
       $this->json_data['idx'] = $row->idx;
 $this->json_data['name'] = $row->name;
 $this->json_data['shipper_price'] = $row->shipper_price;
-$this->json_data['created_at'] = $row->created_at;
-$this->json_data['updated_at'] = $row->updated_at;
 
             echo json_encode($this->json_data);
    }
@@ -171,16 +161,14 @@ function searchshippers(){
          } 
 $xname = $_POST['edname'];
 $xshipper_price = $_POST['edshipper_price'];
-$xcreated_at = $_POST['edcreated_at'];
-$xupdated_at = $_POST['edupdated_at'];
           
              $this->load->model('modelshippers'); 
         $xidpegawai = $this->session->userdata('idpegawai'); 
         if(!empty($xidpegawai)){ 
-        if($xidx!='0'){   $xStr =  $this->modelshippers->setUpdateshippers($xidx,$xname,$xshipper_price,$xcreated_at,$xupdated_at); 
+        if($xidx!='0'){   $xStr =  $this->modelshippers->setUpdateshippers($xidx,$xname,$xshipper_price); 
          } else 
          { 
-           $xStr =  $this->modelshippers->setInsertshippers($xidx,$xname,$xshipper_price,$xcreated_at,$xupdated_at); 
+           $xStr =  $this->modelshippers->setInsertshippers($xidx,$xname,$xshipper_price); 
          }} 
                echo json_encode(null);
     } }

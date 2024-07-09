@@ -44,8 +44,6 @@
        $("#edidx").val(json.idx); 
        $("#ededition_id").val(json.edition_id);
 $("#edartist_id").val(json.artist_id);
-$("#edcreated_at").val(json.created_at);
-$("#edupdated_at").val(json.updated_at);
 
      }, 
  error: function (xmlHttpRequest, textStatus, errorThrown) { 
@@ -61,8 +59,6 @@ function doClearcollabolators(){
  $("#edidx").val("0"); 
  $("#ededition_id").val(""); 
 $("#edartist_id").val(""); 
-$("#edcreated_at").val(""); 
-$("#edupdated_at").val(""); 
  
   }); 
  } 
@@ -71,7 +67,7 @@ function dosimpancollabolators(){
          $(document).ready(function(){ 
            $.ajax({ 
                  url: getBaseURL()+"index.php/ctrcollabolators/simpancollabolators/", 
-   data: "edidx="+$("#edidx").val()+"&ededition_id="+$("#ededition_id").val()+"&edartist_id="+$("#edartist_id").val()+"&edcreated_at="+$("#edcreated_at").val()+"&edupdated_at="+$("#edupdated_at").val(), 
+   data: "edidx="+$("#edidx").val()+"&ededition_id="+$("#ededition_id").val()+"&edartist_id="+$("#edartist_id").val()+"&edcreated_at="+$("#edcreated_at").val(), 
                  cache: false, 
                  dataType: 'json', 
                  type: 'POST', 

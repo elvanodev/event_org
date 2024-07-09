@@ -51,10 +51,6 @@ $xBufResult .= setForm('member_name','member_name',form_input_(getArrayObj('edme
 
 $xBufResult .= setForm('testimoni_text','testimoni_text',form_input_(getArrayObj('edtestimoni_text','','200'),'',' placeholder="testimoni_text" ')).'<div class="spacer"></div>';
 
-$xBufResult .= setForm('created_at','created_at',form_input_(getArrayObj('edcreated_at','','200'),'',' placeholder="created_at" ')).'<div class="spacer"></div>';
-
-$xBufResult .= setForm('updated_at','updated_at',form_input_(getArrayObj('edupdated_at','','200'),'',' placeholder="updated_at" ')).'<div class="spacer"></div>';
-
 $xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doCleartestimonials();"').form_button('btSimpan','Simpan','onclick="dosimpantestimonials();"').form_button('btTabel','Tabel','onclick="dosearchtestimonials(0);"').'<div class="spacer"></div></div><div id="tabledatatestimonials">'.$this->getlisttestimonials(0, ''). '</div><div class="spacer"></div>'; 
        return $xBufResult;
 
@@ -70,8 +66,6 @@ tbaddcellhead('coupon_number','','data-field="coupon_number" data-sortable="true
 tbaddcellhead('event_name','','data-field="event_name" data-sortable="true" width=10%').
 tbaddcellhead('member_name','','data-field="member_name" data-sortable="true" width=10%').
 tbaddcellhead('testimoni_text','','data-field="testimoni_text" data-sortable="true" width=10%').
-tbaddcellhead('created_at','','data-field="created_at" data-sortable="true" width=10%').
-tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" width=10%').
 
             tbaddcellhead('Action','padding:5px;width:10%;text-align:center;','col-md-2'),'',TRUE);
          $this->load->model('modeltestimonials');
@@ -88,8 +82,6 @@ tbaddcell($row->coupon_number).
 tbaddcell($row->event_name).
 tbaddcell($row->member_name).
 tbaddcell($row->testimoni_text).
-tbaddcell($row->created_at).
-tbaddcell($row->updated_at).
 
             tbaddcell($xButtonEdit.$xButtonHapus));
             }
@@ -131,8 +123,6 @@ $this->json_data['coupon_number'] = $row->coupon_number;
 $this->json_data['event_name'] = $row->event_name;
 $this->json_data['member_name'] = $row->member_name;
 $this->json_data['testimoni_text'] = $row->testimoni_text;
-$this->json_data['created_at'] = $row->created_at;
-$this->json_data['updated_at'] = $row->updated_at;
 
             echo json_encode($this->json_data);
    }
@@ -189,16 +179,14 @@ $xcoupon_number = $_POST['edcoupon_number'];
 $xevent_name = $_POST['edevent_name'];
 $xmember_name = $_POST['edmember_name'];
 $xtestimoni_text = $_POST['edtestimoni_text'];
-$xcreated_at = $_POST['edcreated_at'];
-$xupdated_at = $_POST['edupdated_at'];
           
              $this->load->model('modeltestimonials'); 
         $xidpegawai = $this->session->userdata('idpegawai'); 
         if(!empty($xidpegawai)){ 
-        if($xidx!='0'){   $xStr =  $this->modeltestimonials->setUpdatetestimonials($xidx,$xcoupon_id,$xcoupon_number,$xevent_name,$xmember_name,$xtestimoni_text,$xcreated_at,$xupdated_at); 
+        if($xidx!='0'){   $xStr =  $this->modeltestimonials->setUpdatetestimonials($xidx,$xcoupon_id,$xcoupon_number,$xevent_name,$xmember_name,$xtestimoni_text); 
          } else 
          { 
-           $xStr =  $this->modeltestimonials->setInserttestimonials($xidx,$xcoupon_id,$xcoupon_number,$xevent_name,$xmember_name,$xtestimoni_text,$xcreated_at,$xupdated_at); 
+           $xStr =  $this->modeltestimonials->setInserttestimonials($xidx,$xcoupon_id,$xcoupon_number,$xevent_name,$xmember_name,$xtestimoni_text); 
          }} 
                echo json_encode(null);
     } }

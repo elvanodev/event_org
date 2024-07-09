@@ -15,8 +15,6 @@ function getArrayListshippers(){ /* spertinya perlu lock table*/
  $xStr =  "SELECT ".
       "idx".",name".
 ",shipper_price".
-",created_at".
-",updated_at".
 
 " FROM shippers   order by idx ASC "; 
  $query = $this->db->query($xStr); 
@@ -35,8 +33,6 @@ if(!empty($xSearch)){
       "idx".
       ",name".
 ",shipper_price".
-",created_at".
-",updated_at".
 " FROM shippers $xSearch order by idx DESC limit ".$xAwal.",".$xLimit;  
  $query = $this->db->query($xStr);
  return $query ;
@@ -48,8 +44,6 @@ function getDetailshippers($xidx){
       "idx".
    ",name".
 ",shipper_price".
-",created_at".
-",updated_at".
 
 " FROM shippers  WHERE idx = '".$xidx."'";
 
@@ -64,8 +58,6 @@ function getLastIndexshippers(){ /* spertinya perlu lock table*/
       "idx".
       ",name".
 ",shipper_price".
-",created_at".
-",updated_at".
 
 " FROM shippers order by idx DESC limit 1 ";
  $query = $this->db->query($xStr);
@@ -75,27 +67,25 @@ $row = $query->row();
 
 
   
- Function setInsertshippers($xidx,$xname,$xshipper_price,$xcreated_at,$xupdated_at)
+ Function setInsertshippers($xidx,$xname,$xshipper_price)
 {
   $xStr =  " INSERT INTO shippers( ".
               "idx".
               ",name".
 ",shipper_price".
 ",created_at".
-",updated_at".
-") VALUES('".$xidx."','".$xname."','".$xshipper_price."','".$xcreated_at."','".$xupdated_at."')";
+") VALUES('".$xidx."','".$xname."','".$xshipper_price."',NOW())";
 $query = $this->db->query($xStr);
  return $xidx;
 }
 
-Function setUpdateshippers($xidx,$xname,$xshipper_price,$xcreated_at,$xupdated_at)
+Function setUpdateshippers($xidx,$xname,$xshipper_price)
 {
   $xStr =  " UPDATE shippers SET ".
              "idx='".$xidx."'".
               ",name='".$xname."'".
  ",shipper_price='".$xshipper_price."'".
- ",created_at='".$xcreated_at."'".
- ",updated_at='".$xupdated_at."'".
+ ",updated_at=NOW()".
  " WHERE idx = '".$xidx."'";
  $query = $this->db->query($xStr);
  return $xidx;

@@ -15,8 +15,6 @@ function getArrayListcollabolators(){ /* spertinya perlu lock table*/
  $xStr =  "SELECT ".
       "idx".",edition_id".
 ",artist_id".
-",created_at".
-",updated_at".
 
 " FROM collabolators   order by idx ASC "; 
  $query = $this->db->query($xStr); 
@@ -35,8 +33,6 @@ if(!empty($xSearch)){
       "idx".
       ",edition_id".
 ",artist_id".
-",created_at".
-",updated_at".
 " FROM collabolators $xSearch order by idx DESC limit ".$xAwal.",".$xLimit;  
  $query = $this->db->query($xStr);
  return $query ;
@@ -48,8 +44,6 @@ function getDetailcollabolators($xidx){
       "idx".
    ",edition_id".
 ",artist_id".
-",created_at".
-",updated_at".
 
 " FROM collabolators  WHERE idx = '".$xidx."'";
 
@@ -64,8 +58,6 @@ function getLastIndexcollabolators(){ /* spertinya perlu lock table*/
       "idx".
       ",edition_id".
 ",artist_id".
-",created_at".
-",updated_at".
 
 " FROM collabolators order by idx DESC limit 1 ";
  $query = $this->db->query($xStr);
@@ -75,27 +67,25 @@ $row = $query->row();
 
 
   
- Function setInsertcollabolators($xidx,$xedition_id,$xartist_id,$xcreated_at,$xupdated_at)
+ Function setInsertcollabolators($xidx,$xedition_id,$xartist_id)
 {
   $xStr =  " INSERT INTO collabolators( ".
               "idx".
               ",edition_id".
 ",artist_id".
 ",created_at".
-",updated_at".
-") VALUES('".$xidx."','".$xedition_id."','".$xartist_id."','".$xcreated_at."','".$xupdated_at."')";
+") VALUES('".$xidx."','".$xedition_id."','".$xartist_id."',NOW())";
 $query = $this->db->query($xStr);
  return $xidx;
 }
 
-Function setUpdatecollabolators($xidx,$xedition_id,$xartist_id,$xcreated_at,$xupdated_at)
+Function setUpdatecollabolators($xidx,$xedition_id,$xartist_id)
 {
   $xStr =  " UPDATE collabolators SET ".
              "idx='".$xidx."'".
               ",edition_id='".$xedition_id."'".
  ",artist_id='".$xartist_id."'".
- ",created_at='".$xcreated_at."'".
- ",updated_at='".$xupdated_at."'".
+ ",updated_at=NOW()".
  " WHERE idx = '".$xidx."'";
  $query = $this->db->query($xStr);
  return $xidx;

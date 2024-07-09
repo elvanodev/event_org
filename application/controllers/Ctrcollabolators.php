@@ -45,10 +45,6 @@ $xBufResult .= setForm('edition_id','edition_id',form_input_(getArrayObj('ededit
 
 $xBufResult .= setForm('artist_id','artist_id',form_input_(getArrayObj('edartist_id','','200'),'',' placeholder="artist_id" ')).'<div class="spacer"></div>';
 
-$xBufResult .= setForm('created_at','created_at',form_input_(getArrayObj('edcreated_at','','200'),'',' placeholder="created_at" ')).'<div class="spacer"></div>';
-
-$xBufResult .= setForm('updated_at','updated_at',form_input_(getArrayObj('edupdated_at','','200'),'',' placeholder="updated_at" ')).'<div class="spacer"></div>';
-
 $xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doClearcollabolators();"').form_button('btSimpan','Simpan','onclick="dosimpancollabolators();"').form_button('btTabel','Tabel','onclick="dosearchcollabolators(0);"').'<div class="spacer"></div></div><div id="tabledatacollabolators">'.$this->getlistcollabolators(0, ''). '</div><div class="spacer"></div>'; 
        return $xBufResult;
 
@@ -61,8 +57,6 @@ function getlistcollabolators($xAwal,$xSearch){
          $xbufResult1 =tbaddrow(         tbaddcellhead('idx','','data-field="idx" data-sortable="true" width=10%').
 tbaddcellhead('edition_id','','data-field="edition_id" data-sortable="true" width=10%').
 tbaddcellhead('artist_id','','data-field="artist_id" data-sortable="true" width=10%').
-tbaddcellhead('created_at','','data-field="created_at" data-sortable="true" width=10%').
-tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" width=10%').
 
             tbaddcellhead('Action','padding:5px;width:10%;text-align:center;','col-md-2'),'',TRUE);
          $this->load->model('modelcollabolators');
@@ -76,8 +70,6 @@ tbaddcellhead('updated_at','','data-field="updated_at" data-sortable="true" widt
             $xbufResult .= tbaddrow(         tbaddcell($row->idx).
 tbaddcell($row->edition_id).
 tbaddcell($row->artist_id).
-tbaddcell($row->created_at).
-tbaddcell($row->updated_at).
 
             tbaddcell($xButtonEdit.$xButtonHapus));
             }
@@ -116,8 +108,6 @@ tbaddcell($row->updated_at).
       $this->json_data['idx'] = $row->idx;
 $this->json_data['edition_id'] = $row->edition_id;
 $this->json_data['artist_id'] = $row->artist_id;
-$this->json_data['created_at'] = $row->created_at;
-$this->json_data['updated_at'] = $row->updated_at;
 
             echo json_encode($this->json_data);
    }
@@ -171,16 +161,14 @@ function searchcollabolators(){
          } 
 $xedition_id = $_POST['ededition_id'];
 $xartist_id = $_POST['edartist_id'];
-$xcreated_at = $_POST['edcreated_at'];
-$xupdated_at = $_POST['edupdated_at'];
           
              $this->load->model('modelcollabolators'); 
         $xidpegawai = $this->session->userdata('idpegawai'); 
         if(!empty($xidpegawai)){ 
-        if($xidx!='0'){   $xStr =  $this->modelcollabolators->setUpdatecollabolators($xidx,$xedition_id,$xartist_id,$xcreated_at,$xupdated_at); 
+        if($xidx!='0'){   $xStr =  $this->modelcollabolators->setUpdatecollabolators($xidx,$xedition_id,$xartist_id); 
          } else 
          { 
-           $xStr =  $this->modelcollabolators->setInsertcollabolators($xidx,$xedition_id,$xartist_id,$xcreated_at,$xupdated_at); 
+           $xStr =  $this->modelcollabolators->setInsertcollabolators($xidx,$xedition_id,$xartist_id); 
          }} 
                echo json_encode(null);
     } }

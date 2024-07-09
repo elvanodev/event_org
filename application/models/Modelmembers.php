@@ -17,8 +17,6 @@ function getArrayListmembers(){ /* spertinya perlu lock table*/
 ",email".
 ",password".
 ",address".
-",created_at".
-",updated_at".
 
 " FROM members   order by idx ASC "; 
  $query = $this->db->query($xStr); 
@@ -39,8 +37,6 @@ if(!empty($xSearch)){
 ",email".
 ",password".
 ",address".
-",created_at".
-",updated_at".
 " FROM members $xSearch order by idx DESC limit ".$xAwal.",".$xLimit;  
  $query = $this->db->query($xStr);
  return $query ;
@@ -54,8 +50,6 @@ function getDetailmembers($xidx){
 ",email".
 ",password".
 ",address".
-",created_at".
-",updated_at".
 
 " FROM members  WHERE idx = '".$xidx."'";
 
@@ -72,8 +66,6 @@ function getLastIndexmembers(){ /* spertinya perlu lock table*/
 ",email".
 ",password".
 ",address".
-",created_at".
-",updated_at".
 
 " FROM members order by idx DESC limit 1 ";
  $query = $this->db->query($xStr);
@@ -83,7 +75,7 @@ $row = $query->row();
 
 
   
- Function setInsertmembers($xidx,$xname,$xemail,$xpassword,$xaddress,$xcreated_at,$xupdated_at)
+ Function setInsertmembers($xidx,$xname,$xemail,$xpassword,$xaddress)
 {
   $xStr =  " INSERT INTO members( ".
               "idx".
@@ -92,13 +84,12 @@ $row = $query->row();
 ",password".
 ",address".
 ",created_at".
-",updated_at".
-") VALUES('".$xidx."','".$xname."','".$xemail."','".$xpassword."','".$xaddress."','".$xcreated_at."','".$xupdated_at."')";
+") VALUES('".$xidx."','".$xname."','".$xemail."','".$xpassword."','".$xaddress."',NOW())";
 $query = $this->db->query($xStr);
  return $xidx;
 }
 
-Function setUpdatemembers($xidx,$xname,$xemail,$xpassword,$xaddress,$xcreated_at,$xupdated_at)
+Function setUpdatemembers($xidx,$xname,$xemail,$xpassword,$xaddress)
 {
   $xStr =  " UPDATE members SET ".
              "idx='".$xidx."'".
@@ -106,8 +97,7 @@ Function setUpdatemembers($xidx,$xname,$xemail,$xpassword,$xaddress,$xcreated_at
  ",email='".$xemail."'".
  ",password='".$xpassword."'".
  ",address='".$xaddress."'".
- ",created_at='".$xcreated_at."'".
- ",updated_at='".$xupdated_at."'".
+ ",updated_at=NOW()".
  " WHERE idx = '".$xidx."'";
  $query = $this->db->query($xStr);
  return $xidx;

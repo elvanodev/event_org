@@ -47,8 +47,6 @@ $("#edcoupon_number").val(json.coupon_number);
 $("#edevent_name").val(json.event_name);
 $("#edmember_name").val(json.member_name);
 $("#edtestimoni_text").val(json.testimoni_text);
-$("#edcreated_at").val(json.created_at);
-$("#edupdated_at").val(json.updated_at);
 
      }, 
  error: function (xmlHttpRequest, textStatus, errorThrown) { 
@@ -67,8 +65,6 @@ $("#edcoupon_number").val("");
 $("#edevent_name").val(""); 
 $("#edmember_name").val(""); 
 $("#edtestimoni_text").val(""); 
-$("#edcreated_at").val(""); 
-$("#edupdated_at").val(""); 
  
   }); 
  } 
@@ -77,7 +73,7 @@ function dosimpantestimonials(){
          $(document).ready(function(){ 
            $.ajax({ 
                  url: getBaseURL()+"index.php/ctrtestimonials/simpantestimonials/", 
-   data: "edidx="+$("#edidx").val()+"&edcoupon_id="+$("#edcoupon_id").val()+"&edcoupon_number="+$("#edcoupon_number").val()+"&edevent_name="+$("#edevent_name").val()+"&edmember_name="+$("#edmember_name").val()+"&edtestimoni_text="+$("#edtestimoni_text").val()+"&edcreated_at="+$("#edcreated_at").val()+"&edupdated_at="+$("#edupdated_at").val(), 
+   data: "edidx="+$("#edidx").val()+"&edcoupon_id="+$("#edcoupon_id").val()+"&edcoupon_number="+$("#edcoupon_number").val()+"&edevent_name="+$("#edevent_name").val()+"&edmember_name="+$("#edmember_name").val()+"&edtestimoni_text="+$("#edtestimoni_text").val()+"&edcreated_at="+$("#edcreated_at").val(), 
                  cache: false, 
                  dataType: 'json', 
                  type: 'POST', 
