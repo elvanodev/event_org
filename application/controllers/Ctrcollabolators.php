@@ -54,7 +54,7 @@ function getlistcollabolators($xAwal,$xSearch){
          $xLimit = $this->session->userdata('limit');
         $this->load->helper('form');
         $this->load->helper('common');
-         $xbufResult1 =tbaddrow(         tbaddcellhead('idx','','data-field="idx" data-sortable="true" width=10%').
+         $xbufResult1 =tbaddrow(         tbaddcellhead('No','','data-field="idx" data-sortable="true" width=10%').
 tbaddcellhead('edition_id','','data-field="edition_id" data-sortable="true" width=10%').
 tbaddcellhead('artist_id','','data-field="artist_id" data-sortable="true" width=10%').
 
@@ -63,11 +63,12 @@ tbaddcellhead('artist_id','','data-field="artist_id" data-sortable="true" width=
          $xQuery = $this->modelcollabolators->getListcollabolators($xAwal,$xLimit,$xSearch);
           $xbufResult ='<thead>'.$xbufResult1.'</thead>';
         $xbufResult .='<tbody>';
+$no = 1;
               foreach ($xQuery->result() as $row)
             { 
                   $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditcollabolators(\''.$row->idx.'\');" ></i>';
             $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapuscollabolators(\''.$row->idx.'\');"></i>';
-            $xbufResult .= tbaddrow(         tbaddcell($row->idx).
+            $xbufResult .= tbaddrow(         tbaddcell($no++).
 tbaddcell($row->edition_id).
 tbaddcell($row->artist_id).
 

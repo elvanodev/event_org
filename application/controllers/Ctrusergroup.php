@@ -46,19 +46,20 @@ class ctrusergroup extends CI_Controller {
         $xLimit = 10;
         $this->load->helper('form');
         $this->load->helper('common');
-        $xbufResult1 = tbaddrow(tbaddcellhead('idx', '', 'width=10%') .
+        $xbufResult1 = tbaddrow(tbaddcellhead('No', '', 'width=10%') .
                 tbaddcellhead('NmUserGroup', '', 'width=10%') .
                 tbaddcellhead('Edit/Hapus', 'padding:5px;', 'width:10%;text-align:center;'), '', TRUE);
         $this->load->model('modelusergroup');
         $xQuery = $this->modelusergroup->getListusergroup($xAwal, $xLimit, $xSearch);
         $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
         $xbufResult .= '<tbody>';
+$no = 1;
         foreach ($xQuery->result() as $row) {
             $xButtonEdit = '<a href="javascript:void(0);" onclick = "doeditusergroup(\'' . $row->idx . '\');"><i class="fas fa-edit"></i></a>';
             $xButtonHapus = '<a href="javascript:void(0);" onclick = "dohapususergroup(\'' . $row->idx . '\',\'' . substr($row->NmUserGroup, 0, 20) . '\');"><i class="fas fa-trash" ></i></a>';
             // $xButtonEdit = '<img src="' . base_url() . 'resource/imgbtn/edit.png" alt="Edit Data" onclick = "doeditusergroup(\'' . $row->idx . '\');" style="border:none;width:20px"/>';
             // $xButtonHapus = '<img src="' . base_url() . 'resource/imgbtn/delete_table.png" alt="Hapus Data" onclick = "dohapususergroup(\'' . $row->idx . '\',\'' . substr($row->NmUserGroup, 0, 20) . '\');" style="border:none;">';
-            $xbufResult .= tbaddrow(tbaddcell($row->idx) .
+            $xbufResult .= tbaddrow(tbaddcell($no++) .
                     tbaddcell($row->NmUserGroup) .
                     tbaddcell($xButtonEdit . '&nbsp/&nbsp' . $xButtonHapus));
         }

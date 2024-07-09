@@ -58,7 +58,7 @@ function getlistregistrations($xAwal,$xSearch){
          $xLimit = $this->session->userdata('limit');
         $this->load->helper('form');
         $this->load->helper('common');
-         $xbufResult1 =tbaddrow(         tbaddcellhead('idx','','data-field="idx" data-sortable="true" width=10%').
+         $xbufResult1 =tbaddrow(         tbaddcellhead('No','','data-field="idx" data-sortable="true" width=10%').
 tbaddcellhead('edition_id','','data-field="edition_id" data-sortable="true" width=10%').
 tbaddcellhead('member_id','','data-field="member_id" data-sortable="true" width=10%').
 tbaddcellhead('registered_at','','data-field="registered_at" data-sortable="true" width=10%').
@@ -69,11 +69,12 @@ tbaddcellhead('qr_code','','data-field="qr_code" data-sortable="true" width=10%'
          $xQuery = $this->modelregistrations->getListregistrations($xAwal,$xLimit,$xSearch);
           $xbufResult ='<thead>'.$xbufResult1.'</thead>';
         $xbufResult .='<tbody>';
+$no = 1;
               foreach ($xQuery->result() as $row)
             { 
                   $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditregistrations(\''.$row->idx.'\');" ></i>';
             $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapusregistrations(\''.$row->idx.'\');"></i>';
-            $xbufResult .= tbaddrow(         tbaddcell($row->idx).
+            $xbufResult .= tbaddrow(         tbaddcell($no++).
 tbaddcell($row->edition_id).
 tbaddcell($row->member_id).
 tbaddcell($row->registered_at).

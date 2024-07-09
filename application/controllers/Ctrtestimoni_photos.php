@@ -54,7 +54,7 @@ function getlisttestimoni_photos($xAwal,$xSearch){
          $xLimit = $this->session->userdata('limit');
         $this->load->helper('form');
         $this->load->helper('common');
-         $xbufResult1 =tbaddrow(         tbaddcellhead('idx','','data-field="idx" data-sortable="true" width=10%').
+         $xbufResult1 =tbaddrow(         tbaddcellhead('No','','data-field="idx" data-sortable="true" width=10%').
 tbaddcellhead('testimoni_id','','data-field="testimoni_id" data-sortable="true" width=10%').
 tbaddcellhead('link_photo','','data-field="link_photo" data-sortable="true" width=10%').
 
@@ -63,11 +63,12 @@ tbaddcellhead('link_photo','','data-field="link_photo" data-sortable="true" widt
          $xQuery = $this->modeltestimoni_photos->getListtestimoni_photos($xAwal,$xLimit,$xSearch);
           $xbufResult ='<thead>'.$xbufResult1.'</thead>';
         $xbufResult .='<tbody>';
+$no = 1;
               foreach ($xQuery->result() as $row)
             { 
                   $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doedittestimoni_photos(\''.$row->idx.'\');" ></i>';
             $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapustestimoni_photos(\''.$row->idx.'\');"></i>';
-            $xbufResult .= tbaddrow(         tbaddcell($row->idx).
+            $xbufResult .= tbaddrow(         tbaddcell($no++).
 tbaddcell($row->testimoni_id).
 tbaddcell($row->link_photo).
 

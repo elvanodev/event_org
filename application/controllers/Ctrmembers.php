@@ -58,7 +58,7 @@ function getlistmembers($xAwal,$xSearch){
          $xLimit = $this->session->userdata('limit');
         $this->load->helper('form');
         $this->load->helper('common');
-         $xbufResult1 =tbaddrow(         tbaddcellhead('idx','','data-field="idx" data-sortable="true" width=10%').
+         $xbufResult1 =tbaddrow(         tbaddcellhead('No','','data-field="idx" data-sortable="true" width=10%').
 tbaddcellhead('name','','data-field="name" data-sortable="true" width=10%').
 tbaddcellhead('email','','data-field="email" data-sortable="true" width=10%').
 tbaddcellhead('password','','data-field="password" data-sortable="true" width=10%').
@@ -69,11 +69,12 @@ tbaddcellhead('address','','data-field="address" data-sortable="true" width=10%'
          $xQuery = $this->modelmembers->getListmembers($xAwal,$xLimit,$xSearch);
           $xbufResult ='<thead>'.$xbufResult1.'</thead>';
         $xbufResult .='<tbody>';
+$no = 1;
               foreach ($xQuery->result() as $row)
             { 
                   $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditmembers(\''.$row->idx.'\');" ></i>';
             $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapusmembers(\''.$row->idx.'\');"></i>';
-            $xbufResult .= tbaddrow(         tbaddcell($row->idx).
+            $xbufResult .= tbaddrow(         tbaddcell($no++).
 tbaddcell($row->name).
 tbaddcell($row->email).
 tbaddcell($row->password).

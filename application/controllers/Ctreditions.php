@@ -68,7 +68,7 @@ function getlisteditions($xAwal,$xSearch){
          $xLimit = $this->session->userdata('limit');
         $this->load->helper('form');
         $this->load->helper('common');
-         $xbufResult1 =tbaddrow(         tbaddcellhead('idx','','data-field="idx" data-sortable="true" width=10%').
+         $xbufResult1 =tbaddrow(         tbaddcellhead('No','','data-field="idx" data-sortable="true" width=10%').
 tbaddcellhead('event_id','','data-field="event_id" data-sortable="true" width=10%').
 tbaddcellhead('name','','data-field="name" data-sortable="true" width=10%').
 tbaddcellhead('started_at','','data-field="started_at" data-sortable="true" width=10%').
@@ -84,11 +84,12 @@ tbaddcellhead('coupon_price','','data-field="coupon_price" data-sortable="true" 
          $xQuery = $this->modeleditions->getListeditions($xAwal,$xLimit,$xSearch);
           $xbufResult ='<thead>'.$xbufResult1.'</thead>';
         $xbufResult .='<tbody>';
+$no = 1;
               foreach ($xQuery->result() as $row)
             { 
                   $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doediteditions(\''.$row->idx.'\');" ></i>';
             $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapuseditions(\''.$row->idx.'\');"></i>';
-            $xbufResult .= tbaddrow(         tbaddcell($row->idx).
+            $xbufResult .= tbaddrow(         tbaddcell($no++).
 tbaddcell($row->event_id).
 tbaddcell($row->name).
 tbaddcell($row->started_at).

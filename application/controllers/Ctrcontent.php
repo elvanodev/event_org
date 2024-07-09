@@ -208,7 +208,7 @@ class ctrcontent extends CI_Controller {
         }
 
         ///
-        $xbufResult1 = tbaddrow(tbaddcellhead('idx', '', 'width=3%') .
+        $xbufResult1 = tbaddrow(tbaddcellhead('No', '', 'width=3%') .
                 $xtablecaption .
 //                tbaddcellhead('Bahasa', '', 'width=10%') .
 //                tbaddcellhead('Judul', '', 'width=20%') .
@@ -222,6 +222,7 @@ class ctrcontent extends CI_Controller {
         //$this->load->model('modelbahasa');
         $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
         $xbufResult .= '<tbody>';
+$no = 1;
         foreach ($xQuery->result() as $row) {
 
             $xButtonEdit = '<a href="javascript:void(0);" onclick = "doeditcontent(\'' . $row->idx . '\');"><i class="fas fa-edit"></i></a>';
@@ -249,7 +250,7 @@ class ctrcontent extends CI_Controller {
             $tgl = $hari . ', ' . $row->tgl . ' ' . $bulan . ' ' . $row->tahun;
 
             $xbufResult .= tbaddrow(
-                    tbaddcell($row->idx) . $xfielddata .
+                    tbaddcell($no++) . $xfielddata .
 //                           tbaddcell(@$xrowbahasa->bahasa) .
 //                           tbaddcell($row->judul) .
 //                           tbaddcell(substr(strip_tags($row->isi), 0, 300), 'font-size:11px;') .

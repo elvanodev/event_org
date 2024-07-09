@@ -58,7 +58,7 @@ class Ctrkabupaten extends CI_Controller {
         $xLimit = 10;
         $this->load->helper('form');
         $this->load->helper('common');
-        $xbufResult1 = tbaddrow(tbaddcellhead('idx', '', 'width=10%') .
+        $xbufResult1 = tbaddrow(tbaddcellhead('No', '', 'width=10%') .
                 tbaddcellhead('kode_kabupaten', '', 'width=10%') .
                 tbaddcellhead('kabupaten', '', 'width=10%') .
                 tbaddcellhead('provinsi', '', 'width=10%') .
@@ -69,13 +69,14 @@ class Ctrkabupaten extends CI_Controller {
         $xQuery = $this->modelkabupaten->getListkabupaten($xAwal, $xLimit, $xSearch);
         $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
         $xbufResult .= '<tbody>';
+$no = 1;
         foreach ($xQuery->result() as $row) {
             $prov = $this->modelprovinsi->getDetailprovinsi($row->idprovinsi);
             $xButtonEdit = '<a href="javascript:void(0);" onclick = "doeditkabupaten(\'' . $row->idx . '\');"><i class="fas fa-edit"></i></a>';
             $xButtonHapus = '<a href="javascript:void(0);" onclick = "dohapuskabupaten(\'' . $row->idx . '\');"><i class="fas fa-trash" ></i></a>';
             // $xButtonEdit = '<img src="' . base_url() . 'resource/imgbtn/edit.png" alt="Edit Data" onclick = "doeditkabupaten(\'' . $row->idx . '\');" style="border:none;width:20px"/>';
             // $xButtonHapus = '<img src="' . base_url() . 'resource/imgbtn/delete_table.png" alt="Hapus Data" onclick = "dohapuskabupaten(\'' . $row->idx . '\',\'' . substr($row->kabupaten, 0, 20) . '\');" style="border:none;">';
-            $xbufResult .= tbaddrow(tbaddcell($row->idx) .
+            $xbufResult .= tbaddrow(tbaddcell($no++) .
                     tbaddcell($row->kode_kabupaten) .
                     tbaddcell($row->kabupaten) .
                     tbaddcell(@$prov->provinsi) .

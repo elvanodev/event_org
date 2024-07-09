@@ -61,7 +61,7 @@ class ctrkecamatan extends CI_Controller {
         $xLimit = 10;
         $this->load->helper('form');
         $this->load->helper('common');
-        $xbufResult1 = tbaddrow(tbaddcellhead('idx', '', 'width=10%') .
+        $xbufResult1 = tbaddrow(tbaddcellhead('No', '', 'width=10%') .
                 tbaddcellhead('kode Kecamatan', '', 'width=10%') .
                 tbaddcellhead('kecamatan', '', 'width=10%') .
                 tbaddcellhead('kabupaten', '', 'width=10%') .
@@ -73,6 +73,7 @@ class ctrkecamatan extends CI_Controller {
         $xQuery = $this->modelkecamatan->getListkecamatan($xAwal, $xLimit, $xSearch);
         $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
         $xbufResult .= '<tbody>';
+$no = 1;
         foreach ($xQuery->result() as $row) {
             $prov = $this->modelprovinsi->getDetailprovinsi($row->idprovinsi);
             $kab = $this->modelkabupaten->getDetailkabupaten($row->idkabupaten);
@@ -80,7 +81,7 @@ class ctrkecamatan extends CI_Controller {
             $xButtonHapus = '<a href="javascript:void(0);" onclick = "dohapuskecamatan(\'' . $row->idx . '\');"><i class="fas fa-trash" ></i></a>';
             // $xButtonEdit = '<img src="' . base_url() . 'resource/imgbtn/edit.png" alt="Edit Data" onclick = "doeditkecamatan(\'' . $row->idx . '\');" style="border:none;width:20px"/>';
             // $xButtonHapus = '<img src="' . base_url() . 'resource/imgbtn/delete_table.png" alt="Hapus Data" onclick = "dohapuskecamatan(\'' . $row->idx . '\');" style="border:none;">';
-            $xbufResult .= tbaddrow(tbaddcell($row->idx) .
+            $xbufResult .= tbaddrow(tbaddcell($no++) .
                     tbaddcell($row->kode_kecamatan) .
                     tbaddcell($row->kecamatan) .
                     tbaddcell(@$kab->kabupaten) .

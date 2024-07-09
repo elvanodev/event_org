@@ -54,7 +54,7 @@ class ctrprovinsi extends CI_Controller {
         $xLimit = 10;
         $this->load->helper('form');
         $this->load->helper('common');
-        $xbufResult1 = tbaddrow(tbaddcellhead('idx', '', 'width=10%') .
+        $xbufResult1 = tbaddrow(tbaddcellhead('No', '', 'width=10%') .
                 tbaddcellhead('kode_provinsi', '', 'width=10%') .
                 tbaddcellhead('provinsi', '', 'width=10%') .
                 tbaddcellhead('Edit/Hapus', 'padding:5px;', 'width:10%;text-align:center;'), '', TRUE);
@@ -62,12 +62,13 @@ class ctrprovinsi extends CI_Controller {
         $xQuery = $this->modelprovinsi->getListprovinsi($xAwal, $xLimit, $xSearch);
         $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
         $xbufResult .= '<tbody>';
+$no = 1;
         foreach ($xQuery->result() as $row) {
             $xButtonEdit = '<a href="javascript:void(0);" onclick = "doeditprovinsi(\'' . $row->idx . '\');"><i class="fas fa-edit"></i></a>';
             $xButtonHapus = '<a href="javascript:void(0);" onclick = "dohapusprovinsi(\'' . $row->idx . '\');"><i class="fas fa-trash" ></i></a>';
             // $xButtonEdit = '<img src="' . base_url() . 'resource/imgbtn/edit.png" alt="Edit Data" onclick = "doeditprovinsi(\'' . $row->idx . '\');" style="border:none;width:20px"/>';
             // $xButtonHapus = '<img src="' . base_url() . 'resource/imgbtn/delete_table.png" alt="Hapus Data" onclick = "dohapusprovinsi(\'' . $row->idx . '\');" style="border:none;">';
-            $xbufResult .= tbaddrow(tbaddcell($row->idx) .
+            $xbufResult .= tbaddrow(tbaddcell($no++) .
                     tbaddcell($row->kode_provinsi) .
                     tbaddcell($row->provinsi) .
                     tbaddcell($xButtonEdit . '&nbsp/&nbsp' . $xButtonHapus));

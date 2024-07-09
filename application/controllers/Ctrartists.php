@@ -46,25 +46,25 @@ class Ctrartists extends CI_Controller
     $xBufResult .= '<div id="form">';
     $xBufResult .= '<input type="hidden" name="edidx" id="edidx" value="0" />';
 
-    $xBufResult .= setForm('name', 'name', form_input_(getArrayObj('edname', '', '200'), '', ' placeholder="name" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('name', 'Name', form_input_(getArrayObj('edname', '', '200'), '', ' placeholder="Name" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('birth_date', 'birth_date', form_input_(getArrayObj('edbirth_date', '', '200'), '', ' placeholder="birth_date" class="tanggal"')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('birth_date', 'Birth Date', form_input_(getArrayObj('edbirth_date', '', '200'), '', ' placeholder="Birth Date" class="tanggal"')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('birth_place', 'birth_place', form_input_(getArrayObj('edbirth_place', '', '200'), '', ' placeholder="birth_place" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('birth_place', 'Birth Place', form_input_(getArrayObj('edbirth_place', '', '200'), '', ' placeholder="Birth Place" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('bio', 'bio', form_textarea_(getArrayObj('edbio', '', '200'), '', ' placeholder="bio" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('bio', 'Bio', form_textarea_(getArrayObj('edbio', '', '200'), '', ' placeholder="Bio" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('quote', 'quote', form_input_(getArrayObj('edquote', '', '200'), '', ' placeholder="quote" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('quote', 'Quote', form_input_(getArrayObj('edquote', '', '200'), '', ' placeholder="Quote" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('poster_img', 'Site Plan', '<div id="uploadposter_img" style="width:150px;">' . form_input_(getArrayObj('edposter_img', '', '100'), '', 'alt="Unggah"') . '</div>') . '<div class="spacer"></div>';
+    $xBufResult .= setForm('poster_img', 'Poster Image', '<div id="uploadposter_img" style="width:150px;">' . form_input_(getArrayObj('edposter_img', '', '100'), '', 'alt="Unggah"') . '</div>') . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('phone', 'phone', form_input_(getArrayObj('edphone', '', '200'), '', ' placeholder="phone" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('phone', 'Phone', form_input_(getArrayObj('edphone', '', '200'), '', ' placeholder="Phone" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('instagram_link', 'instagram_link', form_input_(getArrayObj('edinstagram_link', '', '200'), '', ' placeholder="instagram_link" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('instagram_link', 'Instagram Link', form_input_(getArrayObj('edinstagram_link', '', '200'), '', ' placeholder="Instagram Link" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('twitter_link', 'twitter_link', form_input_(getArrayObj('edtwitter_link', '', '200'), '', ' placeholder="twitter_link" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('twitter_link', 'Twitter Link', form_input_(getArrayObj('edtwitter_link', '', '200'), '', ' placeholder="twitter Link" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('email', 'email', form_input_(getArrayObj('edemail', '', '200'), '', ' placeholder="email" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('email', 'Email', form_input_(getArrayObj('edemail', '', '200'), '', ' placeholder="Email" ')) . '<div class="spacer"></div>';
 
     $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearartists();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanartists();"') . form_button('btTabel', 'Tabel', 'onclick="dosearchartists(0);"') . '<div class="spacer"></div></div><div id="tabledataartists">' . $this->getlistartists(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
@@ -75,17 +75,17 @@ class Ctrartists extends CI_Controller
     $xLimit = $this->session->userdata('limit');
     $this->load->helper('form');
     $this->load->helper('common');
-    $xbufResult1 = tbaddrow(tbaddcellhead('idx', '', 'data-field="idx" data-sortable="true" width=10%') .
-      tbaddcellhead('name', '', 'data-field="name" data-sortable="true" width=10%') .
-      tbaddcellhead('birth_date', '', 'data-field="birth_date" data-sortable="true" width=10%') .
-      tbaddcellhead('birth_place', '', 'data-field="birth_place" data-sortable="true" width=10%') .
-      tbaddcellhead('bio', '', 'data-field="bio" data-sortable="true" width=10%') .
-      tbaddcellhead('quote', '', 'data-field="quote" data-sortable="true" width=10%') .
-      tbaddcellhead('poster_img', '', 'data-field="poster_img" data-sortable="true" width=10%') .
-      tbaddcellhead('phone', '', 'data-field="phone" data-sortable="true" width=10%') .
-      tbaddcellhead('instagram_link', '', 'data-field="instagram_link" data-sortable="true" width=10%') .
-      tbaddcellhead('twitter_link', '', 'data-field="twitter_link" data-sortable="true" width=10%') .
-      tbaddcellhead('email', '', 'data-field="email" data-sortable="true" width=10%') .
+    $xbufResult1 = tbaddrow(tbaddcellhead('No', '', 'data-field="idx" data-sortable="true" width=10%') .
+      tbaddcellhead('Name', '', 'data-field="name" data-sortable="true" width=10%') .
+      tbaddcellhead('Birth Date', '', 'data-field="birth_date" data-sortable="true" width=10%') .
+      tbaddcellhead('Birth Place', '', 'data-field="birth_place" data-sortable="true" width=10%') .
+      tbaddcellhead('Bio', '', 'data-field="bio" data-sortable="true" width=10%') .
+      tbaddcellhead('Quote', '', 'data-field="quote" data-sortable="true" width=10%') .
+      tbaddcellhead('Poster Img', '', 'data-field="poster_img" data-sortable="true" width=10%') .
+      tbaddcellhead('Phone', '', 'data-field="phone" data-sortable="true" width=10%') .
+      tbaddcellhead('Instagram Link', '', 'data-field="instagram_link" data-sortable="true" width=10%') .
+      tbaddcellhead('Twitter Link', '', 'data-field="twitter_link" data-sortable="true" width=10%') .
+      tbaddcellhead('Email', '', 'data-field="email" data-sortable="true" width=10%') .
 
       tbaddcellhead('Action', 'padding:5px;width:10%;text-align:center;', 'col-md-2'), '', TRUE);
     $this->load->model('modelartists');
@@ -98,7 +98,7 @@ class Ctrartists extends CI_Controller
       if (!empty($row->poster_img)) {
         $poster_img = '<img src="' . base_url() . 'resource/uploaded/img/' . $row->poster_img . '" onclick="previewimage(this.src);" style="border: solid;width: 70px; height: 80px; align:center;">';
       }
-      $xbufResult .= tbaddrow(tbaddcell($row->idx) .
+      $xbufResult .= tbaddrow(tbaddcell($no++) .
         tbaddcell($row->name) .
         tbaddcell(mysqltodate($row->birth_date)) .
         tbaddcell($row->birth_place) .

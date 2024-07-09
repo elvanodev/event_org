@@ -63,7 +63,7 @@ class ctrusersistem extends CI_Controller {
         $xLimit = 10;
         $this->load->helper('form');
         $this->load->helper('common');
-        $xbufResult1 = tbaddrow(tbaddcellhead('idx', '', 'width=5%') .
+        $xbufResult1 = tbaddrow(tbaddcellhead('No', '', 'width=5%') .
                 tbaddcellhead('Nama', '', 'width=30%') .
                 tbaddcellhead('alamat', '', 'width=30%') .
                 tbaddcellhead('NoTelpon', '', 'width=10%') .
@@ -75,11 +75,12 @@ class ctrusersistem extends CI_Controller {
         $xQuery = $this->modelusersistem->getListusersistem($xAwal, $xLimit, $xSearch);
         $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
         $xbufResult .= '<tbody>';
+$no = 1;
         foreach ($xQuery->result() as $row) {
             $xButtonEdit = '<a href="javascript:void(0);" onclick = "doeditusersistem(\'' . $row->idx . '\');"><i class="fas fa-edit"></i></a>';
             $xButtonHapus = '<a href="javascript:void(0);" onclick = "dohapususersistem(\'' . $row->idx . '\',\'' . substr($row->npp, 0, 20) . '\');"><i class="fas fa-trash" ></i></a>';
             $rowusergroup = $this->modelusergroup->getDetailusergroup($row->idusergroup);
-            $xbufResult .= tbaddrow(tbaddcell($row->idx) .
+            $xbufResult .= tbaddrow(tbaddcell($no++) .
                     tbaddcell($row->Nama) .
                     tbaddcell($row->alamat) .
                     tbaddcell($row->NoTelpon) .

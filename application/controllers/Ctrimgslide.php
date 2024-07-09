@@ -72,7 +72,7 @@ class ctrimgslide extends CI_Controller {
         foreach ($xQuery->result() as $row) {
             $xButtonEdit = '<img src="' . base_url() . 'resource/imgbtn/edit.png" alt="Edit Data" onclick = "doeditimgslide(\'' . $row->idx . '\');" style="border:none;width:20px"/>';
             $xButtonHapus = '<img src="' . base_url() . 'resource/imgbtn/delete_table.png" alt="Hapus Data" onclick = "dohapusimgslide(\'' . $row->idx . '\',\'' . substr($row->url, 0, 20) . '\');" style="border:none;">';
-            $xbufResult .= tbaddrow(tbaddcell($row->idx) .
+            $xbufResult .= tbaddrow(tbaddcell($no++) .
                     tbaddcell($row->url) .
                     tbaddcell($row->keterangan) .
 //                    tbaddcell($row->tglinsert) .

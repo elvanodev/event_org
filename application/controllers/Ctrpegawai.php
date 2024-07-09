@@ -62,7 +62,7 @@ function getlistpegawai($xAwal,$xSearch){
          $xLimit = $this->session->userdata('limit');
         $this->load->helper('form');
         $this->load->helper('common');
-         $xbufResult1 =tbaddrow(         tbaddcellhead('idx','','data-field="idx" data-sortable="true" width=10%').
+         $xbufResult1 =tbaddrow(         tbaddcellhead('No','','data-field="idx" data-sortable="true" width=10%').
 tbaddcellhead('Nama','','data-field="nama" data-sortable="true" width=10%').
 tbaddcellhead('Email','','data-field="email" data-sortable="true" width=10%').
 tbaddcellhead('No HP','','data-field="nohp" data-sortable="true" width=10%').
@@ -75,11 +75,12 @@ tbaddcellhead('Tanggal Masuk','','data-field="tglmasuk" data-sortable="true" wid
          $xQuery = $this->modelpegawai->getListpegawai($xAwal,$xLimit,$xSearch);
           $xbufResult ='<thead>'.$xbufResult1.'</thead>';
         $xbufResult .='<tbody>';
+$no = 1;
               foreach ($xQuery->result() as $row)
             { 
                   $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditpegawai(\''.$row->idx.'\');" ></i>';
             $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapuspegawai(\''.$row->idx.'\');"></i>';
-            $xbufResult .= tbaddrow(         tbaddcell($row->idx).
+            $xbufResult .= tbaddrow(         tbaddcell($no++).
 tbaddcell($row->nama).
 tbaddcell($row->email).
 tbaddcell($row->nohp).

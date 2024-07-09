@@ -58,7 +58,7 @@ function getlistposts($xAwal,$xSearch){
          $xLimit = $this->session->userdata('limit');
         $this->load->helper('form');
         $this->load->helper('common');
-         $xbufResult1 =tbaddrow(         tbaddcellhead('idx','','data-field="idx" data-sortable="true" width=10%').
+         $xbufResult1 =tbaddrow(         tbaddcellhead('No','','data-field="idx" data-sortable="true" width=10%').
 tbaddcellhead('event_id','','data-field="event_id" data-sortable="true" width=10%').
 tbaddcellhead('name','','data-field="name" data-sortable="true" width=10%').
 tbaddcellhead('uploaded_at','','data-field="uploaded_at" data-sortable="true" width=10%').
@@ -69,11 +69,12 @@ tbaddcellhead('post_text','','data-field="post_text" data-sortable="true" width=
          $xQuery = $this->modelposts->getListposts($xAwal,$xLimit,$xSearch);
           $xbufResult ='<thead>'.$xbufResult1.'</thead>';
         $xbufResult .='<tbody>';
+$no = 1;
               foreach ($xQuery->result() as $row)
             { 
                   $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditposts(\''.$row->idx.'\');" ></i>';
             $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapusposts(\''.$row->idx.'\');"></i>';
-            $xbufResult .= tbaddrow(         tbaddcell($row->idx).
+            $xbufResult .= tbaddrow(         tbaddcell($no++).
 tbaddcell($row->event_id).
 tbaddcell($row->name).
 tbaddcell($row->uploaded_at).

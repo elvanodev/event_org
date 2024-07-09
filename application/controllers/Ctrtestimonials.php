@@ -60,7 +60,7 @@ function getlisttestimonials($xAwal,$xSearch){
          $xLimit = $this->session->userdata('limit');
         $this->load->helper('form');
         $this->load->helper('common');
-         $xbufResult1 =tbaddrow(         tbaddcellhead('idx','','data-field="idx" data-sortable="true" width=10%').
+         $xbufResult1 =tbaddrow(         tbaddcellhead('No','','data-field="idx" data-sortable="true" width=10%').
 tbaddcellhead('coupon_id','','data-field="coupon_id" data-sortable="true" width=10%').
 tbaddcellhead('coupon_number','','data-field="coupon_number" data-sortable="true" width=10%').
 tbaddcellhead('event_name','','data-field="event_name" data-sortable="true" width=10%').
@@ -72,11 +72,12 @@ tbaddcellhead('testimoni_text','','data-field="testimoni_text" data-sortable="tr
          $xQuery = $this->modeltestimonials->getListtestimonials($xAwal,$xLimit,$xSearch);
           $xbufResult ='<thead>'.$xbufResult1.'</thead>';
         $xbufResult .='<tbody>';
+$no = 1;
               foreach ($xQuery->result() as $row)
             { 
                   $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doedittestimonials(\''.$row->idx.'\');" ></i>';
             $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapustestimonials(\''.$row->idx.'\');"></i>';
-            $xbufResult .= tbaddrow(         tbaddcell($row->idx).
+            $xbufResult .= tbaddrow(         tbaddcell($no++).
 tbaddcell($row->coupon_id).
 tbaddcell($row->coupon_number).
 tbaddcell($row->event_name).
