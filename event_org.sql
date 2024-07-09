@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 08, 2024 at 03:25 PM
+-- Generation Time: Jul 09, 2024 at 04:55 AM
 -- Server version: 11.4.2-MariaDB-log
 -- PHP Version: 8.3.9
 
@@ -90463,23 +90463,30 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`idmenu`, `nmmenu`, `tipemenu`, `idkomponen`, `iduser`, `parentmenu`, `urlci`, `urut`, `jmlgambar`, `settingform`, `idaplikasi`, `isumum`, `icon`) VALUES
-(1, 'Laporan Pengguna', 2, 3, 0, 0, 'admin', 1, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', ''),
-(2, 'Member', 2, 3, 0, 0, 'Ctrmember', 1, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', ''),
-(7, 'Master Data', 2, 3, 0, 0, 'admin', 1, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', ''),
-(418, 'Jenis alat kerja', 2, 3, 0, 7, 'Ctrjenisalatkerja', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', ''),
-(419, 'Jenis pengembangan diri', 2, 3, 0, 7, 'Ctrjenispengembangandiricol', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', ''),
-(420, 'Kabupaten', 2, 3, 0, 7, 'Ctrkabupaten', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', ''),
-(421, 'Kecamatan', 2, 3, 0, 7, 'Ctrkecamatan', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', ''),
-(422, 'Kelurahan', 2, 3, 0, 7, 'Ctrkelurahan', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', ''),
-(423, 'Pekerjaan', 2, 3, 0, 7, 'Ctrpekerjaan', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', ''),
-(424, 'Provinsi', 2, 3, 0, 7, 'Ctrprovinsi', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', ''),
-(425, 'Pendidikan', 2, 3, 0, 7, 'Ctrpendidikan', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', ''),
-(426, 'Subsektor', 2, 3, 0, 7, 'Ctrsubsektor', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', ''),
-(427, 'Pengembangan diri', 2, 3, 0, 0, 'Ctrpengembangandiri', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', ''),
-(429, 'Reproduktif material', 2, 3, 0, 0, 'Ctrreproduktifmaterial', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', ''),
-(430, 'Status dan Rekognisi', 2, 3, 0, 0, 'Ctrstatusdanrekognisi', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', ''),
-(431, 'Nilai upah layak dan bonus', 2, 3, 0, 0, 'Ctrnilaiupahlayakdanbonus', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', ''),
-(432, 'User', 2, 3, 0, 0, 'Ctrusersistem', 0, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', NULL, 'N', '');
+(1, 'Manage Events', 1, 3, 0, 0, '', 1, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', '<i class=\"nav-icon fas fa-calendar-day\"></i>'),
+(2, 'Manage Members', 1, 3, 0, 0, '', 2, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', '<i class=\"nav-icon fas fa-users\"></i>'),
+(3, 'Manage Coupons', 1, 3, 0, 0, '', 3, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', '<i class=\"nav-icon fas fa-money-bill\"></i>'),
+(998, 'Master Data', 1, 3, 0, 0, '', 998, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', '<i class=\"nav-icon fas fa-database\"></i>'),
+(999, 'Setting', 1, 3, 0, 0, '', 999, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', '<i class=\"nav-icon fas fa-tachometer-alt\"></i>'),
+(1001, 'Events', 2, 3, 0, 1, 'Ctrevents', 1001, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(1002, 'Editions', 2, 3, 0, 1, 'Ctreditions', 1002, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(1003, 'Collaborators', 2, 3, 0, 1, 'Ctrcollaborators', 1003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(1005, 'Posts', 2, 3, 0, 1, 'Ctrposts', 1005, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(2001, 'Members', 2, 3, 0, 2, 'Ctrmembers', 2001, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(2002, 'Registrations', 2, 3, 0, 2, 'Ctrregistrations', 2002, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(2003, 'Testimonials', 2, 3, 0, 2, 'Ctrtestimonials', 2003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(998001, 'Payment Statuses', 2, 3, 0, 998, 'Ctrpayment_statuses', 998001, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(998002, 'Shippers', 2, 3, 0, 998, 'Ctrshippers', 998002, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(998003, 'Artists', 2, 3, 0, 998, 'Ctrartists', 998003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(998990, 'Provinsi', 2, 3, 0, 998, 'Ctrprovinsi', 998990, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(998991, 'Kabupaten', 2, 3, 0, 998, 'Ctrkabupaten', 998991, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(998992, 'Kecamatan', 2, 3, 0, 998, 'Ctrkecamatan', 998992, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(998993, 'Kelurahan', 2, 3, 0, 998, 'Ctrkelurahan', 998993, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(999990, 'Menu', 2, 3, 0, 999, 'Ctrmenu', 999990, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(999991, 'User Role', 2, 3, 0, 999, 'Ctrusergroup', 999991, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(999992, 'User System', 2, 3, 0, 999, 'Ctrusersistem', 999992, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(999993, 'Permission', 2, 3, 0, 999, 'Ctrusermenu', 999993, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(999999, 'Logout', 1, 3, 0, 0, 'webadmindo/logout', 999999, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', '<i class=\"nav-icon fas fa-sign-out-alt\"></i>');
 
 -- --------------------------------------------------------
 
@@ -90578,396 +90585,6 @@ CREATE TABLE `registrations` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reproduktifmaterial`
---
-
-CREATE TABLE `reproduktifmaterial` (
-  `idx` int(11) NOT NULL,
-  `idmember` int(11) DEFAULT NULL,
-  `idjenisalatkerja` varchar(45) DEFAULT NULL,
-  `alatkerja` varchar(45) DEFAULT NULL,
-  `penyedia` varchar(45) DEFAULT NULL,
-  `harga` double DEFAULT NULL,
-  `durability` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
-
---
--- Dumping data for table `reproduktifmaterial`
---
-
-INSERT INTO `reproduktifmaterial` (`idx`, `idmember`, `idjenisalatkerja`, `alatkerja`, `penyedia`, `harga`, `durability`) VALUES
-(25, 3, '1', 'Alat gambar manual', 'Pribadi', 18000000, 24),
-(26, 3, '13', 'Perangkat tambahan PC Desktop/Laptop', 'Pribadi', 18000000, 24),
-(27, 3, '21', 'Pangan', '', 1500000, 0),
-(34, 6, '1', 'Alat gambar manual', 'Pribadi', 1000000, 24),
-(35, 6, '13', 'Perangkat tambahan PC Desktop/Laptop', 'Pribadi', 2000000, 24),
-(36, 6, '21', 'Pangan', '', 2000000, 0),
-(37, 7, '2', 'Alat perekam suara', 'Pribadi', 5000000, 5),
-(38, 7, '4', 'Drawing pad', 'Pribadi', 5000000, 1),
-(39, 7, '13', 'Perangkat tambahan PC Desktop/Laptop', 'Pribadi', 7000000, 5),
-(40, 7, '21', 'Pangan', '', 1000000, 0),
-(41, 7, '23', 'Perumahan', '', 3000000, 0),
-(42, 8, '10', 'Laptop', 'Pribadi', 5000000, 3),
-(43, 8, '14', 'Pulsa', 'Pribadi', 300000, 1),
-(44, 8, '21', 'Pangan', '', 1500000, 0),
-(45, 9, '10', 'Laptop', 'Pribadi', 12000000, 4),
-(46, 9, '15', 'Sewa ruang kerja', 'Pribadi', 10000000, 1),
-(47, 9, '21', 'Pangan', '', 4000000, 0),
-(48, 10, '11', 'PC Desktop', 'Klien', 40000000, 1),
-(49, 10, '14', 'Pulsa', 'Klien', 100000, 1),
-(50, 10, '21', 'Pangan', '', 700000, 0),
-(51, 11, '10', 'Laptop', 'Pribadi', 25000000, 1),
-(52, 11, '16', 'Aplikasi tambahan', 'Pribadi', 500000, 1),
-(53, 11, '21', 'Pangan', '', 2000000, 0),
-(54, 11, '22', 'Sandang', '', 1000000, 0),
-(66, 13, '10', 'Laptop', 'Pribadi', 7000000, 5),
-(67, 13, '14', 'Pulsa', 'Pribadi', 500000, 1),
-(68, 13, '21', 'Pangan', '', 3000000, 0),
-(69, 14, '10', 'Laptop', 'Klien', 25000000, 3),
-(70, 14, '6', 'Kamera dan lensa', 'Klien', 60000000, 3),
-(71, 14, '14', 'Pulsa', 'Pribadi', 100000, 1),
-(72, 14, '21', 'Pangan', '', 2500000, 0),
-(73, 15, '5', 'Handphone', 'Pribadi', 6000000, 8),
-(74, 15, '10', 'Laptop', 'Pribadi', 15000000, 6),
-(75, 15, '19', 'Langganan media berita', 'Pribadi', 150000, 1),
-(76, 15, '21', 'Pangan', '', 3000000, 0),
-(77, 15, '22', 'Sandang', '', 200000, 0),
-(78, 15, '23', 'Perumahan', '', 3000000, 0),
-(79, 15, '26', 'Transportasi', '', 1500000, 0),
-(80, 15, '25', 'Kesehatan', '', 150000, 0),
-(81, 15, '26', 'Transportasi', '', 1500000, 0),
-(82, 16, '5', 'Handphone', 'Pribadi', 20000000, 1),
-(83, 16, '16', 'Aplikasi tambahan', 'Pribadi', 190000, 2),
-(84, 16, '21', 'Pangan', '', 10000000, 0),
-(96, 17, '10', 'Laptop', 'Pribadi', 18000000, 18),
-(97, 17, '16', 'Aplikasi tambahan', 'Pribadi', 1701651947, 12),
-(98, 17, '21', 'Pangan', '', 1500000, 0),
-(102, 18, '7', 'Kendaraan Bermotor Roda Dua', 'Pribadi', 20000000, 1),
-(103, 18, '10', 'Laptop', 'Pribadi', 6000000, 1),
-(104, 18, '17', 'Buku', 'Pribadi', 6000000, 1),
-(105, 18, '14', 'Pulsa', 'Pribadi', 300000, 1),
-(106, 18, '21', 'Pangan', '', 1500000, 0),
-(107, 19, '10', 'Laptop', 'Pribadi', 7000000, 6),
-(108, 19, '15', 'Sewa ruang kerja', 'Pribadi', 500000, 3),
-(109, 19, '21', 'Pangan', '', 2000000, 0),
-(110, 20, '7', 'Kendaraan Bermotor Roda Dua', 'Pribadi', 20000000, 1),
-(111, 20, '10', 'Laptop', 'Pribadi', 6000000, 5),
-(112, 20, '5', 'Handphone', 'Pribadi', 5000000, 5),
-(113, 20, '3', 'Alat tulis kantor (ATK)', 'Pribadi', 300000, 1),
-(114, 20, '14', 'Pulsa', 'Pribadi', 300000, 1),
-(115, 20, '16', 'Aplikasi tambahan', 'Pribadi', 400000, 1),
-(116, 20, '17', 'Buku', 'Pribadi', 500000, 1),
-(117, 20, '21', 'Pangan', '', 1500000, 0),
-(118, 20, '22', 'Sandang', '', 500000, 0),
-(119, 20, '24', 'Pendidikan', '', 1000000, 0),
-(120, 20, '25', 'Kesehatan', '', 300000, 0),
-(121, 20, '26', 'Transportasi', '', 300000, 0),
-(122, 20, '27', 'Rekreasi', '', 500000, 0),
-(123, 20, '28', 'Tabungan', '', 1000000, 0),
-(124, 21, '3', 'Alat tulis kantor (ATK)', 'Pribadi', 100000, 2),
-(125, 21, '13', 'Perangkat tambahan PC Desktop/Laptop', 'Pribadi', 5000000, 24),
-(126, 21, '16', 'Aplikasi tambahan', 'Pribadi', 200000, 1),
-(127, 21, '21', 'Pangan', '', 2000000, 0),
-(128, 21, '22', 'Sandang', '', 150000, 0),
-(129, 21, '25', 'Kesehatan', '', 150000, 0),
-(130, 22, '11', 'PC Desktop', 'Pribadi', 18000000, 6),
-(131, 22, '15', 'Sewa ruang kerja', 'Pribadi', 500000, 1),
-(132, 22, '21', 'Pangan', '', 2000000, 0),
-(133, 23, '11', 'PC Desktop', 'Pribadi', 17000000, 12),
-(134, 23, '14', 'Pulsa', 'Pribadi', 300000, 1),
-(135, 23, '21', 'Pangan', '', 2000000, 0),
-(136, 24, '11', 'PC Desktop', 'Pribadi', 17000000, 12),
-(137, 24, '14', 'Pulsa', 'Pribadi', 300000, 1),
-(138, 24, '21', 'Pangan', '', 2000000, 0),
-(139, 26, '1', 'Alat gambar manual', 'Pribadi', 2000000, 1),
-(140, 26, '13', 'Perangkat tambahan PC Desktop/Laptop', 'Pribadi', 2000000, 1),
-(141, 26, '21', 'Pangan', '', 2000000, 0),
-(142, 27, '1', 'Alat gambar manual', 'Pribadi', 7000000, 1),
-(143, 27, '3', 'Alat tulis kantor (ATK)', 'Pribadi', 10000, 1),
-(144, 27, '13', 'Perangkat tambahan PC Desktop/Laptop', 'Pribadi', 500000, 1),
-(145, 27, '21', 'Pangan', '', 3000000, 0),
-(146, 27, '22', 'Sandang', '', 1000000, 0),
-(147, 27, '23', 'Perumahan', '', 1700000, 0),
-(148, 27, '24', 'Pendidikan', '', 500000, 0),
-(149, 27, '25', 'Kesehatan', '', 200000, 0),
-(150, 27, '26', 'Transportasi', '', 2000000, 0),
-(151, 27, '27', 'Rekreasi', '', 1000000, 0),
-(152, 27, '28', 'Tabungan', '', 1000000, 0),
-(153, 27, '29', 'Lainnya', '', 500000, 0),
-(164, 28, '10', 'Laptop', 'Pribadi', 18000000, 36),
-(165, 28, '19', 'Langganan media berita', 'Pribadi', 100000, 1),
-(166, 28, '21', 'Pangan', '', 1500000, 0),
-(167, 28, '22', 'Sandang', '', 500000, 0),
-(168, 28, '23', 'Perumahan', '', 2000000, 0),
-(169, 28, '24', 'Pendidikan', '', 650000, 0),
-(170, 28, '25', 'Kesehatan', '', 1000000, 0),
-(171, 28, '26', 'Transportasi', '', 217000, 0),
-(172, 28, '27', 'Rekreasi', '', 1500000, 0),
-(201, 29, '10', 'Laptop', 'Pribadi', 18000000, 36),
-(202, 29, '12', 'Lainnya', 'Pribadi', 17016519.47, 12),
-(203, 29, '19', 'Langganan media berita', 'Pribadi', 100000, 1),
-(204, 29, '21', 'Pangan', '', 1500000, 0),
-(205, 29, '22', 'Sandang', '', 500000, 0),
-(206, 29, '23', 'Perumahan', '', 2000000, 0),
-(207, 29, '24', 'Pendidikan', '', 650000, 0),
-(208, 29, '25', 'Kesehatan', '', 1000000, 0),
-(209, 29, '26', 'Transportasi', '', 217000, 0),
-(210, 29, '27', 'Rekreasi', '', 1500000, 0),
-(211, 30, '10', 'Laptop', 'Pribadi', 13000000, 48),
-(212, 30, '20', 'Lainnya', 'Pribadi', 0, 1),
-(213, 30, '25', 'Kesehatan', '', 200000, 0),
-(256, 5, '5', 'Handphone', 'Pribadi', 15000000, 36),
-(257, 5, '10', 'Laptop', 'Pribadi', 5000000, 60),
-(258, 5, '3', 'Alat tulis kantor (ATK)', 'Pribadi', 8799000, 36),
-(259, 5, '4', 'Drawing pad', 'Pribadi', 5000000, 36),
-(260, 5, '17', 'Buku', 'Pribadi', 500000, 12),
-(261, 5, '16', 'Aplikasi tambahan', 'Pribadi', 490000, 12),
-(262, 5, '21', 'Pangan', '', 3000000, 0),
-(263, 5, '28', 'Tabungan', '', 1500000, 0),
-(264, 5, '23', 'Perumahan', '', 1000000, 0),
-(265, 5, '24', 'Pendidikan', '', 1000000, 0),
-(266, 5, '25', 'Kesehatan', '', 1000000, 0),
-(267, 5, '26', 'Transportasi', '', 1000000, 0),
-(268, 5, '27', 'Rekreasi', '', 500000, 0),
-(269, 5, '28', 'Tabungan', '', 1500000, 0),
-(284, 32, '5', 'Handphone', 'Pribadi', 15000000, 36),
-(285, 32, '9', 'Tablet', 'Pribadi', 5000000, 60),
-(286, 32, '12', 'Lainnya', 'Pribadi', 8799000, 36),
-(287, 32, '2', 'Alat perekam suara', 'Pribadi', 5000000, 36),
-(288, 32, '20', 'Lainnya', 'Pribadi', 500000, 12),
-(289, 32, '20', 'Lainnya', 'Pribadi', 490000, 12),
-(290, 32, '21', 'Pangan', '', 3000000, 0),
-(291, 32, '22', 'Sandang', '', 1500000, 0),
-(292, 32, '23', 'Perumahan', '', 1000000, 0),
-(293, 32, '24', 'Pendidikan', '', 1000000, 0),
-(294, 32, '25', 'Kesehatan', '', 1000000, 0),
-(295, 32, '26', 'Transportasi', '', 1000000, 0),
-(296, 32, '27', 'Rekreasi', '', 500000, 0),
-(297, 32, '28', 'Tabungan', '', 1500000, 0),
-(298, 33, '3', 'Alat tulis kantor (ATK)', 'Pribadi', 6000000, 36),
-(299, 33, '1', 'Alat gambar manual', 'Pribadi', 6000000, 36),
-(300, 33, '10', 'Laptop', 'Pribadi', 12000000, 36),
-(301, 33, '5', 'Handphone', 'Pribadi', 6000000, 36),
-(302, 33, '20', 'Lainnya', 'Pribadi', 500000, 1),
-(303, 33, '20', 'Lainnya', 'Pribadi', 175000, 1),
-(304, 33, '17', 'Buku', 'Pribadi', 600000, 1),
-(305, 33, '21', 'Pangan', '', 2000000, 0),
-(306, 33, '22', 'Sandang', '', 500000, 0),
-(307, 33, '23', 'Perumahan', '', 900000, 0),
-(308, 33, '24', 'Pendidikan', '', 150000, 0),
-(309, 33, '25', 'Kesehatan', '', 150000, 0),
-(310, 33, '26', 'Transportasi', '', 1000000, 0),
-(311, 33, '27', 'Rekreasi', '', 500000, 0),
-(312, 33, '28', 'Tabungan', '', 1500000, 0),
-(326, 34, '3', 'Alat tulis kantor (ATK)', 'Pribadi', 6000000, 36),
-(327, 34, '1', 'Alat gambar manual', 'Pribadi', 6000000, 36),
-(328, 34, '10', 'Laptop', 'Pribadi', 12000000, 36),
-(329, 34, '5', 'Handphone', 'Pribadi', 6000000, 36),
-(330, 34, '20', 'Lainnya', 'Pribadi', 500000, 1),
-(331, 34, '20', 'Lainnya', 'Pribadi', 175000, 1),
-(332, 34, '18', 'Gim', 'Pribadi', 600000, 1),
-(333, 34, '21', 'Pangan', '', 2000000, 0),
-(334, 34, '22', 'Sandang', '', 500000, 0),
-(335, 34, '23', 'Perumahan', '', 900000, 0),
-(336, 34, '24', 'Pendidikan', '', 150000, 0),
-(337, 34, '25', 'Kesehatan', '', 150000, 0),
-(338, 34, '26', 'Transportasi', '', 1000000, 0),
-(339, 34, '27', 'Rekreasi', '', 500000, 0),
-(340, 34, '28', 'Tabungan', '', 1500000, 0),
-(341, 36, '10', 'Laptop', 'Pribadi', 7000000, 24),
-(342, 36, '14', 'Pulsa', 'Pribadi', 500000, 1),
-(343, 36, '21', 'Pangan', '', 3000000, 0),
-(344, 36, '22', 'Sandang', '', 1000000, 0),
-(345, 36, '23', 'Perumahan', '', 1700000, 0),
-(346, 36, '24', 'Pendidikan', '', 500000, 0),
-(347, 36, '25', 'Kesehatan', '', 200000, 0),
-(348, 36, '26', 'Transportasi', '', 2000000, 0),
-(349, 36, '27', 'Rekreasi', '', 1000000, 0),
-(350, 36, '28', 'Tabungan', '', 1000000, 0),
-(351, 36, '29', 'Lainnya', '', 500000, 0),
-(377, 37, '5', 'Handphone', 'Pribadi', 20000000, 60),
-(378, 37, '10', 'Laptop', 'Pribadi', 17000000, 60),
-(379, 37, '4', 'Drawing pad', 'Pribadi', 4000000, 60),
-(380, 37, '9', 'Tablet', 'Pribadi', 13000000, 60),
-(381, 37, '13', 'Perangkat tambahan PC Desktop/Laptop', 'Pribadi', 0, 1),
-(382, 37, '21', 'Pangan', '', 3000000, 0),
-(383, 37, '22', 'Sandang', '', 2000000, 0),
-(384, 37, '23', 'Perumahan', '', 6000000, 0),
-(385, 37, '24', 'Pendidikan', '', 1000000, 0),
-(386, 37, '25', 'Kesehatan', '', 1000000, 0),
-(387, 37, '26', 'Transportasi', '', 3000000, 0),
-(388, 37, '27', 'Rekreasi', '', 1500000, 0),
-(389, 37, '28', 'Tabungan', '', 1500000, 0),
-(404, 40, '5', 'Handphone', 'Pribadi', 15000000, 36),
-(405, 40, '9', 'Tablet', 'Pribadi', 5000000, 60),
-(406, 40, '12', 'Lainnya', 'Pribadi', 8799000, 36),
-(407, 40, '2', 'Alat perekam suara', 'Pribadi', 5000000, 36),
-(408, 40, '19', 'Langganan media berita', 'Pribadi', 500000, 12),
-(409, 40, '19', 'Langganan media berita', 'Pribadi', 490000, 12),
-(410, 40, '21', 'Pangan', '', 3000000, 0),
-(411, 40, '22', 'Sandang', '', 1500000, 0),
-(412, 40, '23', 'Perumahan', '', 1000000, 0),
-(413, 40, '24', 'Pendidikan', '', 1000000, 0),
-(414, 40, '25', 'Kesehatan', '', 1000000, 0),
-(415, 40, '26', 'Transportasi', '', 1000000, 0),
-(416, 40, '27', 'Rekreasi', '', 500000, 0),
-(417, 40, '28', 'Tabungan', '', 1500000, 0),
-(431, 42, '5', 'Handphone', 'Pribadi', 20000000, 60),
-(432, 42, '10', 'Laptop', 'Pribadi', 17000000, 60),
-(433, 42, '4', 'Drawing pad', 'Pribadi', 4000000, 60),
-(434, 42, '9', 'Tablet', 'Pribadi', 13000000, 60),
-(435, 42, '13', 'Perangkat tambahan PC Desktop/Laptop', 'Pribadi', 0, 1),
-(436, 42, '21', 'Pangan', '', 3000000, 0),
-(437, 42, '22', 'Sandang', '', 2000000, 0),
-(438, 42, '23', 'Perumahan', '', 6000000, 0),
-(439, 42, '24', 'Pendidikan', '', 1000000, 0),
-(440, 42, '25', 'Kesehatan', '', 1000000, 0),
-(441, 42, '26', 'Transportasi', '', 3000000, 0),
-(442, 42, '27', 'Rekreasi', '', 1500000, 0),
-(443, 42, '28', 'Tabungan', '', 1500000, 0),
-(458, 43, '5', 'Handphone', 'Pribadi', 15000000, 36),
-(459, 43, '9', 'Tablet', 'Pribadi', 5000000, 60),
-(460, 43, '12', 'Lainnya', 'Pribadi', 8799000, 36),
-(461, 43, '2', 'Alat perekam suara', 'Pribadi', 5000000, 36),
-(462, 43, '20', 'Lainnya', 'Pribadi', 500000, 12),
-(463, 43, '20', 'Lainnya', 'Pribadi', 490000, 12),
-(464, 43, '21', 'Pangan', '', 3000000, 0),
-(465, 43, '22', 'Sandang', '', 1500000, 0),
-(466, 43, '23', 'Perumahan', '', 1000000, 0),
-(467, 43, '24', 'Pendidikan', '', 1000000, 0),
-(468, 43, '25', 'Kesehatan', '', 1000000, 0),
-(469, 43, '26', 'Transportasi', '', 1000000, 0),
-(470, 43, '27', 'Rekreasi', '', 500000, 0),
-(471, 43, '28', 'Tabungan', '', 1500000, 0),
-(496, 46, '3', 'Alat tulis kantor (ATK)', 'Pribadi', 6000000, 36),
-(497, 46, '1', 'Alat gambar manual', 'Pribadi', 6000000, 36),
-(498, 46, '10', 'Laptop', 'Pribadi', 12000000, 36),
-(499, 46, '5', 'Handphone', 'Pribadi', 6000000, 36),
-(500, 46, '14', 'Pulsa', 'Pribadi', 500000, 1),
-(501, 46, '20', 'Lainnya', 'Pribadi', 175000, 1),
-(502, 46, '20', 'Lainnya', 'Pribadi', 600000, 1),
-(503, 46, '21', 'Pangan', '', 2000000, 0),
-(504, 46, '22', 'Sandang', '', 500000, 0),
-(505, 46, '23', 'Perumahan', '', 900000, 0),
-(506, 46, '26', 'Transportasi', '', 1000000, 0),
-(507, 46, '28', 'Tabungan', '', 1500000, 0),
-(523, 47, '3', 'Alat tulis kantor (ATK)', 'Pribadi', 6000000, 36),
-(524, 47, '1', 'Alat gambar manual', 'Pribadi', 6000000, 36),
-(525, 47, '10', 'Laptop', 'Pribadi', 12000000, 36),
-(526, 47, '5', 'Handphone', 'Pribadi', 6000000, 36),
-(527, 47, '20', 'Lainnya', 'Pribadi', 500000, 1),
-(528, 47, '17', 'Buku', 'Pribadi', 175000, 1),
-(529, 47, '17', 'Buku', 'Pribadi', 600000, 1),
-(530, 47, '21', 'Pangan', '', 2000000, 0),
-(531, 47, '22', 'Sandang', '', 500000, 0),
-(532, 47, '23', 'Perumahan', '', 900000, 0),
-(533, 47, '24', 'Pendidikan', '', 150000, 0),
-(534, 47, '25', 'Kesehatan', '', 150000, 0),
-(535, 47, '26', 'Transportasi', '', 1000000, 0),
-(536, 47, '27', 'Rekreasi', '', 500000, 0),
-(537, 47, '28', 'Tabungan', '', 1500000, 0),
-(545, 49, '2', 'Alat perekam suara', 'Pribadi', 5000000, 36),
-(546, 49, '4', 'Drawing pad', 'Pribadi', 12000000, 36),
-(547, 49, '14', 'Pulsa', 'Pribadi', 500000, 1),
-(548, 49, '15', 'Sewa ruang kerja', 'Pribadi', 500000, 3),
-(549, 49, '21', 'Pangan', '', 2000000, 0),
-(550, 49, '22', 'Sandang', '', 700000, 0),
-(551, 49, '23', 'Perumahan', '', 1000000, 0),
-(566, 51, '5', 'Handphone', 'Pribadi', 15000000, 36),
-(567, 51, '9', 'Tablet', 'Pribadi', 5000000, 60),
-(568, 51, '12', 'Lainnya', 'Pribadi', 8799000, 36),
-(569, 51, '2', 'Alat perekam suara', 'Pribadi', 5000000, 36),
-(570, 51, '19', 'Langganan media berita', 'Pribadi', 500000, 12),
-(571, 51, '19', 'Langganan media berita', 'Pribadi', 490000, 12),
-(572, 51, '21', 'Pangan', '', 3000000, 0),
-(573, 51, '22', 'Sandang', '', 1500000, 0),
-(574, 51, '23', 'Perumahan', '', 1000000, 0),
-(575, 51, '24', 'Pendidikan', '', 1000000, 0),
-(576, 51, '25', 'Kesehatan', '', 1000000, 0),
-(577, 51, '26', 'Transportasi', '', 1000000, 0),
-(578, 51, '27', 'Rekreasi', '', 500000, 0),
-(579, 51, '28', 'Tabungan', '', 1500000, 0),
-(595, 52, '3', 'Alat tulis kantor (ATK)', 'Pribadi', 6000000, 36),
-(596, 52, '1', 'Alat gambar manual', 'Pribadi', 6000000, 36),
-(597, 52, '10', 'Laptop', 'Pribadi', 12000000, 36),
-(598, 52, '5', 'Handphone', 'Pribadi', 6000000, 36),
-(599, 52, '14', 'Pulsa', 'Pribadi', 500000, 1),
-(600, 52, '20', 'Lainnya', 'Pribadi', 175000, 1),
-(601, 52, '17', 'Buku', 'Pribadi', 600000, 1),
-(602, 52, '21', 'Pangan', '', 2000000, 0),
-(603, 52, '22', 'Sandang', '', 500000, 0),
-(604, 52, '23', 'Perumahan', '', 900000, 0),
-(605, 52, '24', 'Pendidikan', '', 150000, 0),
-(606, 52, '25', 'Kesehatan', '', 150000, 0),
-(607, 52, '26', 'Transportasi', '', 1000000, 0),
-(608, 52, '27', 'Rekreasi', '', 500000, 0),
-(609, 52, '28', 'Tabungan', '', 1500000, 0),
-(652, 54, '5', 'Handphone', 'Pribadi', 15000000, 36),
-(653, 54, '9', 'Tablet', 'Pribadi', 5000000, 60),
-(654, 54, '12', 'Lainnya', 'Pribadi', 8799000, 36),
-(655, 54, '2', 'Alat perekam suara', 'Pribadi', 5000000, 36),
-(656, 54, '19', 'Langganan media berita', 'Pribadi', 500000, 12),
-(657, 54, '17', 'Buku', 'Pribadi', 490000, 12),
-(658, 54, '21', 'Pangan', '', 3000000, 0),
-(659, 54, '22', 'Sandang', '', 1500000, 0),
-(660, 54, '23', 'Perumahan', '', 1000000, 0),
-(661, 54, '24', 'Pendidikan', '', 1000000, 0),
-(662, 54, '25', 'Kesehatan', '', 1000000, 0),
-(663, 54, '26', 'Transportasi', '', 1000000, 0),
-(664, 54, '27', 'Rekreasi', '', 500000, 0),
-(665, 54, '28', 'Tabungan', '', 1500000, 0),
-(675, 53, '2', 'Alat perekam suara', 'Pribadi', 5000000, 36),
-(676, 53, '5', 'Handphone', 'Pribadi', 4000000, 36),
-(677, 53, '13', 'Perangkat tambahan PC Desktop/Laptop', 'Pribadi', 7000000, 36),
-(678, 53, '14', 'Pulsa', 'Pribadi', 300000, 1),
-(679, 53, '15', 'Sewa ruang kerja', 'Pribadi', 5000000, 1),
-(680, 53, '21', 'Pangan', '', 2000000, 0),
-(681, 53, '22', 'Sandang', '', 1000000, 0),
-(682, 53, '23', 'Perumahan', '', 2000000, 0),
-(683, 53, '24', 'Pendidikan', '', 1000000, 0),
-(684, 55, '1', 'Alat gambar manual', 'Pribadi', 3000000, 12),
-(685, 55, '2', 'Alat perekam suara', 'Pribadi', 4000000, 36),
-(686, 55, '13', 'Perangkat tambahan PC Desktop/Laptop', 'Pribadi', 7000000, 36),
-(687, 55, '14', 'Pulsa', 'Pribadi', 500000, 1),
-(688, 55, '21', 'Pangan', '', 2000000, 0),
-(689, 55, '22', 'Sandang', '', 1000000, 0),
-(690, 55, '23', 'Perumahan', '', 2000000, 0),
-(691, 55, '24', 'Pendidikan', '', 1000000, 0),
-(692, 57, '1', 'Alat gambar manual', 'Pribadi', 10000, 12),
-(693, 57, '13', 'Perangkat tambahan PC Desktop/Laptop', 'Pribadi', 190000, 12),
-(694, 57, '21', 'Pangan', '', 1500000, 0),
-(695, 58, '10', 'Laptop', 'Pribadi', 10000000, 36),
-(696, 58, '14', 'Pulsa', 'Pribadi', 100000, 1),
-(697, 58, '21', 'Pangan', '', 1500000, 0),
-(698, 58, '26', 'Transportasi', '', 500000, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `setting`
---
-
-CREATE TABLE `setting` (
-  `idx` int(11) NOT NULL,
-  `Nama` varchar(200) DEFAULT NULL,
-  `Alamat` varchar(250) DEFAULT NULL,
-  `email` varchar(200) DEFAULT NULL,
-  `portemail` int(11) DEFAULT NULL,
-  `Telpon` varchar(20) DEFAULT NULL,
-  `Whatsapp` int(20) DEFAULT NULL,
-  `idkecamatan` int(20) DEFAULT NULL,
-  `Bio` text DEFAULT NULL,
-  `logo` varchar(200) DEFAULT NULL,
-  `fb` varchar(200) DEFAULT NULL,
-  `ig` varchar(200) DEFAULT NULL,
-  `tw` varchar(200) DEFAULT NULL,
-  `G` varchar(200) DEFAULT NULL,
-  `youtube` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -91071,23 +90688,30 @@ CREATE TABLE `usermenu` (
 --
 
 INSERT INTO `usermenu` (`idx`, `iduser`, `idmenu`, `idaplikasi`) VALUES
-(9997, 1, 7, NULL),
-(9996, 1, 2, NULL),
-(9995, 1, 1, NULL),
-(9994, 1, 432, NULL),
-(9993, 1, 431, NULL),
-(9992, 1, 430, NULL),
-(9991, 1, 429, NULL),
-(9990, 1, 427, NULL),
-(9989, 1, 426, NULL),
-(9988, 1, 425, NULL),
-(9987, 1, 424, NULL),
-(9986, 1, 423, NULL),
-(9985, 1, 422, NULL),
-(9984, 1, 421, NULL),
-(9983, 1, 420, NULL),
-(9982, 1, 419, NULL),
-(9981, 1, 418, NULL);
+(10045, 1, 999999, NULL),
+(10044, 1, 999993, NULL),
+(10043, 1, 999992, NULL),
+(10042, 1, 999991, NULL),
+(10041, 1, 999990, NULL),
+(10040, 1, 998993, NULL),
+(10039, 1, 998992, NULL),
+(10038, 1, 998991, NULL),
+(10037, 1, 998990, NULL),
+(10036, 1, 998003, NULL),
+(10035, 1, 998002, NULL),
+(10034, 1, 998001, NULL),
+(10033, 1, 2003, NULL),
+(10032, 1, 2002, NULL),
+(10031, 1, 2001, NULL),
+(10030, 1, 1005, NULL),
+(10029, 1, 1003, NULL),
+(10028, 1, 1002, NULL),
+(10027, 1, 1001, NULL),
+(10026, 1, 999, NULL),
+(10025, 1, 998, NULL),
+(10024, 1, 3, NULL),
+(10023, 1, 2, NULL),
+(10022, 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -91119,7 +90743,7 @@ CREATE TABLE `usersistem` (
 --
 
 INSERT INTO `usersistem` (`idx`, `npp`, `Nama`, `alamat`, `NoTelpon`, `user`, `password`, `statuspeg`, `photo`, `email`, `ym`, `isaktif`, `idusergroup`, `idkabupaten`, `idpropinsi`, `imehp`) VALUES
-(4, 'undefined', 'Scrip Media', '', '', 'scriptmedia', 'scriptmedia', 0, 'undefined', '', '', 'Y', 1, 3471, 34, '');
+(1, 'undefined', 'Scrip Media', '', '', 'scriptmedia', 'scriptmedia', 0, 'undefined', '', '', 'Y', 1, 3471, 34, '');
 
 --
 -- Indexes for dumped tables
@@ -91243,18 +90867,6 @@ ALTER TABLE `registrations`
   ADD KEY `registrations_edition_id_foreign` (`edition_id`);
 
 --
--- Indexes for table `reproduktifmaterial`
---
-ALTER TABLE `reproduktifmaterial`
-  ADD PRIMARY KEY (`idx`);
-
---
--- Indexes for table `setting`
---
-ALTER TABLE `setting`
-  ADD PRIMARY KEY (`idx`);
-
---
 -- Indexes for table `shippers`
 --
 ALTER TABLE `shippers`
@@ -91372,7 +90984,7 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `idmenu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=433;
+  MODIFY `idmenu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
 
 --
 -- AUTO_INCREMENT for table `payment_statuses`
@@ -91397,18 +91009,6 @@ ALTER TABLE `provinsi`
 --
 ALTER TABLE `registrations`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `reproduktifmaterial`
---
-ALTER TABLE `reproduktifmaterial`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=699;
-
---
--- AUTO_INCREMENT for table `setting`
---
-ALTER TABLE `setting`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `shippers`
@@ -91444,7 +91044,7 @@ ALTER TABLE `usergroup`
 -- AUTO_INCREMENT for table `usermenu`
 --
 ALTER TABLE `usermenu`
-  MODIFY `idx` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9998;
+  MODIFY `idx` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10046;
 
 --
 -- AUTO_INCREMENT for table `usersistem`

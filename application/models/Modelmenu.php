@@ -397,29 +397,27 @@ function GetChildkiri($xQuery,$komponen,$childke='') {
                     $xRowUrl = '#';
 
                 }
-           // } 
-                $quaery = $this->getlistmenubyparent($row->idmenu,$komponen);
-                $cekchild = $quaery->result();
-             //  var_dump($cekchild);
-                $xChild = $this->GetChildkiri($this->getlistmenubyparent($row->idmenu,$komponen),$komponen);
-                if($row->icon){
-                    $icon = $row->icon;
-                }else{
-                    $icon = '<i class="nav-icon fas fa-tachometer-alt"></i>';
-                }
-                if ($komponen==3 && $this->isinusermenu($row->idmenu)){
-
-                    if($cekchild){
-                        
-                        $xbutton = '<i class="fas fa-angle-left right"></i>';
-                        $xBufResult .= setli(site_url($xRowUrl),$icon.'<p>'.$row->nmmenu.$xbutton.'</p>', $xChild,'nav-item','nav-link');
-                    }else{
-                    
+            // } 
+            $quaery = $this->getlistmenubyparent($row->idmenu,$komponen);
+            $cekchild = $quaery->result();
+            //  var_dump($cekchild);
+            $xChild = $this->GetChildkiri($this->getlistmenubyparent($row->idmenu,$komponen),$komponen);
+            if($row->icon){
+                $icon = $row->icon;
+            }else{
+                $icon = '<i class="nav-icon fas fa-tachometer-alt"></i>';
+            }
+            if ($komponen==3 && $this->isinusermenu($row->idmenu)){
+                if($cekchild){                    
+                    $xbutton = '<i class="fas fa-angle-left right"></i>';
+                    $xBufResult .= setli(site_url($xRowUrl),$icon.'<p>'.$row->nmmenu.$xbutton.'</p>', $xChild,'nav-item','nav-link');
+                }else{                
                     $xBufResult .= setli(site_url($xRowUrl),$icon.'<p>'.$row->nmmenu.'</p>', $xChild,'nav-item','nav-link');
-                    }
-                }else{
-                    $xBufResult .= setli(site_url($xRowUrl), $icon.'<p>'.$row->nmmenu.'</p>', $xChild,'nav-item','nav-link');
                 }
+            }
+            // else{
+            //     $xBufResult .= setli(site_url($xRowUrl), $icon.'<p>'.$row->nmmenu.'</p>', $xChild,'nav-item','nav-link');
+            // }
                 
         }
         if (!empty($xBufResult))
