@@ -31,7 +31,9 @@ class Ctrevents extends CI_Controller
     $xAddJs = link_tag('resource/admin/vendor/toaster/toastr.css') . "\n" .
       '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/admin/vendor/toaster/toastr.min.js"></script>' . "\n" .
       '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/js/common/fileupload/jquery.ui.widget.js"></script>' . "\n" .
-      '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/ajax/ajaxevents.js"></script>';
+      '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/ajax/ajaxevents.js"></script>' . "\n" .
+      '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/js/common/fileupload/jquery.fileupload.js"></script>' . "\n" .
+      '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/js/common/fileupload/myupload.js"></script>';
     echo $this->modelgetmenu->SetViewAdmin($this->setDetailFormevents($xidx), '', '', $xAddJs, '', 'events');
   }
 
@@ -44,21 +46,21 @@ class Ctrevents extends CI_Controller
     $xBufResult .= '<div id="form">';
     $xBufResult .= '<input type="hidden" name="edidx" id="edidx" value="0" />';
 
-    $xBufResult .= setForm('name', 'name', form_input_(getArrayObj('edname', '', '200'), '', ' placeholder="name" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('name', 'Name', form_input_(getArrayObj('edname', '', '200'), '', ' placeholder="Name" ')) . '<div class="spacer"></div>';
+    $xBufResult .= '<span>Only one active event, other active event will set to inactive if you set new or edit event to active</span>';
+    $xBufResult .= setForm('is_active', 'Is Active', form_dropdown_('edis_active', array(1 => 'Yes', 0 => 'No'), '', ' id="edis_active" placeholder="Is Active" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('is_active', 'is_active', form_input_(getArrayObj('edis_active', '', '200'), '', ' placeholder="is_active" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('descriptions', 'Descriptions', form_textarea_(getArrayObj('eddescriptions', '', '200'), '', ' placeholder="Descriptions" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('descriptions', 'descriptions', form_textarea_(getArrayObj('eddescriptions', '', '200'), '', ' placeholder="descriptions" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('about_event', 'About', form_textarea_(getArrayObj('edabout_event', '', '200'), '', ' placeholder="About" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('about_event', 'about_event', form_textarea_(getArrayObj('edabout_event', '', '200'), '', ' placeholder="about_event" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('about1_event', 'About 1', form_textarea_(getArrayObj('edabout1_event', '', '200'), '', ' placeholder="About 1" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('about1_event', 'about1_event', form_textarea_(getArrayObj('edabout1_event', '', '200'), '', ' placeholder="about1_event" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('about2_event', 'About 2', form_textarea_(getArrayObj('edabout2_event', '', '200'), '', ' placeholder="About 2" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('about2_event', 'about2_event', form_textarea_(getArrayObj('edabout2_event', '', '200'), '', ' placeholder="about2_event" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('about3_event', 'About 3', form_textarea_(getArrayObj('edabout3_event', '', '200'), '', ' placeholder="About 3" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('about3_event', 'about3_event', form_textarea_(getArrayObj('edabout3_event', '', '200'), '', ' placeholder="about3_event" ')) . '<div class="spacer"></div>';
-
-    $xBufResult .= setForm('poster_image', 'poster_image', form_input_(getArrayObj('edposter_image', '', '200'), '', ' placeholder="poster_image" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('poster_image', 'Poster Image', '<div id="uploadposter_image" style="width:150px;">' . form_input_(getArrayObj('edposter_image', '', '100'), '', 'alt="Unggah"') . '</div>') . '<div class="spacer"></div>';
 
     $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearevents();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanevents();"') . form_button('btTabel', 'Tabel', 'onclick="dosearchevents(0);"') . '<div class="spacer"></div></div><div id="tabledataevents">' . $this->getlistevents(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
@@ -70,32 +72,36 @@ class Ctrevents extends CI_Controller
     $this->load->helper('form');
     $this->load->helper('common');
     $xbufResult1 = tbaddrow(tbaddcellhead('No', '', 'data-field="idx" data-sortable="true" width=10%') .
-      tbaddcellhead('name', '', 'data-field="name" data-sortable="true" width=10%') .
-      tbaddcellhead('is_active', '', 'data-field="is_active" data-sortable="true" width=10%') .
-      tbaddcellhead('descriptions', '', 'data-field="descriptions" data-sortable="true" width=10%') .
-      tbaddcellhead('about_event', '', 'data-field="about_event" data-sortable="true" width=10%') .
-      tbaddcellhead('about1_event', '', 'data-field="about1_event" data-sortable="true" width=10%') .
-      tbaddcellhead('about2_event', '', 'data-field="about2_event" data-sortable="true" width=10%') .
-      tbaddcellhead('about3_event', '', 'data-field="about3_event" data-sortable="true" width=10%') .
-      tbaddcellhead('poster_image', '', 'data-field="poster_image" data-sortable="true" width=10%') .
+      tbaddcellhead('Name', '', 'data-field="name" data-sortable="true" width=10%') .
+      tbaddcellhead('Is Active', '', 'data-field="is_active" data-sortable="true" width=10%') .
+      tbaddcellhead('Descriptions', '', 'data-field="descriptions" data-sortable="true" width=10%') .
+      tbaddcellhead('About', '', 'data-field="about_event" data-sortable="true" width=10%') .
+      tbaddcellhead('About 1', '', 'data-field="about1_event" data-sortable="true" width=10%') .
+      tbaddcellhead('About 2', '', 'data-field="about2_event" data-sortable="true" width=10%') .
+      tbaddcellhead('About 3', '', 'data-field="about3_event" data-sortable="true" width=10%') .
+      tbaddcellhead('Poster Image', '', 'data-field="poster_image" data-sortable="true" width=10%') .
 
       tbaddcellhead('Action', 'padding:5px;width:10%;text-align:center;', 'col-md-2'), '', TRUE);
     $this->load->model('modelevents');
     $xQuery = $this->modelevents->getListevents($xAwal, $xLimit, $xSearch);
     $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
     $xbufResult .= '<tbody>';
+    $no = 1;
     foreach ($xQuery->result() as $row) {
       $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditevents(\'' . $row->idx . '\');" ></i>';
       $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapusevents(\'' . $row->idx . '\');"></i>';
+      if (!empty($row->poster_image)) {
+        $poster_image = '<img src="' . base_url() . 'resource/uploaded/img/' . $row->poster_image . '" onclick="previewimage(this.src);" style="border: solid;width: 70px; height: 80px; align:center;">';
+      }
       $xbufResult .= tbaddrow(tbaddcell($no++) .
         tbaddcell($row->name) .
         tbaddcell($row->is_active) .
         tbaddcell($row->descriptions) .
-        tbaddcell($row->about_event) .
-        tbaddcell($row->about1_event) .
-        tbaddcell($row->about2_event) .
-        tbaddcell($row->about3_event) .
-        tbaddcell($row->poster_image) .
+        tbaddcell(substr($row->about_event,0,20)) .
+        tbaddcell(substr($row->about1_event,0,20)) .
+        tbaddcell(substr($row->about2_event,0,20)) .
+        tbaddcell(substr($row->about3_event,0,20)) .
+        tbaddcell($poster_image) .
 
         tbaddcell($xButtonEdit . $xButtonHapus));
     }

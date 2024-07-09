@@ -92,6 +92,7 @@ class Ctrartists extends CI_Controller
     $xQuery = $this->modelartists->getListartists($xAwal, $xLimit, $xSearch);
     $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
     $xbufResult .= '<tbody>';
+    $no = 1;
     foreach ($xQuery->result() as $row) {
       $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditartists(\'' . $row->idx . '\');" ></i>';
       $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapusartists(\'' . $row->idx . '\');"></i>';
@@ -102,7 +103,7 @@ class Ctrartists extends CI_Controller
         tbaddcell($row->name) .
         tbaddcell(mysqltodate($row->birth_date)) .
         tbaddcell($row->birth_place) .
-        tbaddcell(substr($row->bio, 0, 20) . "...") .
+        tbaddcell(substr($row->bio, 0, 20)) .
         tbaddcell($row->quote) .
         tbaddcell($poster_img) .
         tbaddcell($row->phone) .
