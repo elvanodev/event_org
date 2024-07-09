@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 09, 2024 at 04:55 AM
+-- Generation Time: Jul 09, 2024 at 07:08 AM
 -- Server version: 11.4.2-MariaDB-log
 -- PHP Version: 8.3.9
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `artists` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `idx` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(250) NOT NULL COMMENT 'Artist Name',
   `birth_date` date NOT NULL,
   `birth_place` varchar(500) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE `artists` (
 --
 
 CREATE TABLE `collabolators` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `idx` bigint(20) UNSIGNED NOT NULL,
   `edition_id` bigint(20) UNSIGNED NOT NULL,
   `artist_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE `content` (
 --
 
 CREATE TABLE `coupons` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `idx` bigint(20) UNSIGNED NOT NULL,
   `edition_id` bigint(20) UNSIGNED NOT NULL,
   `coupon_number` varchar(4) NOT NULL,
   `qr_code` varchar(250) NOT NULL,
@@ -112,7 +112,7 @@ CREATE TABLE `coupons` (
 --
 
 CREATE TABLE `editions` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `idx` bigint(20) UNSIGNED NOT NULL,
   `event_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(250) NOT NULL,
   `started_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -133,7 +133,7 @@ CREATE TABLE `editions` (
 --
 
 CREATE TABLE `events` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `idx` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(250) NOT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT 0,
   `descriptions` text DEFAULT NULL,
@@ -90427,7 +90427,7 @@ CREATE TABLE `logdelrecord` (
 --
 
 CREATE TABLE `members` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `idx` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
@@ -90465,7 +90465,6 @@ CREATE TABLE `menu` (
 INSERT INTO `menu` (`idmenu`, `nmmenu`, `tipemenu`, `idkomponen`, `iduser`, `parentmenu`, `urlci`, `urut`, `jmlgambar`, `settingform`, `idaplikasi`, `isumum`, `icon`) VALUES
 (1, 'Manage Events', 1, 3, 0, 0, '', 1, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', '<i class=\"nav-icon fas fa-calendar-day\"></i>'),
 (2, 'Manage Members', 1, 3, 0, 0, '', 2, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', '<i class=\"nav-icon fas fa-users\"></i>'),
-(3, 'Manage Coupons', 1, 3, 0, 0, '', 3, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', '<i class=\"nav-icon fas fa-money-bill\"></i>'),
 (998, 'Master Data', 1, 3, 0, 0, '', 998, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', '<i class=\"nav-icon fas fa-database\"></i>'),
 (999, 'Setting', 1, 3, 0, 0, '', 999, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', '<i class=\"nav-icon fas fa-tachometer-alt\"></i>'),
 (1001, 'Events', 2, 3, 0, 1, 'Ctrevents', 1001, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
@@ -90475,6 +90474,7 @@ INSERT INTO `menu` (`idmenu`, `nmmenu`, `tipemenu`, `idkomponen`, `iduser`, `par
 (2001, 'Members', 2, 3, 0, 2, 'Ctrmembers', 2001, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (2002, 'Registrations', 2, 3, 0, 2, 'Ctrregistrations', 2002, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (2003, 'Testimonials', 2, 3, 0, 2, 'Ctrtestimonials', 2003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(2004, 'Coupons', 2, 3, 0, 2, 'Ctrcoupons', 2004, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998001, 'Payment Statuses', 2, 3, 0, 998, 'Ctrpayment_statuses', 998001, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998002, 'Shippers', 2, 3, 0, 998, 'Ctrshippers', 998002, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998003, 'Artists', 2, 3, 0, 998, 'Ctrartists', 998003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
@@ -90495,7 +90495,7 @@ INSERT INTO `menu` (`idmenu`, `nmmenu`, `tipemenu`, `idkomponen`, `iduser`, `par
 --
 
 CREATE TABLE `payment_statuses` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `idx` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `descriptions` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -90509,7 +90509,7 @@ CREATE TABLE `payment_statuses` (
 --
 
 CREATE TABLE `posts` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `idx` bigint(20) UNSIGNED NOT NULL,
   `event_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `uploaded_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -90577,7 +90577,7 @@ INSERT INTO `provinsi` (`idx`, `kode_provinsi`, `provinsi`) VALUES
 --
 
 CREATE TABLE `registrations` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `idx` bigint(20) UNSIGNED NOT NULL,
   `edition_id` bigint(20) UNSIGNED NOT NULL,
   `member_id` bigint(20) UNSIGNED NOT NULL,
   `registered_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -90593,7 +90593,7 @@ CREATE TABLE `registrations` (
 --
 
 CREATE TABLE `shippers` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `idx` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL COMMENT 'Jawa, Luar Jawa, Indonesia Timur',
   `shipper_price` decimal(16,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -90607,7 +90607,7 @@ CREATE TABLE `shippers` (
 --
 
 CREATE TABLE `testimonials` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `idx` bigint(20) UNSIGNED NOT NULL,
   `coupon_id` bigint(20) UNSIGNED NOT NULL,
   `coupon_number` varchar(250) NOT NULL,
   `event_name` varchar(250) NOT NULL,
@@ -90624,7 +90624,7 @@ CREATE TABLE `testimonials` (
 --
 
 CREATE TABLE `testimoni_photos` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `idx` bigint(20) UNSIGNED NOT NULL,
   `testimoni_id` bigint(20) UNSIGNED NOT NULL,
   `link_photo` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -90688,30 +90688,30 @@ CREATE TABLE `usermenu` (
 --
 
 INSERT INTO `usermenu` (`idx`, `iduser`, `idmenu`, `idaplikasi`) VALUES
-(10045, 1, 999999, NULL),
-(10044, 1, 999993, NULL),
-(10043, 1, 999992, NULL),
-(10042, 1, 999991, NULL),
-(10041, 1, 999990, NULL),
-(10040, 1, 998993, NULL),
-(10039, 1, 998992, NULL),
-(10038, 1, 998991, NULL),
-(10037, 1, 998990, NULL),
-(10036, 1, 998003, NULL),
-(10035, 1, 998002, NULL),
-(10034, 1, 998001, NULL),
-(10033, 1, 2003, NULL),
-(10032, 1, 2002, NULL),
-(10031, 1, 2001, NULL),
-(10030, 1, 1005, NULL),
-(10029, 1, 1003, NULL),
-(10028, 1, 1002, NULL),
-(10027, 1, 1001, NULL),
-(10026, 1, 999, NULL),
-(10025, 1, 998, NULL),
-(10024, 1, 3, NULL),
-(10023, 1, 2, NULL),
-(10022, 1, 1, NULL);
+(10069, 1, 999999, NULL),
+(10068, 1, 999993, NULL),
+(10067, 1, 999992, NULL),
+(10066, 1, 999991, NULL),
+(10065, 1, 999990, NULL),
+(10064, 1, 998993, NULL),
+(10063, 1, 998992, NULL),
+(10062, 1, 998991, NULL),
+(10061, 1, 998990, NULL),
+(10060, 1, 998003, NULL),
+(10059, 1, 998002, NULL),
+(10058, 1, 998001, NULL),
+(10057, 1, 2004, NULL),
+(10056, 1, 2003, NULL),
+(10055, 1, 2002, NULL),
+(10054, 1, 2001, NULL),
+(10053, 1, 1005, NULL),
+(10052, 1, 1003, NULL),
+(10051, 1, 1002, NULL),
+(10050, 1, 1001, NULL),
+(10049, 1, 999, NULL),
+(10048, 1, 998, NULL),
+(10047, 1, 2, NULL),
+(10046, 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -90753,13 +90753,13 @@ INSERT INTO `usersistem` (`idx`, `npp`, `Nama`, `alamat`, `NoTelpon`, `user`, `p
 -- Indexes for table `artists`
 --
 ALTER TABLE `artists`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idx`);
 
 --
 -- Indexes for table `collabolators`
 --
 ALTER TABLE `collabolators`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`idx`),
   ADD UNIQUE KEY `collabolators_edition_id_artist_id_unique` (`edition_id`,`artist_id`),
   ADD KEY `collabolators_artist_id_foreign` (`artist_id`);
 
@@ -90773,7 +90773,7 @@ ALTER TABLE `content`
 -- Indexes for table `coupons`
 --
 ALTER TABLE `coupons`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`idx`),
   ADD UNIQUE KEY `coupons_edition_id_coupon_number_unique` (`edition_id`,`coupon_number`),
   ADD UNIQUE KEY `coupons_qr_code_unique` (`qr_code`),
   ADD UNIQUE KEY `generate_uuid` (`payment_unique_id`),
@@ -90784,14 +90784,14 @@ ALTER TABLE `coupons`
 -- Indexes for table `editions`
 --
 ALTER TABLE `editions`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`idx`),
   ADD UNIQUE KEY `editions_event_id_name_venue_city_venue_address_unique` (`event_id`,`name`,`venue_city`,`venue_address`);
 
 --
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`idx`),
   ADD UNIQUE KEY `events_name_unique` (`name`);
 
 --
@@ -90828,7 +90828,7 @@ ALTER TABLE `logdelrecord`
 -- Indexes for table `members`
 --
 ALTER TABLE `members`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`idx`),
   ADD UNIQUE KEY `members_email_unique` (`email`);
 
 --
@@ -90841,13 +90841,13 @@ ALTER TABLE `menu`
 -- Indexes for table `payment_statuses`
 --
 ALTER TABLE `payment_statuses`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idx`);
 
 --
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`idx`),
   ADD UNIQUE KEY `posts_event_id_name_unique` (`event_id`,`name`);
 
 --
@@ -90861,7 +90861,7 @@ ALTER TABLE `provinsi`
 -- Indexes for table `registrations`
 --
 ALTER TABLE `registrations`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`idx`),
   ADD UNIQUE KEY `registrations_member_id_edition_id_unique` (`member_id`,`edition_id`),
   ADD UNIQUE KEY `registrations_qr_code_unique` (`qr_code`),
   ADD KEY `registrations_edition_id_foreign` (`edition_id`);
@@ -90870,20 +90870,20 @@ ALTER TABLE `registrations`
 -- Indexes for table `shippers`
 --
 ALTER TABLE `shippers`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idx`);
 
 --
 -- Indexes for table `testimonials`
 --
 ALTER TABLE `testimonials`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`idx`),
   ADD KEY `testimonials_coupon_id_foreign` (`coupon_id`);
 
 --
 -- Indexes for table `testimoni_photos`
 --
 ALTER TABLE `testimoni_photos`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`idx`),
   ADD KEY `testimoni_photos_testimoni_id_foreign` (`testimoni_id`);
 
 --
@@ -90918,13 +90918,13 @@ ALTER TABLE `usersistem`
 -- AUTO_INCREMENT for table `artists`
 --
 ALTER TABLE `artists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `collabolators`
 --
 ALTER TABLE `collabolators`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `content`
@@ -90936,19 +90936,19 @@ ALTER TABLE `content`
 -- AUTO_INCREMENT for table `coupons`
 --
 ALTER TABLE `coupons`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `editions`
 --
 ALTER TABLE `editions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kecamatan`
@@ -90978,7 +90978,7 @@ ALTER TABLE `logdelrecord`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `menu`
@@ -90990,13 +90990,13 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `payment_statuses`
 --
 ALTER TABLE `payment_statuses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `provinsi`
@@ -91008,25 +91008,25 @@ ALTER TABLE `provinsi`
 -- AUTO_INCREMENT for table `registrations`
 --
 ALTER TABLE `registrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `shippers`
 --
 ALTER TABLE `shippers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `testimonials`
 --
 ALTER TABLE `testimonials`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `testimoni_photos`
 --
 ALTER TABLE `testimoni_photos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tipemenu`
@@ -91044,7 +91044,7 @@ ALTER TABLE `usergroup`
 -- AUTO_INCREMENT for table `usermenu`
 --
 ALTER TABLE `usermenu`
-  MODIFY `idx` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10046;
+  MODIFY `idx` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10070;
 
 --
 -- AUTO_INCREMENT for table `usersistem`
@@ -91060,47 +91060,47 @@ ALTER TABLE `usersistem`
 -- Constraints for table `collabolators`
 --
 ALTER TABLE `collabolators`
-  ADD CONSTRAINT `collabolators_artist_id_foreign` FOREIGN KEY (`artist_id`) REFERENCES `artists` (`id`),
-  ADD CONSTRAINT `collabolators_edition_id_foreign` FOREIGN KEY (`edition_id`) REFERENCES `editions` (`id`);
+  ADD CONSTRAINT `collabolators_artist_id_foreign` FOREIGN KEY (`artist_id`) REFERENCES `artists` (`idx`),
+  ADD CONSTRAINT `collabolators_edition_id_foreign` FOREIGN KEY (`edition_id`) REFERENCES `editions` (`idx`);
 
 --
 -- Constraints for table `coupons`
 --
 ALTER TABLE `coupons`
-  ADD CONSTRAINT `coupons_edition_id_foreign` FOREIGN KEY (`edition_id`) REFERENCES `editions` (`id`),
-  ADD CONSTRAINT `coupons_payment_status_id_foreign` FOREIGN KEY (`payment_status_id`) REFERENCES `payment_statuses` (`id`),
-  ADD CONSTRAINT `coupons_registration_id_foreign` FOREIGN KEY (`registration_id`) REFERENCES `registrations` (`id`);
+  ADD CONSTRAINT `coupons_edition_id_foreign` FOREIGN KEY (`edition_id`) REFERENCES `editions` (`idx`),
+  ADD CONSTRAINT `coupons_payment_status_id_foreign` FOREIGN KEY (`payment_status_id`) REFERENCES `payment_statuses` (`idx`),
+  ADD CONSTRAINT `coupons_registration_id_foreign` FOREIGN KEY (`registration_id`) REFERENCES `registrations` (`idx`);
 
 --
 -- Constraints for table `editions`
 --
 ALTER TABLE `editions`
-  ADD CONSTRAINT `editions_event_id_foreign` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`);
+  ADD CONSTRAINT `editions_event_id_foreign` FOREIGN KEY (`event_id`) REFERENCES `events` (`idx`);
 
 --
 -- Constraints for table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_event_id_foreign` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`);
+  ADD CONSTRAINT `posts_event_id_foreign` FOREIGN KEY (`event_id`) REFERENCES `events` (`idx`);
 
 --
 -- Constraints for table `registrations`
 --
 ALTER TABLE `registrations`
-  ADD CONSTRAINT `registrations_edition_id_foreign` FOREIGN KEY (`edition_id`) REFERENCES `editions` (`id`),
-  ADD CONSTRAINT `registrations_member_id_foreign` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`);
+  ADD CONSTRAINT `registrations_edition_id_foreign` FOREIGN KEY (`edition_id`) REFERENCES `editions` (`idx`),
+  ADD CONSTRAINT `registrations_member_id_foreign` FOREIGN KEY (`member_id`) REFERENCES `members` (`idx`);
 
 --
 -- Constraints for table `testimonials`
 --
 ALTER TABLE `testimonials`
-  ADD CONSTRAINT `testimonials_coupon_id_foreign` FOREIGN KEY (`coupon_id`) REFERENCES `coupons` (`id`);
+  ADD CONSTRAINT `testimonials_coupon_id_foreign` FOREIGN KEY (`coupon_id`) REFERENCES `coupons` (`idx`);
 
 --
 -- Constraints for table `testimoni_photos`
 --
 ALTER TABLE `testimoni_photos`
-  ADD CONSTRAINT `testimoni_photos_testimoni_id_foreign` FOREIGN KEY (`testimoni_id`) REFERENCES `testimonials` (`id`);
+  ADD CONSTRAINT `testimoni_photos_testimoni_id_foreign` FOREIGN KEY (`testimoni_id`) REFERENCES `testimonials` (`idx`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
