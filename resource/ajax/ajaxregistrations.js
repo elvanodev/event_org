@@ -135,11 +135,30 @@ function queryParams() {
 }
 function formshow() {
   $(document).ready(function () {
+    $("#btSimpan").show();
     $("#form").show();
   });
 }
 function formhide() {
   $(document).ready(function () {
+    $("#btSimpan").hide();
     $("#form").hide();
+  });
+}
+
+function onchangeeventid() {
+  $.ajax({
+    url: getBaseURL() + "index.php/ctreditions/geteditionslistbyevent/",
+    data: "edevent_id=" + $("#edevent_id").val(),
+    cache: false,
+    dataType: "json",
+    type: "POST",
+    success: function (json) {
+      $("#ededition_id").html("");
+      $("#ededition_id").html(json.option);
+    },
+    error: function (xmlHttpRequest, textStatus, errorThrown) {
+      alert("Error juga " + xmlHttpRequest.responseText);
+    },
   });
 }

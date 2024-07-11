@@ -52,7 +52,7 @@ class Ctrmembers extends CI_Controller
 
     $xBufResult .= setForm('address', 'Address', form_input_(getArrayObj('edaddress', '', '200'), '', ' placeholder="Address" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearmembers();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanmembers();"') . form_button('btTabel', 'Tabel', 'onclick="dosearchmembers(0);"') . '<div class="spacer"></div></div><div id="tabledatamembers">' . $this->getlistmembers(0, '') . '</div><div class="spacer"></div>';
+    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearmembers();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanmembers();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchmembers(0);"') . '<div class="spacer"></div></div><div id="tabledatamembers">' . $this->getlistmembers(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
   }
 

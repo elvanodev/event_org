@@ -67,7 +67,7 @@ class Ctrregistrations extends CI_Controller
 
     $xBufResult .= setForm('registered_at', 'Registered at', form_input_(getArrayObj('edregistered_at', '', '200'), '', ' placeholder="Registered at" class="datetimepicker"')) . '<div class="spacer"></div>';
 
-    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearregistrations();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanregistrations();"') . form_button('btTabel', 'Tabel', 'onclick="dosearchregistrations(0);"') . '<div class="spacer"></div></div><div id="tabledataregistrations">' . $this->getlistregistrations(0, '') . '</div><div class="spacer"></div>';
+    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearregistrations();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanregistrations();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchregistrations(0);"') . '<div class="spacer"></div></div><div id="tabledataregistrations">' . $this->getlistregistrations(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
   }
 
@@ -93,7 +93,7 @@ class Ctrregistrations extends CI_Controller
       $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditregistrations(\'' . $row->idx . '\');" ></i>';
       $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapusregistrations(\'' . $row->idx . '\');"></i>';
       if (!empty($row->qr_code)) {
-        $qr_code = '<img src="' . base_url() . 'resource/uploaded/img/' . $row->qr_code . '" onclick="previewimage(this.src);" style="border: solid;width: 70px; height: 80px; align:center;">';
+        $qr_code = '<img src="' . base_url() . 'resource/uploaded/qrcodes/' . $row->qr_code . '" onclick="previewimage(this.src);" style="border: solid;width: 70px; height: 80px; align:center;">';
       }
       $xbufResult .= tbaddrow(tbaddcell($no++) .
         tbaddcell($row->event_name) .
@@ -214,16 +214,16 @@ class Ctrregistrations extends CI_Controller
     echo json_encode(null);
   }
 
-  public function geteditionslistbyevent() { 
+  public function getregistrationslistbyedition() { 
     $this->load->helper('json');
     $this->load->helper('common');
     $this->load->helper('form');
-    $event_id = $_POST['edevent_id'];
-    $this->load->model('modeleditions');
-    $query = $this->modeleditions->getArrayListeditionsbyevent_id((int) $event_id);
+    $edition_id = $_POST['ededition_id'];
+    $this->load->model('modelregistrations');
+    $query = $this->modelregistrations->getArrayListregistrationsbyedition_id((int) $edition_id);
     $xBufResult = '';
     if (!empty($query)) {
-      $xBufResult = setForm('edition_id', 'Edition', form_dropdown_('ededition_id', $query, '', 'id="ededition_id" class="require" style="width:200px;" ')) . '<div class="spacer"></div>';
+      $xBufResult = setForm('registration_id', 'Registration Member', form_dropdown_('edregistration_id', $query, '', 'id="edregistration_id" class="require" style="width:200px;" ')) . '<div class="spacer"></div>';
     }
     $this->json_data['option'] = $xBufResult;
     echo json_encode($this->json_data);

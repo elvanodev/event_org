@@ -130,19 +130,21 @@ function queryParams() {
 }
 function formshow() {
   $(document).ready(function () {
+    $("#btSimpan").show();
     $("#form").show();
   });
 }
 function formhide() {
   $(document).ready(function () {
+    $("#btSimpan").hide();
     $("#form").hide();
   });
 }
 
 function onchangeeventid() {
   $.ajax({
-    url: getBaseURL() + "index.php/ctrcollabolators/geteditionslistbyevent/",
-    data: "edevent_id=" + $(this).val(),
+    url: getBaseURL() + "index.php/ctreditions/geteditionslistbyevent/",
+    data: "edevent_id=" + $("#edevent_id").val(),
     cache: false,
     dataType: "json",
     type: "POST",

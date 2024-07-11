@@ -27,6 +27,25 @@ class Modelregistrations extends CI_Model
       }
       return $xBuffResul;
    }
+   function getArrayListregistrationsbyedition_id($edition_id)
+   { /* spertinya perlu lock table*/
+      $xBuffResul = array();
+      $xStr =  "SELECT " .
+         "r.idx" . ",r.edition_id" .
+         ",r.member_id" .
+         ",r.registered_at" .
+         ",r.qr_code" .
+         ",m.name member_name" .
+         ",m.email member_email" .
+         " FROM registrations r
+          JOIN members m ON m.idx = r.member_id
+          where r.edition_id = '".$edition_id."' order by r.idx ASC ";
+      $query = $this->db->query($xStr);
+      foreach ($query->result() as $row) {
+         $xBuffResul[$row->idx] = $row->member_name . " - " . $row->member_email;
+      }
+      return $xBuffResul;
+   }
 
    function getListregistrations($xAwal, $xLimit, $xSearch = '')
    {

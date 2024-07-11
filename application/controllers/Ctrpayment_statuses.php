@@ -48,7 +48,7 @@ class Ctrpayment_statuses extends CI_Controller
 
     $xBufResult .= setForm('descriptions', 'Descriptions', form_textarea_(getArrayObj('eddescriptions', '', '200'), '', ' placeholder="Descriptions" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearpayment_statuses();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanpayment_statuses();"') . form_button('btTabel', 'Tabel', 'onclick="dosearchpayment_statuses(0);"') . '<div class="spacer"></div></div><div id="tabledatapayment_statuses">' . $this->getlistpayment_statuses(0, '') . '</div><div class="spacer"></div>';
+    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearpayment_statuses();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanpayment_statuses();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchpayment_statuses(0);"') . '<div class="spacer"></div></div><div id="tabledatapayment_statuses">' . $this->getlistpayment_statuses(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
   }
 

@@ -130,14 +130,16 @@ function queryParams() {
         page: 1
     };
 }
-function formshow(){
-    $(document).ready(function() {
-        $("#form").show();
-    })
+function formshow() {
+  $(document).ready(function () {
+    $("#btSimpan").show();
+    $("#form").show();
+  });
 }
-function formhide(){
-$(document).ready(function() {
+function formhide() {
+  $(document).ready(function () {
+    $("#btSimpan").hide();
     $("#form").hide();
-})
+  });
 }
   

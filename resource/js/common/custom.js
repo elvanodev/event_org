@@ -73,7 +73,7 @@ function removeLeadingZerosRegex(str) {
 }
 function removecurrencyformat(currency) {
     var numberPattern = /[+-]?\d+(\.\d+)?/g;
-    return currency.match( numberPattern ).map(function(v) { return parseFloat(v); }).join('');
+    return currency.match( numberPattern ).join('');
 }
 
 //Tanggal

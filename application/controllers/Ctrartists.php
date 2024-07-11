@@ -66,7 +66,7 @@ class Ctrartists extends CI_Controller
 
     $xBufResult .= setForm('email', 'Email', form_input_(getArrayObj('edemail', '', '200'), '', ' placeholder="Email" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearartists();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanartists();"') . form_button('btTabel', 'Tabel', 'onclick="dosearchartists(0);"') . '<div class="spacer"></div></div><div id="tabledataartists">' . $this->getlistartists(0, '') . '</div><div class="spacer"></div>';
+    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearartists();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanartists();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchartists(0);"') . '<div class="spacer"></div></div><div id="tabledataartists">' . $this->getlistartists(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
   }
 

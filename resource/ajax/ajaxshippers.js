@@ -131,11 +131,13 @@ function queryParams() {
 }
 function formshow() {
   $(document).ready(function () {
+    $("#btSimpan").show();
     $("#form").show();
   });
 }
 function formhide() {
   $(document).ready(function () {
+    $("#btSimpan").hide();
     $("#form").hide();
   });
 }

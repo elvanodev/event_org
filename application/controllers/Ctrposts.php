@@ -56,7 +56,7 @@ class Ctrposts extends CI_Controller
 
     $xBufResult .= setForm('post_text', 'Post Text', form_textarea_(getArrayObj('edpost_text', '', '200'), '', ' placeholder="Post Text" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearposts();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanposts();"') . form_button('btTabel', 'Tabel', 'onclick="dosearchposts(0);"') . '<div class="spacer"></div></div><div id="tabledataposts">' . $this->getlistposts(0, '') . '</div><div class="spacer"></div>';
+    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearposts();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanposts();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchposts(0);"') . '<div class="spacer"></div></div><div id="tabledataposts">' . $this->getlistposts(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
   }
 

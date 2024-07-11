@@ -55,7 +55,7 @@ class ctrusersistem extends CI_Controller {
 
 //        $xBufResult .= setForm('edisaktif', 'isaktif', form_input(getArrayObj('edisaktif', '', '100'))) . '<div class="spacer"></div>';
         $xBufResult .= setForm('edidusergroup', 'User Group', form_dropdown('edidusergroup', $this->modelusergroup->getArrayListusergroup(), '', 'id="edidusergroup" class="require" style="width:200px;" ')) . '<div class="spacer"></div>';
-        $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'Baru', 'onclick="doClearusersistem();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanusersistem();"') . form_button('btTabel', 'Tabel', 'onclick="dosearchusersistem(0);"') . '<div id="tabledatausersistem">' . $this->getlistusersistem(0, '') . '</div><div class="spacer"></div>';
+        $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'Baru', 'onclick="doClearusersistem();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanusersistem();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchusersistem(0);"') . '<div id="tabledatausersistem">' . $this->getlistusersistem(0, '') . '</div><div class="spacer"></div>';
         return $xBufResult;
     }
 

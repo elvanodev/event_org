@@ -66,7 +66,7 @@ class Ctreditions extends CI_Controller
 
     $xBufResult .= setForm('coupon_price', 'Coupon Price', form_input_(getArrayObj('edcoupon_price', '', '200'), '', ' placeholder="Coupon Price" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"  data-type="currency"')) . '<div class="spacer"></div>';
 
-    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doCleareditions();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpaneditions();"') . form_button('btTabel', 'Tabel', 'onclick="dosearcheditions(0);"') . '<div class="spacer"></div></div><div id="tabledataeditions">' . $this->getlisteditions(0, '') . '</div><div class="spacer"></div>';
+    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doCleareditions();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpaneditions();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearcheditions(0);"') . '<div class="spacer"></div></div><div id="tabledataeditions">' . $this->getlisteditions(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
   }
 
@@ -103,7 +103,7 @@ class Ctreditions extends CI_Controller
         tbaddcell($row->venue_address) .
         tbaddcell($row->venue_city) .
         tbaddcell($row->quota) .
-        tbaddcell("Rp" . number_format($row->coupon_price, 2), ' class="curency" ') .
+        tbaddcell("Rp" . number_format($row->coupon_price), ' class="curency" ') .
         tbaddcell($row->descriptions) .
 
         tbaddcell($xButtonEdit . $xButtonHapus));
@@ -223,5 +223,19 @@ class Ctreditions extends CI_Controller
       }
     }
     echo json_encode(null);
+  }
+  public function geteditionslistbyevent() { 
+    $this->load->helper('json');
+    $this->load->helper('common');
+    $this->load->helper('form');
+    $event_id = $_POST['edevent_id'];
+    $this->load->model('modeleditions');
+    $query = $this->modeleditions->getArrayListeditionsbyevent_id((int) $event_id);
+    $xBufResult = '';
+    if (!empty($query)) {
+      $xBufResult = setForm('edition_id', 'Edition', form_dropdown_('ededition_id', $query, '', 'id="ededition_id" class="require" style="width:200px;" ')) . '<div class="spacer"></div>';
+    }
+    $this->json_data['option'] = $xBufResult;
+    echo json_encode($this->json_data);
   }
 }

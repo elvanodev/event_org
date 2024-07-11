@@ -51,7 +51,7 @@ $xBufResult .= setForm('member_name','member_name',form_input_(getArrayObj('edme
 
 $xBufResult .= setForm('testimoni_text','testimoni_text',form_input_(getArrayObj('edtestimoni_text','','200'),'',' placeholder="testimoni_text" ')).'<div class="spacer"></div>';
 
-$xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doCleartestimonials();"').form_button('btSimpan','Simpan','onclick="dosimpantestimonials();"').form_button('btTabel','Tabel','onclick="dosearchtestimonials(0);"').'<div class="spacer"></div></div><div id="tabledatatestimonials">'.$this->getlisttestimonials(0, ''). '</div><div class="spacer"></div>'; 
+$xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doCleartestimonials();"').form_button('btSimpan','Simpan','onclick="dosimpantestimonials();" id="btSimpan"').form_button('btTabel','Tabel','onclick="dosearchtestimonials(0);"').'<div class="spacer"></div></div><div id="tabledatatestimonials">'.$this->getlisttestimonials(0, ''). '</div><div class="spacer"></div>'; 
        return $xBufResult;
 
   }

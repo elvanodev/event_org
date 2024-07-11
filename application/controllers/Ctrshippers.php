@@ -48,7 +48,7 @@ class Ctrshippers extends CI_Controller
 
     $xBufResult .= setForm('shipper_price', 'Shipper Price', form_input_(getArrayObj('edshipper_price', '0', '200'), '', ' placeholder="Shipper Price" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"  data-type="currency" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearshippers();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanshippers();"') . form_button('btTabel', 'Tabel', 'onclick="dosearchshippers(0);"') . '<div class="spacer"></div></div><div id="tabledatashippers">' . $this->getlistshippers(0, '') . '</div><div class="spacer"></div>';
+    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearshippers();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanshippers();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchshippers(0);"') . '<div class="spacer"></div></div><div id="tabledatashippers">' . $this->getlistshippers(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
   }
 
@@ -72,7 +72,7 @@ class Ctrshippers extends CI_Controller
       $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapusshippers(\'' . $row->idx . '\');"></i>';
       $xbufResult .= tbaddrow(tbaddcell($no++) .
         tbaddcell($row->name) .
-        tbaddcell("Rp" . number_format($row->shipper_price, 2), ' class="curency" ') .
+        tbaddcell("Rp" . number_format($row->shipper_price), ' class="curency" ') .
 
         tbaddcell($xButtonEdit . $xButtonHapus));
     }
