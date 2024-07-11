@@ -3,6 +3,9 @@ $(document).ready(function () {
     formatrupiah();
     settanggal();
     declarecustomtooltip();
+    $(".datetimepicker").each(function () {
+        $(this).datetimepicker();
+    });
 });
 
 function declarecustomtooltip() {

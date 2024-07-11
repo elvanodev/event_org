@@ -103,7 +103,7 @@ class Ctrartists extends CI_Controller
         tbaddcell($row->name) .
         tbaddcell(mysqltodate($row->birth_date)) .
         tbaddcell($row->birth_place) .
-        tbaddcell(substr($row->bio, 0, 20)) .
+        tbaddcell(substr($row->bio, 0, 20).'...') .
         tbaddcell($row->quote) .
         tbaddcell($poster_img) .
         tbaddcell($row->phone) .

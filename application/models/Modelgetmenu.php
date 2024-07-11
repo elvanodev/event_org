@@ -30,8 +30,7 @@ class modelgetmenu extends CI_Model {
        // }
         $xBuffResult[1] = $menuatas;
         $xBuffResult[2] = $menukiri;
-        // $xBuffResult[3] = "" . base_url() . "resource/scriptmedia/images/logo.png";
-        $xBuffResult[3] = "https://picsum.photos/200";
+        $xBuffResult[3] = "" . base_url() . "resource/images/logo.png";
 
         $xBuffResult[4] = $this->session->userdata('nama');
         $xBuffResult[5] = (!empty($judul) ? $judul : '');
@@ -51,8 +50,7 @@ class modelgetmenu extends CI_Model {
         }
         $xMenuKanan = '';
         $xUser = $this->session->userdata('nama');
-        // $logo = "" . base_url() . "resource/admin/dist/img/logo.png";
-        $logo = "https://picsum.photos/200";
+        $logo = "" . base_url() . "resource/images/logo.png";
         $buf1 = 'Event Org';
         $xShow = $this->getArrayKomponen(TRUE, $buf1, $xBufResult, $judul);
         $xecho = '<!DOCTYPE html>
@@ -85,6 +83,7 @@ class modelgetmenu extends CI_Model {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.2/dist/bootstrap-table.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css " /> 
   '.
                 
   // link_tag('resource/admin/vendor/bootstrap-table/bootstrap-table.css') . "\n" .
@@ -229,6 +228,7 @@ class modelgetmenu extends CI_Model {
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="' . base_url() . 'resource/AdminLTE/dist/js/pages/dashboard.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js "></script>
 <script src="' . base_url() . 'resource/js/common/custom.js"></script>
 </body>
 </html>

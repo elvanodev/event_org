@@ -29,7 +29,7 @@ class Modelartists extends CI_Model
          " FROM artists   order by idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
-         $xBuffResul[$row->idx] = $row->idx;
+         $xBuffResul[$row->idx] = $row->name;
       }
       return $xBuffResul;
    }

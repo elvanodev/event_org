@@ -97,10 +97,10 @@ class Ctrevents extends CI_Controller
         tbaddcell($row->name) .
         tbaddcell($row->is_active) .
         tbaddcell($row->descriptions) .
-        tbaddcell(substr($row->about_event,0,20)) .
-        tbaddcell(substr($row->about1_event,0,20)) .
-        tbaddcell(substr($row->about2_event,0,20)) .
-        tbaddcell(substr($row->about3_event,0,20)) .
+        tbaddcell(substr($row->about_event,0,20).'...') .
+        tbaddcell(substr($row->about1_event,0,20).'...') .
+        tbaddcell(substr($row->about2_event,0,20).'...') .
+        tbaddcell(substr($row->about3_event,0,20).'...') .
         tbaddcell($poster_image) .
 
         tbaddcell($xButtonEdit . $xButtonHapus));
