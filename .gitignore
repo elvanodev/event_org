@@ -17,3 +17,4 @@ application/logs/*
 !application/logs/.htaccess
 /vendor/
 /resource/uploaded/img
+/resource/uploaded/qrcodes
