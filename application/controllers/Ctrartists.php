@@ -96,6 +96,7 @@ class Ctrartists extends CI_Controller
     foreach ($xQuery->result() as $row) {
       $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditartists(\'' . $row->idx . '\');" ></i>';
       $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapusartists(\'' . $row->idx . '\');"></i>';
+      $poster_img = 'Image is not available!';
       if (!empty($row->poster_img)) {
         $poster_img = '<img src="' . base_url() . 'resource/uploaded/img/' . $row->poster_img . '" onclick="previewimage(this.src);" style="border: solid;width: 70px; height: 80px; align:center;">';
       }

@@ -94,9 +94,7 @@ function dosimpanevents() {
         "&edabout3_event=" +
         $("#edabout3_event").val() +
         "&edposter_image=" +
-        $("#edposter_image").val() +
-        "&edcreated_at=" +
-        $("#edcreated_at").val(),
+        $("#edposter_image").val(),
       cache: false,
       dataType: "json",
       type: "POST",

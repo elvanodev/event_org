@@ -46,6 +46,7 @@ function doedittestimonials(edidx) {
         $("#edevent_name").val(json.event_name);
         $("#edmember_name").val(json.member_name);
         $("#edtestimoni_text").val(json.testimoni_text);
+        $("#edtestimoni_photo").val(json.testimoni_photo);
       },
       error: function (xmlHttpRequest, textStatus, errorThrown) {
         alert("Error juga " + xmlHttpRequest.responseText);
@@ -63,6 +64,7 @@ function doCleartestimonials() {
     $("#edevent_name").val("");
     $("#edmember_name").val("");
     $("#edtestimoni_text").val("");
+    $("#edtestimoni_photo").val("");
   });
 }
 
@@ -83,8 +85,8 @@ function dosimpantestimonials() {
         $("#edmember_name").val() +
         "&edtestimoni_text=" +
         $("#edtestimoni_text").val() +
-        "&edcreated_at=" +
-        $("#edcreated_at").val(),
+        "&edtestimoni_photo=" +
+        $("#edtestimoni_photo").val(),
       cache: false,
       dataType: "json",
       type: "POST",
@@ -102,6 +104,7 @@ function dosimpantestimonials() {
         toastr.success("Data berhasil disimpan");
       },
       error: function (xmlHttpRequest, textStatus, errorThrown) {
+        console.log("Error juga " + xmlHttpRequest.responseText);
         alert("Error juga " + xmlHttpRequest.responseText);
       },
     });
@@ -167,6 +170,12 @@ function onchangecoupon_number() {
         $("#edmember_name").val(json.member_name);
         $("#edevent_name_v").val(json.event_name);
         $("#edmember_name_v").val(json.member_name);
+      } else {        
+        $("#edcoupon_id").val("");
+        $("#edevent_name").val("");
+        $("#edmember_name").val("");
+        $("#edevent_name_v").val("");
+        $("#edmember_name_v").val("");
       }
     },
     error: function (xmlHttpRequest, textStatus, errorThrown) {
@@ -176,6 +185,7 @@ function onchangecoupon_number() {
 }
 
 $(document).ready(function () {
+  $("#edtestimoni_photo").myupload();
   let html5QrcodeScanner = new Html5QrcodeScanner(
     "reader",
     { fps: 10, qrbox: {width: 250, height: 250} },

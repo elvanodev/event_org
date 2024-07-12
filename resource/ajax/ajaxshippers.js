@@ -72,9 +72,7 @@ function dosimpanshippers() {
         "&edname=" +
         $("#edname").val() +
         "&edshipper_price=" +
-        edshipper_price +
-        "&edcreated_at=" +
-        $("#edcreated_at").val(),
+        edshipper_price,
       cache: false,
       dataType: "json",
       type: "POST",

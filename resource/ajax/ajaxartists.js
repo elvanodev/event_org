@@ -102,9 +102,7 @@ function dosimpanartists() {
         "&edtwitter_link=" +
         $("#edtwitter_link").val() +
         "&edemail=" +
-        $("#edemail").val() +
-        "&edcreated_at=" +
-        $("#edcreated_at").val(),
+        $("#edemail").val(),
       cache: false,
       dataType: "json",
       type: "POST",

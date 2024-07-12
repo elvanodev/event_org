@@ -78,9 +78,7 @@ function dosimpanmembers() {
         "&edpassword=" +
         $("#edpassword").val() +
         "&edaddress=" +
-        $("#edaddress").val() +
-        "&edcreated_at=" +
-        $("#edcreated_at").val(),
+        $("#edaddress").val(),
       cache: false,
       dataType: "json",
       type: "POST",

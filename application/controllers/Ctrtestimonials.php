@@ -32,6 +32,8 @@ class Ctrtestimonials extends CI_Controller
       '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/admin/vendor/toaster/toastr.min.js"></script>' . "\n" .
       '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/js/common/fileupload/jquery.ui.widget.js"></script>' . "\n" .
       '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/ajax/ajaxtestimonials.js"></script>' . "\n" .
+      '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/js/common/fileupload/jquery.fileupload.js"></script>' . "\n" .
+      '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/js/common/fileupload/myupload.js"></script>' . "\n" .
       '<script src="https://unpkg.com/html5-qrcode" type="text/javascript">';
     echo $this->modelgetmenu->SetViewAdmin($this->setDetailFormtestimonials($xidx), '', '', $xAddJs, '', 'testimonials');
   }
@@ -51,13 +53,15 @@ class Ctrtestimonials extends CI_Controller
     $xBufResult .= 'Scan QR disini' . '<div class="spacer"></div>';
     $xBufResult .= '<div id="reader" width="600px"></div>' . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('coupon_number', 'Coupon Number', form_input_(getArrayObj('edcoupon_number', '', '200'), '', ' placeholder="Coupon Number" onchange="onchangecoupon_number()"')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('coupon_number', 'Coupon Number', form_input_(getArrayObj('edcoupon_number', '', '200'), '', ' placeholder="Coupon Number" onkeyup="onchangecoupon_number()"')) . '<div class="spacer"></div>';
 
     $xBufResult .= setForm('event_name', 'Event Name', form_input_(getArrayObj('edevent_name_v', '', '200'), '', ' placeholder="Event Name" disabled')) . '<div class="spacer"></div>';
 
     $xBufResult .= setForm('member_name', 'Member Name', form_input_(getArrayObj('edmember_name_v', '', '200'), '', ' placeholder="Member Name" disabled')) . '<div class="spacer"></div>';
 
     $xBufResult .= setForm('testimoni_text', 'Testimoni Text', form_input_(getArrayObj('edtestimoni_text', '', '200'), '', ' placeholder="Testimoni Text" ')) . '<div class="spacer"></div>';
+
+    $xBufResult .= setForm('testimoni_photo', 'Testimoni Photo', '<div id="uploadtestimoni_photo" style="width:150px;">' . form_input_(getArrayObj('edtestimoni_photo', '', '100'), '', 'alt="Unggah"') . '</div>') . '<div class="spacer"></div>';
 
     $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'New', 'onclick="doCleartestimonials();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpantestimonials();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchtestimonials(0);"') . '<div class="spacer"></div></div><div id="tabledatatestimonials">' . $this->getlisttestimonials(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
@@ -73,6 +77,7 @@ class Ctrtestimonials extends CI_Controller
       tbaddcellhead('Event Name', '', 'data-field="event_name" data-sortable="true" width=10%') .
       tbaddcellhead('Member Name', '', 'data-field="member_name" data-sortable="true" width=10%') .
       tbaddcellhead('Testimoni Text', '', 'data-field="testimoni_text" data-sortable="true" width=10%') .
+      tbaddcellhead('Testimoni Photo', '', 'data-field="testimoni_photo" data-sortable="true" width=10%') .
 
       tbaddcellhead('Action', 'padding:5px;width:10%;text-align:center;', 'col-md-2'), '', TRUE);
     $this->load->model('modeltestimonials');
@@ -83,11 +88,16 @@ class Ctrtestimonials extends CI_Controller
     foreach ($xQuery->result() as $row) {
       $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doedittestimonials(\'' . $row->idx . '\');" ></i>';
       $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapustestimonials(\'' . $row->idx . '\');"></i>';
+      $testimoni_photo = 'Image is not available!';
+      if (!empty($row->testimoni_photo)) {
+        $testimoni_photo = '<img src="' . base_url() . 'resource/uploaded/img/' . $row->testimoni_photo . '" onclick="previewimage(this.src);" style="border: solid;width: 70px; height: 80px; align:center;">';
+      }
       $xbufResult .= tbaddrow(tbaddcell($no++) .
         tbaddcell($row->coupon_number) .
         tbaddcell($row->event_name) .
         tbaddcell($row->member_name) .
         tbaddcell($row->testimoni_text) .
+        tbaddcell($testimoni_photo) .
 
         tbaddcell($xButtonEdit . $xButtonHapus));
     }
@@ -129,6 +139,7 @@ class Ctrtestimonials extends CI_Controller
     $this->json_data['event_name'] = $row->event_name;
     $this->json_data['member_name'] = $row->member_name;
     $this->json_data['testimoni_text'] = $row->testimoni_text;
+    $this->json_data['testimoni_photo'] = $row->testimoni_photo;
 
     echo json_encode($this->json_data);
   }
@@ -187,16 +198,24 @@ class Ctrtestimonials extends CI_Controller
     $xevent_name = $_POST['edevent_name'];
     $xmember_name = $_POST['edmember_name'];
     $xtestimoni_text = $_POST['edtestimoni_text'];
+    $xtestimoni_photo = $_POST['edtestimoni_photo'];
+    $xlink_photo = $xtestimoni_photo;
 
     $this->load->model('modeltestimonials');
+    $this->load->model('modeltestimoni_photos');
     $xidpegawai = $this->session->userdata('idpegawai');
     if (!empty($xidpegawai)) {
       if ($xidx != '0') {
         $xStr =  $this->modeltestimonials->setUpdatetestimonials($xidx, $xcoupon_id, $xcoupon_number, $xevent_name, $xmember_name, $xtestimoni_text);
+
+        $xStr =  $this->modeltestimoni_photos->setUpdatetestimoni_photosbytestimoni_id($xidx, $xlink_photo);
       } else {
-        $xStr =  $this->modeltestimonials->setInserttestimonials($xidx, $xcoupon_id, $xcoupon_number, $xevent_name, $xmember_name, $xtestimoni_text);
+        $insert_id =  $this->modeltestimonials->setInserttestimonials($xidx, $xcoupon_id, $xcoupon_number, $xevent_name, $xmember_name, $xtestimoni_text);
+
+        $xtestimoni_id = $insert_id;
+        $xStr =  $this->modeltestimoni_photos->setInserttestimoni_photos($xidx, $xtestimoni_id, $xlink_photo);
       }
     }
-    echo json_encode(null);
+    echo json_encode($_POST);
   }
 }

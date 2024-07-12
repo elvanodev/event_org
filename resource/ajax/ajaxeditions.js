@@ -100,9 +100,7 @@ function dosimpaneditions() {
         "&edquota=" +
         $("#edquota").val() +
         "&edcoupon_price=" +
-        edcoupon_price +
-        "&edcreated_at=" +
-        $("#edcreated_at").val(),
+        edcoupon_price,
       cache: false,
       dataType: "json",
       type: "POST",

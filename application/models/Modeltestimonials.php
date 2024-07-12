@@ -9,19 +9,23 @@ class Modeltestimonials extends CI_Model
       parent::__construct();
    }
 
+   private $detaultquery = "select
+	t.idx,
+	t.coupon_id,
+	t.coupon_number,
+	t.event_name,
+	t.member_name,
+	t.testimoni_text,
+	tp.link_photo testimoni_photo
+from
+	testimonials t
+	join testimoni_photos tp on tp.testimoni_id = t.idx ";
 
 
    function getArrayListtestimonials()
    { /* spertinya perlu lock table*/
       $xBuffResul = array();
-      $xStr =  "SELECT " .
-         "idx" . ",coupon_id" .
-         ",coupon_number" .
-         ",event_name" .
-         ",member_name" .
-         ",testimoni_text" .
-
-         " FROM testimonials   order by idx ASC ";
+      $xStr = $this->detaultquery." order by t.idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
          $xBuffResul[$row->idx] = $row->idx;
@@ -32,16 +36,13 @@ class Modeltestimonials extends CI_Model
    function getListtestimonials($xAwal, $xLimit, $xSearch = '')
    {
       if (!empty($xSearch)) {
-         $xSearch = "Where idx like '%" . $xSearch . "%'";
+         $xSearch = "Where t.coupon_number like '%" . $xSearch . "%'
+          or t.coupon_number like '%" . $xSearch . "%'
+          or t.event_name like '%" . $xSearch . "%'
+          or t.member_name like '%" . $xSearch . "%'
+          or t.testimoni_text like '%" . $xSearch . "%'";
       }
-      $xStr =   "SELECT " .
-         "idx" .
-         ",coupon_id" .
-         ",coupon_number" .
-         ",event_name" .
-         ",member_name" .
-         ",testimoni_text" .
-         " FROM testimonials $xSearch order by idx DESC limit " . $xAwal . "," . $xLimit;
+      $xStr = $this->detaultquery." $xSearch order by t.idx DESC limit " . $xAwal . "," . $xLimit;
       $query = $this->db->query($xStr);
       return $query;
    }
@@ -49,15 +50,7 @@ class Modeltestimonials extends CI_Model
 
    function getDetailtestimonials($xidx)
    {
-      $xStr =   "SELECT " .
-         "idx" .
-         ",coupon_id" .
-         ",coupon_number" .
-         ",event_name" .
-         ",member_name" .
-         ",testimoni_text" .
-
-         " FROM testimonials  WHERE idx = '" . $xidx . "'";
+      $xStr = $this->detaultquery." WHERE t.idx = '" . $xidx . "'";
 
       $query = $this->db->query($xStr);
       $row = $query->row();
@@ -67,15 +60,7 @@ class Modeltestimonials extends CI_Model
 
    function getLastIndextestimonials()
    { /* spertinya perlu lock table*/
-      $xStr =   "SELECT " .
-         "idx" .
-         ",coupon_id" .
-         ",coupon_number" .
-         ",event_name" .
-         ",member_name" .
-         ",testimoni_text" .
-
-         " FROM testimonials order by idx DESC limit 1 ";
+      $xStr = $this->detaultquery." order by t.idx DESC limit 1 ";
       $query = $this->db->query($xStr);
       $row = $query->row();
       return $row;
@@ -85,17 +70,26 @@ class Modeltestimonials extends CI_Model
 
    function setInserttestimonials($xidx, $xcoupon_id, $xcoupon_number, $xevent_name, $xmember_name, $xtestimoni_text)
    {
-      $xStr =  " INSERT INTO testimonials( " .
-         "idx" .
-         ",coupon_id" .
-         ",coupon_number" .
-         ",event_name" .
-         ",member_name" .
-         ",testimoni_text" .
-         ",created_at" .
-         ") VALUES('" . $xidx . "','" . $xcoupon_id . "','" . $xcoupon_number . "','" . $xevent_name . "','" . $xmember_name . "','" . $xtestimoni_text . "',NOW())";
-      $query = $this->db->query($xStr);
-      return $xidx;
+      // $xStr =  " INSERT INTO testimonials( " .
+      //    "idx" .
+      //    ",coupon_id" .
+      //    ",coupon_number" .
+      //    ",event_name" .
+      //    ",member_name" .
+      //    ",testimoni_text" .
+      //    ",created_at" .
+      //    ") VALUES('" . $xidx . "','" . $xcoupon_id . "','" . $xcoupon_number . "','" . $xevent_name . "','" . $xmember_name . "','" . $xtestimoni_text . "',NOW()) returning idx";
+      $post_data = [
+         "coupon_id" => $xcoupon_id,
+         "coupon_number" => $xcoupon_number,
+         "event_name" => $xevent_name,
+         "member_name" => $xmember_name,
+         "testimoni_text" => $xtestimoni_text
+      ];
+      $this->db->insert('testimonials', $post_data);
+      $insert_id = $this->db->insert_id();
+   
+      return  $insert_id;
    }
 
    function setUpdatetestimonials($xidx, $xcoupon_id, $xcoupon_number, $xevent_name, $xmember_name, $xtestimoni_text)

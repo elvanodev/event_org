@@ -90,6 +90,7 @@ class Ctrevents extends CI_Controller
     foreach ($xQuery->result() as $row) {
       $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditevents(\'' . $row->idx . '\');" ></i>';
       $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapusevents(\'' . $row->idx . '\');"></i>';
+      $poster_image = 'Image is not available!';
       if (!empty($row->poster_image)) {
         $poster_image = '<img src="' . base_url() . 'resource/uploaded/img/' . $row->poster_image . '" onclick="previewimage(this.src);" style="border: solid;width: 70px; height: 80px; align:center;">';
       }

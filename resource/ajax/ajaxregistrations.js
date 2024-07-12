@@ -74,9 +74,7 @@ function dosimpanregistrations() {
         "&edmember_id=" +
         $("#edmember_id").val() +
         "&edregistered_at=" +
-        $("#edregistered_at").val() +
-        "&edcreated_at=" +
-        $("#edcreated_at").val(),
+        $("#edregistered_at").val(),
       cache: false,
       dataType: "json",
       type: "POST",

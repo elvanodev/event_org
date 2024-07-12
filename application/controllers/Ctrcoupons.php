@@ -126,9 +126,11 @@ class Ctrcoupons extends CI_Controller
     foreach ($xQuery->result() as $row) {
       $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditcoupons(\'' . $row->idx . '\');" ></i>';
       $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapuscoupons(\'' . $row->idx . '\');"></i>';
+      $qr_code = 'Image is not available!';
       if (!empty($row->qr_code)) {
         $qr_code = '<img src="' . base_url() . 'resource/uploaded/qrcodes/' . $row->qr_code . '" onclick="previewimage(this.src);" style="border: solid;width: 70px; height: 80px; align:center;">';
       }
+      $payment_confirm_receipt = 'Image is not available!';
       if (!empty($row->payment_confirm_receipt)) {
         $payment_confirm_receipt = '<img src="' . base_url() . 'resource/uploaded/img/' . $row->payment_confirm_receipt . '" onclick="previewimage(this.src);" style="border: solid;width: 70px; height: 80px; align:center;">';
       }

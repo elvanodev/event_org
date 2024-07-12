@@ -78,9 +78,7 @@ function dosimpanposts() {
         "&eduploaded_at=" +
         $("#eduploaded_at").val() +
         "&edpost_text=" +
-        $("#edpost_text").val() +
-        "&edcreated_at=" +
-        $("#edcreated_at").val(),
+        $("#edpost_text").val(),
       cache: false,
       dataType: "json",
       type: "POST",

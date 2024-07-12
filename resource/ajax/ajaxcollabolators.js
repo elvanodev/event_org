@@ -70,9 +70,7 @@ function dosimpancollabolators() {
         "&ededition_id=" +
         $("#ededition_id").val() +
         "&edartist_id=" +
-        $("#edartist_id").val() +
-        "&edcreated_at=" +
-        $("#edcreated_at").val(),
+        $("#edartist_id").val(),
       cache: false,
       dataType: "json",
       type: "POST",
