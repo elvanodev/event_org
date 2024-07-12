@@ -283,8 +283,7 @@ class Ctrcoupons extends CI_Controller
       $xidpegawai = $this->session->userdata('idpegawai');
       if (!empty($xidpegawai)) {        
         $prefix = "ED".$xedition_id."_"."RG".$xregistration_id;
-        $length = strlen($xcoupon_number);
-        $xqr_code = generate_qrcode($prefix, $length);
+        $xqr_code = generate_qrcode($prefix, false, 0, $xcoupon_number);
 
         if ($xidx != '0') {
           $xStr =  $this->modelcoupons->setUpdatecoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id);

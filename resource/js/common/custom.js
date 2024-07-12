@@ -184,4 +184,23 @@ function onclickshowoptiontooltip(repid,rowindex) {
         $("#tooltipmodal").show();
     }
 }
+
+function decodeqrnumber(qrcodetext) {
+    var qrcodesplit = qrcodetext.split("_");
+    var edition_id = qrcodesplit[0].substring(2);
+    var member_id = null;
+    var registration_id = null;
+    if (qrcodesplit[1].includes('M')){
+        member_id = qrcodesplit[1].substring(1);
+    } else {
+        registration_id = qrcodesplit[1].substring(2);
+    }
+    var qr_number = qrcodesplit[2];
+    return {
+        'edition_id': edition_id,
+        'member_id': member_id,
+        'registration_id': registration_id,
+        'qr_number': qr_number
+    }
+}
   

@@ -165,6 +165,8 @@ function onchangecoupon_number() {
         $("#edcoupon_id").val(json.coupon_id);
         $("#edevent_name").val(json.event_name);
         $("#edmember_name").val(json.member_name);
+        $("#edevent_name_v").val(json.event_name);
+        $("#edmember_name_v").val(json.member_name);
       }
     },
     error: function (xmlHttpRequest, textStatus, errorThrown) {
@@ -184,6 +186,12 @@ $(document).ready(function () {
 function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   console.log(`Code matched = ${decodedText}`, decodedResult);
+  
+  var decodedqr = decodeqrnumber(decodedText);
+  console.log(decodedqr);
+
+  $("#edcoupon_number").val(decodedqr.qr_number);
+  onchangecoupon_number();
 }
 
 function onScanFailure(error) {
