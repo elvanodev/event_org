@@ -62,7 +62,7 @@ class Ctrcollabolators extends CI_Controller
     $selected_artist['selected'] = $artist->idx;
     $xBufResult .= setForm('artist_id', 'Artist', form_dropdown_($selected_artist, $this->modelartists->getArrayListartists(), '', 'id="edartist_id" class="require" style="width:200px;" placeholder="Artist"')) . '<div class="spacer"></div>';
 
-    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearcollabolators();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpancollabolators();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchcollabolators(0);"') . '<div class="spacer"></div></div><div id="tabledatacollabolators">' . $this->getlistcollabolators(0, '') . '</div><div class="spacer"></div>';
+    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'New', 'onclick="doClearcollabolators();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpancollabolators();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchcollabolators(0);"') . '<div class="spacer"></div></div><div id="tabledatacollabolators">' . $this->getlistcollabolators(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
   }
 

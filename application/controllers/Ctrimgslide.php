@@ -52,7 +52,7 @@ class ctrimgslide extends CI_Controller {
 //        $xBufResult .= setForm('edtglupdate', 'tglupdate', form_input(getArrayObj('edtglupdate', '', '100'))) . '<div class="spacer"></div>';
 //        $xBufResult .= setForm('edidpegawai', 'idpegawai', form_input(getArrayObj('edidpegawai', '', '100'))) . '<div class="spacer"></div>';
         $xBufResult .= setForm('edlink', 'Link', form_input(getArrayObj('edlink', '', '600'))) . '<div class="spacer"></div> ';
-        $xBufResult .= '<div class="garis"></div>' . form_button('btSimpan', 'simpan', 'onclick="dosimpanimgslide();"') . form_button('btNew', 'new', 'onclick="doClearimgslide();"') . '<div class="spacer"></div><div id="tabledataimgslide">' . $this->getlistimgslide(0, '') . '</div><div class="spacer"></div>';
+        $xBufResult .= '<div class="garis"></div>' . form_button('btSimpan', 'simpan', 'onclick="dosimpanimgslide();"') . form_button('btNew', 'New', 'onclick="doClearimgslide();"') . '<div class="spacer"></div><div id="tabledataimgslide">' . $this->getlistimgslide(0, '') . '</div><div class="spacer"></div>';
         return $xBufResult;
     }
 

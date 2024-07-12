@@ -45,7 +45,7 @@ $xBufResult .= setForm('testimoni_id','testimoni_id',form_input_(getArrayObj('ed
 
 $xBufResult .= setForm('link_photo','link_photo',form_input_(getArrayObj('edlink_photo','','200'),'',' placeholder="link_photo" ')).'<div class="spacer"></div>';
 
-$xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','new','onclick="doCleartestimoni_photos();"').form_button('btSimpan','Simpan','onclick="dosimpantestimoni_photos();" id="btSimpan"').form_button('btTabel','Tabel','onclick="dosearchtestimoni_photos(0);"').'<div class="spacer"></div></div><div id="tabledatatestimoni_photos">'.$this->getlisttestimoni_photos(0, ''). '</div><div class="spacer"></div>'; 
+$xBufResult .= '<div class="garis"></div></div></div>'.form_button('btNew','New','onclick="doCleartestimoni_photos();"').form_button('btSimpan','Simpan','onclick="dosimpantestimoni_photos();" id="btSimpan"').form_button('btTabel','Tabel','onclick="dosearchtestimoni_photos(0);"').'<div class="spacer"></div></div><div id="tabledatatestimoni_photos">'.$this->getlisttestimoni_photos(0, ''). '</div><div class="spacer"></div>'; 
        return $xBufResult;
 
   }

@@ -77,7 +77,6 @@ from
       return $query;
    }
 
-
    function getDetailcoupons($xidx)
    {
       $xStr = $this->default_query . " WHERE c.idx = '" . $xidx . "'";
@@ -87,6 +86,14 @@ from
       return $row;
    }
 
+   function getDetailcouponBycoupon_number($xcoupon_number)
+   {
+      $xStr = $this->default_query . " WHERE c.coupon_number = '" . $xcoupon_number . "'";
+
+      $query = $this->db->query($xStr);
+      $row = $query->row();
+      return $row;
+   }
 
    function getLastIndexcoupons()
    { /* spertinya perlu lock table*/

@@ -93,7 +93,7 @@ class Ctrcoupons extends CI_Controller
 
     $xBufResult .= setForm('valid_until', 'Valid Until', form_input_(getArrayObj('edvalid_until', '', '200'), '', ' placeholder="Valid Until" class="datetimepicker"')) . '<div class="spacer"></div>';
 
-    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearcoupons();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpancoupons();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchcoupons(0);"') . '<div class="spacer"></div></div><div id="tabledatacoupons">' . $this->getlistcoupons(0, '') . '</div><div class="spacer"></div>';
+    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'New', 'onclick="doClearcoupons();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpancoupons();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchcoupons(0);"') . '<div class="spacer"></div></div><div id="tabledatacoupons">' . $this->getlistcoupons(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
   }
 
@@ -295,6 +295,24 @@ class Ctrcoupons extends CI_Controller
     }
     $this->json_data['success'] = $isallvalid;
     $this->json_data['message'] = $message;
+    echo json_encode($this->json_data);
+  }
+  
+  function detailcouponbynumber()
+  {
+    $xcoupon_number  = $_POST['edcoupon_number'];
+    $this->load->model('modelcoupons');
+    $row = $this->modelcoupons->getDetailcouponBycoupon_number($xcoupon_number);
+    $this->load->helper('json');
+    if ($row) {
+      $this->json_data['coupon_id'] = $row->idx;
+      $this->json_data['coupon_number'] = $row->coupon_number;
+      $this->json_data['event_name'] = $row->event_name;
+      $this->json_data['member_name'] = $row->member_name;
+    } else {      
+      $this->json_data['coupon_id'] = 0;
+    }
+
     echo json_encode($this->json_data);
   }
 }

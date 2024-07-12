@@ -62,7 +62,7 @@ class Ctrevents extends CI_Controller
 
     $xBufResult .= setForm('poster_image', 'Poster Image', '<div id="uploadposter_image" style="width:150px;">' . form_input_(getArrayObj('edposter_image', '', '100'), '', 'alt="Unggah"') . '</div>') . '<div class="spacer"></div>';
 
-    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearevents();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanevents();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchevents(0);"') . '<div class="spacer"></div></div><div id="tabledataevents">' . $this->getlistevents(0, '') . '</div><div class="spacer"></div>';
+    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'New', 'onclick="doClearevents();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanevents();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchevents(0);"') . '<div class="spacer"></div></div><div id="tabledataevents">' . $this->getlistevents(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
   }
 

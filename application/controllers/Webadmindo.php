@@ -456,7 +456,7 @@ class webadmindo extends CI_Controller {
                              ';
                 $xForm = $xBufResult;
             }
-            $xForm = $xFormAwal . $xForm . '<div class="spacer"></div>' . '<div class="garis"></div>' . form_button('btSimpan', 'simpan', 'onclick="dosimpan();"') . form_button('btNew', 'new', 'onclick="             doClear();"') . '<div class="spacer"></div>';
+            $xForm = $xFormAwal . $xForm . '<div class="spacer"></div>' . '<div class="garis"></div>' . form_button('btSimpan', 'simpan', 'onclick="dosimpan();"') . form_button('btNew', 'New', 'onclick="             doClear();"') . '<div class="spacer"></div>';
         } else {
             $xForm = '<div id="stylized" class="myform" ><h1>Administrasi Web</h1><div class="garis"> </div>' . form_open_multipart('ctrtranslete/inserttable', array('id' => 'form', 'name' => 'form'));
         }

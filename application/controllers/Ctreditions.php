@@ -66,7 +66,7 @@ class Ctreditions extends CI_Controller
 
     $xBufResult .= setForm('coupon_price', 'Coupon Price', form_input_(getArrayObj('edcoupon_price', '', '200'), '', ' placeholder="Coupon Price" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"  data-type="currency"')) . '<div class="spacer"></div>';
 
-    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doCleareditions();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpaneditions();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearcheditions(0);"') . '<div class="spacer"></div></div><div id="tabledataeditions">' . $this->getlisteditions(0, '') . '</div><div class="spacer"></div>';
+    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'New', 'onclick="doCleareditions();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpaneditions();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearcheditions(0);"') . '<div class="spacer"></div></div><div id="tabledataeditions">' . $this->getlisteditions(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
   }
 

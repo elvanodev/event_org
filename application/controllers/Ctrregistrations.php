@@ -67,7 +67,7 @@ class Ctrregistrations extends CI_Controller
 
     $xBufResult .= setForm('registered_at', 'Registered at', form_input_(getArrayObj('edregistered_at', '', '200'), '', ' placeholder="Registered at" class="datetimepicker"')) . '<div class="spacer"></div>';
 
-    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'new', 'onclick="doClearregistrations();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanregistrations();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchregistrations(0);"') . '<div class="spacer"></div></div><div id="tabledataregistrations">' . $this->getlistregistrations(0, '') . '</div><div class="spacer"></div>';
+    $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'New', 'onclick="doClearregistrations();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanregistrations();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchregistrations(0);"') . '<div class="spacer"></div></div><div id="tabledataregistrations">' . $this->getlistregistrations(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
   }
 
