@@ -27,7 +27,7 @@
 
 <body>
 
-    <div class="container-fluid web-head-section pt-4 px-4">
+    <div class="container-fluid web-head-section pt-4 px-4 background-base">
         <div class="row">
             <div class="col-2">
                 <select class="form-control" name="editionId" id="editionId">
@@ -62,3 +62,17 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <!-- left menu -->
+        <div class="col-2">
+            <ul class="list-group">
+                <li class="list-group-item borderless"><a href="#" type="button" class="btn btn-primary">Beranda</a></li>
+                <li class="list-group-item borderless"><a href="#" type="button" class="btn btn-primary">Info</a></li>
+                <li class="list-group-item borderless"><a href="#" type="button" class="btn btn-primary">Kolaborator</a></li>
+                <li class="list-group-item borderless"><a href="#" type="button" class="btn btn-primary">Jadi Dermawan Seni</a></li>
+                <li class="list-group-item borderless"><a href="#" type="button" class="btn btn-primary">Beli Kupon Online</a></li>
+            </ul>
+        </div>
+        <!-- content -->
+        <div class="col-8">

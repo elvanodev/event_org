@@ -1106,3 +1106,8 @@ body {
 .custom-select {
     border-radius: 0.375rem !important;
 }
+
+/* Tambahan project event */
+.borderless {    
+    border: 0 none;
+}
