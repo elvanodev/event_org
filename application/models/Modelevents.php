@@ -9,22 +9,24 @@ class Modelevents extends CI_Model
       parent::__construct();
    }
 
-
+   private $default_query = "select
+	idx,
+	name,
+	long_name,
+	is_active,
+	descriptions,
+	about_event,
+	about1_event,
+	about2_event,
+	about3_event,
+	poster_image
+from
+	events";
 
    function getArrayListevents()
    { /* spertinya perlu lock table*/
       $xBuffResul = array();
-      $xStr =  "SELECT " .
-         "idx" . ",name" .
-         ",is_active" .
-         ",descriptions" .
-         ",about_event" .
-         ",about1_event" .
-         ",about2_event" .
-         ",about3_event" .
-         ",poster_image" .
-
-         " FROM events   order by idx ASC ";
+      $xStr = $this->default_query ." order by idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
          $xBuffResul[$row->idx] = $row->name;
@@ -37,17 +39,7 @@ class Modelevents extends CI_Model
       if (!empty($xSearch)) {
          $xSearch = "Where idx like '%" . $xSearch . "%'";
       }
-      $xStr =   "SELECT " .
-         "idx" .
-         ",name" .
-         ",is_active" .
-         ",descriptions" .
-         ",about_event" .
-         ",about1_event" .
-         ",about2_event" .
-         ",about3_event" .
-         ",poster_image" .
-         " FROM events $xSearch order by idx DESC limit " . $xAwal . "," . $xLimit;
+      $xStr = $this->default_query ." $xSearch order by idx DESC limit " . $xAwal . "," . $xLimit;
       $query = $this->db->query($xStr);
       return $query;
    }
@@ -55,18 +47,7 @@ class Modelevents extends CI_Model
 
    function getDetailevents($xidx)
    {
-      $xStr =   "SELECT " .
-         "idx" .
-         ",name" .
-         ",is_active" .
-         ",descriptions" .
-         ",about_event" .
-         ",about1_event" .
-         ",about2_event" .
-         ",about3_event" .
-         ",poster_image" .
-
-         " FROM events  WHERE idx = '" . $xidx . "'";
+      $xStr = $this->default_query ." WHERE idx = '" . $xidx . "'";
 
       $query = $this->db->query($xStr);
       $row = $query->row();
@@ -76,18 +57,7 @@ class Modelevents extends CI_Model
 
    function getLastIndexevents()
    { /* spertinya perlu lock table*/
-      $xStr =   "SELECT " .
-         "idx" .
-         ",name" .
-         ",is_active" .
-         ",descriptions" .
-         ",about_event" .
-         ",about1_event" .
-         ",about2_event" .
-         ",about3_event" .
-         ",poster_image" .
-
-         " FROM events order by idx DESC limit 1 ";
+      $xStr = $this->default_query ." order by idx DESC limit 1 ";
       $query = $this->db->query($xStr);
       $row = $query->row();
       return $row;
@@ -95,7 +65,7 @@ class Modelevents extends CI_Model
 
 
 
-   function setInsertevents($xidx, $xname, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image)
+   function setInsertevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image)
    {
       if ($xis_active==1) {
          $toinactivestr = "UPDATE event_org.events SET is_active=0 WHERE is_active=1;";
@@ -104,6 +74,7 @@ class Modelevents extends CI_Model
       $xStr =  " INSERT INTO events( " .
          "idx" .
          ",name" .
+         ",long_name" .
          ",is_active" .
          ",descriptions" .
          ",about_event" .
@@ -112,12 +83,12 @@ class Modelevents extends CI_Model
          ",about3_event" .
          ",poster_image" .
          ",created_at" .
-         ") VALUES('" . $xidx . "','" . $xname . "','" . $xis_active . "','" . $xdescriptions . "','" . $xabout_event . "','" . $xabout1_event . "','" . $xabout2_event . "','" . $xabout3_event . "','" . $xposter_image . "',NOW())";
+         ") VALUES('" . $xidx . "','" . $xname . "','" . $xlong_name . "','" . $xis_active . "','" . $xdescriptions . "','" . $xabout_event . "','" . $xabout1_event . "','" . $xabout2_event . "','" . $xabout3_event . "','" . $xposter_image . "',NOW())";
       $query = $this->db->query($xStr);
       return $xidx;
    }
 
-   function setUpdateevents($xidx, $xname, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image)
+   function setUpdateevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image)
    {
       if ($xis_active==1) {
          $toinactivestr = "UPDATE event_org.events SET is_active=0 WHERE is_active=1;";
@@ -126,6 +97,7 @@ class Modelevents extends CI_Model
       $xStr =  " UPDATE events SET " .
          "idx='" . $xidx . "'" .
          ",name='" . $xname . "'" .
+         ",long_name='" . $xlong_name . "'" .
          ",is_active='" . $xis_active . "'" .
          ",descriptions='" . $xdescriptions . "'" .
          ",about_event='" . $xabout_event . "'" .
@@ -152,5 +124,12 @@ class Modelevents extends CI_Model
       $xidpegawai = $this->session->userdata('idpegawai');
       $xStr = "insert into logdelrecord(idxhapus,nmtable,tgllog,ideksekusi) values($xidx,'events',now(),$xidpegawai)";
       $query = $this->db->query($xStr);
+   }
+
+   function getActiveEvent() {
+      $xStr = $this->default_query ." where is_active = 1 limit 1;";
+      $query = $this->db->query($xStr);
+      $row = $query->row();
+      return $row;
    }
 }

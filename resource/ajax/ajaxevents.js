@@ -42,6 +42,7 @@ function doeditevents(edidx) {
       success: function (json) {
         $("#edidx").val(json.idx);
         $("#edname").val(json.name);
+        $("#edlong_name").val(json.long_name);
         $("#edis_active").val(json.is_active);
         $("#eddescriptions").val(json.descriptions);
         $("#edabout_event").val(json.about_event);
@@ -62,6 +63,7 @@ function doClearevents() {
     formshow();
     $("#edidx").val("0");
     $("#edname").val("");
+    $("#edlong_name").val("");
     $("#edis_active").val("");
     $("#eddescriptions").val("");
     $("#edabout_event").val("");
@@ -81,6 +83,8 @@ function dosimpanevents() {
         $("#edidx").val() +
         "&edname=" +
         $("#edname").val() +
+        "&edlong_name=" +
+        $("#edlong_name").val() +
         "&edis_active=" +
         $("#edis_active").val() +
         "&eddescriptions=" +

@@ -47,6 +47,9 @@ class Ctrevents extends CI_Controller
     $xBufResult .= '<input type="hidden" name="edidx" id="edidx" value="0" />';
 
     $xBufResult .= setForm('name', 'Name', form_input_(getArrayObj('edname', '', '200'), '', ' placeholder="Name" ')) . '<div class="spacer"></div>';
+    
+    $xBufResult .= setForm('long_name', 'Long Name', form_input_(getArrayObj('edlong_name', '', '200'), '', ' placeholder="Long Name" ')) . '<div class="spacer"></div>';
+    
     $xBufResult .= '<span>Only one active event, other active event will set to inactive if you set new or edit event to active</span>';
     $xBufResult .= setForm('is_active', 'Is Active', form_dropdown_('edis_active', array(1 => 'Yes', 0 => 'No'), '', ' id="edis_active" placeholder="Is Active" ')) . '<div class="spacer"></div>';
 
@@ -73,6 +76,7 @@ class Ctrevents extends CI_Controller
     $this->load->helper('common');
     $xbufResult1 = tbaddrow(tbaddcellhead('No', '', 'data-field="idx" data-sortable="true" width=10%') .
       tbaddcellhead('Name', '', 'data-field="name" data-sortable="true" width=10%') .
+      tbaddcellhead('Long Name', '', 'data-field="long_name" data-sortable="true" width=10%') .
       tbaddcellhead('Is Active', '', 'data-field="is_active" data-sortable="true" width=10%') .
       tbaddcellhead('Descriptions', '', 'data-field="descriptions" data-sortable="true" width=10%') .
       tbaddcellhead('About', '', 'data-field="about_event" data-sortable="true" width=10%') .
@@ -96,6 +100,7 @@ class Ctrevents extends CI_Controller
       }
       $xbufResult .= tbaddrow(tbaddcell($no++) .
         tbaddcell($row->name) .
+        tbaddcell($row->long_name) .
         tbaddcell($row->is_active == 1 ? 'Yes' : 'No') .
         tbaddcell($row->descriptions) .
         tbaddcell(substr($row->about_event,0,20).'...') .

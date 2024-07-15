@@ -7,9 +7,22 @@ class Home extends CI_Controller {
 
     function index()
     {
-      $this->load->view('viewfrontend/layout/header');
-      $this->load->view('viewfrontend/home');
-      $this->load->view('viewfrontend/layout/footer');
+      $data = $this->getDataHeader();
+      // $this->load->view('viewfrontend/layout/header', $data_header);
+      $this->load->view('viewfrontend/home', $data);
+      // $this->load->view('viewfrontend/layout/footer');
+    }
+
+    function getDataHeader() {
+      $this->load->model("modelevents");
+      $row_event = $this->modelevents->getActiveEvent();
+
+      $event_id = $row_event->idx;
+      $this->load->model("modeleditions");
+      $list_editions = $this->modeleditions->getListeditionsByEvent($event_id);
+      
+      $data_header = ['event'=>$row_event, 'editions'=>$list_editions];      
+      return $data_header;
     }
   
 }

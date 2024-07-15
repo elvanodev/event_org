@@ -9,23 +9,25 @@ class Modeleditions extends CI_Model
       parent::__construct();
    }
 
-
+   private $default_query = "SELECT 
+   ed.idx 
+   ,ed.event_id
+,ed.name
+,ed.started_at
+,ed.ended_at
+,ed.venue_address
+,ed.venue_city
+,ed.descriptions
+,ed.quota
+,ed.coupon_price
+,ev.name event_name
+ FROM editions ed
+ JOIN events ev ON ev.idx = ed.event_id";
 
    function getArrayListeditions()
    { /* spertinya perlu lock table*/
       $xBuffResul = array();
-      $xStr =  "SELECT " .
-         "idx" . ",event_id" .
-         ",name" .
-         ",started_at" .
-         ",ended_at" .
-         ",venue_address" .
-         ",venue_city" .
-         ",descriptions" .
-         ",quota" .
-         ",coupon_price" .
-
-         " FROM editions   order by idx ASC ";
+      $xStr = $this->default_query."  order by ed.idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
          $xBuffResul[$row->idx] = $row->name . " " . $row->started_at. "-" . $row->ended_at;
@@ -35,18 +37,7 @@ class Modeleditions extends CI_Model
    function getArrayListeditionsbyevent_id($event_id)
    { /* spertinya perlu lock table*/
       $xBuffResul = array();
-      $xStr =  "SELECT " .
-         "idx" . ",event_id" .
-         ",name" .
-         ",started_at" .
-         ",ended_at" .
-         ",venue_address" .
-         ",venue_city" .
-         ",descriptions" .
-         ",quota" .
-         ",coupon_price" .
-
-         " FROM editions  where event_id = '".$event_id."' order by idx ASC ";
+      $xStr = $this->default_query."where ed.event_id = '".$event_id."' order by ed.idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
          $xBuffResul[$row->idx] = $row->name . " " . $row->started_at. "-" . $row->ended_at;
@@ -59,41 +50,23 @@ class Modeleditions extends CI_Model
       if (!empty($xSearch)) {
          $xSearch = "Where ed.name like '%" . $xSearch . "%'";
       }
-      $xStr =   "SELECT " .
-         "ed.idx" .
-         ",ed.event_id" .
-         ",ed.name" .
-         ",ed.started_at" .
-         ",ed.ended_at" .
-         ",ed.venue_address" .
-         ",ed.venue_city" .
-         ",ed.descriptions" .
-         ",ed.quota" .
-         ",ed.coupon_price" .
-         ",ev.name event_name" .
-         " FROM editions ed" .
-         " JOIN events ev ON ev.idx = ed.event_id" .
+      $xStr = $this->default_query .
          $xSearch . " order by ed.idx DESC limit " . $xAwal . "," . $xLimit;
       $query = $this->db->query($xStr);
       return $query;
    }
 
+   function getListeditionsByEvent($xevent_id)
+   {
+      $xStr = $this->default_query . " WHERE ed.event_id = '".$xevent_id."' order by ed.idx DESC";
+      $query = $this->db->query($xStr);
+      $list_editions = $query->result();
+      return $list_editions;
+   }
 
    function getDetaileditions($xidx)
    {
-      $xStr =   "SELECT " .
-         "idx" .
-         ",event_id" .
-         ",name" .
-         ",started_at" .
-         ",ended_at" .
-         ",venue_address" .
-         ",venue_city" .
-         ",descriptions" .
-         ",quota" .
-         ",coupon_price" .
-
-         " FROM editions  WHERE idx = '" . $xidx . "'";
+      $xStr = $this->default_query." WHERE ed.idx = '" . $xidx . "'";
 
       $query = $this->db->query($xStr);
       $row = $query->row();
@@ -103,19 +76,7 @@ class Modeleditions extends CI_Model
 
    function getLastIndexeditions()
    { /* spertinya perlu lock table*/
-      $xStr =   "SELECT " .
-         "idx" .
-         ",event_id" .
-         ",name" .
-         ",started_at" .
-         ",ended_at" .
-         ",venue_address" .
-         ",venue_city" .
-         ",descriptions" .
-         ",quota" .
-         ",coupon_price" .
-
-         " FROM editions order by idx DESC limit 1 ";
+      $xStr = $this->default_query." order by idx DESC limit 1 ";
       $query = $this->db->query($xStr);
       $row = $query->row();
       return $row;
