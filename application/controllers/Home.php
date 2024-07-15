@@ -8,9 +8,9 @@ class Home extends CI_Controller {
     function index()
     {
       $data = $this->getDataHeader();
-      // $this->load->view('viewfrontend/layout/header', $data_header);
-      $this->load->view('viewfrontend/home', $data);
-      // $this->load->view('viewfrontend/layout/footer');
+      $this->load->view('viewfrontend/layout/header', $data);
+      $this->load->view('viewfrontend/home');
+      $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> 'ajaxhome.js']);
     }
 
     function getDataHeader() {
