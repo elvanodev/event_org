@@ -27,7 +27,7 @@
 
 <body>
 
-    <div class="container-fluid web-head-section pt-4 px-4 background-base">
+    <div class="container-fluid web-head-section pt-4 wrapper text-white">
         <div class="row">
             <div class="col-2">
                 <select class="form-control" name="editionId" id="editionId">
@@ -61,18 +61,17 @@
                 <marquee width="100%" height="40"><?php echo $event->descriptions; ?></marquee>
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <!-- left menu -->
-        <div class="col-2">
-            <ul class="list-group">
-                <li class="list-group-item borderless"><a href="#" type="button" class="btn btn-primary">Beranda</a></li>
-                <li class="list-group-item borderless"><a href="#" type="button" class="btn btn-primary">Info</a></li>
-                <li class="list-group-item borderless"><a href="#" type="button" class="btn btn-primary">Kolaborator</a></li>
-                <li class="list-group-item borderless"><a href="#" type="button" class="btn btn-primary">Jadi Dermawan Seni</a></li>
-                <li class="list-group-item borderless"><a href="#" type="button" class="btn btn-primary">Beli Kupon Online</a></li>
-            </ul>
-        </div>
-        <!-- content -->
-        <div class="col-8">
+        <div class="row">
+            <!-- left menu -->
+            <div class="col-2">
+                <ul class="list-group bg-transparent">
+                    <li class="list-group-item borderless bg-transparent"><a href="#" type="button" class="btn btn-light">Kolaborator</a></li>
+                    <li class="list-group-item borderless bg-transparent"><a href="#" type="button" class="btn btn-light">Info</a></li>
+                    <li class="list-group-item borderless bg-transparent"><a href="#" type="button" class="btn btn-light">Beranda</a></li>
+                    <li class="list-group-item borderless bg-transparent"><a href="#" type="button" class="btn btn-light">Jadi Dermawan Seni</a></li>
+                    <li class="list-group-item borderless bg-transparent"><a href="#" type="button" class="btn btn-light">Beli Kupon Online</a></li>
+                </ul>
+            </div>
+            <!-- content -->
+            <div class="col-8">
