@@ -1119,6 +1119,27 @@ body {
     -webkit-transform:rotate(-90deg);
 }
 
+.left-menu {
+    position: absolute;
+    z-index: 10000;
+    top: 10rem;
+    left: 0;
+    width: 10rem;
+}
+
+.right-menu {
+    position: absolute;
+    z-index: 11000;
+    top: 10rem;
+    right: 0;
+    width: 10rem;
+}
+
+.main-content {
+    margin-right: 10rem;
+    margin-left: 10rem;
+}
+
 .wrapper { 
     height: 100%;
     width: 100%;

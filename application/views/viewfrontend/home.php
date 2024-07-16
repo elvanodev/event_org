@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card main-content">
     <div class="card-body">
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer euismod tortor ac ante elementum, in tincidunt tortor dapibus. Praesent rutrum mi a dolor tincidunt, eu commodo risus vulputate. Donec ac condimentum orci, non facilisis leo. Ut facilisis odio non nunc imperdiet, at hendrerit felis aliquam. Phasellus quis ultrices sapien, in placerat magna. Vestibulum vitae massa leo. Sed sit amet felis bibendum est placerat consequat. Pellentesque nisl felis, volutpat eu accumsan a, efficitur non tortor.

@@ -1,16 +1,3 @@
-
-            
-            </div>
-            <!-- right menu -->
-            <div class="col-2">            
-                <ul class="list-group bg-transparent">
-                    <li class="list-group-item borderless d-flex justify-content-end bg-transparent"><a href="#" type="button" class="btn btn-light">Hadiah Utama</a></li>
-                    <li class="list-group-item borderless d-flex justify-content-end bg-transparent"><a href="#" type="button" class="btn btn-light">Tentang Kami</a></li>
-                    <li class="list-group-item borderless d-flex justify-content-end bg-transparent"><a href="#" type="button" class="btn btn-light">Galeri</a></li>
-                </ul>
-            </div>
-        </div>
-    
     </div>
 
     <script type="text/javascript">
