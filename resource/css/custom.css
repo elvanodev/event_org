@@ -1121,16 +1121,18 @@ body {
 
 .left-menu {
     position: absolute;
-    top: 400px;
+    top: 25%;
     left: 0;
-    width: 60px;
+    width: 10vw;
+    z-index: 100000;
 }
 
 .right-menu {
     position: absolute;
-    top: 488px;
+    top: 25%;
     right: 0;
-    width: 60px;
+    width: 10vw;
+    z-index: 100000;
 }
 
 .left-menu .btn {    
@@ -1144,8 +1146,8 @@ body {
 }
 
 .main-content {
-    margin-right: 60px;
-    margin-left: 60px;
+    margin-right: 10vw;
+    margin-left: 10vw;
 }
 
 .wrapper { 

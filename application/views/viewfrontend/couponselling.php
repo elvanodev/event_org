@@ -1,10 +1,33 @@
-<div class="card">
+<div class="card main-content">
     <div class="card-body">
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer euismod tortor ac ante elementum, in tincidunt tortor dapibus. Praesent rutrum mi a dolor tincidunt, eu commodo risus vulputate. Donec ac condimentum orci, non facilisis leo. Ut facilisis odio non nunc imperdiet, at hendrerit felis aliquam. Phasellus quis ultrices sapien, in placerat magna. Vestibulum vitae massa leo. Sed sit amet felis bibendum est placerat consequat. Pellentesque nisl felis, volutpat eu accumsan a, efficitur non tortor.
-        </p>
-        <p>
-            Cras et faucibus purus, ac mattis erat. Quisque quis bibendum dolor. Pellentesque ultrices ac urna sit amet rutrum. In ac diam in tortor aliquam maximus volutpat congue est. Etiam eu consectetur nulla, ut convallis libero. Mauris nec velit rhoncus felis pretium gravida nec a massa. Sed fringilla ex augue, at suscipit purus sodales vel. Etiam et justo sed risus maximus elementum. Sed eu sapien at tortor egestas hendrerit.
-        </p>
+        <h3 class="text-center">Tata Cara Pembelian Kupon Secara Online</h3>
+        <ol>
+            <li>
+                <p>
+                Membeli Kupon SDSB secara on site di Kios Agen SDSB atau dapat juga membeli secara online dan dapat memilih/menulis angka (4 kombinasi) yang diinginkan. Kupon harus disimpan untuk nanti ditunjukkan apabila nomor kombinasinya sesuai pada waktu pengundian.
+                </p>
+                <p>
+                NB: Apabila membeli secara online, nanti kupon fisik akan dikirim via pos ke alamat pembeli dengan ongkos kirim yang akan ditanggung oleh pembeli.
+                </p>
+            </li>
+            <li>
+                <p>
+                Di Kios Agen SDSB juga menyajikan/menjual ramalan-ramalan yang dapat digunakan sebagai panduan untuk memilih nomor. Selain berfungsi sebagai ramalan, ini juga merupakan karya seni yang dibuat oleh para kolaborator dalam program ini.
+                </p>
+            </li>
+            <li>
+                <p>
+                Setiap pembeli satu (1) kupon mempunyai Hak satu (1) kali untuk memberikan komentar (kritik, saran, dan lainnya) berkaitan dengan Seni dan Kebudayaan indonesia dalam bentuk teks maupun gambar melalui Link/QR/Kode Unik yang akan diberikan. Nantinya komentar-komentar akan di tampilkan dalam website dermawanseni.org
+                </p>
+            </li>
+            <li>
+                <p>
+                Jika angka yang tertera di dalam kupon nantinya sesuai dengan angka-angka yang keluar pada saat sesi pengundian, akan berhak mendapatkan Hadiah utama berupa karya seni yang dibuat oleh seniman yang telah dipilih.
+                </p>
+            </li>
+        </ol>
+    </div>
+    <div class="card-footer d-flex justify-content-center">
+        <a class="btn btn-light" href="<?php echo base_url()?>frontend/couponsellingform" >Beli Kupon</a>
     </div>
 </div>
