@@ -1,10 +1,13 @@
 <!-- right menu -->
 <?php if ($showmainmenu) { ?>
-<div class="right-menu">            
-    <ul class="list-group bg-transparent">
-        <li class="list-group-item borderless d-flex justify-content-end bg-transparent"><a href="#" type="button" class="btn btn-light">Hadiah Utama</a></li>
-        <li class="list-group-item borderless d-flex justify-content-end bg-transparent"><a href="#" type="button" class="btn btn-light">Tentang Kami</a></li>
-        <li class="list-group-item borderless d-flex justify-content-end bg-transparent"><a href="#" type="button" class="btn btn-light">Galeri</a></li>
-    </ul>
+<div class="right-menu">     
+    <div class="vertical-button">
+        <div class="d-flex justify-content-between">
+            <a href="#" type="button" class="btn btn-light text-nowrap">Galeri</a>
+            <a href="#" type="button" class="btn btn-light text-nowrap">Tentang Kami</a>
+            <a href="#" type="button" class="btn btn-light text-nowrap">Hadiah Utama</a>
+        </div>
+    </div>
+    <!--  -->
 </div>
 <?php } ?>

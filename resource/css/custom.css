@@ -1121,23 +1121,31 @@ body {
 
 .left-menu {
     position: absolute;
-    z-index: 10000;
-    top: 10rem;
+    top: 400px;
     left: 0;
-    width: 10rem;
+    width: 60px;
 }
 
 .right-menu {
     position: absolute;
-    z-index: 11000;
-    top: 10rem;
+    top: 488px;
     right: 0;
-    width: 10rem;
+    width: 60px;
+}
+
+.left-menu .btn {    
+    width: fit-content;
+    margin-left: 10px;
+}
+
+.right-menu .btn {    
+    width: fit-content;
+    margin-left: 10px;
 }
 
 .main-content {
-    margin-right: 10rem;
-    margin-left: 10rem;
+    margin-right: 60px;
+    margin-left: 60px;
 }
 
 .wrapper { 
