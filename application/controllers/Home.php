@@ -7,24 +7,20 @@ class Home extends CI_Controller {
 
     function index()
     {
-      $data = $this->getDataHeader();
-      $this->load->view('viewfrontend/layout/header', $data);
+      $this->load->model("modelfrontend");
+      $dataHeader = $this->modelfrontend->getDataHeader();
+      $this->load->view('viewfrontend/layout/header', $dataHeader);
       $this->load->view('viewfrontend/layout/leftmenu', ['showback' => false, 'showmainmenu' => true, 'showadditionalmenu' => true]);
       $this->load->view('viewfrontend/home');
       $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => true]);
       $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> 'ajaxhome.js']);
     }
 
-    function getDataHeader() {
-      $this->load->model("modelevents");
-      $row_event = $this->modelevents->getActiveEvent();
+    function seteditionsession() {
+      $xedition_id = $_POST['ededition_id'];
+      $this->session->set_userdata('edition_id', $xedition_id);
 
-      $event_id = $row_event->idx;
-      $this->load->model("modeleditions");
-      $list_editions = $this->modeleditions->getListeditionsByEvent($event_id);
-      
-      $data_header = ['event'=>$row_event, 'editions'=>$list_editions];      
-      return $data_header;
+      echo json_encode(null);
     }
   
 }

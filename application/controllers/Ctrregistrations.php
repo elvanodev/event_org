@@ -209,7 +209,7 @@ class Ctrregistrations extends CI_Controller
       if ($xidx != '0') {
         $xStr =  $this->modelregistrations->setUpdateregistrations($xidx, $xedition_id, $xmember_id, $xregistered_at);
       } else {
-        $xStr =  $this->modelregistrations->setInsertregistrations($xidx, $xedition_id, $xmember_id, $xregistered_at, $xqr_code);
+        $xStr =  $this->modelregistrations->setInsertregistrations($xedition_id, $xmember_id, $xregistered_at, $xqr_code);
       }
     }
     echo json_encode(null);

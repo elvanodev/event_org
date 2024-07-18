@@ -12,8 +12,9 @@
     <script src="<?php echo base_url(); ?>resource/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
     <script src="<?php echo base_url(); ?>resource/AdminLTE/plugins/jquery-ui/jquery-ui.min.js"></script>
     <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>resource/js/common/custom.js"></script>
+    <?php if ($ajaxfilename != "") { ?>
     <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>resource/ajax/frontend/<?php echo $ajaxfilename; ?>"></script>
-
+    <?php } ?>
 </body>
 
 </html>

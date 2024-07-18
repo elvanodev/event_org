@@ -37,7 +37,7 @@ class Modeleditions extends CI_Model
    function getArrayListeditionsbyevent_id($event_id)
    { /* spertinya perlu lock table*/
       $xBuffResul = array();
-      $xStr = $this->default_query."where ed.event_id = '".$event_id."' order by ed.idx ASC ";
+      $xStr = $this->default_query." where ed.event_id = '".$event_id."' order by ed.idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
          $xBuffResul[$row->idx] = $row->name . " " . $row->started_at. "-" . $row->ended_at;
@@ -58,7 +58,7 @@ class Modeleditions extends CI_Model
 
    function getListeditionsByEvent($xevent_id)
    {
-      $xStr = $this->default_query . " WHERE ed.event_id = '".$xevent_id."' order by ed.idx DESC";
+      $xStr = $this->default_query . " WHERE ed.event_id = '".$xevent_id."' order by ed.idx ASC";
       $query = $this->db->query($xStr);
       $list_editions = $query->result();
       return $list_editions;

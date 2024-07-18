@@ -61,6 +61,22 @@ class Modelmembers extends CI_Model
       return $row;
    }
 
+   function getDetailmembersbyemail($xemail)
+   {
+      $xStr =   "SELECT " .
+         "idx" .
+         ",name" .
+         ",email" .
+         ",password" .
+         ",address" .
+
+         " FROM members  WHERE email = '" . $xemail . "'";
+
+      $query = $this->db->query($xStr);
+      $row = $query->row();
+      return $row;
+   }
+
 
    function getLastIndexmembers()
    { /* spertinya perlu lock table*/
@@ -79,18 +95,21 @@ class Modelmembers extends CI_Model
 
 
 
-   function setInsertmembers($xidx, $xname, $xemail, $xpassword, $xaddress)
+   function setInsertmembers($xname, $xemail, $xpassword, $xaddress)
    {
-      $xStr =  " INSERT INTO members( " .
-         "idx" .
-         ",name" .
-         ",email" .
-         ",password" .
-         ",address" .
-         ",created_at" .
-         ") VALUES('" . $xidx . "','" . $xname . "','" . $xemail . "','" . $xpassword . "','" . $xaddress . "',NOW())";
-      $query = $this->db->query($xStr);
-      return $xidx;
+      $post_data = [
+         "name" => $xname,
+         "email" => $xemail,
+         "password" => $xpassword,
+         "address" => $xaddress
+      ];
+      $insert = $this->db->insert('members', $post_data);
+      if ( !$insert ) {
+         echo json_encode($this->db->error());
+      }
+      $insert_id = $this->db->insert_id();
+   
+      return  $insert_id;
    }
 
    function setUpdatemembers($xidx, $xname, $xemail, $xpassword, $xaddress)
@@ -106,6 +125,19 @@ class Modelmembers extends CI_Model
       $query = $this->db->query($xStr);
       return $xidx;
    }
+   function setUpdatemembers1($xidx, $xname, $xemail, $xaddress)
+   {
+      $xStr =  " UPDATE members SET " .
+         "idx='" . $xidx . "'" .
+         ",name='" . $xname . "'" .
+         ",email='" . $xemail . "'" .
+         ",address='" . $xaddress . "'" .
+         ",updated_at=NOW()" .
+         " WHERE idx = '" . $xidx . "'";
+      $query = $this->db->query($xStr);
+      return $xidx;
+   }
+
 
    function setDeletemembers($xidx)
    {

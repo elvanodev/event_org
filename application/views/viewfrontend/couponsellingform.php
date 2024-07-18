@@ -1,27 +1,25 @@
 <div class="card main-content">
-    <form method="post" accept-charset="utf-8" action="<?php echo base_url(); ?>frontend/couponsellingfromsave">
+    <form class="g-3 needs-validation" novalidate method="post" accept-charset="utf-8" action="<?php echo base_url(); ?>frontend/couponsellingform/save">
         <div class="card-body">
             <div class="form-group">
-                <label for="couponNumber">Pilih Coupon</label>
-                <input type="text" class="form-control" id="couponNumber" aria-describedby="couponNumberHelp" placeholder="Pilih Coupon">
-                <small id="couponNumberHelp" class="form-text text-muted">Tulis nomor pilihan anda</small>
+                <label for="couponNumber">Nomor Kupon</label>
+                <input type="text" class="form-control couponnumber" id="couponNumber" name="couponNumber" placeholder="Tulis nomor pilihan anda" required onkeyup="onkeyupcoupon_number();" maxlength="4" value="1234">
             </div>
             <div class="form-group">
                 <label for="memberName">Nama</label>
-                <input type="text" maxlength="250" class="form-control" id="memberName" placeholder="Nama">
+                <input type="text" maxlength="250" class="form-control" id="memberName" name="memberName" placeholder="Nama" required value="jhon doe">
             </div>
             <div class="form-group">
                 <label for="memberEmail">Alamat Email</label>
-                <input type="email" class="form-control" id="memberEmail" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <input type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="Enter email" required value="testtingemail@gmail.com">
             </div>
             <div class="form-group">
                 <label for="shipperAddress">Alamat Pengiriman Kupon</label>
-                <input type="text" maxlength="250" class="form-control" id="shipperAddress" placeholder="Alamat Pengiriman Kupon">
+                <input type="text" maxlength="250" class="form-control" id="shipperAddress" name="shipperAddress" placeholder="Alamat Pengiriman Kupon" required value="testing shipper address">
             </div>
             <div class="form-group">
                 <label for="memberPhone">Nomor Telepon</label>
-                <input type="tel"  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="form-control" id="memberPhone" placeholder="Nomor Telepon">
+                <input type="tel" pattern="[0-9]{12}" class="form-control" id="memberPhone" name="memberPhone" placeholder="Nomor Telepon" required value="085736251726">
             </div>
         </div>
         <div class="card-footer d-flex justify-content-end">

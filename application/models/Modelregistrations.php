@@ -105,18 +105,21 @@ class Modelregistrations extends CI_Model
 
 
 
-   function setInsertregistrations($xidx, $xedition_id, $xmember_id, $xregistered_at, $xqr_code)
+   function setInsertregistrations($xedition_id, $xmember_id, $xregistered_at, $xqr_code)
    {
-      $xStr =  " INSERT INTO registrations( " .
-         "idx" .
-         ",edition_id" .
-         ",member_id" .
-         ",registered_at" .
-         ",qr_code" .
-         ",created_at" .
-         ") VALUES('" . $xidx . "','" . $xedition_id . "','" . $xmember_id . "','" . $xregistered_at . "','" . $xqr_code . "',NOW())";
-      $query = $this->db->query($xStr);
-      return $xidx;
+      $post_data = [
+         "edition_id" => $xedition_id,
+         "member_id" => $xmember_id,
+         "qr_code" => $xqr_code,
+         "registered_at" => $xregistered_at
+      ];
+      $insert = $this->db->insert('registrations', $post_data);
+      if ( !$insert ) {
+         echo json_encode($this->db->error());
+      }
+      $insert_id = $this->db->insert_id();
+   
+      return  $insert_id;
    }
 
    function setUpdateregistrations($xidx, $xedition_id, $xmember_id, $xregistered_at)
@@ -135,6 +138,13 @@ class Modelregistrations extends CI_Model
    function setDeleteregistrations($xidx)
    {
       $xStr =  " DELETE FROM registrations WHERE registrations.idx = '" . $xidx . "'";
+
+      $query = $this->db->query($xStr);
+      $this->setInsertLogDeleteregistrations($xidx);
+   }
+   function setDeleteregistrationsbymemberandedition($edition_id, $member_id)
+   {
+      $xStr =  " DELETE FROM registrations WHERE registrations.edition_id = '" . $edition_id . "' and registrations.member_id = '" . $member_id . "'";
 
       $query = $this->db->query($xStr);
       $this->setInsertLogDeleteregistrations($xidx);

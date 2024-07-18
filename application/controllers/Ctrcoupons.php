@@ -67,7 +67,7 @@ class Ctrcoupons extends CI_Controller
     $xBufResult .= '<input type="hidden" name="edcoupon_price" id="edcoupon_price" value="0" />';
     $xBufResult .= setForm('coupon_price', 'Coupon Price', form_input_(getArrayObj('edcoupon_price_v', '', '200'), '', ' placeholder="Coupon Price" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"  data-type="currency" disabled')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('coupon_number', 'Coupon Number', form_input_(getArrayObj('edcoupon_number', '', '200'), '', ' placeholder="Coupon Number" onkeyup="onkeyupcoupon_number();" maxlength="4"')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('coupon_number', 'Coupon Number', form_input_(getArrayObj('edcoupon_number', '', '200'), '', 'class="couponnumber" placeholder="Coupon Number" onkeyup="onkeyupcoupon_number();" maxlength="4"')) . '<div class="spacer"></div>';
 
     $this->load->model('modelshippers');
     $shipper = $this->modelshippers->getLastIndexshippers();

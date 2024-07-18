@@ -30,12 +30,15 @@
     <div class="container-fluid web-head-section pt-4 wrapper text-white">
         <div class="row">
             <div class="col-2">
-                <select class="form-control" name="editionId" id="editionId">
+                <select class="form-control" name="editionId" id="editionId" onchange="onchangeedition()">
                     <?php
-                    $selected = false;
                     foreach ($editions as $edition) {
+                        $selected = '';
+                        if ($edition->idx == $selected_edition) {
+                            $selected = 'selected';
+                        }
                     ?>
-                        <option value="<?php echo $edition->idx; ?>" <?php if(!$selected) { echo "selected"; $selected = true; }  ?>><?php echo $edition->name; ?></option>
+                        <option value="<?php echo $edition->idx; ?>" <?php echo $selected; ?>><?php echo $edition->name; ?></option>
                     <?php
                     }
                     ?>

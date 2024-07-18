@@ -228,21 +228,9 @@ function onchangeeventid() {
       onchangeeditionid();
     },
     error: function (xmlHttpRequest, textStatus, errorThrown) {
+      console.log("onchangeeventid:", xmlHttpRequest.responseText);
       alert("Error juga " + xmlHttpRequest.responseText);
     },
-  });
-}
-
-function onkeyupcoupon_number() {
-  $(document).ready(function () {
-    var numberPattern = /\d+/g;
-    var val = $("#edcoupon_number").val();
-    const match = val.match(numberPattern);
-    var newval = "";
-    if (match) {
-      newval = val.match(numberPattern).join("");
-    }
-    $("#edcoupon_number").val(newval);
   });
 }
 

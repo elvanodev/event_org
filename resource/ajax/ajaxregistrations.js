@@ -92,8 +92,8 @@ function dosimpanregistrations() {
         toastr.success("Data berhasil disimpan");
       },
       error: function (xmlHttpRequest, textStatus, errorThrown) {
-        alert("Error juga " + xmlHttpRequest.responseText);
-        console.log("Eyoy", xmlHttpRequest.responseText);
+        // alert("Error juga " + xmlHttpRequest.responseText);
+        console.log("Error", xmlHttpRequest.responseText);
       },
     });
   });

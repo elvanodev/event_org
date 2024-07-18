@@ -7,12 +7,13 @@ class Couponselling extends CI_Controller {
 
     function index()
     {
-      $data = $this->getDataHeader();
-      $this->load->view('viewfrontend/layout/header', $data);
+      $this->load->model("modelfrontend");
+      $dataHeader = $this->modelfrontend->getDataHeader();
+      $this->load->view('viewfrontend/layout/header', $dataHeader);
       $this->load->view('viewfrontend/layout/leftmenu', ['showback' => true, 'showmainmenu' => false, 'showadditionalmenu' => false]);
       $this->load->view('viewfrontend/couponselling');
       $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => false]);
-      $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> 'ajaxcouponselling.js']);
+      $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> '']);
     }
 
     function getDataHeader() {

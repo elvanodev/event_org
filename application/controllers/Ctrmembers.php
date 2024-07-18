@@ -185,7 +185,7 @@ class Ctrmembers extends CI_Controller
       if ($xidx != '0') {
         $xStr =  $this->modelmembers->setUpdatemembers($xidx, $xname, $xemail, $xpassword, $xaddress);
       } else {
-        $xStr =  $this->modelmembers->setInsertmembers($xidx, $xname, $xemail, $xpassword, $xaddress);
+        $xStr =  $this->modelmembers->setInsertmembers($xname, $xemail, $xpassword, $xaddress);
       }
     }
     echo json_encode(null);

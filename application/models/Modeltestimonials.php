@@ -86,7 +86,10 @@ from
          "member_name" => $xmember_name,
          "testimoni_text" => $xtestimoni_text
       ];
-      $this->db->insert('testimonials', $post_data);
+      $insert = $this->db->insert('testimonials', $post_data);
+      if ( !$insert ) {
+         echo json_encode($this->db->error());
+      }
       $insert_id = $this->db->insert_id();
    
       return  $insert_id;
