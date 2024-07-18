@@ -9,50 +9,7 @@ class Modelregistrations extends CI_Model
       parent::__construct();
    }
 
-
-
-   function getArrayListregistrations()
-   { /* spertinya perlu lock table*/
-      $xBuffResul = array();
-      $xStr =  "SELECT " .
-         "idx" . ",edition_id" .
-         ",member_id" .
-         ",registered_at" .
-         ",qr_code" .
-
-         " FROM registrations   order by idx ASC ";
-      $query = $this->db->query($xStr);
-      foreach ($query->result() as $row) {
-         $xBuffResul[$row->idx] = $row->idx;
-      }
-      return $xBuffResul;
-   }
-   function getArrayListregistrationsbyedition_id($edition_id)
-   { /* spertinya perlu lock table*/
-      $xBuffResul = array();
-      $xStr =  "SELECT " .
-         "r.idx" . ",r.edition_id" .
-         ",r.member_id" .
-         ",r.registered_at" .
-         ",r.qr_code" .
-         ",m.name member_name" .
-         ",m.email member_email" .
-         " FROM registrations r
-          JOIN members m ON m.idx = r.member_id
-          where r.edition_id = '".$edition_id."' order by r.idx ASC ";
-      $query = $this->db->query($xStr);
-      foreach ($query->result() as $row) {
-         $xBuffResul[$row->idx] = $row->member_name . " - " . $row->member_email;
-      }
-      return $xBuffResul;
-   }
-
-   function getListregistrations($xAwal, $xLimit, $xSearch = '')
-   {
-      if (!empty($xSearch)) {
-         $xSearch = "Where ev.name like '%" . $xSearch . "%' or ar.name like '%" . $xSearch . "%'";
-      }
-      $xStr =   "SELECT " .
+   private $default_query = "SELECT " .
          "rg.idx" .
          ",rg.edition_id" .
          ",rg.member_id" .
@@ -64,8 +21,36 @@ class Modelregistrations extends CI_Model
          " FROM registrations rg".
          " JOIN editions ed on ed.idx = rg.edition_id".
          " JOIN events ev on ev.idx = ed.event_id".
-         " JOIN members mb on mb.idx = rg.member_id".
-         " ". $xSearch ." order by rg.idx DESC limit " . $xAwal . "," . $xLimit;
+         " JOIN members mb on mb.idx = rg.member_id";
+
+
+   function getArrayListregistrations()
+   { /* spertinya perlu lock table*/
+      $xBuffResul = array();
+      $xStr = $this->default_query ." order by rg.idx ASC ";
+      $query = $this->db->query($xStr);
+      foreach ($query->result() as $row) {
+         $xBuffResul[$row->idx] = $row->idx;
+      }
+      return $xBuffResul;
+   }
+   function getArrayListregistrationsbyedition_id($edition_id)
+   { /* spertinya perlu lock table*/
+      $xBuffResul = array();
+      $xStr = $this->default_query ." where rg.edition_id = '".$edition_id."' order by rg.idx ASC ";
+      $query = $this->db->query($xStr);
+      foreach ($query->result() as $row) {
+         $xBuffResul[$row->idx] = $row->member_name . " - " . $row->member_email;
+      }
+      return $xBuffResul;
+   }
+
+   function getListregistrations($xAwal, $xLimit, $xSearch = '')
+   {
+      if (!empty($xSearch)) {
+         $xSearch = " Where ev.name like '%" . $xSearch . "%' or ar.name like '%" . $xSearch . "%'";
+      }
+      $xStr = $this->default_query . $xSearch ." order by rg.idx DESC limit " . $xAwal . "," . $xLimit;
       $query = $this->db->query($xStr);
       return $query;
    }
@@ -73,14 +58,15 @@ class Modelregistrations extends CI_Model
 
    function getDetailregistrations($xidx)
    {
-      $xStr =   "SELECT " .
-         "idx" .
-         ",edition_id" .
-         ",member_id" .
-         ",registered_at" .
-         ",qr_code" .
+      $xStr = $this->default_query ." WHERE rg.idx = '" . $xidx . "'";
 
-         " FROM registrations  WHERE idx = '" . $xidx . "'";
+      $query = $this->db->query($xStr);
+      $row = $query->row();
+      return $row;
+   }
+   function getDetailregistrationsByEditionAndMember($xedition_id, $xmember_id)
+   {
+      $xStr = $this->default_query ." WHERE rg.edition_id = '" . $xedition_id . "' and rg.member_id = '" . $xmember_id . "'";
 
       $query = $this->db->query($xStr);
       $row = $query->row();
@@ -90,14 +76,7 @@ class Modelregistrations extends CI_Model
 
    function getLastIndexregistrations()
    { /* spertinya perlu lock table*/
-      $xStr =   "SELECT " .
-         "idx" .
-         ",edition_id" .
-         ",member_id" .
-         ",registered_at" .
-         ",qr_code" .
-
-         " FROM registrations order by idx DESC limit 1 ";
+      $xStr = $this->default_query ." order by rg.idx DESC limit 1 ";
       $query = $this->db->query($xStr);
       $row = $query->row();
       return $row;
@@ -147,7 +126,6 @@ class Modelregistrations extends CI_Model
       $xStr =  " DELETE FROM registrations WHERE registrations.edition_id = '" . $edition_id . "' and registrations.member_id = '" . $member_id . "'";
 
       $query = $this->db->query($xStr);
-      $this->setInsertLogDeleteregistrations($xidx);
    }
 
    function setInsertLogDeleteregistrations($xidx)

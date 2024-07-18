@@ -39,21 +39,7 @@ from
    function getArrayListcoupons()
    { /* spertinya perlu lock table*/
       $xBuffResul = array();
-      $xStr =  "SELECT " .
-         "idx" . ",edition_id" .
-         ",coupon_number" .
-         ",qr_code" .
-         ",coupon_price" .
-         ",shipper_price" .
-         ",total_price" .
-         ",is_winner" .
-         ",payment_status_id" .
-         ",payment_confirm_receipt" .
-         ",valid_until" .
-         ",registration_id" .
-         ",payment_unique_id" .
-
-         " FROM coupons   order by idx ASC ";
+      $xStr = $this->default_query . " order by c.idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
          $xBuffResul[$row->idx] = $row->idx;
@@ -86,9 +72,9 @@ from
       return $row;
    }
 
-   function getDetailcouponBycoupon_number($xcoupon_number)
+   function getDetailcouponBycoupon_number($xcoupon_number, $xedition_id)
    {
-      $xStr = $this->default_query . " WHERE c.coupon_number = '" . $xcoupon_number . "'";
+      $xStr = $this->default_query . " WHERE c.coupon_number = '" . $xcoupon_number . "' and c.edition_id = '" . $xedition_id . "'";
 
       $query = $this->db->query($xStr);
       $row = $query->row();
@@ -97,28 +83,11 @@ from
 
    function getLastIndexcoupons()
    { /* spertinya perlu lock table*/
-      $xStr =   "SELECT " .
-         "idx" .
-         ",edition_id" .
-         ",coupon_number" .
-         ",qr_code" .
-         ",coupon_price" .
-         ",shipper_price" .
-         ",total_price" .
-         ",is_winner" .
-         ",payment_status_id" .
-         ",payment_confirm_receipt" .
-         ",valid_until" .
-         ",registration_id" .
-         ",payment_unique_id" .
-
-         " FROM coupons order by idx DESC limit 1 ";
+      $xStr = $this->default_query . " order by c.idx DESC limit 1 ";
       $query = $this->db->query($xStr);
       $row = $query->row();
       return $row;
    }
-
-
 
    function setInsertcoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id)
    {

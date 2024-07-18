@@ -4,6 +4,7 @@
             <div class="form-group">
                 <label for="couponNumber">Nomor Kupon</label>
                 <input type="text" class="form-control couponnumber" id="couponNumber" name="couponNumber" placeholder="Tulis nomor pilihan anda" required onkeyup="onkeyupcoupon_number();" maxlength="4" value="1234">
+                <small class="d-none text-danger" id="warningCoupon">Kupon sudah dipakai!</small>
             </div>
             <div class="form-group">
                 <label for="memberName">Nama</label>

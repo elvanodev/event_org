@@ -9,18 +9,19 @@ class Modelmembers extends CI_Model
       parent::__construct();
    }
 
-
-
-   function getArrayListmembers()
-   { /* spertinya perlu lock table*/
-      $xBuffResul = array();
-      $xStr =  "SELECT " .
+   private $default_select_query = "SELECT " .
          "idx" . ",name" .
          ",email" .
          ",password" .
          ",address" .
+         ",phone" .
 
-         " FROM members   order by idx ASC ";
+         " FROM members";
+
+   function getArrayListmembers()
+   { /* spertinya perlu lock table*/
+      $xBuffResul = array();
+      $xStr = $this->default_select_query."  order by idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
          $xBuffResul[$row->idx] = $row->name . " | " . $row->email;
@@ -33,13 +34,7 @@ class Modelmembers extends CI_Model
       if (!empty($xSearch)) {
          $xSearch = "Where idx like '%" . $xSearch . "%'";
       }
-      $xStr =   "SELECT " .
-         "idx" .
-         ",name" .
-         ",email" .
-         ",password" .
-         ",address" .
-         " FROM members $xSearch order by idx DESC limit " . $xAwal . "," . $xLimit;
+      $xStr = $this->default_select_query." $xSearch order by idx DESC limit " . $xAwal . "," . $xLimit;
       $query = $this->db->query($xStr);
       return $query;
    }
@@ -47,14 +42,7 @@ class Modelmembers extends CI_Model
 
    function getDetailmembers($xidx)
    {
-      $xStr =   "SELECT " .
-         "idx" .
-         ",name" .
-         ",email" .
-         ",password" .
-         ",address" .
-
-         " FROM members  WHERE idx = '" . $xidx . "'";
+      $xStr = $this->default_select_query."  WHERE idx = '" . $xidx . "'";
 
       $query = $this->db->query($xStr);
       $row = $query->row();
@@ -63,14 +51,7 @@ class Modelmembers extends CI_Model
 
    function getDetailmembersbyemail($xemail)
    {
-      $xStr =   "SELECT " .
-         "idx" .
-         ",name" .
-         ",email" .
-         ",password" .
-         ",address" .
-
-         " FROM members  WHERE email = '" . $xemail . "'";
+      $xStr = $this->default_select_query." WHERE email = '" . $xemail . "'";
 
       $query = $this->db->query($xStr);
       $row = $query->row();
@@ -80,14 +61,7 @@ class Modelmembers extends CI_Model
 
    function getLastIndexmembers()
    { /* spertinya perlu lock table*/
-      $xStr =   "SELECT " .
-         "idx" .
-         ",name" .
-         ",email" .
-         ",password" .
-         ",address" .
-
-         " FROM members order by idx DESC limit 1 ";
+      $xStr = $this->default_select_query." order by idx DESC limit 1 ";
       $query = $this->db->query($xStr);
       $row = $query->row();
       return $row;
@@ -95,13 +69,14 @@ class Modelmembers extends CI_Model
 
 
 
-   function setInsertmembers($xname, $xemail, $xpassword, $xaddress)
+   function setInsertmembers($xname, $xemail, $xpassword, $xaddress, $xphone)
    {
       $post_data = [
          "name" => $xname,
          "email" => $xemail,
          "password" => $xpassword,
-         "address" => $xaddress
+         "address" => $xaddress,
+         "phone" => $xphone
       ];
       $insert = $this->db->insert('members', $post_data);
       if ( !$insert ) {
@@ -112,7 +87,7 @@ class Modelmembers extends CI_Model
       return  $insert_id;
    }
 
-   function setUpdatemembers($xidx, $xname, $xemail, $xpassword, $xaddress)
+   function setUpdatemembers($xidx, $xname, $xemail, $xpassword, $xaddress, $xphone)
    {
       $xStr =  " UPDATE members SET " .
          "idx='" . $xidx . "'" .
@@ -120,18 +95,20 @@ class Modelmembers extends CI_Model
          ",email='" . $xemail . "'" .
          ",password='" . $xpassword . "'" .
          ",address='" . $xaddress . "'" .
+         ",phone='" . $xphone . "'" .
          ",updated_at=NOW()" .
          " WHERE idx = '" . $xidx . "'";
       $query = $this->db->query($xStr);
       return $xidx;
    }
-   function setUpdatemembers1($xidx, $xname, $xemail, $xaddress)
+   function setUpdatemembers1($xidx, $xname, $xemail, $xaddress, $xphone)
    {
       $xStr =  " UPDATE members SET " .
          "idx='" . $xidx . "'" .
          ",name='" . $xname . "'" .
          ",email='" . $xemail . "'" .
          ",address='" . $xaddress . "'" .
+         ",phone='" . $xphone . "'" .
          ",updated_at=NOW()" .
          " WHERE idx = '" . $xidx . "'";
       $query = $this->db->query($xStr);

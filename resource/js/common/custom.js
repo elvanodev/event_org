@@ -14,42 +14,6 @@ $(document).ready(function () {
     });
 });
 
-function onchangeedition() {    
-    $.ajax({
-        url: getBaseURL() + "index.php/home/seteditionsession/",
-        data: "ededition_id=" + $("#editionId").val(),
-        cache: false,
-        dataType: "json",
-        type: "POST",
-        success: function (json) {
-
-        },
-        error: function (xmlHttpRequest, textStatus, errorThrown) {
-            console.log("Error:", xmlHttpRequest.responseText);
-            alert("Error juga " + xmlHttpRequest.responseText);
-        },
-    });
-}
-
-
-function getEdition(editionId) {
-    $.ajax({
-        url: getBaseURL() + "index.php/ctreditions/editreceditions/",
-        data: "edidx=" + editionId,
-        cache: false,
-        dataType: "json",
-        type: "POST",
-        success: function (json) {
-            let date = new Date(json.started_at);
-            $("#selectedEdition").html(json.name + " " + json.venue_address + " " + date.getFullYear());
-        },
-        error: function (xmlHttpRequest, textStatus, errorThrown) {
-            console.log("Error juga " + xmlHttpRequest.responseText);
-            alert("Error juga " + xmlHttpRequest.responseText);
-        },
-    });
-}
-
 function declarecustomtooltip() {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
@@ -190,14 +154,32 @@ function dropdownstatusproperti(editedstatus, modul, statuselement) {
 
 function onkeyupcoupon_number() {
     $(document).ready(function () {
-      var numberPattern = /\d+/g;
-      var val = $(".couponnumber").val();
-      const match = val.match(numberPattern);
-      var newval = "";
-      if (match) {
-        newval = val.match(numberPattern).join("");
-      }
-      $(".couponnumber").val(newval);
+        var numberPattern = /\d+/g;
+        var val = $(".couponnumber").val();
+        const match = val.match(numberPattern);
+        var newval = "";
+        if (match) {
+            newval = val.match(numberPattern).join("");
+        }
+        $(".couponnumber").val(newval);
+        console.log("onkeyupcoupon_number", newval);
+        $.ajax({
+            url: getBaseURL() + "index.php/ctrcoupons/detailcouponbynumber/",
+            data: "edcoupon_number=" + newval + "&ededition_id=" + $("#editionId").val(),
+            cache: false,
+            dataType: "json",
+            type: "POST",
+            success: function (json) {            
+            if (json.coupon_id != 0) {
+                $("#warningCoupon").removeClass("d-none");
+            } else {        
+                $("#warningCoupon").addClass("d-none");
+            }
+            },
+            error: function (xmlHttpRequest, textStatus, errorThrown) {
+            alert("Error juga " + xmlHttpRequest.responseText);
+            },
+        });
     });
   }
   

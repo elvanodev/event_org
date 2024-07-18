@@ -45,6 +45,7 @@ function doeditmembers(edidx) {
         $("#edemail").val(json.email);
         $("#edpassword").val(json.password);
         $("#edaddress").val(json.address);
+        $("#edphone").val(json.phone);
       },
       error: function (xmlHttpRequest, textStatus, errorThrown) {
         alert("Error juga " + xmlHttpRequest.responseText);
@@ -61,6 +62,7 @@ function doClearmembers() {
     $("#edemail").val("");
     $("#edpassword").val("");
     $("#edaddress").val("");
+    $("#edphone").val("");
   });
 }
 
@@ -78,7 +80,9 @@ function dosimpanmembers() {
         "&edpassword=" +
         $("#edpassword").val() +
         "&edaddress=" +
-        $("#edaddress").val(),
+        $("#edaddress").val() +
+        "&edphone=" +
+        $("#edphone").val(),
       cache: false,
       dataType: "json",
       type: "POST",

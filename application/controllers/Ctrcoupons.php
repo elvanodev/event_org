@@ -68,6 +68,7 @@ class Ctrcoupons extends CI_Controller
     $xBufResult .= setForm('coupon_price', 'Coupon Price', form_input_(getArrayObj('edcoupon_price_v', '', '200'), '', ' placeholder="Coupon Price" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"  data-type="currency" disabled')) . '<div class="spacer"></div>';
 
     $xBufResult .= setForm('coupon_number', 'Coupon Number', form_input_(getArrayObj('edcoupon_number', '', '200'), '', 'class="couponnumber" placeholder="Coupon Number" onkeyup="onkeyupcoupon_number();" maxlength="4"')) . '<div class="spacer"></div>';
+    $xBufResult .= '<small class="d-none text-warning" id="warningCoupon">Kupon sudah dipakai!</small>';
 
     $this->load->model('modelshippers');
     $shipper = $this->modelshippers->getLastIndexshippers();
@@ -302,8 +303,9 @@ class Ctrcoupons extends CI_Controller
   function detailcouponbynumber()
   {
     $xcoupon_number  = $_POST['edcoupon_number'];
+    $xedition_id  = $_POST['ededition_id'];
     $this->load->model('modelcoupons');
-    $row = $this->modelcoupons->getDetailcouponBycoupon_number($xcoupon_number);
+    $row = $this->modelcoupons->getDetailcouponBycoupon_number($xcoupon_number, $xedition_id);
     $this->load->helper('json');
     if ($row) {
       $this->json_data['coupon_id'] = $row->idx;

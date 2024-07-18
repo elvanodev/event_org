@@ -50,7 +50,9 @@ class Ctrmembers extends CI_Controller
 
     $xBufResult .= setForm('password', 'Password', form_input_(getArrayObj('edpassword', '', '200'), '', ' placeholder="Password" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('address', 'Address', form_input_(getArrayObj('edaddress', '', '200'), '', ' placeholder="Address" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('address', 'Address', form_textarea_(getArrayObj('edaddress', '', '200'), '', ' placeholder="Address" ')) . '<div class="spacer"></div>';
+
+    $xBufResult .= setForm('phone', 'Phone', form_input_(getArrayObj('edphone', '', '200'), '', ' placeholder="Phone" ')) . '<div class="spacer"></div>';
 
     $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'New', 'onclick="doClearmembers();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanmembers();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchmembers(0);"') . '<div class="spacer"></div></div><div id="tabledatamembers">' . $this->getlistmembers(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
@@ -66,6 +68,7 @@ class Ctrmembers extends CI_Controller
       tbaddcellhead('Rmail', '', 'data-field="email" data-sortable="true" width=10%') .
       tbaddcellhead('Password', '', 'data-field="password" data-sortable="true" width=10%') .
       tbaddcellhead('Address', '', 'data-field="address" data-sortable="true" width=10%') .
+      tbaddcellhead('Phone', '', 'data-field="phone" data-sortable="true" width=10%') .
 
       tbaddcellhead('Action', 'padding:5px;width:10%;text-align:center;', 'col-md-2'), '', TRUE);
     $this->load->model('modelmembers');
@@ -81,6 +84,7 @@ class Ctrmembers extends CI_Controller
         tbaddcell($row->email) .
         tbaddcell($row->password) .
         tbaddcell($row->address) .
+        tbaddcell($row->phone) .
 
         tbaddcell($xButtonEdit . $xButtonHapus));
     }
@@ -121,6 +125,7 @@ class Ctrmembers extends CI_Controller
     $this->json_data['email'] = $row->email;
     $this->json_data['password'] = $row->password;
     $this->json_data['address'] = $row->address;
+    $this->json_data['phone'] = $row->phone;
 
     echo json_encode($this->json_data);
   }
@@ -178,14 +183,15 @@ class Ctrmembers extends CI_Controller
     $xemail = $_POST['edemail'];
     $xpassword = $_POST['edpassword'];
     $xaddress = $_POST['edaddress'];
+    $xphone = $_POST['edphone'];
 
     $this->load->model('modelmembers');
     $xidpegawai = $this->session->userdata('idpegawai');
     if (!empty($xidpegawai)) {
       if ($xidx != '0') {
-        $xStr =  $this->modelmembers->setUpdatemembers($xidx, $xname, $xemail, $xpassword, $xaddress);
+        $xStr =  $this->modelmembers->setUpdatemembers($xidx, $xname, $xemail, $xpassword, $xaddress, $xphone);
       } else {
-        $xStr =  $this->modelmembers->setInsertmembers($xname, $xemail, $xpassword, $xaddress);
+        $xStr =  $this->modelmembers->setInsertmembers($xname, $xemail, $xpassword, $xaddress, $xphone);
       }
     }
     echo json_encode(null);

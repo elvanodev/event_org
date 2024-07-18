@@ -13,7 +13,7 @@ class Home extends CI_Controller {
       $this->load->view('viewfrontend/layout/leftmenu', ['showback' => false, 'showmainmenu' => true, 'showadditionalmenu' => true]);
       $this->load->view('viewfrontend/home');
       $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => true]);
-      $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> 'ajaxhome.js']);
+      $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> '']);
     }
 
     function seteditionsession() {

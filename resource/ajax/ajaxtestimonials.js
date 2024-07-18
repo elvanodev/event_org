@@ -156,10 +156,10 @@ function formhide() {
   });
 }
 
-function onchangecoupon_number() {
+function onchangecoupon_number(edition_id) {
   $.ajax({
     url: getBaseURL() + "index.php/ctrcoupons/detailcouponbynumber/",
-    data: "edcoupon_number=" + $("#edcoupon_number").val(),
+    data: "edcoupon_number=" + $("#edcoupon_number").val() + "&ededition_id=" + edition_id,
     cache: false,
     dataType: "json",
     type: "POST",
@@ -201,7 +201,7 @@ function onScanSuccess(decodedText, decodedResult) {
   console.log(decodedqr);
 
   $("#edcoupon_number").val(decodedqr.qr_number);
-  onchangecoupon_number();
+  onchangecoupon_number(decodedqr.edition_id);
 }
 
 function onScanFailure(error) {
