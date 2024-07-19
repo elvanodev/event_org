@@ -9,6 +9,10 @@ class Couponsellingform extends CI_Controller
 
   function index()
   {
+    date_default_timezone_set('Asia/Jakarta');
+    $unique_key = date('YmdHis').hrtime(true);
+    $this->session->set_userdata('formuniqueid', $unique_key);
+
     $message = "";
     // $formdata = [
     //   "couponNumber"=> $this->input->post('couponNumber'),
@@ -66,7 +70,11 @@ class Couponsellingform extends CI_Controller
 
         //Populate Coupon
         if ($registration_id != 0) {
-          redirect(base_url() . "frontend/couponpayment?member_id=" . $member_id . "&edition_id=" . $edition_id . "&registration_id=" . $registration_id. "&coupon_number" . $couponNumber);
+          $this->session->set_userdata('member_id', $member_id);
+          $this->session->set_userdata('edition_id', $edition_id);
+          $this->session->set_userdata('registration_id', $registration_id);
+          $this->session->set_userdata('coupon_number', $couponNumber);
+          redirect(base_url() . "frontend/couponpurchase");
         } else {
           $message = "Registration Failed";
         }

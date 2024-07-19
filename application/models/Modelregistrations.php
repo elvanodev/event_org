@@ -18,6 +18,7 @@ class Modelregistrations extends CI_Model
          ",ed.name as edition_name" .
          ",ev.name as event_name" .
          ",mb.name as member_name" .
+         ",mb.email as member_email" .
          " FROM registrations rg".
          " JOIN editions ed on ed.idx = rg.edition_id".
          " JOIN events ev on ev.idx = ed.event_id".

@@ -21,7 +21,7 @@ class Modelshippers extends CI_Model
          " FROM shippers   order by idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
-         $xBuffResul[$row->idx] = $row->name;
+         $xBuffResul[$row->idx] = $row->name . " - Rp." . number_format($row->shipper_price);
       }
       return $xBuffResul;
    }

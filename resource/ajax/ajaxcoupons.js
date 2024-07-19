@@ -56,6 +56,7 @@ function doeditcoupons(edidx) {
         $("#edpayment_confirm_receipt").val(json.payment_confirm_receipt);
         $("#edvalid_until").val(json.valid_until);
         $("#edregistration_id").val(json.registration_id);
+        $("#edshipper_id").val(json.shipper_id);
         $("#edmember_name").val(json.member_name);
         $("#edpayment_unique_id").val(json.payment_unique_id);
         formatCurrency($("#edcoupon_price_v"));
@@ -85,6 +86,7 @@ function doClearcoupons() {
     $("#edpayment_confirm_receipt").val("");
     $("#edvalid_until").val("");
     $("#edregistration_id").val("");
+    $("#edshipper_id").val("");
     $("#edmember_name").val("");
     $("#edpayment_unique_id").val("");
   });
@@ -129,6 +131,8 @@ function dosimpancoupons() {
           $("#edvalid_until").val() +
           "&edregistration_id=" +
           $("#edregistration_id").val() +
+          "&edshipper_id=" +
+          $("#edshipper_id").val() +
           "&edmember_name=" +
           $("#edmember_name").val() +
           "&edpayment_unique_id=" +

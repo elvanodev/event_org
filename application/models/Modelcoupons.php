@@ -23,6 +23,7 @@ class Modelcoupons extends CI_Model
 	c.payment_confirm_receipt,
 	c.valid_until,
 	c.registration_id,
+	c.shipper_id,
 	c.payment_unique_id,
 	ev.name event_name,
 	ed.name edition_name,
@@ -98,7 +99,7 @@ from
       return $row;
    }
 
-   function setInsertcoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id)
+   function setInsertcoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id, $xshipper_id)
    {
       $xStr =  " INSERT INTO coupons( " .
          "idx" .
@@ -113,13 +114,14 @@ from
          ",payment_confirm_receipt" .
          ",valid_until" .
          ",registration_id" .
+         ",shipper_id" .
          ",created_at" .
-         ") VALUES('" . $xidx . "','" . $xedition_id . "','" . $xcoupon_number . "','" . $xqr_code . "','" . $xcoupon_price . "','" . $xshipper_price . "','" . $xtotal_price . "','" . $xis_winner . "','" . $xpayment_status_id . "','" . $xpayment_confirm_receipt . "','" . $xvalid_until . "','" . $xregistration_id . "',NOW())";
+         ") VALUES('" . $xidx . "','" . $xedition_id . "','" . $xcoupon_number . "','" . $xqr_code . "','" . $xcoupon_price . "','" . $xshipper_price . "','" . $xtotal_price . "','" . $xis_winner . "','" . $xpayment_status_id . "','" . $xpayment_confirm_receipt . "','" . $xvalid_until . "','" . $xregistration_id . "','" . $xshipper_id . "',NOW())";
       $query = $this->db->query($xStr);
       return $xidx;
    }
 
-   function setUpdatecoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id)
+   function setUpdatecoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id, $xshipper_id)
    {
       $xStr =  " UPDATE coupons SET " .
          "idx='" . $xidx . "'" .
@@ -134,6 +136,7 @@ from
          ",payment_confirm_receipt='" . $xpayment_confirm_receipt . "'" .
          ",valid_until='" . $xvalid_until . "'" .
          ",registration_id='" . $xregistration_id . "'" .
+         ",shipper_id='" . $xshipper_id . "'" .
          ",updated_at=NOW()" .
          " WHERE idx = '" . $xidx . "'";
       $query = $this->db->query($xStr);

@@ -263,6 +263,7 @@ class Ctrcoupons extends CI_Controller
     $xpayment_confirm_receipt = $_POST['edpayment_confirm_receipt'];
     $xvalid_until = $_POST['edvalid_until'];
     $xregistration_id = $_POST['edregistration_id'];
+    $xshipper_id = $_POST['edshipper_id'];
 
     $this->load->model('modelcoupons');
 
@@ -289,9 +290,9 @@ class Ctrcoupons extends CI_Controller
         $xqr_code = generate_qrcode($prefix);
 
         if ($xidx != '0') {
-          $xStr =  $this->modelcoupons->setUpdatecoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id);
+          $xStr =  $this->modelcoupons->setUpdatecoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id, $xshipper_id);
         } else {
-          $xStr =  $this->modelcoupons->setInsertcoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id);
+          $xStr =  $this->modelcoupons->setInsertcoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id, $xshipper_id);
         }
       }
     }
