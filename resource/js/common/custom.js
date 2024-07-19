@@ -162,24 +162,24 @@ function onkeyupcoupon_number() {
             newval = val.match(numberPattern).join("");
         }
         $(".couponnumber").val(newval);
-        console.log("onkeyupcoupon_number", newval);
-        $.ajax({
-            url: getBaseURL() + "index.php/ctrcoupons/detailcouponbynumber/",
-            data: "edcoupon_number=" + newval + "&ededition_id=" + $("#editionId").val(),
-            cache: false,
-            dataType: "json",
-            type: "POST",
-            success: function (json) {            
-            if (json.coupon_id != 0) {
-                $("#warningCoupon").removeClass("d-none");
-            } else {        
-                $("#warningCoupon").addClass("d-none");
-            }
-            },
-            error: function (xmlHttpRequest, textStatus, errorThrown) {
-            alert("Error juga " + xmlHttpRequest.responseText);
-            },
-        });
+        // console.log("onkeyupcoupon_number", newval);
+        // $.ajax({
+        //     url: getBaseURL() + "index.php/ctrcoupons/detailcouponbynumber/",
+        //     data: "edcoupon_number=" + newval + "&ededition_id=" + $("#editionId").val(),
+        //     cache: false,
+        //     dataType: "json",
+        //     type: "POST",
+        //     success: function (json) {            
+        //     if (json.coupon_id != 0) {
+        //         $("#warningCoupon").removeClass("d-none");
+        //     } else {        
+        //         $("#warningCoupon").addClass("d-none");
+        //     }
+        //     },
+        //     error: function (xmlHttpRequest, textStatus, errorThrown) {
+        //     alert("Error juga " + xmlHttpRequest.responseText);
+        //     },
+        // });
     });
   }
   
@@ -225,7 +225,7 @@ function onclickshowoptiontooltip(repid,rowindex) {
 
 function decodeqrnumber(qrcodetext) {
     var qrcodesplit = qrcodetext.split("_");
-    var edition_id = qrcodesplit[0].substring(2);
+    var edition_id = qrcodesplit[0].substring(5);
     var member_id = null;
     var registration_id = null;
     if (qrcodesplit[1].includes('M')){

@@ -200,8 +200,8 @@ class Ctrregistrations extends CI_Controller
     $xmember_id = $_POST['edmember_id'];
     $xregistered_at = $_POST['edregistered_at'];
 
-    $prefix = "ED".$xedition_id."_"."M".$xmember_id;
-    $xqr_code = generate_qrcode($prefix, true, 10);
+    $prefix = "REG-ED".$xedition_id."_"."M".$xmember_id;
+    $xqr_code = generate_qrcode($prefix);
 
     $this->load->model('modelregistrations');
     $xidpegawai = $this->session->userdata('idpegawai');

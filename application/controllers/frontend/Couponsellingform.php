@@ -1,34 +1,37 @@
 <?php
-class Couponsellingform extends CI_Controller {
-    
-    function __construct() {
-        parent::__construct();
-    }
+class Couponsellingform extends CI_Controller
+{
 
-    function index()
-    {
-      $this->load->model("modelfrontend");
-      $dataHeader = $this->modelfrontend->getDataHeader();
-      $this->load->view('viewfrontend/layout/header', $dataHeader);
-      $this->load->view('viewfrontend/layout/leftmenu', ['showback' => true, 'showmainmenu' => false, 'showadditionalmenu' => false]);
-      $this->load->view('viewfrontend/couponsellingform', );
-      $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => false]);
-      $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> 'ajaxcouponsellingform.js']);
-    }
+  function __construct()
+  {
+    parent::__construct();
+  }
 
-    function detectCouponNumberExist() {
-      $this->load->model('modelcoupons');
-      $this->modelcoupons->getDetailcouponBycoupon_number($this->input->post(''));
-    }
-
-    function save() {
+  function index()
+  {
+    $message = "";
+    // $formdata = [
+    //   "couponNumber"=> $this->input->post('couponNumber'),
+    //   "memberName"=> $this->input->post('memberName'),
+    //   "memberEmail"=> $this->input->post('memberEmail'),
+    //   "shipperAddress"=> $this->input->post('shipperAddress'),
+    //   "memberPhone"=> $this->input->post('memberPhone'),
+    // ];
+    $formdata = [
+      "couponNumber"=> "1234",
+      "memberName"=> "Jhon Doe",
+      "memberEmail"=> "testingemail@gmail.com",
+      "shipperAddress"=> "Testing Shipper Address",
+      "memberPhone"=> "085746837483",
+    ];
+    if ($this->input->post('submit')) {
       $this->load->helper("common");
       $this->load->helper("qrcode");
       $this->load->model("modelmembers");
       $this->load->model("modelregistrations");
-      $this->load->model("modelcoupons");      
+      $this->load->model("modelcoupons");
       $edition_id = $this->session->userdata("edition_id");
-      
+
       $couponNumber = $this->input->post('couponNumber');
       $memberName = $this->input->post('memberName');
       $memberEmail = $this->input->post('memberEmail');
@@ -54,21 +57,31 @@ class Couponsellingform extends CI_Controller {
         if ($rowRg) {
           $registration_id = $rowRg->idx;
           $this->modelregistrations->setUpdateregistrations($registration_id, $edition_id, $member_id, null);
-        } else {    
-          $prefix = "ED".$edition_id."_"."M".$member_id;
-          $xqr_code = generate_qrcode($prefix, true, 10);
+        } else {
+          $prefix = "REG-ED" . $edition_id . "_" . "M" . $member_id;
+          $xqr_code = generate_qrcode($prefix);
 
           $registration_id = $this->modelregistrations->setInsertregistrations($edition_id, $member_id, null, $xqr_code);
         }
 
         //Populate Coupon
-        if ($registration_id != 0) {          
-          $prefix = "ED".$edition_id."_"."RG".$registration_id;
-          $xqr_code_coupon = generate_qrcode($prefix, false, 0, $couponNumber);
-          
+        if ($registration_id != 0) {
+          redirect(base_url() . "frontend/couponpayment?member_id=" . $member_id . "&edition_id=" . $edition_id . "&registration_id=" . $registration_id. "&coupon_number" . $couponNumber);
+        } else {
+          $message = "Registration Failed";
         }
+      } else {
+        $message = "Member Failed";
       }
     }
-
-  
+    $data = ['message' => $message, 'formdata' => $formdata];
+    // echo json_encode($data);
+    $this->load->model("modelfrontend");
+    $dataHeader = $this->modelfrontend->getDataHeader();
+    $this->load->view('viewfrontend/layout/header', $dataHeader);
+    $this->load->view('viewfrontend/layout/leftmenu', ['showback' => true, 'showmainmenu' => false, 'showadditionalmenu' => false]);
+    $this->load->view('viewfrontend/couponsellingform', $data );
+    $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => false]);
+    $this->load->view('viewfrontend/layout/footer', ['ajaxfilename' => 'ajaxcouponsellingform.js']);
+  }
 }

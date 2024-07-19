@@ -81,6 +81,15 @@ from
       return $row;
    }
 
+   function getDetailcouponByregistrationandedition($xregistration_id, $xedition_id)
+   {
+      $xStr = $this->default_query . " WHERE c.registration_id = '" . $xregistration_id . "' and c.edition_id = '" . $xedition_id . "'";
+
+      $query = $this->db->query($xStr);
+      $row = $query->row();
+      return $row;
+   }
+
    function getLastIndexcoupons()
    { /* spertinya perlu lock table*/
       $xStr = $this->default_query . " order by c.idx DESC limit 1 ";

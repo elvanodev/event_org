@@ -68,7 +68,7 @@ class Ctrcoupons extends CI_Controller
     $xBufResult .= setForm('coupon_price', 'Coupon Price', form_input_(getArrayObj('edcoupon_price_v', '', '200'), '', ' placeholder="Coupon Price" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"  data-type="currency" disabled')) . '<div class="spacer"></div>';
 
     $xBufResult .= setForm('coupon_number', 'Coupon Number', form_input_(getArrayObj('edcoupon_number', '', '200'), '', 'class="couponnumber" placeholder="Coupon Number" onkeyup="onkeyupcoupon_number();" maxlength="4"')) . '<div class="spacer"></div>';
-    $xBufResult .= '<small class="d-none text-warning" id="warningCoupon">Kupon sudah dipakai!</small>';
+    // $xBufResult .= '<small class="d-none text-warning" id="warningCoupon">Kupon sudah dipakai!</small>';
 
     $this->load->model('modelshippers');
     $shipper = $this->modelshippers->getLastIndexshippers();
@@ -273,11 +273,11 @@ class Ctrcoupons extends CI_Controller
     $message = '';
 
     //validate coupon number existing
-    $iscouponnumberexist = $this->modelcoupons->iscouponnumberexist($xedition_id, $xcoupon_number);
-    if ($iscouponnumberexist) {
-      $isallvalid = 0;
-      $message .= 'Coupon number already exists!';
-    }
+    // $iscouponnumberexist = $this->modelcoupons->iscouponnumberexist($xedition_id, $xcoupon_number);
+    // if ($iscouponnumberexist) {
+    //   $isallvalid = 0;
+    //   $message .= 'Coupon number already exists!';
+    // }
 
     /**
      * end of validation
@@ -285,8 +285,8 @@ class Ctrcoupons extends CI_Controller
     if($isallvalid === 1){
       $xidpegawai = $this->session->userdata('idpegawai');
       if (!empty($xidpegawai)) {        
-        $prefix = "ED".$xedition_id."_"."RG".$xregistration_id;
-        $xqr_code = generate_qrcode($prefix, false, 0, $xcoupon_number);
+        $prefix = "COP-ED".$xedition_id."_"."RG".$xregistration_id;
+        $xqr_code = generate_qrcode($prefix);
 
         if ($xidx != '0') {
           $xStr =  $this->modelcoupons->setUpdatecoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id);
