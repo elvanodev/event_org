@@ -6,5 +6,12 @@
                 Silahkan hubungi admin untuk melakukan pembayaran.
             </small>
         </div>
+        <div class="card-footer">
+            <a href="<?php echo base_url()?>">
+                <small class="text-dark d-flex justify-content-center">
+                    Kembali ke halaman utama
+                </small>
+            </a>
+        </div>
     </form>
 </div>
