@@ -10,7 +10,6 @@ class Couponpurchase extends CI_Controller {
       if ($this->session->userdata('formuniqueid')) {
         $edition_id = $this->session->userdata("edition_id");
         $member_id = $this->session->userdata('member_id');
-        $edition_id = $this->session->userdata('edition_id');
         $registration_id = $this->session->userdata('registration_id');
         $coupon_number = $this->session->userdata('coupon_number');
 
@@ -18,63 +17,76 @@ class Couponpurchase extends CI_Controller {
         $this->load->model('modelshippers');
         $rowEdition = $this->modeleditions->getDetaileditions($edition_id);
         $arrayongkir = $this->modelshippers->getArrayListshippers();
+        $shipper_id_default = 1;
+        $rowShipperDefault = $this->modelshippers->getDetailshippers($shipper_id_default);
 
         $message = "";
+        $coupon_price = $rowEdition->coupon_price;
+        $total_price = $rowShipperDefault->shipper_price + $coupon_price;
         $formdata = [
           "selected_coupon_number"=> $coupon_number,
           "arrayongkir"=> $arrayongkir,
-          "selected_ongkir"=> $arrayongkir,
-
+          "coupon_price"=> "Rp" . number_format($coupon_price),
+          "shipper_id"=> $this->input->post('shipper_id') ? $this->input->post('shipper_id') : '1',
+          "total_price"=> $this->input->post('total_price') ? $this->input->post('total_price') : "Rp".number_format($total_price)
         ];
         if ($this->input->post('submit')) {
           $this->load->helper("common");
           $this->load->helper("qrcode");
-          $this->load->model("modelmembers");
-          $this->load->model("modelregistrations");
           $this->load->model("modelcoupons");
     
-          $couponNumber = $this->input->post('couponNumber');
-          $memberName = $this->input->post('memberName');
-          $memberEmail = $this->input->post('memberEmail');
-          $shipperAddress = $this->input->post('shipperAddress');
-          $memberPhone = $this->input->post('memberPhone');
-          $xpassword = md5($couponNumber);
-          // echo json_encode([$couponNumber,$memberName,$memberEmail,$shipperAddress,$memberPhone,$xpassword]);
-    
-          // Create/Update Member
-          $rowMember = $this->modelmembers->getDetailmembersbyemail($memberEmail);
-          $member_id = 0;
-          if ($rowMember) {
-            $member_id = $rowMember->idx;
-            $this->modelmembers->setUpdatemembers1($member_id, $memberName, $memberEmail, $shipperAddress, $memberPhone);
-            $this->modelregistrations->setDeleteregistrationsbymemberandedition($edition_id, $rowMember->idx);
-          } else {
-            $member_id = $this->modelmembers->setInsertmembers($memberName, $memberEmail, $xpassword, $shipperAddress, $memberPhone);
+          $shipper_id = $this->input->post('shipper_id');
+          $total_price = $this->input->post('total_price');
+
+          // Create/Update Coupon
+          $rowShipper = $this->modelshippers->getDetailshippers($shipper_id);
+          if ($rowShipper) {
+            $shipper_price = $rowShipper->shipper_price;
+            $total_price = $coupon_price + $shipper_price;
+            $rowCoupon = $this->modelcoupons->getDetailcouponByregistrationandedition($registration_id, $edition_id);
+            $coupon_id = 0;
+            if ($rowCoupon) {
+              $coupon_id = $rowCoupon->idx;
+              date_default_timezone_set('Asia/Jakarta');
+              $data_update = [
+                'edition_id'=>$edition_id,
+                'coupon_number'=>$coupon_number,
+                'coupon_price'=>$coupon_price,
+                'shipper_price'=>$shipper_price,
+                'total_price'=>$total_price,
+                'payment_status_id'=>'1',
+                'registration_id'=>$registration_id,
+                'shipper_id'=>$shipper_id,
+                'updated_at'=>date('Y-m-d H:i:s'),
+              ];
+              $this->modelcoupons->setUpdatecouponsbatch($coupon_id, $data_update);
+            } else {
+              //generate qr code
+              $prefix = "COP-ED".$edition_id."_"."RG".$registration_id;
+              $xqr_code = generate_qrcode($prefix);
+              $data_insert = [
+                'edition_id'=>$edition_id,
+                'coupon_number'=>$coupon_number,
+                'qr_code'=>$xqr_code,
+                'coupon_price'=>$coupon_price,
+                'shipper_price'=>$shipper_price,
+                'total_price'=>$total_price,
+                'payment_status_id'=>'1',
+                'registration_id'=>$registration_id,
+                'shipper_id'=>$shipper_id,
+              ];
+              $coupon_id = $this->modelcoupons->setInsertcouponsbatch($data_insert);
+            }
           }
     
-          // Register Member to Event Edition
-          if ($member_id != 0) {
-            $rowRg = $this->modelregistrations->getDetailregistrationsByEditionAndMember($edition_id, $member_id);
-            if ($rowRg) {
-              $registration_id = $rowRg->idx;
-              $this->modelregistrations->setUpdateregistrations($registration_id, $edition_id, $member_id, null);
-            } else {
-              $prefix = "REG-ED" . $edition_id . "_" . "M" . $member_id;
-              $xqr_code = generate_qrcode($prefix);
-    
-              $registration_id = $this->modelregistrations->setInsertregistrations($edition_id, $member_id, null, $xqr_code);
-            }
-    
-            //Populate Coupon
-            if ($registration_id != 0) {
-              redirect(base_url() . "frontend/couponpurchase");
-            } else {
-              $message = "Registration Failed";
-            }
+          // If coupon creation success
+          if ($coupon_id != 0) {
+            redirect(base_url() . "frontend/couponpayment");
           } else {
-            $message = "Member Failed";
+            $message = "Create Coupon Failed";
           }
         }
+        $data = ['message' => $message, 'formdata' => $formdata];
         $this->load->model("modelfrontend");
         $dataHeader = $this->modelfrontend->getDataHeader();
         $this->load->view('viewfrontend/layout/header', $dataHeader);

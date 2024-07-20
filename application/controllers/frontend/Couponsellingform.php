@@ -15,18 +15,18 @@ class Couponsellingform extends CI_Controller
 
     $message = "";
     // $formdata = [
-    //   "couponNumber"=> $this->input->post('couponNumber'),
-    //   "memberName"=> $this->input->post('memberName'),
-    //   "memberEmail"=> $this->input->post('memberEmail'),
-    //   "shipperAddress"=> $this->input->post('shipperAddress'),
-    //   "memberPhone"=> $this->input->post('memberPhone'),
+    //   "couponNumber"=> $this->input->post('couponNumber') ? $this->input->post('couponNumber') : null,
+    //   "memberName"=> $this->input->post('memberName') ? $this->input->post('memberName') : null,
+    //   "memberEmail"=> $this->input->post('memberEmail') ? $this->input->post('memberEmail') : null,
+    //   "shipperAddress"=> $this->input->post('shipperAddress') ? $this->input->post('shipperAddress') : null,
+    //   "memberPhone"=> $this->input->post('memberPhone') ? $this->input->post('memberPhone') : null,
     // ];
     $formdata = [
-      "couponNumber"=> "1234",
-      "memberName"=> "Jhon Doe",
-      "memberEmail"=> "testingemail@gmail.com",
-      "shipperAddress"=> "Testing Shipper Address",
-      "memberPhone"=> "085746837483",
+      "couponNumber"=> $this->input->post('couponNumber') ? $this->input->post('couponNumber') : "1234",
+      "memberName"=> $this->input->post('memberName') ? $this->input->post('memberName') : "Jhon Doe",
+      "memberEmail"=> $this->input->post('memberEmail') ? $this->input->post('memberEmail') : "testingemail@gmail.com",
+      "shipperAddress"=> $this->input->post('shipperAddress') ? $this->input->post('shipperAddress') : "Testing Shipper Address",
+      "memberPhone"=> $this->input->post('memberPhone') ? $this->input->post('memberPhone') : "085746837483",
     ];
     if ($this->input->post('submit')) {
       $this->load->helper("common");
@@ -50,7 +50,6 @@ class Couponsellingform extends CI_Controller
       if ($rowMember) {
         $member_id = $rowMember->idx;
         $this->modelmembers->setUpdatemembers1($member_id, $memberName, $memberEmail, $shipperAddress, $memberPhone);
-        $this->modelregistrations->setDeleteregistrationsbymemberandedition($edition_id, $rowMember->idx);
       } else {
         $member_id = $this->modelmembers->setInsertmembers($memberName, $memberEmail, $xpassword, $shipperAddress, $memberPhone);
       }

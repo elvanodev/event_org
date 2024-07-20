@@ -143,6 +143,22 @@ from
       return $xidx;
    }
 
+   function setUpdatecouponsbatch($idx, $data) {      
+      $update = $this->db->update('coupons', $data, array('idx'=> $idx));
+      if ( !$update ) {
+         echo json_encode($this->db->error());
+      }
+   }
+   function setInsertcouponsbatch($data) {   
+
+      $insert = $this->db->insert('coupons', $data);
+      if ( !$insert ) {
+         echo json_encode($this->db->error());
+      }
+      $insert_id = $this->db->insert_id();
+   
+      return $insert_id;
+   }
    function setDeletecoupons($xidx)
    {
       $xStr =  " DELETE FROM coupons WHERE coupons.idx = '" . $xidx . "'";

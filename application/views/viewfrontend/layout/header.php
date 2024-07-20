@@ -30,7 +30,7 @@
     <div class="container-fluid web-head-section pt-4 wrapper text-white">
         <div class="row">
             <div class="col-2">
-                <select class="form-control" name="editionId" id="editionId" onchange="onchangeedition()">
+                <select class="form-control" name="editionId" id="editionId" onchange="seteditionsession()">
                     <?php
                     foreach ($editions as $edition) {
                         $selected = '';

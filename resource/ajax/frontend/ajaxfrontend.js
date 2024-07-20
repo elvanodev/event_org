@@ -13,7 +13,7 @@ $(document).ready(function () {
     });
 });
 
-function onchangeedition() {    
+function seteditionsession() {    
     $.ajax({
         url: getBaseURL() + "index.php/home/seteditionsession/",
         data: "ededition_id=" + $("#editionId").val(),
@@ -29,7 +29,6 @@ function onchangeedition() {
         },
     });
 }
-
 
 function getEdition(editionId) {
     if (editionId != undefined) {
