@@ -81,7 +81,7 @@ class Couponpurchase extends CI_Controller {
     
           // If coupon creation success
           if ($coupon_id != 0) {
-            redirect(base_url() . "frontend/couponpayment");
+            redirect(base_url() . "frontend/couponpurchase/confirm");
           } else {
             $message = "Create Coupon Failed";
           }
@@ -97,6 +97,16 @@ class Couponpurchase extends CI_Controller {
       } else {
         redirect(404);
       }
+    }
+
+    function confirm() {
+      $this->load->model("modelfrontend");
+      $dataHeader = $this->modelfrontend->getDataHeader();
+      $this->load->view('viewfrontend/layout/header', $dataHeader);
+      $this->load->view('viewfrontend/layout/leftmenu', ['showback' => true, 'showmainmenu' => false, 'showadditionalmenu' => false]);
+      $this->load->view('viewfrontend/couponpurchaseconfirm' );
+      $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => false]);
+      $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> '']);
     }
   
 }

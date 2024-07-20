@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="card-footer d-flex justify-content-end">
-            <button type="submit" class="btn btn-light" name="submit" id="submit" value="submit">Lanjut Pembayaran</button>
+            <button type="submit" class="btn btn-light" name="submit" id="submit" value="submit">Pesan Kupon</button>
         </div>
     </form>
 </div>
