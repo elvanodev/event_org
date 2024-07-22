@@ -14,20 +14,20 @@ class Couponsellingform extends CI_Controller
     $this->session->set_userdata('formuniqueid', $unique_key);
 
     $message = "";
-    // $formdata = [
-    //   "couponNumber"=> $this->input->post('couponNumber') ? $this->input->post('couponNumber') : null,
-    //   "memberName"=> $this->input->post('memberName') ? $this->input->post('memberName') : null,
-    //   "memberEmail"=> $this->input->post('memberEmail') ? $this->input->post('memberEmail') : null,
-    //   "shipperAddress"=> $this->input->post('shipperAddress') ? $this->input->post('shipperAddress') : null,
-    //   "memberPhone"=> $this->input->post('memberPhone') ? $this->input->post('memberPhone') : null,
-    // ];
     $formdata = [
-      "couponNumber"=> $this->input->post('couponNumber') ? $this->input->post('couponNumber') : "1234",
-      "memberName"=> $this->input->post('memberName') ? $this->input->post('memberName') : "Jhon Doe",
-      "memberEmail"=> $this->input->post('memberEmail') ? $this->input->post('memberEmail') : "testingemail@gmail.com",
-      "shipperAddress"=> $this->input->post('shipperAddress') ? $this->input->post('shipperAddress') : "Testing Shipper Address",
-      "memberPhone"=> $this->input->post('memberPhone') ? $this->input->post('memberPhone') : "085746837483",
+      "couponNumber"=> $this->input->post('couponNumber') ? $this->input->post('couponNumber') : null,
+      "memberName"=> $this->input->post('memberName') ? $this->input->post('memberName') : null,
+      "memberEmail"=> $this->input->post('memberEmail') ? $this->input->post('memberEmail') : null,
+      "shipperAddress"=> $this->input->post('shipperAddress') ? $this->input->post('shipperAddress') : null,
+      "memberPhone"=> $this->input->post('memberPhone') ? $this->input->post('memberPhone') : null,
     ];
+    // $formdata = [
+    //   "couponNumber"=> $this->input->post('couponNumber') ? $this->input->post('couponNumber') : "1234",
+    //   "memberName"=> $this->input->post('memberName') ? $this->input->post('memberName') : "Jhon Doe",
+    //   "memberEmail"=> $this->input->post('memberEmail') ? $this->input->post('memberEmail') : "testingemail@gmail.com",
+    //   "shipperAddress"=> $this->input->post('shipperAddress') ? $this->input->post('shipperAddress') : "Testing Shipper Address",
+    //   "memberPhone"=> $this->input->post('memberPhone') ? $this->input->post('memberPhone') : "085746837483",
+    // ];
     if ($this->input->post('submit')) {
       $this->load->helper("common");
       $this->load->helper("qrcode");
