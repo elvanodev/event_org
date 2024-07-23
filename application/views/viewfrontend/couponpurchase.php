@@ -33,14 +33,13 @@
                 <label for="total_price">Total Biaya</label>
                 <input type="text" maxlength="250" class="form-control" id="total_price" name="total_price" placeholder="Total Biaya" required value="<?php echo $formdata['total_price'];?>" readonly>
             </div>
-            <a href="https://ipaymu.com/id/link-payment/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary mt-2">Link Pembayaran</a>
-            <br>
-            <small>Gunakan link di atas untuk melakukan transaksi beli kupon</small>
+            <small>Silahkan melakukan pembayaran dengan nominal sesuai Total Biaya diatas, lalu upload bukti transfer</small>
             <div class="mt-3">
                 <div id="uploadpayment_confirm_receipt" style="width:300px;">
                     <input type="text" class="form-control" alt="Upload Bukti Pembayaran" id="payment_confirm_receipt" name="payment_confirm_receipt"/>
                 </div>
             </div>
+            <small>Klik Konfirmasi Pembayaran, jika sudah upload bukti transfer</small>
         </div>
         <div class="card-footer d-flex justify-content-end">
             <button type="submit" class="btn btn-secondary" name="submit" id="submit" value="submit">Konfirmasi Pembayaran</button>

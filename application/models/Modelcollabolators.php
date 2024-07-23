@@ -8,17 +8,32 @@ class Modelcollabolators extends CI_Model
    {
       parent::__construct();
    }
-
-
+   
+   private $default_query = "SELECT 
+   c.idx
+   ,c.edition_id
+   ,c.artist_id
+   ,ed.name as edition_name
+   ,ev.name as event_name
+   ,ar.name as artist_name 
+   ,ar.`quote`
+   ,ar.birth_date
+   ,ar.birth_place 
+   ,ar.bio
+   ,ar.poster_img 
+   ,ar.phone 
+   ,ar.instagram_link 
+   ,ar.twitter_link 
+   ,ar.email 
+   FROM collabolators c 
+   JOIN editions ed on ed.idx = c.edition_id 
+   JOIN events ev on ev.idx = ed.event_id 
+   JOIN artists ar on ar.idx = c.artist_id";
 
    function getArrayListcollabolators()
    { /* spertinya perlu lock table*/
       $xBuffResul = array();
-      $xStr =  "SELECT " .
-         "idx" . ",edition_id" .
-         ",artist_id" .
-
-         " FROM collabolators   order by idx ASC ";
+      $xStr = $this->default_query . " order by c.idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
          $xBuffResul[$row->idx] = $row->idx;
@@ -31,18 +46,13 @@ class Modelcollabolators extends CI_Model
       if (!empty($xSearch)) {
          $xSearch = "Where ev.name like '%" . $xSearch . "%' or ar.name like '%" . $xSearch . "%'";
       }
-      $xStr =   "SELECT " .
-         "c.idx" .
-         ",c.edition_id" .
-         ",c.artist_id" .
-         ",ed.name as edition_name" .
-         ",ev.name as event_name" .
-         ",ar.name as artist_name" .
-         " FROM collabolators c".
-         " JOIN editions ed on ed.idx = c.edition_id".
-         " JOIN events ev on ev.idx = ed.event_id".
-         " JOIN artists ar on ar.idx = c.artist_id".
-         " ". $xSearch ." order by c.idx DESC limit " . $xAwal . "," . $xLimit;
+      $xStr = $this->default_query . $xSearch ." order by c.idx DESC limit " . $xAwal . "," . $xLimit;
+      $query = $this->db->query($xStr);
+      return $query;
+   }
+   function getListcollabolatorsbyedition_id($xedition_id)
+   {
+      $xStr = $this->default_query . " where c.edition_id = '" .$xedition_id."' order by c.idx DESC;";
       $query = $this->db->query($xStr);
       return $query;
    }
@@ -50,12 +60,7 @@ class Modelcollabolators extends CI_Model
 
    function getDetailcollabolators($xidx)
    {
-      $xStr =   "SELECT " .
-         "idx" .
-         ",edition_id" .
-         ",artist_id" .
-
-         " FROM collabolators  WHERE idx = '" . $xidx . "'";
+      $xStr = $this->default_query . " WHERE c.idx = '" . $xidx . "'";
 
       $query = $this->db->query($xStr);
       $row = $query->row();
@@ -65,12 +70,7 @@ class Modelcollabolators extends CI_Model
 
    function getLastIndexcollabolators()
    { /* spertinya perlu lock table*/
-      $xStr =   "SELECT " .
-         "idx" .
-         ",edition_id" .
-         ",artist_id" .
-
-         " FROM collabolators order by idx DESC limit 1 ";
+      $xStr = $this->default_query . " order by c.idx DESC limit 1 ";
       $query = $this->db->query($xStr);
       $row = $query->row();
       return $row;

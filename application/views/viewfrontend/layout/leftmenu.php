@@ -1,16 +1,18 @@
 <!-- left menu -->
-<div class="left-menu">
-    <?php if ($showback) { ?>
-    <button class="btn text-nowrap text-light" onclick="history.back()">Kembali<br><i class="fas fa-long-arrow-alt-left"></i></button>
-    <?php } else { ?>  
-        <?php if ($showmainmenu) { ?>      
-    <a href="#" type="button" class="btn btn-light text-nowrap">Kolaborator</a>
-    <a href="#" type="button" class="btn btn-light text-nowrap mt-2">Info</a>
-    <a href="#" type="button" class="btn btn-light text-nowrap mt-2">Beranda</a>
-        <?php } ?>
-        <?php if ($showadditionalmenu) { ?>
-    <a href="#" type="button" class="btn btn-light text-nowrap mt-2">Jadi Dermawan Seni</a>
-    <a href="<?php echo base_url();?>frontend/couponselling" type="button" class="btn btn-light text-nowrap mt-2">Beli Kupon Online</a>
-        <?php } ?>
-    <?php } ?>
-</div>
+<div class="row">  
+    <div class="col-2">
+        <?php if ($showback) { ?>
+        <button class="btn text-light text-nowrap" onclick="history.back()">Kembali<br><i class="fas fa-long-arrow-alt-left"></i></button><br>
+        <?php } else { ?>  
+            <?php if ($showmainmenu) { ?>      
+        <a href="<?php echo base_url();?>frontend/collaborators" type="button" class="btn btn-light">Kolaborator</a><br>
+        <a href="#" type="button" class="btn btn-light mt-2">Info</a><br>
+        <a href="<?php echo base_url();?>" type="button" class="btn btn-light mt-2">Beranda</a><br>
+            <?php } ?>
+            <?php if ($showadditionalmenu) { ?>
+        <a href="#" type="button" class="btn btn-light mt-2 text-nowrap">Jadi Dermawan Seni</a><br>
+        <a href="<?php echo base_url();?>frontend/couponselling" type="button" class="btn btn-light mt-2 text-nowrap">Beli Kupon Online</a>
+            <?php } ?>
+        <?php } ?>  
+    </div>
+    <div class="col-8">

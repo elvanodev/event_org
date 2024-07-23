@@ -53,10 +53,11 @@
                 </div>
             </div>
             <div class="col-2 d-flex justify-content-end">
-                <div class="form-check form-switch">
+                <!-- disable for temporary -->
+                <!-- <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="languageSwith">
                     <label class="form-check-label" for="languageSwith">Eng</label>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="row">
