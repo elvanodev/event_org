@@ -28,6 +28,6 @@
         </ol>
     </div>
     <div class="card-footer d-flex justify-content-center">
-        <a class="btn btn-light" href="<?php echo base_url()?>frontend/couponsellingform" >Beli Kupon</a>
+        <a class="btn btn-secondary" href="<?php echo base_url()?>frontend/couponsellingform" >Beli Kupon</a>
     </div>
 </div>

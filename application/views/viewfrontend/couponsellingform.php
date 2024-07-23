@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="card-footer d-flex justify-content-end">
-            <button type="submit" class="btn btn-light" name="submit" id="submit" value="submit">Selanjutnya</button>
+            <button type="submit" class="btn btn-secondary" name="submit" id="submit" value="submit">Selanjutnya</button>
         </div>
     </form>
 </div>

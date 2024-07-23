@@ -11,8 +11,11 @@
     <script src="<?php echo base_url(); ?>resource/AdminLTE/dist/js/adminlte.js"></script>
     <script src="<?php echo base_url(); ?>resource/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
     <script src="<?php echo base_url(); ?>resource/AdminLTE/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>resource/js/common/fileupload/jquery.ui.widget.js"></script>
     <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>resource/js/common/custom.js"></script>
     <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>resource/ajax/frontend/ajaxfrontend.js"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>resource/js/common/fileupload/jquery.fileupload.js"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>resource/js/common/fileupload/myupload.js"></script>
     <?php if ($ajaxfilename != "") { ?>
     <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>resource/ajax/frontend/<?php echo $ajaxfilename; ?>"></script>
     <?php } ?>

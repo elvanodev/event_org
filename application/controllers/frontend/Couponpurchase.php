@@ -28,7 +28,8 @@ class Couponpurchase extends CI_Controller {
           "arrayongkir"=> $arrayongkir,
           "coupon_price"=> "Rp" . number_format($coupon_price),
           "shipper_id"=> $this->input->post('shipper_id') ? $this->input->post('shipper_id') : '1',
-          "total_price"=> $this->input->post('total_price') ? $this->input->post('total_price') : "Rp".number_format($total_price)
+          "total_price"=> $this->input->post('total_price') ? $this->input->post('total_price') : "Rp".number_format($total_price),
+          "payment_confirm_receipt"=> $this->input->post('payment_confirm_receipt') ? $this->input->post('payment_confirm_receipt') : null
         ];
         if ($this->input->post('submit')) {
           $this->load->helper("common");
@@ -37,6 +38,7 @@ class Couponpurchase extends CI_Controller {
     
           $shipper_id = $this->input->post('shipper_id');
           $total_price = $this->input->post('total_price');
+          $payment_confirm_receipt = $this->input->post('payment_confirm_receipt');
 
           // Create/Update Coupon
           $rowShipper = $this->modelshippers->getDetailshippers($shipper_id);
@@ -57,6 +59,7 @@ class Couponpurchase extends CI_Controller {
                 'payment_status_id'=>'1',
                 'registration_id'=>$registration_id,
                 'shipper_id'=>$shipper_id,
+                'payment_confirm_receipt'=>$payment_confirm_receipt,
                 'updated_at'=>date('Y-m-d H:i:s'),
               ];
               $this->modelcoupons->setUpdatecouponsbatch($coupon_id, $data_update);
@@ -74,6 +77,7 @@ class Couponpurchase extends CI_Controller {
                 'payment_status_id'=>'1',
                 'registration_id'=>$registration_id,
                 'shipper_id'=>$shipper_id,
+                'payment_confirm_receipt'=>$payment_confirm_receipt,
               ];
               $coupon_id = $this->modelcoupons->setInsertcouponsbatch($data_insert);
             }

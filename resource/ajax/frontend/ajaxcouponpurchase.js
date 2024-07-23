@@ -1,5 +1,6 @@
 $(document).ready(function () {  
     validateform();
+    $("#payment_confirm_receipt").myupload();
 });
 
 function onchangeshipper_id() {      
