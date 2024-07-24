@@ -55,8 +55,10 @@ class Ctrartists extends CI_Controller
     $xBufResult .= setForm('bio', 'Bio', form_textarea_(getArrayObj('edbio', '', '200'), '', ' placeholder="Bio" ')) . '<div class="spacer"></div>';
 
     $xBufResult .= setForm('quote', 'Quote', form_input_(getArrayObj('edquote', '', '200'), '', ' placeholder="Quote" ')) . '<div class="spacer"></div>';
-
+    
     $xBufResult .= setForm('poster_img', 'Poster Image', '<div id="uploadposter_img" style="width:150px;">' . form_input_(getArrayObj('edposter_img', '', '100'), '', 'alt="Unggah"') . '</div>') . '<div class="spacer"></div>';
+
+    $xBufResult .= setForm('profile_img', 'Profile Image', '<div id="uploadprofile_img" style="width:150px;">' . form_input_(getArrayObj('edprofile_img', '', '100'), '', 'alt="Unggah"') . '</div>') . '<div class="spacer"></div>';
 
     $xBufResult .= setForm('phone', 'Phone', form_input_(getArrayObj('edphone', '', '200'), '', ' placeholder="Phone" ')) . '<div class="spacer"></div>';
 
@@ -82,6 +84,7 @@ class Ctrartists extends CI_Controller
       tbaddcellhead('Bio', '', 'data-field="bio" data-sortable="true" width=10%') .
       tbaddcellhead('Quote', '', 'data-field="quote" data-sortable="true" width=10%') .
       tbaddcellhead('Poster Img', '', 'data-field="poster_img" data-sortable="true" width=10%') .
+      tbaddcellhead('Profile Img', '', 'data-field="profile_img" data-sortable="true" width=10%') .
       tbaddcellhead('Phone', '', 'data-field="phone" data-sortable="true" width=10%') .
       tbaddcellhead('Instagram Link', '', 'data-field="instagram_link" data-sortable="true" width=10%') .
       tbaddcellhead('Twitter Link', '', 'data-field="twitter_link" data-sortable="true" width=10%') .
@@ -100,6 +103,10 @@ class Ctrartists extends CI_Controller
       if (!empty($row->poster_img)) {
         $poster_img = '<img src="' . base_url() . 'resource/uploaded/img/' . $row->poster_img . '" onclick="previewimage(this.src);" style="border: solid;width: 70px; height: 80px; align:center;">';
       }
+      $profile_img = 'Image is not available!';
+      if (!empty($row->profile_img)) {
+        $profile_img = '<img src="' . base_url() . 'resource/uploaded/img/' . $row->profile_img . '" onclick="previewimage(this.src);" style="border: solid;width: 70px; height: 80px; align:center;">';
+      }
       $xbufResult .= tbaddrow(tbaddcell($no++) .
         tbaddcell($row->name) .
         tbaddcell(mysqltodate($row->birth_date)) .
@@ -107,6 +114,7 @@ class Ctrartists extends CI_Controller
         tbaddcell(substr($row->bio, 0, 20).'...') .
         tbaddcell($row->quote) .
         tbaddcell($poster_img) .
+        tbaddcell($profile_img) .
         tbaddcell($row->phone) .
         tbaddcell($row->instagram_link) .
         tbaddcell($row->twitter_link) .
@@ -154,6 +162,7 @@ class Ctrartists extends CI_Controller
     $this->json_data['bio'] = $row->bio;
     $this->json_data['quote'] = $row->quote;
     $this->json_data['poster_img'] = $row->poster_img;
+    $this->json_data['profile_img'] = $row->profile_img;
     $this->json_data['phone'] = $row->phone;
     $this->json_data['instagram_link'] = $row->instagram_link;
     $this->json_data['twitter_link'] = $row->twitter_link;
@@ -218,6 +227,7 @@ class Ctrartists extends CI_Controller
     $xbio = $_POST['edbio'];
     $xquote = $_POST['edquote'];
     $xposter_img = $_POST['edposter_img'];
+    $xprofile_img = $_POST['edprofile_img'];
     $xphone = $_POST['edphone'];
     $xinstagram_link = $_POST['edinstagram_link'];
     $xtwitter_link = $_POST['edtwitter_link'];
@@ -227,9 +237,9 @@ class Ctrartists extends CI_Controller
     $xidpegawai = $this->session->userdata('idpegawai');
     if (!empty($xidpegawai)) {
       if ($xidx != '0') {
-        $xStr =  $this->modelartists->setUpdateartists($xidx, $xname, $xbirth_date, $xbirth_place, $xbio, $xquote, $xposter_img, $xphone, $xinstagram_link, $xtwitter_link, $xemail);
+        $xStr =  $this->modelartists->setUpdateartists($xidx, $xname, $xbirth_date, $xbirth_place, $xbio, $xquote, $xposter_img, $xprofile_img, $xphone, $xinstagram_link, $xtwitter_link, $xemail);
       } else {
-        $xStr =  $this->modelartists->setInsertartists($xidx, $xname, $xbirth_date, $xbirth_place, $xbio, $xquote, $xposter_img, $xphone, $xinstagram_link, $xtwitter_link, $xemail);
+        $xStr =  $this->modelartists->setInsertartists($xidx, $xname, $xbirth_date, $xbirth_place, $xbio, $xquote, $xposter_img, $xprofile_img, $xphone, $xinstagram_link, $xtwitter_link, $xemail);
       }
     }
     echo json_encode(null);

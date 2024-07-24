@@ -349,7 +349,10 @@ class Admin extends CI_Controller {
     function setdashboard() {
       $this->load->helper('form'); 
       $this->load->helper('common');
-    //   $this->load->model('modelproyek');
+      $this->load->model('modelevents');
+      $event = $this->modelevents->getLastIndexevents();
+      $selected_event = array();
+      $selected_event['selected'] = $event->idx;
         return '<!-- Content Dashboard. Contains page content -->
         <div class="content-dashboard">
           <!-- Content Header (Page header) -->
@@ -359,16 +362,8 @@ class Admin extends CI_Controller {
                 <div class="col-sm-4">
                   <h1 class="m-0">Dashboard</h1>
                 </div><!-- /.col -->
-                <div class="col-sm-8">
-                    <div class="row">
-                        <div class="col-sm-4">
-                        './*setForm('idproyek','Proyek',form_dropdown_('edidproyek', $this->modelproyek->getArrayListproyek(), '', 'id="edidproyek" style="width:100px;" ')).*/'
-                        </div><!-- /.col2 -->
-                        <div class="col-sm-4">
-                        '.setForm('tglstart','Period Start',form_input_(getArrayObj('edtglstart','','200'),'',' placeholder="Period Start" class="tanggal" ')).'
-                        </div><!-- /.col2 -->
-                        <div class="col-sm-4">
-                        '.setForm('tglend','Period End',form_input_(getArrayObj('edtglend','','200'),'',' placeholder="Period End" class="tanggal"')).'
+                <div class="col-sm-8">'.
+                setForm('event_id', 'Event', form_dropdown_($selected_event, $this->modelevents->getArrayListevents(), '', 'id="edevent_id" class="require" style="width:200px;" placeholder="Event"')).'
                         </div><!-- /.col2 -->
                     </div><!-- /.row -->
                 </div><!-- /.row -->
@@ -386,72 +381,16 @@ class Admin extends CI_Controller {
                     <div class="card-header">
                       <h3 class="card-title">
                         <i class="fas fa-chart-pie mr-1"></i>
-                        Site MAP
+                         Member Event by edition
                       </h3>
                     </div>
                     <div class="card-body">
-                      <div class="row">
-                        <div class="col-sm-6">
                           IMAGE SITE MAP
-                        </div>
-                        <div class="col-sm-6">
-                          KETERANGAN SITE MAP
-                        </div>
                       </div>
                     </div>
                   </div>
                 </section>
-              </div>
-              <div class="row">
-                <section class="col-lg-6 connectedSortable">
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title">
-                        <i class="fas fa-chart-pie mr-1"></i>
-                        Penjualan
-                      </h3>
-                    </div>
-                    <div class="card-body">
-                      GRAFIK PENJUALAN
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title">
-                        <i class="fas fa-chart-pie mr-1"></i>
-                        Calon Konsumen
-                      </h3>
-                    </div>
-                    <div class="card-body">
-                      GRAFIK CALON KONSUMEN
-                    </div>
-                  </div>
-                </section>
-                <section class="col-lg-6 connectedSortable">        
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title">
-                        <i class="fas fa-chart-pie mr-1"></i>
-                        Retensi
-                      </h3>
-                    </div>
-                    <div class="card-body">
-                      GRAFIK RETENSI
-                    </div>
-                  </div>  
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title">
-                        <i class="fas fa-chart-pie mr-1"></i>
-                        Sales Terbaik
-                      </h3>
-                    </div>
-                    <div class="card-body">
-                      SALES TERBAIK
-                    </div>
-                  </div>
-                </section>
-              </div>
+              </div>              
             </div>
           </section>
         </div>';

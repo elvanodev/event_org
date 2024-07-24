@@ -47,6 +47,7 @@ function doeditartists(edidx) {
         $("#edbio").val(json.bio);
         $("#edquote").val(json.quote);
         $("#edposter_img").val(json.poster_img);
+        $("#edprofile_img").val(json.profile_img);
         $("#edphone").val(json.phone);
         $("#edinstagram_link").val(json.instagram_link);
         $("#edtwitter_link").val(json.twitter_link);
@@ -69,6 +70,7 @@ function doClearartists() {
     $("#edbio").val("");
     $("#edquote").val("");
     $("#edposter_img").val("");
+    $("#edprofile_img").val("");
     $("#edphone").val("");
     $("#edinstagram_link").val("");
     $("#edtwitter_link").val("");
@@ -95,6 +97,8 @@ function dosimpanartists() {
         $("#edquote").val() +
         "&edposter_img=" +
         $("#edposter_img").val() +
+        "&edprofile_img=" +
+        $("#edprofile_img").val() +
         "&edphone=" +
         $("#edphone").val() +
         "&edinstagram_link=" +
@@ -172,4 +176,5 @@ function formhide() {
 }
 $(document).ready(function () {  
   $("#edposter_img").myupload();
+  $("#edprofile_img").myupload();
 });

@@ -19,7 +19,9 @@ class Modelevents extends CI_Model
 	about1_event,
 	about2_event,
 	about3_event,
-	poster_image
+	poster_image,
+	contact_phone,
+	contact_email
 from
 	events";
 
@@ -65,7 +67,7 @@ from
 
 
 
-   function setInsertevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image)
+   function setInsertevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image, $xcontact_phone, $xcontact_email)
    {
       if ($xis_active==1) {
          $toinactivestr = "UPDATE event_org.events SET is_active=0 WHERE is_active=1;";
@@ -82,13 +84,15 @@ from
          ",about2_event" .
          ",about3_event" .
          ",poster_image" .
+         ",contact_phone" .
+         ",contact_email" .
          ",created_at" .
-         ") VALUES('" . $xidx . "','" . $xname . "','" . $xlong_name . "','" . $xis_active . "','" . $xdescriptions . "','" . $xabout_event . "','" . $xabout1_event . "','" . $xabout2_event . "','" . $xabout3_event . "','" . $xposter_image . "',NOW())";
+         ") VALUES('" . $xidx . "','" . $xname . "','" . $xlong_name . "','" . $xis_active . "','" . $xdescriptions . "','" . $xabout_event . "','" . $xabout1_event . "','" . $xabout2_event . "','" . $xabout3_event . "','" . $xposter_image . ",'" . $xcontact_phone . ",'" . $xcontact_email . "',NOW())";
       $query = $this->db->query($xStr);
       return $xidx;
    }
 
-   function setUpdateevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image)
+   function setUpdateevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image, $xcontact_phone, $xcontact_email)
    {
       if ($xis_active==1) {
          $toinactivestr = "UPDATE event_org.events SET is_active=0 WHERE is_active=1;";
@@ -105,6 +109,8 @@ from
          ",about2_event='" . $xabout2_event . "'" .
          ",about3_event='" . $xabout3_event . "'" .
          ",poster_image='" . $xposter_image . "'" .
+         ",contact_phone='" . $xcontact_phone . "'" .
+         ",contact_email='" . $xcontact_email . "'" .
          ",updated_at=NOW()" .
          " WHERE idx = '" . $xidx . "'";
       $query = $this->db->query($xStr);

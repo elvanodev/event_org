@@ -50,6 +50,8 @@ function doeditevents(edidx) {
         $("#edabout2_event").val(json.about2_event);
         $("#edabout3_event").val(json.about3_event);
         $("#edposter_image").val(json.poster_image);
+        $("#edcontact_phone").val(json.contact_phone);
+        $("#edcontact_email").val(json.contact_email);
       },
       error: function (xmlHttpRequest, textStatus, errorThrown) {
         alert("Error juga " + xmlHttpRequest.responseText);
@@ -71,6 +73,8 @@ function doClearevents() {
     $("#edabout2_event").val("");
     $("#edabout3_event").val("");
     $("#edposter_image").val("");
+    $("#edcontact_phone").val("");
+    $("#edcontact_email").val("");
   });
 }
 
@@ -98,7 +102,11 @@ function dosimpanevents() {
         "&edabout3_event=" +
         $("#edabout3_event").val() +
         "&edposter_image=" +
-        $("#edposter_image").val(),
+        $("#edposter_image").val() +
+        "&edcontact_phone=" +
+        $("#edcontact_phone").val() +
+        "&edcontact_email=" +
+        $("#edcontact_email").val(),
       cache: false,
       dataType: "json",
       type: "POST",

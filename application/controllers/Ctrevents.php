@@ -65,6 +65,10 @@ class Ctrevents extends CI_Controller
 
     $xBufResult .= setForm('poster_image', 'Poster Image', '<div id="uploadposter_image" style="width:150px;">' . form_input_(getArrayObj('edposter_image', '', '100'), '', 'alt="Unggah"') . '</div>') . '<div class="spacer"></div>';
 
+    $xBufResult .= setForm('contact_phone', 'Contact Phone', form_input_(getArrayObj('edcontact_phone', '', '200'), '', ' placeholder="Contact Phone" ')) . '<div class="spacer"></div>';
+
+    $xBufResult .= setForm('contact_email', 'Contact Email', form_input_(getArrayObj('edcontact_email', '', '200'), '', ' placeholder="Contact Email" ')) . '<div class="spacer"></div>';
+    
     $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'New', 'onclick="doClearevents();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpanevents();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchevents(0);"') . '<div class="spacer"></div></div><div id="tabledataevents">' . $this->getlistevents(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
   }
@@ -84,6 +88,8 @@ class Ctrevents extends CI_Controller
       tbaddcellhead('About 2', '', 'data-field="about2_event" data-sortable="true" width=10%') .
       tbaddcellhead('About 3', '', 'data-field="about3_event" data-sortable="true" width=10%') .
       tbaddcellhead('Poster Image', '', 'data-field="poster_image" data-sortable="true" width=10%') .
+      tbaddcellhead('Contact Phone', '', 'data-field="contact_phone" data-sortable="true" width=10%') .
+      tbaddcellhead('Contact Email', '', 'data-field="contact_email" data-sortable="true" width=10%') .
 
       tbaddcellhead('Action', 'padding:5px;width:10%;text-align:center;', 'col-md-2'), '', TRUE);
     $this->load->model('modelevents');
@@ -108,6 +114,8 @@ class Ctrevents extends CI_Controller
         tbaddcell(substr($row->about2_event,0,20).'...') .
         tbaddcell(substr($row->about3_event,0,20).'...') .
         tbaddcell($poster_image) .
+        tbaddcell($row->contact_phone) .
+        tbaddcell($row->contact_email) .
 
         tbaddcell($xButtonEdit . $xButtonHapus));
     }
@@ -145,6 +153,7 @@ class Ctrevents extends CI_Controller
     $this->load->helper('json');
     $this->json_data['idx'] = $row->idx;
     $this->json_data['name'] = $row->name;
+    $this->json_data['long_name'] = $row->long_name;
     $this->json_data['is_active'] = $row->is_active;
     $this->json_data['descriptions'] = $row->descriptions;
     $this->json_data['about_event'] = $row->about_event;
@@ -152,6 +161,8 @@ class Ctrevents extends CI_Controller
     $this->json_data['about2_event'] = $row->about2_event;
     $this->json_data['about3_event'] = $row->about3_event;
     $this->json_data['poster_image'] = $row->poster_image;
+    $this->json_data['contact_phone'] = $row->contact_phone;
+    $this->json_data['contact_email'] = $row->contact_email;
 
     echo json_encode($this->json_data);
   }
@@ -206,6 +217,7 @@ class Ctrevents extends CI_Controller
       $xidx = '0';
     }
     $xname = $_POST['edname'];
+    $xlong_name = $_POST['edlong_name'];
     $xis_active = $_POST['edis_active'];
     $xdescriptions = $_POST['eddescriptions'];
     $xabout_event = $_POST['edabout_event'];
@@ -213,14 +225,16 @@ class Ctrevents extends CI_Controller
     $xabout2_event = $_POST['edabout2_event'];
     $xabout3_event = $_POST['edabout3_event'];
     $xposter_image = $_POST['edposter_image'];
+    $xcontact_phone = $_POST['edcontact_phone'];
+    $xcontact_email = $_POST['edcontact_email'];
 
     $this->load->model('modelevents');
     $xidpegawai = $this->session->userdata('idpegawai');
     if (!empty($xidpegawai)) {
       if ($xidx != '0') {
-        $xStr =  $this->modelevents->setUpdateevents($xidx, $xname, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image);
+        $xStr =  $this->modelevents->setUpdateevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image, $xcontact_phone, $xcontact_email);
       } else {
-        $xStr =  $this->modelevents->setInsertevents($xidx, $xname, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image);
+        $xStr =  $this->modelevents->setInsertevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image, $xcontact_phone, $xcontact_email);
       }
     }
     echo json_encode(null);

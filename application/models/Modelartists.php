@@ -9,24 +9,26 @@ class Modelartists extends CI_Model
       parent::__construct();
    }
 
-
-
-   function getArrayListartists()
-   { /* spertinya perlu lock table*/
-      $xBuffResul = array();
-      $xStr =  "SELECT " .
+   private $default_query = "SELECT " .
          "idx" . ",name" .
          ",birth_date" .
          ",birth_place" .
          ",bio" .
          ",quote" .
          ",poster_img" .
+         ",profile_img" .
          ",phone" .
          ",instagram_link" .
          ",twitter_link" .
          ",email" .
 
-         " FROM artists   order by idx ASC ";
+         " FROM artists ";
+
+
+   function getArrayListartists()
+   { /* spertinya perlu lock table*/
+      $xBuffResul = array();
+      $xStr =  $this->default_query."  order by idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
          $xBuffResul[$row->idx] = $row->name;
@@ -37,21 +39,9 @@ class Modelartists extends CI_Model
    function getListartists($xAwal, $xLimit, $xSearch = '')
    {
       if (!empty($xSearch)) {
-         $xSearch = "Where idx like '%" . $xSearch . "%'";
+         $xSearch = "Where name like '%" . $xSearch . "%'";
       }
-      $xStr =   "SELECT " .
-         "idx" .
-         ",name" .
-         ",birth_date" .
-         ",birth_place" .
-         ",bio" .
-         ",quote" .
-         ",poster_img" .
-         ",phone" .
-         ",instagram_link" .
-         ",twitter_link" .
-         ",email" .
-         " FROM artists $xSearch order by idx DESC limit " . $xAwal . "," . $xLimit;
+      $xStr = $this->default_query . " $xSearch order by idx DESC limit " . $xAwal . "," . $xLimit;
       $query = $this->db->query($xStr);
       return $query;
    }
@@ -59,20 +49,7 @@ class Modelartists extends CI_Model
 
    function getDetailartists($xidx)
    {
-      $xStr =   "SELECT " .
-         "idx" .
-         ",name" .
-         ",birth_date" .
-         ",birth_place" .
-         ",bio" .
-         ",quote" .
-         ",poster_img" .
-         ",phone" .
-         ",instagram_link" .
-         ",twitter_link" .
-         ",email" .
-
-         " FROM artists  WHERE idx = '" . $xidx . "'";
+      $xStr = $this->default_query . " WHERE idx = '" . $xidx . "'";
 
       $query = $this->db->query($xStr);
       $row = $query->row();
@@ -82,20 +59,7 @@ class Modelartists extends CI_Model
 
    function getLastIndexartists()
    { /* spertinya perlu lock table*/
-      $xStr =   "SELECT " .
-         "idx" .
-         ",name" .
-         ",birth_date" .
-         ",birth_place" .
-         ",bio" .
-         ",quote" .
-         ",poster_img" .
-         ",phone" .
-         ",instagram_link" .
-         ",twitter_link" .
-         ",email" .
-
-         " FROM artists order by idx DESC limit 1 ";
+      $xStr = $this->default_query . " order by idx DESC limit 1 ";
       $query = $this->db->query($xStr);
       $row = $query->row();
       return $row;
@@ -103,7 +67,7 @@ class Modelartists extends CI_Model
 
 
 
-   function setInsertartists($xidx, $xname, $xbirth_date, $xbirth_place, $xbio, $xquote, $xposter_img, $xphone, $xinstagram_link, $xtwitter_link, $xemail)
+   function setInsertartists($xidx, $xname, $xbirth_date, $xbirth_place, $xbio, $xquote, $xposter_img, $xprofile_img, $xphone, $xinstagram_link, $xtwitter_link, $xemail)
    {
       $xStr =  " INSERT INTO artists( " .
          "idx" .
@@ -113,17 +77,18 @@ class Modelartists extends CI_Model
          ",bio" .
          ",quote" .
          ",poster_img" .
+         ",profile_img" .
          ",phone" .
          ",instagram_link" .
          ",twitter_link" .
          ",email" .
          ",created_at" .
-         ") VALUES('" . $xidx . "','" . $xname . "','" . $xbirth_date . "','" . $xbirth_place . "','" . $xbio . "','" . $xquote . "','" . $xposter_img . "','" . $xphone . "','" . $xinstagram_link . "','" . $xtwitter_link . "','" . $xemail . "',NOW())";
+         ") VALUES('" . $xidx . "','" . $xname . "','" . $xbirth_date . "','" . $xbirth_place . "','" . $xbio . "','" . $xquote . "','" . $xposter_img . "','" . $xprofile_img . "','" . $xphone . "','" . $xinstagram_link . "','" . $xtwitter_link . "','" . $xemail . "',NOW())";
       $query = $this->db->query($xStr);
       return $xidx;
    }
 
-   function setUpdateartists($xidx, $xname, $xbirth_date, $xbirth_place, $xbio, $xquote, $xposter_img, $xphone, $xinstagram_link, $xtwitter_link, $xemail)
+   function setUpdateartists($xidx, $xname, $xbirth_date, $xbirth_place, $xbio, $xquote, $xposter_img, $xprofile_img, $xphone, $xinstagram_link, $xtwitter_link, $xemail)
    {
       $xStr =  " UPDATE artists SET " .
          "idx='" . $xidx . "'" .
@@ -133,6 +98,7 @@ class Modelartists extends CI_Model
          ",bio='" . $xbio . "'" .
          ",quote='" . $xquote . "'" .
          ",poster_img='" . $xposter_img . "'" .
+         ",profile_img='" . $xprofile_img . "'" .
          ",phone='" . $xphone . "'" .
          ",instagram_link='" . $xinstagram_link . "'" .
          ",twitter_link='" . $xtwitter_link . "'" .
