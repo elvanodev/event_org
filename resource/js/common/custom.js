@@ -6,6 +6,9 @@ $(document).ready(function () {
     $(".datetimepicker").each(function () {
         $(this).datetimepicker();
     });
+    $(".timepicker").each(function () {
+        $(this).timepicker();
+    });
     $("#selectedEdition").html("");
     getEdition($("#editionId").val());
     $("#editionId").change(function (e) { 

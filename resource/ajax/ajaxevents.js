@@ -52,6 +52,12 @@ function doeditevents(edidx) {
         $("#edposter_image").val(json.poster_image);
         $("#edcontact_phone").val(json.contact_phone);
         $("#edcontact_email").val(json.contact_email);
+        $("#edagent_open_date").val(json.agent_open_date);
+        $("#edagent_close_date").val(json.agent_close_date);
+        $("#edagent_open_time").val(json.agent_open_time);
+        $("#edagent_close_time").val(json.agent_close_time);
+        $("#edagent_address").val(json.agent_address);
+        $("#edagent_gmap").val(json.agent_gmap);
       },
       error: function (xmlHttpRequest, textStatus, errorThrown) {
         alert("Error juga " + xmlHttpRequest.responseText);
@@ -75,6 +81,12 @@ function doClearevents() {
     $("#edposter_image").val("");
     $("#edcontact_phone").val("");
     $("#edcontact_email").val("");
+    $("#edagent_open_date").val("");
+    $("#edagent_close_date").val("");
+    $("#edagent_open_time").val("");
+    $("#edagent_close_time").val("");
+    $("#edagent_address").val("");
+    $("#edagent_gmap").val("");
   });
 }
 
@@ -106,7 +118,19 @@ function dosimpanevents() {
         "&edcontact_phone=" +
         $("#edcontact_phone").val() +
         "&edcontact_email=" +
-        $("#edcontact_email").val(),
+        $("#edcontact_email").val() +
+        "&edagent_open_date=" +
+        $("#edagent_open_date").val() +
+        "&edagent_close_date=" +
+        $("#edagent_close_date").val() +
+        "&edagent_open_time=" +
+        $("#edagent_open_time").val() +
+        "&edagent_close_time=" +
+        $("#edagent_close_time").val() +
+        "&edagent_address=" +
+        $("#edagent_address").val() +
+        "&edagent_gmap=" +
+        $("#edagent_gmap").val(),
       cache: false,
       dataType: "json",
       type: "POST",

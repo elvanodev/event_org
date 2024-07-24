@@ -84,6 +84,7 @@ class modelgetmenu extends CI_Model {
   <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.2/dist/bootstrap-table.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css " /> 
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
   '.
                 
   // link_tag('resource/admin/vendor/bootstrap-table/bootstrap-table.css') . "\n" .
@@ -229,6 +230,7 @@ class modelgetmenu extends CI_Model {
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="' . base_url() . 'resource/AdminLTE/dist/js/pages/dashboard.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js "></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <script src="' . base_url() . 'resource/js/common/custom.js"></script>
 </body>
 </html>

@@ -21,7 +21,13 @@ class Modelevents extends CI_Model
 	about3_event,
 	poster_image,
 	contact_phone,
-	contact_email
+	contact_email,
+   agent_open_date,
+   agent_close_date,
+   agent_open_time,
+   agent_close_time,
+   agent_address,
+   agent_gmap
 from
 	events";
 
@@ -39,7 +45,7 @@ from
    function getListevents($xAwal, $xLimit, $xSearch = '')
    {
       if (!empty($xSearch)) {
-         $xSearch = "Where idx like '%" . $xSearch . "%'";
+         $xSearch = "Where name like '%" . $xSearch . "%' or long_name like '%" . $xSearch . "%' or descriptions like '%" . $xSearch . "%'";
       }
       $xStr = $this->default_query ." $xSearch order by idx DESC limit " . $xAwal . "," . $xLimit;
       $query = $this->db->query($xStr);
@@ -67,7 +73,13 @@ from
 
 
 
-   function setInsertevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image, $xcontact_phone, $xcontact_email)
+   function setInsertevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image, $xcontact_phone, $xcontact_email,   
+   $xagent_open_date,
+   $xagent_close_date,
+   $xagent_open_time,
+   $xagent_close_time,
+   $xagent_address,
+   $xagent_gmap)
    {
       if ($xis_active==1) {
          $toinactivestr = "UPDATE event_org.events SET is_active=0 WHERE is_active=1;";
@@ -86,13 +98,31 @@ from
          ",poster_image" .
          ",contact_phone" .
          ",contact_email" .
+         ",agent_open_date" .
+         ",agent_close_date" .
+         ",agent_open_time" .
+         ",agent_close_time" .
+         ",agent_address" .
+         ",agent_gmap" .
          ",created_at" .
-         ") VALUES('" . $xidx . "','" . $xname . "','" . $xlong_name . "','" . $xis_active . "','" . $xdescriptions . "','" . $xabout_event . "','" . $xabout1_event . "','" . $xabout2_event . "','" . $xabout3_event . "','" . $xposter_image . ",'" . $xcontact_phone . ",'" . $xcontact_email . "',NOW())";
+         ") VALUES('" . $xidx . "','" . $xname . "','" . $xlong_name . "','" . $xis_active . "','" . $xdescriptions . "','" . $xabout_event . "','" . $xabout1_event . "','" . $xabout2_event . "','" . $xabout3_event . "','" . $xposter_image . ",'" . $xcontact_phone . ",'" . $xcontact_email . "'
+   ,'" . $xagent_open_date . "'
+   ,'" . $xagent_close_date . "'
+   ,'" . $xagent_open_time . "'
+   ,'" . $xagent_close_time . "'
+   ,'" . $xagent_address . "'
+   ,'" . $xagent_gmap . "',NOW())";
       $query = $this->db->query($xStr);
       return $xidx;
    }
 
-   function setUpdateevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image, $xcontact_phone, $xcontact_email)
+   function setUpdateevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image, $xcontact_phone, $xcontact_email,
+   $xagent_open_date,
+   $xagent_close_date,
+   $xagent_open_time,
+   $xagent_close_time,
+   $xagent_address,
+   $xagent_gmap)
    {
       if ($xis_active==1) {
          $toinactivestr = "UPDATE event_org.events SET is_active=0 WHERE is_active=1;";
@@ -111,6 +141,12 @@ from
          ",poster_image='" . $xposter_image . "'" .
          ",contact_phone='" . $xcontact_phone . "'" .
          ",contact_email='" . $xcontact_email . "'" .
+         ",agent_open_date='" . $xagent_open_date . "'" .
+         ",agent_close_date='" . $xagent_close_date . "'" .
+         ",agent_open_time='" . $xagent_open_time . "'" .
+         ",agent_close_time='" . $xagent_close_time . "'" .
+         ",agent_address='" . $xagent_address . "'" .
+         ",agent_gmap='" . $xagent_gmap . "'" .
          ",updated_at=NOW()" .
          " WHERE idx = '" . $xidx . "'";
       $query = $this->db->query($xStr);
