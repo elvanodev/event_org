@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>resource/css/custom.css">
     <script src="https://kit.fontawesome.com/6f75ab249e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="<?php echo base_url(); ?>/resource/images/favicon.png" rel="shortcut icon" type="image/x-icon">
-    <link href="<?php echo base_url(); ?>/resource/images/webclip.png" rel="apple-touch-icon">
+    <link href="<?php echo base_url(); ?>/resource/uploaded/img/<?php echo $event->poster_image; ?>" rel="shortcut icon" type="image/x-icon">
+    <link href="<?php echo base_url(); ?>/resource/uploaded/img/<?php echo $event->poster_image; ?>" rel="apple-touch-icon">
 </head>
 
 <body>

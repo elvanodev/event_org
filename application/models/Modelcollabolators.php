@@ -15,12 +15,14 @@ class Modelcollabolators extends CI_Model
    ,c.artist_id
    ,ed.name as edition_name
    ,ev.name as event_name
+   ,ev.poster_image as event_icon
    ,ar.name as artist_name 
    ,ar.`quote`
    ,ar.birth_date
    ,ar.birth_place 
    ,ar.bio
    ,ar.poster_img 
+   ,ar.profile_img 
    ,ar.phone 
    ,ar.instagram_link 
    ,ar.twitter_link 

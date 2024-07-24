@@ -20,5 +20,14 @@ class Collaborators extends CI_Controller {
       $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => true]);
       $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> 'ajaxcollabolators.js']);
     }
+
+    function detail()
+    {
+      $collaboratorid = $this->input->post("collaboratorid");
+
+      $this->load->model("modelcollabolators");
+      $row = $this->modelcollabolators->getDetailcollabolators($collaboratorid);
+      echo json_encode($row);
+    }
   
 }
