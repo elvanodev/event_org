@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 09, 2024 at 07:08 AM
+-- Generation Time: Jul 25, 2024 at 08:41 AM
 -- Server version: 11.4.2-MariaDB-log
 -- PHP Version: 8.3.9
 
@@ -35,6 +35,7 @@ CREATE TABLE `artists` (
   `bio` text NOT NULL,
   `quote` varchar(500) NOT NULL,
   `poster_img` varchar(250) NOT NULL,
+  `profile_img` varchar(250) NOT NULL,
   `phone` varchar(250) NOT NULL,
   `instagram_link` varchar(250) NOT NULL,
   `twitter_link` varchar(250) NOT NULL,
@@ -42,6 +43,13 @@ CREATE TABLE `artists` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `artists`
+--
+
+INSERT INTO `artists` (`idx`, `name`, `birth_date`, `birth_place`, `bio`, `quote`, `poster_img`, `profile_img`, `phone`, `instagram_link`, `twitter_link`, `email`, `created_at`, `updated_at`) VALUES
+(1, 'Testing Artist', '1999-07-09', 'Batang', 'Alam Rafif Alfarizky (b.1999) is a visual artist, Graphic designer and conceptual photographer. He graduated in Visual Communication Design from Dian Nuswantoro University in Semarang. He is a member of MES 56, an artist collective exploring photography of the intersection with other disciplines, a space which now runs as a non-profit’s institution and community. As a member of MES 56, Alam in Stockroom – managing and also archiving collective projects and individual artworks.  Based in Graphic Design, often combining other mediums in making works, ranging from drawing, painting, website design, digital photo collage by responding to archives and various images downloaded from the internet.  Currently interested in the themes of history, popular culture, and horror stories, how ordinary people frame past stories of violence through strange, absurd, funny yet sadistic fictional stories.', 'Eat Pray Love', 'collaborator1.png', 'artistimg.PNG', '6287656483526', 'https:\\instagram.com', 'https:\\twitter.com', 'testemail@mail.com', '2024-07-09 09:17:31', '2024-07-24 14:10:48');
 
 -- --------------------------------------------------------
 
@@ -56,6 +64,13 @@ CREATE TABLE `collabolators` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `collabolators`
+--
+
+INSERT INTO `collabolators` (`idx`, `edition_id`, `artist_id`, `created_at`, `updated_at`) VALUES
+(2, 2, 1, '2024-07-15 05:23:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -91,19 +106,26 @@ CREATE TABLE `coupons` (
   `edition_id` bigint(20) UNSIGNED NOT NULL,
   `coupon_number` varchar(4) NOT NULL,
   `qr_code` varchar(250) NOT NULL,
-  `coupon_price` decimal(16,2) NOT NULL,
-  `shipper_price` decimal(16,2) NOT NULL,
-  `total_price` decimal(16,2) NOT NULL,
+  `coupon_price` decimal(16,0) NOT NULL,
+  `shipper_price` decimal(16,0) NOT NULL,
+  `total_price` decimal(16,0) NOT NULL,
   `is_winner` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'set to true if the coupon wins',
   `payment_status_id` bigint(20) UNSIGNED NOT NULL,
   `payment_confirm_receipt` varchar(250) DEFAULT NULL,
   `valid_until` timestamp NOT NULL DEFAULT (current_timestamp() - interval 1 day) COMMENT 'the default value should be end of event edition',
   `registration_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `member_name` varchar(250) NOT NULL,
-  `payment_unique_id` uuid NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `shipper_id` bigint(20) UNSIGNED NOT NULL,
+  `payment_unique_id` uuid NOT NULL DEFAULT uuid(),
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `coupons`
+--
+
+INSERT INTO `coupons` (`idx`, `edition_id`, `coupon_number`, `qr_code`, `coupon_price`, `shipper_price`, `total_price`, `is_winner`, `payment_status_id`, `payment_confirm_receipt`, `valid_until`, `registration_id`, `shipper_id`, `payment_unique_id`, `created_at`, `updated_at`) VALUES
+(5, 2, '1234', 'COP-ED2_RG7_202407201636048224177513700.png', 50000, 100000, 150000, 0, 1, NULL, '2024-07-19 09:36:05', 7, 2, '7c737e97-467b-11ef-bdea-00090ffe0001', '2024-07-20 09:36:05', NULL);
 
 -- --------------------------------------------------------
 
@@ -121,10 +143,19 @@ CREATE TABLE `editions` (
   `venue_city` varchar(250) NOT NULL,
   `descriptions` text DEFAULT NULL,
   `quota` int(11) NOT NULL DEFAULT 0,
-  `coupon_price` decimal(16,2) NOT NULL,
+  `coupon_price` decimal(16,0) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `editions`
+--
+
+INSERT INTO `editions` (`idx`, `event_id`, `name`, `started_at`, `ended_at`, `venue_address`, `venue_city`, `descriptions`, `quota`, `coupon_price`, `created_at`, `updated_at`) VALUES
+(2, 1, 'Edisi #1', '2024-07-30 05:22:00', '2024-07-31 05:22:00', 'Yogyakarta', 'Yogyakarta', 'Yogyakarta', 500, 50000, '2024-07-15 05:22:57', NULL),
+(3, 1, 'Edisi #2', '2024-08-30 05:22:00', '2024-08-31 05:22:00', 'Jakarta', 'Jakarta', 'Jakarta', 500, 50000, '2024-07-16 05:22:57', NULL),
+(4, 1, 'Edisi #3', '2024-09-29 05:22:00', '2024-09-30 05:22:00', 'Bandung', 'Bandung', 'Bandung', 500, 50000, '2024-07-17 05:22:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -135,6 +166,7 @@ CREATE TABLE `editions` (
 CREATE TABLE `events` (
   `idx` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(250) NOT NULL,
+  `long_name` text NOT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT 0,
   `descriptions` text DEFAULT NULL,
   `about_event` text DEFAULT NULL,
@@ -142,9 +174,49 @@ CREATE TABLE `events` (
   `about2_event` text DEFAULT NULL,
   `about3_event` text DEFAULT NULL,
   `poster_image` varchar(250) DEFAULT NULL,
+  `contact_phone` varchar(100) DEFAULT NULL,
+  `contact_email` varchar(250) DEFAULT NULL,
+  `agent_open_date` date NOT NULL DEFAULT curdate(),
+  `agent_close_date` date NOT NULL DEFAULT (curdate() + interval 5 day),
+  `agent_open_time` time NOT NULL DEFAULT '15:00:00',
+  `agent_close_time` time NOT NULL DEFAULT '19:00:00',
+  `agent_address` varchar(250) DEFAULT NULL,
+  `agent_gmap` varchar(500) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`idx`, `name`, `long_name`, `is_active`, `descriptions`, `about_event`, `about1_event`, `about2_event`, `about3_event`, `poster_image`, `contact_phone`, `contact_email`, `agent_open_date`, `agent_close_date`, `agent_open_time`, `agent_close_time`, `agent_address`, `agent_gmap`, `created_at`, `updated_at`) VALUES
+(1, 'SDSB', 'Sumbangsih Dermawan Seni Berhadiah', 1, 'Program Sumbangsih Dermawan Seni Berhadiah (SDSB) merupakan platform seni yang digagas secara kritis dengan semangat kontemporer dan asas kemandirian dalam pemajuan seni, kebudayaan, dan ekosistem masyarakat seni.', 'Program Sumbangsih Dermawan Seni Berhadiah (SDSB) merupakan platform seni yang digagas secara kritis dengan semangat kontemporer dan asas kemandirian dalam pemajuan seni, kebudayaan, dan ekosistem masyarakat seni. Gagasan ini berasal dari Fajar Riyanto, seorang seniman yang berfokus pada praktik seni kontekstual dengan mengamati dan mengeksplorasi fenomena terkini dalam kehidupan sehari-hari. Dalam perjalanannya, program ini juga melibatkan anggota masyarakat seni lainnya seperti: peneliti, kurator, manajer seni, penulis, desainer, musisi, dan seniman dalam pengelolaan dan pengembangan program. \n\nDalam pelaksanaannya, SDSB memelintir sebuah permainan toto (lotre) angka yang pernah populer di era Orde Baru dengan istilah “Sumbangan Dermawan Sosial Berhadiah” pada tahun 1989-1994. Praktik ini dianggap sebagai judi karena pada dasarnya adalah undian atau lotre berhadiah yang dikemas dalam narasi penggalangan dana untuk membiayai penyelenggaraan olahraga. Menyerupai hal tersebut, program SDSB mengapropriasi sistem tukar yang tidak hanya terkonversi dalam bentuk uang perjudian, tetapi apresiasi terhadap karya seni yang dikerjakan oleh praktisi seni.\n\nDi program ini, masyarakat hanya perlu membeli kupon yang telah disediakan untuk mendapatkan peluang meraih hadiah seni yang telah disediakan. Tujuan utama program SDSB adalah untuk menguatkan ekosistem seni dengan membuat sebuah ruang/jaring pengaman antar masyarakat seni agar sistem saling dukung antar masyarakat seni dapat terjalin.\n\nProses transaksi pembelian kupon nantinya akan dilayani melalui sebuah gerobak atau kios portable yang dapat berpindah dan menyusup di dalam perhelatan seni. Selain secara onsite di kios agen SDSB, pembelian kupon juga dapat dilakukan secara online. Setiap pembelian satu (1) kupon, pembeli berhak mendapatkan harapan dan kesempatan untuk memenangkan hadiah utama yang berupa sebuah karya dari seniman yang sudah dipilih. Selain itu, pembeli juga akan mendapatkan hak untuk berkomentar (kritik, saran, dsb)\n\ntentang situasi seni dan kebudayaan yang ada di Indonesia. Sedangkan untuk komentar dapat berupa teks atau gambar yang secara otomatis akan tampil di website SDSB. Fitur komentar ini merupakan kanal aspirasi publik yang pada masa sebelumnya justru tertutup, dibatasi, dan dibungkam di era Orde Baru\n\nSelain sebagai agen distribusi kupon layaknya penjual kupon toto pada umumnya, kios agen SDSB juga akan menampilkan/menyajikan ramalan-ramalan sebagai panduan bagi para pembeli. Ramalan-ramalan yang ada di Kios SDSB ini dapat dibeli (maupun dikoleksi)  sebagai patokan pemilihan angka agar pembeli tidak lagi bingung dalam menentukan pilihan.\n\nEdisi #1 program SDSB ini akan dilaksanakan di Yogyakarta selama masa Jogja Art Weeks 2024. Program SDSB ingin mengajak partisipasi masyarakat seni untuk terlibat sebagai kolaborator dalam membuat karya ramalan. Karya-karya ramalan tersebut akan dipajang pada kios agen SDSB, sehingga publik dapat membeli kupon sesuai dengan ramalan yang diyakini. Selain itu, karya-karya dari para kolaborator ini juga akan ditampilkan dalam website SDSB. Pada edisi #1 program SDSB ini, kami ingin menawarkan sebuah tema yang diambil dari Kitab Musarar yaitu: \n\nNakoda melu wasesa, Kaduk bondo sugih wani, Sarjana sirep sadaya, Wong cilik kawelas asih, Mah omah bosah-basih, Katarajang marga agung, Panji loro dyan sirna, Nuli Rara ngangsu sami, Randha loro nututi pijer tetukar.*\n\nDemikian penjelasan singkat tentang program ini, kami berharap dapat menjalin kolaborasi yang produktif untuk mendukung ekosistem seni dan budaya secara bersama-sama.\nTerima kasih atas perhatiannya.\n\nSalam hangat, Tim Dermawan Seni \nSDSB 2024', 'Produser	: Umma Gumma dan Fajar Riyanto\nProyek Manajer		: Tiara\nAsisten Proyek Manajer	: Arlingga Hari Nugroho\nDirektur Artistik		: Fajar Riyanto \nKeuangan		: Tiara\nDesainer 		: Arya Pradifta\nPenata suara		: Bona Zustama\nWebsite dan IT		: Pujiawan Kurnianto (Scriptmedia)\nDesainer Website		: Alam Alfa\nPublikasi		: Fatoni Purwitoaji\nDesain Kios		: Fajar Riyanto\nDokumentasi		: Edward Francesco\n', 'Kegiatan ini dapat dilihat sebagai sebuah program (atau karya) utuh dari pelaku seni untuk masyarakat seni. Kegiatan ini menjadi penting tidak hanya sebagai bentuk perhelatan acara, tetapi juga peristiwa atau momentum untuk yang mempertemukan beragam masyarakat seni dengan publik. Secara bersamaan, hubungan ini membentuk ekosistem seni menjadi sebuah entitas budaya yang punya kemandirian secara ideologi maupun ekonomi. Dengan adanya penguatan ekonomi dalam entitas seni dan budaya akan semakin menumbuhkan karya-karya yang lebih menarik. \n', '', 'sdsbicon.png', ' 6289537703282', 'sdsb@gmail.com', '2024-07-22', '2024-07-25', '15:00:00', '19:00:00', 'Kedai Kebun Forum, Jl. Tirtodipuran No. 03, Yogyakarta', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.7331553784875!2d110.36017787390247!3d-7.818044677635375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57bdbc81bb53:0x1e337895d1c4e268!2zS2VkYWkgS2VidW4gRm9ydW3qp4vqpo_qprzqpqPqprvqpo_qprzqpqfqprjqpqTqp4DqpqXqprPqprrqprTqpqvqprjqpqnqp4A!5e0!3m2!1sen!2sid!4v1721833544634!5m2!1sen!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '2024-07-09 13:34:33', '2024-07-25 03:35:59');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faq`
+--
+
+CREATE TABLE `faq` (
+  `idx` bigint(20) UNSIGNED NOT NULL,
+  `faq_title` varchar(250) NOT NULL DEFAULT '',
+  `faq_detail` text NOT NULL DEFAULT '',
+  `event_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `faq`
+--
+
+INSERT INTO `faq` (`idx`, `faq_title`, `faq_detail`, `event_id`, `created_at`, `updated_at`) VALUES
+(1, 'Apa itu SDSB?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod enim luctus, tempor ipsum id, rutrum enim. Proin pharetra, diam nec pharetra ultrices, velit ligula consequat nibh, ac venenatis eros quam a lorem. Morbi orci risus, tincidunt ac tortor at, ullamcorper vestibulum ligula. Ut vitae turpis aliquet, viverra elit quis, laoreet sapien. Phasellus volutpat nunc quis faucibus viverra. Aliquam erat tellus, imperdiet in metus scelerisque, tristique pharetra ipsum. Sed id imperdiet dui, vel laoreet lorem. Quisque velit justo, viverra ac vulputate at, hendrerit in magna. Integer scelerisque ornare diam vitae consectetur. Donec vehicula accumsan metus sit amet convallis. Integer a augue eget est egestas cursus ut nec enim.', 1, '2024-07-25 08:39:03', NULL),
+(2, 'Bagaimana cara membeli kupon?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod enim luctus, tempor ipsum id, rutrum enim. Proin pharetra, diam nec pharetra ultrices, velit ligula consequat nibh, ac venenatis eros quam a lorem. Morbi orci risus, tincidunt ac tortor at, ullamcorper vestibulum ligula. Ut vitae turpis aliquet, viverra elit quis, laoreet sapien. Phasellus volutpat nunc quis faucibus viverra. Aliquam erat tellus, imperdiet in metus scelerisque, tristique pharetra ipsum. Sed id imperdiet dui, vel laoreet lorem. Quisque velit justo, viverra ac vulputate at, hendrerit in magna. Integer scelerisque ornare diam vitae consectetur. Donec vehicula accumsan metus sit amet convallis. Integer a augue eget est egestas cursus ut nec enim.', 1, '2024-07-25 08:39:03', NULL),
+(3, 'Berapa kombinasi nomor yang bisa saya pilih?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod enim luctus, tempor ipsum id, rutrum enim. Proin pharetra, diam nec pharetra ultrices, velit ligula consequat nibh, ac venenatis eros quam a lorem. Morbi orci risus, tincidunt ac tortor at, ullamcorper vestibulum ligula. Ut vitae turpis aliquet, viverra elit quis, laoreet sapien. Phasellus volutpat nunc quis faucibus viverra. Aliquam erat tellus, imperdiet in metus scelerisque, tristique pharetra ipsum. Sed id imperdiet dui, vel laoreet lorem. Quisque velit justo, viverra ac vulputate at, hendrerit in magna. Integer scelerisque ornare diam vitae consectetur. Donec vehicula accumsan metus sit amet convallis. Integer a augue eget est egestas cursus ut nec enim.', 1, '2024-07-25 08:39:03', NULL),
+(4, 'What is a domain registration?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod enim luctus, tempor ipsum id, rutrum enim. Proin pharetra, diam nec pharetra ultrices, velit ligula consequat nibh, ac venenatis eros quam a lorem. Morbi orci risus, tincidunt ac tortor at, ullamcorper vestibulum ligula. Ut vitae turpis aliquet, viverra elit quis, laoreet sapien. Phasellus volutpat nunc quis faucibus viverra. Aliquam erat tellus, imperdiet in metus scelerisque, tristique pharetra ipsum. Sed id imperdiet dui, vel laoreet lorem. Quisque velit justo, viverra ac vulputate at, hendrerit in magna. Integer scelerisque ornare diam vitae consectetur. Donec vehicula accumsan metus sit amet convallis. Integer a augue eget est egestas cursus ut nec enim.', 1, '2024-07-25 08:39:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -90420,6 +90492,13 @@ CREATE TABLE `logdelrecord` (
   `ideksekusi` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
+--
+-- Dumping data for table `logdelrecord`
+--
+
+INSERT INTO `logdelrecord` (`idx`, `idxhapus`, `keterangan`, `nmtable`, `tgllog`, `ideksekusi`) VALUES
+(1, '2', NULL, 'events', '2024-07-24 21:49:56', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -90431,10 +90510,20 @@ CREATE TABLE `members` (
   `name` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
+  `phone` varchar(100) DEFAULT NULL,
   `address` text NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `members`
+--
+
+INSERT INTO `members` (`idx`, `name`, `email`, `password`, `phone`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'Test Member 1', 'testmember1@gmail.com', 'TestMember1', NULL, 'test member address', '2024-07-11 07:59:41', NULL),
+(4, 'jhon doe', 'testtingemail@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '085736251726', 'testing shipper address', '2024-07-18 11:27:07', '2024-07-18 12:00:41'),
+(5, 'Jhon Doe', 'testingemail@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '085746837483', 'Testing Shipper Address', '2024-07-19 04:58:50', '2024-07-20 08:33:45');
 
 -- --------------------------------------------------------
 
@@ -90469,15 +90558,16 @@ INSERT INTO `menu` (`idmenu`, `nmmenu`, `tipemenu`, `idkomponen`, `iduser`, `par
 (999, 'Setting', 1, 3, 0, 0, '', 999, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'Y', '<i class=\"nav-icon fas fa-tachometer-alt\"></i>'),
 (1001, 'Events', 2, 3, 0, 1, 'Ctrevents', 1001, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (1002, 'Editions', 2, 3, 0, 1, 'Ctreditions', 1002, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
-(1003, 'Collaborators', 2, 3, 0, 1, 'Ctrcollaborators', 1003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(1003, 'Collaborators', 2, 3, 0, 1, 'Ctrcollabolators', 1003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (1005, 'Posts', 2, 3, 0, 1, 'Ctrposts', 1005, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (2001, 'Members', 2, 3, 0, 2, 'Ctrmembers', 2001, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (2002, 'Registrations', 2, 3, 0, 2, 'Ctrregistrations', 2002, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
-(2003, 'Testimonials', 2, 3, 0, 2, 'Ctrtestimonials', 2003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
-(2004, 'Coupons', 2, 3, 0, 2, 'Ctrcoupons', 2004, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(2003, 'Coupons', 2, 3, 0, 2, 'Ctrcoupons', 2003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(2004, 'Testimonials', 2, 3, 0, 2, 'Ctrtestimonials', 2004, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998001, 'Payment Statuses', 2, 3, 0, 998, 'Ctrpayment_statuses', 998001, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998002, 'Shippers', 2, 3, 0, 998, 'Ctrshippers', 998002, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998003, 'Artists', 2, 3, 0, 998, 'Ctrartists', 998003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(998004, 'Event FAQs', 2, 3, 0, 998, 'Ctrfaq', 998004, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998990, 'Provinsi', 2, 3, 0, 998, 'Ctrprovinsi', 998990, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998991, 'Kabupaten', 2, 3, 0, 998, 'Ctrkabupaten', 998991, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998992, 'Kecamatan', 2, 3, 0, 998, 'Ctrkecamatan', 998992, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
@@ -90502,6 +90592,15 @@ CREATE TABLE `payment_statuses` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `payment_statuses`
+--
+
+INSERT INTO `payment_statuses` (`idx`, `name`, `descriptions`, `created_at`, `updated_at`) VALUES
+(1, 'pending', 'email send already waiting for member payment', '2024-07-09 07:57:37', '2024-07-09 08:04:58'),
+(2, 'expired', 'customer not paid until expired time', '2024-07-09 07:57:37', '2024-07-09 08:04:58'),
+(3, 'paid', 'customer paid success, edit transaction by admin', '2024-07-09 07:57:37', '2024-07-09 08:04:58');
+
 -- --------------------------------------------------------
 
 --
@@ -90517,6 +90616,13 @@ CREATE TABLE `posts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`idx`, `event_id`, `name`, `uploaded_at`, `post_text`, `created_at`, `updated_at`) VALUES
+(2, 1, 'Fajar', '2024-07-30 05:23:00', 'Melalui surel ini, kami ingin mengundang Saudara untuk terlibat sebagai kolaborator pada program Edisi #1 Sumbangsih Dermawan Seni Berhadiah (SDSB) yang akan dilaksanakan di Yogyakarta selama perhelatan Jogja Art Weeks. Sumbangsih Dermawan Seni Berhadiah (SDSB) merupakan sebuah platform yang akan diujicobakan sebagai jaring saling mendukung antar masyarakat seni.', '2024-07-15 05:23:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -90582,9 +90688,16 @@ CREATE TABLE `registrations` (
   `member_id` bigint(20) UNSIGNED NOT NULL,
   `registered_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `qr_code` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `registrations`
+--
+
+INSERT INTO `registrations` (`idx`, `edition_id`, `member_id`, `registered_at`, `qr_code`, `created_at`, `updated_at`) VALUES
+(7, 2, 5, '0000-00-00 00:00:00', 'REG-ED2_M5_2024071911585014549207503100.png', '2024-07-19 04:58:51', '2024-07-20 08:33:45');
 
 -- --------------------------------------------------------
 
@@ -90595,10 +90708,20 @@ CREATE TABLE `registrations` (
 CREATE TABLE `shippers` (
   `idx` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL COMMENT 'Jawa, Luar Jawa, Indonesia Timur',
-  `shipper_price` decimal(16,2) NOT NULL,
+  `shipper_price` decimal(16,0) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shippers`
+--
+
+INSERT INTO `shippers` (`idx`, `name`, `shipper_price`, `created_at`, `updated_at`) VALUES
+(1, 'Pulau Jawa', 50000, '2024-07-09 08:07:55', NULL),
+(2, 'Luar Pulau Jawa', 100000, '2024-07-09 08:08:11', '2024-07-09 08:32:34'),
+(3, 'Indonesia Timur', 150000, '2024-07-09 08:08:51', '2024-07-11 10:16:40'),
+(4, 'Lainnya', 200000, '2024-07-11 09:47:51', '2024-07-11 10:16:33');
 
 -- --------------------------------------------------------
 
@@ -90613,7 +90736,7 @@ CREATE TABLE `testimonials` (
   `event_name` varchar(250) NOT NULL,
   `member_name` varchar(250) DEFAULT NULL,
   `testimoni_text` text DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -90627,7 +90750,7 @@ CREATE TABLE `testimoni_photos` (
   `idx` bigint(20) UNSIGNED NOT NULL,
   `testimoni_id` bigint(20) UNSIGNED NOT NULL,
   `link_photo` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -90688,30 +90811,55 @@ CREATE TABLE `usermenu` (
 --
 
 INSERT INTO `usermenu` (`idx`, `iduser`, `idmenu`, `idaplikasi`) VALUES
-(10069, 1, 999999, NULL),
-(10068, 1, 999993, NULL),
-(10067, 1, 999992, NULL),
-(10066, 1, 999991, NULL),
-(10065, 1, 999990, NULL),
-(10064, 1, 998993, NULL),
-(10063, 1, 998992, NULL),
-(10062, 1, 998991, NULL),
-(10061, 1, 998990, NULL),
-(10060, 1, 998003, NULL),
-(10059, 1, 998002, NULL),
-(10058, 1, 998001, NULL),
-(10057, 1, 2004, NULL),
-(10056, 1, 2003, NULL),
-(10055, 1, 2002, NULL),
-(10054, 1, 2001, NULL),
-(10053, 1, 1005, NULL),
-(10052, 1, 1003, NULL),
-(10051, 1, 1002, NULL),
-(10050, 1, 1001, NULL),
-(10049, 1, 999, NULL),
-(10048, 1, 998, NULL),
-(10047, 1, 2, NULL),
-(10046, 1, 1, NULL);
+(10093, 1, 999993, NULL),
+(10092, 1, 999992, NULL),
+(10091, 1, 999991, NULL),
+(10090, 1, 999990, NULL),
+(10089, 1, 998993, NULL),
+(10088, 1, 998992, NULL),
+(10087, 1, 998991, NULL),
+(10086, 1, 998990, NULL),
+(10085, 1, 998004, NULL),
+(10084, 1, 998003, NULL),
+(10083, 1, 998002, NULL),
+(10082, 1, 998001, NULL),
+(10081, 1, 2004, NULL),
+(10080, 1, 2003, NULL),
+(10079, 1, 2002, NULL),
+(10078, 1, 2001, NULL),
+(10077, 1, 1005, NULL),
+(10076, 1, 1003, NULL),
+(10075, 1, 1002, NULL),
+(10074, 1, 1001, NULL),
+(10073, 1, 999, NULL),
+(10072, 1, 998, NULL),
+(10071, 1, 2, NULL),
+(10070, 1, 1, NULL),
+(10094, 1, 999999, NULL),
+(10095, 2, 1, NULL),
+(10096, 2, 2, NULL),
+(10097, 2, 998, NULL),
+(10098, 2, 1001, NULL),
+(10099, 2, 1002, NULL),
+(10100, 2, 1003, NULL),
+(10101, 2, 1005, NULL),
+(10102, 2, 2001, NULL),
+(10103, 2, 2002, NULL),
+(10104, 2, 2003, NULL),
+(10105, 2, 2004, NULL),
+(10106, 2, 998001, NULL),
+(10107, 2, 998002, NULL),
+(10108, 2, 998003, NULL),
+(10109, 2, 998004, NULL),
+(10110, 2, 999999, NULL),
+(10111, 3, 1, NULL),
+(10112, 3, 2, NULL),
+(10113, 3, 1005, NULL),
+(10114, 3, 2001, NULL),
+(10115, 3, 2002, NULL),
+(10116, 3, 2003, NULL),
+(10117, 3, 2004, NULL),
+(10118, 3, 999999, NULL);
 
 -- --------------------------------------------------------
 
@@ -90778,7 +90926,8 @@ ALTER TABLE `coupons`
   ADD UNIQUE KEY `coupons_qr_code_unique` (`qr_code`),
   ADD UNIQUE KEY `generate_uuid` (`payment_unique_id`),
   ADD KEY `coupons_registration_id_foreign` (`registration_id`),
-  ADD KEY `coupons_payment_status_id_foreign` (`payment_status_id`);
+  ADD KEY `coupons_payment_status_id_foreign` (`payment_status_id`),
+  ADD KEY `coupons_shippers_FK` (`shipper_id`);
 
 --
 -- Indexes for table `editions`
@@ -90792,7 +90941,16 @@ ALTER TABLE `editions`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`idx`),
-  ADD UNIQUE KEY `events_name_unique` (`name`);
+  ADD UNIQUE KEY `events_name_unique` (`name`),
+  ADD UNIQUE KEY `events_unique` (`long_name`) USING HASH;
+
+--
+-- Indexes for table `faq`
+--
+ALTER TABLE `faq`
+  ADD PRIMARY KEY (`idx`),
+  ADD UNIQUE KEY `faq_unique` (`faq_title`),
+  ADD KEY `faq_events_FK` (`event_id`);
 
 --
 -- Indexes for table `kabupaten`
@@ -90918,13 +91076,13 @@ ALTER TABLE `usersistem`
 -- AUTO_INCREMENT for table `artists`
 --
 ALTER TABLE `artists`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `collabolators`
 --
 ALTER TABLE `collabolators`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `content`
@@ -90936,19 +91094,25 @@ ALTER TABLE `content`
 -- AUTO_INCREMENT for table `coupons`
 --
 ALTER TABLE `coupons`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `editions`
 --
 ALTER TABLE `editions`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `faq`
+--
+ALTER TABLE `faq`
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kecamatan`
@@ -90972,31 +91136,31 @@ ALTER TABLE `komponen`
 -- AUTO_INCREMENT for table `logdelrecord`
 --
 ALTER TABLE `logdelrecord`
-  MODIFY `idx` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `idmenu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
+  MODIFY `idmenu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000001;
 
 --
 -- AUTO_INCREMENT for table `payment_statuses`
 --
 ALTER TABLE `payment_statuses`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `provinsi`
@@ -91008,25 +91172,25 @@ ALTER TABLE `provinsi`
 -- AUTO_INCREMENT for table `registrations`
 --
 ALTER TABLE `registrations`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `shippers`
 --
 ALTER TABLE `shippers`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `testimonials`
 --
 ALTER TABLE `testimonials`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `testimoni_photos`
 --
 ALTER TABLE `testimoni_photos`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tipemenu`
@@ -91044,7 +91208,7 @@ ALTER TABLE `usergroup`
 -- AUTO_INCREMENT for table `usermenu`
 --
 ALTER TABLE `usermenu`
-  MODIFY `idx` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10070;
+  MODIFY `idx` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10119;
 
 --
 -- AUTO_INCREMENT for table `usersistem`
@@ -91069,19 +91233,26 @@ ALTER TABLE `collabolators`
 ALTER TABLE `coupons`
   ADD CONSTRAINT `coupons_edition_id_foreign` FOREIGN KEY (`edition_id`) REFERENCES `editions` (`idx`),
   ADD CONSTRAINT `coupons_payment_status_id_foreign` FOREIGN KEY (`payment_status_id`) REFERENCES `payment_statuses` (`idx`),
-  ADD CONSTRAINT `coupons_registration_id_foreign` FOREIGN KEY (`registration_id`) REFERENCES `registrations` (`idx`);
+  ADD CONSTRAINT `coupons_registration_id_foreign` FOREIGN KEY (`registration_id`) REFERENCES `registrations` (`idx`),
+  ADD CONSTRAINT `coupons_shippers_FK` FOREIGN KEY (`shipper_id`) REFERENCES `shippers` (`idx`);
 
 --
 -- Constraints for table `editions`
 --
 ALTER TABLE `editions`
-  ADD CONSTRAINT `editions_event_id_foreign` FOREIGN KEY (`event_id`) REFERENCES `events` (`idx`);
+  ADD CONSTRAINT `editions_events_FK` FOREIGN KEY (`event_id`) REFERENCES `events` (`idx`);
+
+--
+-- Constraints for table `faq`
+--
+ALTER TABLE `faq`
+  ADD CONSTRAINT `faq_events_FK` FOREIGN KEY (`event_id`) REFERENCES `events` (`idx`);
 
 --
 -- Constraints for table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_event_id_foreign` FOREIGN KEY (`event_id`) REFERENCES `events` (`idx`);
+  ADD CONSTRAINT `posts_events_FK` FOREIGN KEY (`event_id`) REFERENCES `events` (`idx`);
 
 --
 -- Constraints for table `registrations`

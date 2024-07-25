@@ -9,12 +9,6 @@ $(document).ready(function () {
     $(".timepicker").each(function () {
         $(this).timepicker();
     });
-    $("#selectedEdition").html("");
-    getEdition($("#editionId").val());
-    $("#editionId").change(function (e) { 
-        e.preventDefault();  
-        getEdition($(this).val());
-    });
 });
 
 function declarecustomtooltip() {

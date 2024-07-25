@@ -56,7 +56,7 @@ class Ctreditions extends CI_Controller
 
     $xBufResult .= setForm('ended_at', 'Ended', form_input_(getArrayObj('edended_at', '', '200'), '', ' placeholder="Ended" class="datetimepicker"')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('venue_address', 'Venue Address', form_input_(getArrayObj('edvenue_address', '', '200'), '', ' placeholder="Venue Address" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('venue_address', 'Venue Address', form_textarea_(getArrayObj('edvenue_address', '', '200'), '', ' placeholder="Venue Address" ')) . '<div class="spacer"></div>';
 
     $xBufResult .= setForm('venue_city', 'City', form_input_(getArrayObj('edvenue_city', '', '200'), '', ' placeholder="City" ')) . '<div class="spacer"></div>';
 

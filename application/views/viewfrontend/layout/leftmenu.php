@@ -6,7 +6,7 @@
         <?php } else { ?>  
             <?php if ($showmainmenu) { ?>      
         <a href="<?php echo base_url();?>frontend/collaborators" type="button" class="btn btn-light">Kolaborator</a><br>
-        <a href="#" type="button" class="btn btn-light mt-2">Info</a><br>
+        <a href="<?php echo base_url();?>frontend/eventinfo" type="button" class="btn btn-light mt-2">Info</a><br>
         <a href="<?php echo base_url();?>" type="button" class="btn btn-light mt-2">Beranda</a><br>
             <?php } ?>
             <?php if ($showadditionalmenu) { ?>
