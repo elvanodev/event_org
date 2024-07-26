@@ -15,10 +15,6 @@ class Modelevents extends CI_Model
 	long_name,
 	is_active,
 	descriptions,
-	about_event,
-	about1_event,
-	about2_event,
-	about3_event,
 	poster_image,
 	contact_phone,
 	contact_email,
@@ -73,7 +69,7 @@ from
 
 
 
-   function setInsertevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image, $xcontact_phone, $xcontact_email,   
+   function setInsertevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xposter_image, $xcontact_phone, $xcontact_email,   
    $xagent_open_date,
    $xagent_close_date,
    $xagent_open_time,
@@ -91,10 +87,6 @@ from
          ",long_name" .
          ",is_active" .
          ",descriptions" .
-         ",about_event" .
-         ",about1_event" .
-         ",about2_event" .
-         ",about3_event" .
          ",poster_image" .
          ",contact_phone" .
          ",contact_email" .
@@ -105,7 +97,7 @@ from
          ",agent_address" .
          ",agent_gmap" .
          ",created_at" .
-         ") VALUES('" . $xidx . "','" . $xname . "','" . $xlong_name . "','" . $xis_active . "','" . $xdescriptions . "','" . $xabout_event . "','" . $xabout1_event . "','" . $xabout2_event . "','" . $xabout3_event . "','" . $xposter_image . ",'" . $xcontact_phone . ",'" . $xcontact_email . "'
+         ") VALUES('" . $xidx . "','" . $xname . "','" . $xlong_name . "','" . $xis_active . "','" . $xdescriptions . "','" . $xposter_image . ",'" . $xcontact_phone . ",'" . $xcontact_email . "'
    ,'" . $xagent_open_date . "'
    ,'" . $xagent_close_date . "'
    ,'" . $xagent_open_time . "'
@@ -116,7 +108,7 @@ from
       return $xidx;
    }
 
-   function setUpdateevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image, $xcontact_phone, $xcontact_email,
+   function setUpdateevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xposter_image, $xcontact_phone, $xcontact_email,
    $xagent_open_date,
    $xagent_close_date,
    $xagent_open_time,
@@ -134,10 +126,6 @@ from
          ",long_name='" . $xlong_name . "'" .
          ",is_active='" . $xis_active . "'" .
          ",descriptions='" . $xdescriptions . "'" .
-         ",about_event='" . $xabout_event . "'" .
-         ",about1_event='" . $xabout1_event . "'" .
-         ",about2_event='" . $xabout2_event . "'" .
-         ",about3_event='" . $xabout3_event . "'" .
          ",poster_image='" . $xposter_image . "'" .
          ",contact_phone='" . $xcontact_phone . "'" .
          ",contact_email='" . $xcontact_email . "'" .

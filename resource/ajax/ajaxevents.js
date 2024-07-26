@@ -45,10 +45,6 @@ function doeditevents(edidx) {
         $("#edlong_name").val(json.long_name);
         $("#edis_active").val(json.is_active);
         $("#eddescriptions").val(json.descriptions);
-        $("#edabout_event").val(json.about_event);
-        $("#edabout1_event").val(json.about1_event);
-        $("#edabout2_event").val(json.about2_event);
-        $("#edabout3_event").val(json.about3_event);
         $("#edposter_image").val(json.poster_image);
         $("#edcontact_phone").val(json.contact_phone);
         $("#edcontact_email").val(json.contact_email);
@@ -74,10 +70,6 @@ function doClearevents() {
     $("#edlong_name").val("");
     $("#edis_active").val("");
     $("#eddescriptions").val("");
-    $("#edabout_event").val("");
-    $("#edabout1_event").val("");
-    $("#edabout2_event").val("");
-    $("#edabout3_event").val("");
     $("#edposter_image").val("");
     $("#edcontact_phone").val("");
     $("#edcontact_email").val("");
@@ -105,14 +97,6 @@ function dosimpanevents() {
         $("#edis_active").val() +
         "&eddescriptions=" +
         $("#eddescriptions").val() +
-        "&edabout_event=" +
-        $("#edabout_event").val() +
-        "&edabout1_event=" +
-        $("#edabout1_event").val() +
-        "&edabout2_event=" +
-        $("#edabout2_event").val() +
-        "&edabout3_event=" +
-        $("#edabout3_event").val() +
         "&edposter_image=" +
         $("#edposter_image").val() +
         "&edcontact_phone=" +

@@ -55,14 +55,6 @@ class Ctrevents extends CI_Controller
 
     $xBufResult .= setForm('descriptions', 'Descriptions', form_textarea_(getArrayObj('eddescriptions', '', '200'), '', ' placeholder="Descriptions" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('about_event', 'About', form_textarea_(getArrayObj('edabout_event', '', '200'), '', ' placeholder="About" ')) . '<div class="spacer"></div>';
-
-    $xBufResult .= setForm('about1_event', 'About 1', form_textarea_(getArrayObj('edabout1_event', '', '200'), '', ' placeholder="About 1" ')) . '<div class="spacer"></div>';
-
-    $xBufResult .= setForm('about2_event', 'About 2', form_textarea_(getArrayObj('edabout2_event', '', '200'), '', ' placeholder="About 2" ')) . '<div class="spacer"></div>';
-
-    $xBufResult .= setForm('about3_event', 'About 3', form_textarea_(getArrayObj('edabout3_event', '', '200'), '', ' placeholder="About 3" ')) . '<div class="spacer"></div>';
-
     $xBufResult .= setForm('poster_image', 'Poster Image', '<div id="uploadposter_image" style="width:150px;">' . form_input_(getArrayObj('edposter_image', '', '100'), '', 'alt="Unggah"') . '</div>') . '<div class="spacer"></div>';
 
     $xBufResult .= setForm('contact_phone', 'Contact Phone', form_input_(getArrayObj('edcontact_phone', '', '200'), '', ' placeholder="Contact Phone" ')) . '<div class="spacer"></div>';
@@ -95,10 +87,6 @@ class Ctrevents extends CI_Controller
       tbaddcellhead('Long Name', '', 'data-field="long_name" data-sortable="true" width=10%') .
       tbaddcellhead('Is Active', '', 'data-field="is_active" data-sortable="true" width=10%') .
       tbaddcellhead('Descriptions', '', 'data-field="descriptions" data-sortable="true" width=10%') .
-      tbaddcellhead('About', '', 'data-field="about_event" data-sortable="true" width=10%') .
-      tbaddcellhead('About 1', '', 'data-field="about1_event" data-sortable="true" width=10%') .
-      tbaddcellhead('About 2', '', 'data-field="about2_event" data-sortable="true" width=10%') .
-      tbaddcellhead('About 3', '', 'data-field="about3_event" data-sortable="true" width=10%') .
       tbaddcellhead('Poster Image', '', 'data-field="poster_image" data-sortable="true" width=10%') .
       tbaddcellhead('Contact Phone', '', 'data-field="contact_phone" data-sortable="true" width=10%') .
       tbaddcellhead('Contact Email', '', 'data-field="contact_email" data-sortable="true" width=10%') .
@@ -127,10 +115,6 @@ class Ctrevents extends CI_Controller
         tbaddcell($row->long_name) .
         tbaddcell($row->is_active == 1 ? 'Yes' : 'No') .
         tbaddcell($row->descriptions) .
-        tbaddcell(substr($row->about_event,0,20).'...') .
-        tbaddcell(substr($row->about1_event,0,20).'...') .
-        tbaddcell(substr($row->about2_event,0,20).'...') .
-        tbaddcell(substr($row->about3_event,0,20).'...') .
         tbaddcell($poster_image) .
         tbaddcell($row->contact_phone) .
         tbaddcell($row->contact_email) .
@@ -180,10 +164,6 @@ class Ctrevents extends CI_Controller
     $this->json_data['long_name'] = $row->long_name;
     $this->json_data['is_active'] = $row->is_active;
     $this->json_data['descriptions'] = $row->descriptions;
-    $this->json_data['about_event'] = $row->about_event;
-    $this->json_data['about1_event'] = $row->about1_event;
-    $this->json_data['about2_event'] = $row->about2_event;
-    $this->json_data['about3_event'] = $row->about3_event;
     $this->json_data['poster_image'] = $row->poster_image;
     $this->json_data['contact_phone'] = $row->contact_phone;
     $this->json_data['contact_email'] = $row->contact_email;
@@ -251,10 +231,6 @@ class Ctrevents extends CI_Controller
     $xlong_name = $_POST['edlong_name'];
     $xis_active = $_POST['edis_active'];
     $xdescriptions = $_POST['eddescriptions'];
-    $xabout_event = $_POST['edabout_event'];
-    $xabout1_event = $_POST['edabout1_event'];
-    $xabout2_event = $_POST['edabout2_event'];
-    $xabout3_event = $_POST['edabout3_event'];
     $xposter_image = $_POST['edposter_image'];
     $xcontact_phone = $_POST['edcontact_phone'];
     $xcontact_email = $_POST['edcontact_email'];
@@ -269,7 +245,7 @@ class Ctrevents extends CI_Controller
     $xidpegawai = $this->session->userdata('idpegawai');
     if (!empty($xidpegawai)) {
       if ($xidx != '0') {
-        $xStr =  $this->modelevents->setUpdateevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image, $xcontact_phone, $xcontact_email,   
+        $xStr =  $this->modelevents->setUpdateevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xposter_image, $xcontact_phone, $xcontact_email,   
         $xagent_open_date,
         $xagent_close_date,
         $xagent_open_time,
@@ -277,7 +253,7 @@ class Ctrevents extends CI_Controller
         $xagent_address,
         $xagent_gmap);
       } else {
-        $xStr =  $this->modelevents->setInsertevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xabout_event, $xabout1_event, $xabout2_event, $xabout3_event, $xposter_image, $xcontact_phone, $xcontact_email,   
+        $xStr =  $this->modelevents->setInsertevents($xidx, $xname, $xlong_name, $xis_active, $xdescriptions, $xposter_image, $xcontact_phone, $xcontact_email,   
         $xagent_open_date,
         $xagent_close_date,
         $xagent_open_time,
