@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 25, 2024 at 08:41 AM
+-- Generation Time: Jul 26, 2024 at 10:11 AM
 -- Server version: 11.4.2-MariaDB-log
 -- PHP Version: 8.3.9
 
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `event_org`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `abouts`
+--
+
+CREATE TABLE `abouts` (
+  `idx` bigint(20) UNSIGNED NOT NULL,
+  `about_title` varchar(250) NOT NULL DEFAULT '',
+  `about_detail` text NOT NULL DEFAULT '',
+  `event_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `abouts`
+--
+
+INSERT INTO `abouts` (`idx`, `about_title`, `about_detail`, `event_id`, `created_at`, `updated_at`) VALUES
+(1, 'Tentang Event', '<p>Program Sumbangsih Dermawan Seni Berhadiah (SDSB) merupakan platform seni yang digagas secara kritis dengan semangat kontemporer dan asas kemandirian dalam pemajuan seni, kebudayaan, dan ekosistem masyarakat seni. Gagasan ini berasal dari Fajar Riyanto, seorang seniman yang berfokus pada praktik seni kontekstual dengan mengamati dan mengeksplorasi fenomena terkini dalam kehidupan sehari-hari. Dalam perjalanannya, program ini juga melibatkan anggota masyarakat seni lainnya seperti: peneliti, kurator, manajer seni, penulis, desainer, musisi, dan seniman dalam pengelolaan dan pengembangan program. \r\n</p>\r\n<p>\r\nDalam pelaksanaannya, SDSB memelintir sebuah permainan toto (lotre) angka yang pernah populer di era Orde Baru dengan istilah “Sumbangan Dermawan Sosial Berhadiah” pada tahun 1989-1994. Praktik ini dianggap sebagai judi karena pada dasarnya adalah undian atau lotre berhadiah yang dikemas dalam narasi penggalangan dana untuk membiayai penyelenggaraan olahraga. Menyerupai hal tersebut, program SDSB mengapropriasi sistem tukar yang tidak hanya terkonversi dalam bentuk uang perjudian, tetapi apresiasi terhadap karya seni yang dikerjakan oleh praktisi seni.\r\n</p>\r\n<p>\r\nDi program ini, masyarakat hanya perlu membeli kupon yang telah disediakan untuk mendapatkan peluang meraih hadiah seni yang telah disediakan. Tujuan utama program SDSB adalah untuk menguatkan ekosistem seni dengan membuat sebuah ruang/jaring pengaman antar masyarakat seni agar sistem saling dukung antar masyarakat seni dapat terjalin. \r\n</p>\r\n<p>\r\nProses transaksi pembelian kupon nantinya akan dilayani melalui sebuah gerobak atau kios portable yang dapat berpindah dan menyusup di dalam perhelatan seni. Selain secara onsite di kios agen SDSB, pembelian kupon juga dapat dilakukan secara online. Setiap pembelian satu (1) kupon, pembeli berhak mendapatkan harapan dan kesempatan untuk memenangkan hadiah utama yang berupa sebuah karya dari seniman yang sudah dipilih. Selain itu, pembeli juga akan mendapatkan hak untuk berkomentar (kritik, saran, dsb) \r\n</p>\r\n<p>\r\ntentang situasi seni dan kebudayaan yang ada di Indonesia. Sedangkan untuk komentar dapat berupa teks atau gambar yang secara otomatis akan tampil di website SDSB. Fitur komentar ini merupakan kanal aspirasi publik yang pada masa sebelumnya justru tertutup, dibatasi, dan dibungkam di era Orde Baru \r\n</p>\r\n<p>\r\nSelain sebagai agen distribusi kupon layaknya penjual kupon toto pada umumnya, kios agen SDSB juga akan menampilkan/menyajikan ramalan-ramalan sebagai panduan bagi para pembeli. Ramalan-ramalan yang ada di Kios SDSB ini dapat dibeli (maupun dikoleksi)  sebagai patokan pemilihan angka agar pembeli tidak lagi bingung dalam menentukan pilihan. \r\n</p>\r\n<p>\r\nEdisi #1 program SDSB ini akan dilaksanakan di Yogyakarta selama masa Jogja Art Weeks 2024. Program SDSB ingin mengajak partisipasi masyarakat seni untuk terlibat sebagai kolaborator dalam membuat karya ramalan. Karya-karya ramalan tersebut akan dipajang pada kios agen SDSB, sehingga publik dapat membeli kupon sesuai dengan ramalan yang diyakini. Selain itu, karya-karya dari para kolaborator ini juga akan ditampilkan dalam website SDSB. Pada edisi #1 program SDSB ini, kami ingin menawarkan sebuah tema yang diambil dari Kitab Musarar yaitu:  \r\n</p>\r\n<p><strong>\r\nNakoda melu wasesa, Kaduk bondo sugih wani, Sarjana sirep sadaya, Wong cilik kawelas asih, Mah omah bosah-basih, Katarajang marga agung, Panji loro dyan sirna, Nuli Rara ngangsu sami, Randha loro nututi pijer tetukar.* \r\n</strong></p>\r\n<p>\r\nDemikian penjelasan singkat tentang program ini, kami berharap dapat menjalin kolaborasi yang produktif untuk mendukung ekosistem seni dan budaya secara bersama-sama.\r\nTerima kasih atas perhatiannya. \r\n</p>\r\n<p>\r\nSalam hangat,\r\n<br>Tim Dermawan Seni \r\n<br>SDSB 2024\r\n</p>', 1, '2024-07-26 07:21:54', NULL),
+(2, 'Tim Kerja', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu est eu eros tincidunt rutrum. Donec accumsan pellentesque purus at ultrices. Aenean facilisis dapibus libero, sed feugiat odio mollis eu. Nam blandit sed est in varius. Pellentesque at velit a velit blandit mollis fringilla ut nulla. Nunc sed lectus ut purus fringilla lobortis dapibus nec risus. Aliquam quis maximus libero, in ultrices nunc. Nunc metus ipsum, malesuada ac ornare id, congue dapibus ligula.\n\nCurabitur ultrices nisl ac mauris ornare viverra. Praesent rutrum risus nec tristique eleifend. Proin tincidunt eros vitae ipsum auctor, id lobortis mi malesuada. Praesent aliquet purus at risus cursus porttitor. Proin auctor sollicitudin turpis maximus tincidunt. Proin a posuere mauris. Praesent mollis dolor id blandit mollis. Nulla quis enim sodales, tempus ex et, dictum libero. Nam venenatis velit ac ligula auctor vehicula. Vivamus consequat metus ut feugiat porta. Quisque erat mauris, commodo et mauris a, pellentesque tempus lacus.\n\nNulla id tellus ut quam blandit ultrices. Donec mattis rhoncus nunc, sit amet rhoncus metus vehicula vitae. Praesent eu pulvinar urna. Donec sagittis est in ipsum bibendum mattis. Maecenas ut convallis mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec pellentesque ornare tortor vitae mollis. Integer ornare consectetur lorem, hendrerit efficitur massa pellentesque nec. Vivamus porttitor elementum nunc, consectetur laoreet magna tincidunt ac. Phasellus vel libero sapien.', 1, '2024-07-26 07:21:54', NULL),
+(3, 'Dharma Bakti', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu est eu eros tincidunt rutrum. Donec accumsan pellentesque purus at ultrices. Aenean facilisis dapibus libero, sed feugiat odio mollis eu. Nam blandit sed est in varius. Pellentesque at velit a velit blandit mollis fringilla ut nulla. Nunc sed lectus ut purus fringilla lobortis dapibus nec risus. Aliquam quis maximus libero, in ultrices nunc. Nunc metus ipsum, malesuada ac ornare id, congue dapibus ligula.\n\nCurabitur ultrices nisl ac mauris ornare viverra. Praesent rutrum risus nec tristique eleifend. Proin tincidunt eros vitae ipsum auctor, id lobortis mi malesuada. Praesent aliquet purus at risus cursus porttitor. Proin auctor sollicitudin turpis maximus tincidunt. Proin a posuere mauris. Praesent mollis dolor id blandit mollis. Nulla quis enim sodales, tempus ex et, dictum libero. Nam venenatis velit ac ligula auctor vehicula. Vivamus consequat metus ut feugiat porta. Quisque erat mauris, commodo et mauris a, pellentesque tempus lacus.\n\nNulla id tellus ut quam blandit ultrices. Donec mattis rhoncus nunc, sit amet rhoncus metus vehicula vitae. Praesent eu pulvinar urna. Donec sagittis est in ipsum bibendum mattis. Maecenas ut convallis mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec pellentesque ornare tortor vitae mollis. Integer ornare consectetur lorem, hendrerit efficitur massa pellentesque nec. Vivamus porttitor elementum nunc, consectetur laoreet magna tincidunt ac. Phasellus vel libero sapien.', 1, '2024-07-26 07:21:54', NULL),
+(4, 'Dermawan', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu est eu eros tincidunt rutrum. Donec accumsan pellentesque purus at ultrices. Aenean facilisis dapibus libero, sed feugiat odio mollis eu. Nam blandit sed est in varius. Pellentesque at velit a velit blandit mollis fringilla ut nulla. Nunc sed lectus ut purus fringilla lobortis dapibus nec risus. Aliquam quis maximus libero, in ultrices nunc. Nunc metus ipsum, malesuada ac ornare id, congue dapibus ligula.\n\nCurabitur ultrices nisl ac mauris ornare viverra. Praesent rutrum risus nec tristique eleifend. Proin tincidunt eros vitae ipsum auctor, id lobortis mi malesuada. Praesent aliquet purus at risus cursus porttitor. Proin auctor sollicitudin turpis maximus tincidunt. Proin a posuere mauris. Praesent mollis dolor id blandit mollis. Nulla quis enim sodales, tempus ex et, dictum libero. Nam venenatis velit ac ligula auctor vehicula. Vivamus consequat metus ut feugiat porta. Quisque erat mauris, commodo et mauris a, pellentesque tempus lacus.\n\nNulla id tellus ut quam blandit ultrices. Donec mattis rhoncus nunc, sit amet rhoncus metus vehicula vitae. Praesent eu pulvinar urna. Donec sagittis est in ipsum bibendum mattis. Maecenas ut convallis mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec pellentesque ornare tortor vitae mollis. Integer ornare consectetur lorem, hendrerit efficitur massa pellentesque nec. Vivamus porttitor elementum nunc, consectetur laoreet magna tincidunt ac. Phasellus vel libero sapien.', 1, '2024-07-26 07:21:54', NULL);
 
 -- --------------------------------------------------------
 
@@ -115,7 +140,6 @@ CREATE TABLE `coupons` (
   `valid_until` timestamp NOT NULL DEFAULT (current_timestamp() - interval 1 day) COMMENT 'the default value should be end of event edition',
   `registration_id` bigint(20) UNSIGNED DEFAULT NULL,
   `shipper_id` bigint(20) UNSIGNED NOT NULL,
-  `payment_unique_id` uuid NOT NULL DEFAULT uuid(),
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -124,8 +148,8 @@ CREATE TABLE `coupons` (
 -- Dumping data for table `coupons`
 --
 
-INSERT INTO `coupons` (`idx`, `edition_id`, `coupon_number`, `qr_code`, `coupon_price`, `shipper_price`, `total_price`, `is_winner`, `payment_status_id`, `payment_confirm_receipt`, `valid_until`, `registration_id`, `shipper_id`, `payment_unique_id`, `created_at`, `updated_at`) VALUES
-(5, 2, '1234', 'COP-ED2_RG7_202407201636048224177513700.png', 50000, 100000, 150000, 0, 1, NULL, '2024-07-19 09:36:05', 7, 2, '7c737e97-467b-11ef-bdea-00090ffe0001', '2024-07-20 09:36:05', NULL);
+INSERT INTO `coupons` (`idx`, `edition_id`, `coupon_number`, `qr_code`, `coupon_price`, `shipper_price`, `total_price`, `is_winner`, `payment_status_id`, `payment_confirm_receipt`, `valid_until`, `registration_id`, `shipper_id`, `created_at`, `updated_at`) VALUES
+(5, 2, '1234', 'COP-ED2_RG7_202407201636048224177513700.png', 50000, 100000, 150000, 0, 1, NULL, '2024-07-19 09:36:05', 7, 2, '2024-07-20 09:36:05', NULL);
 
 -- --------------------------------------------------------
 
@@ -169,10 +193,6 @@ CREATE TABLE `events` (
   `long_name` text NOT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT 0,
   `descriptions` text DEFAULT NULL,
-  `about_event` text DEFAULT NULL,
-  `about1_event` text DEFAULT NULL,
-  `about2_event` text DEFAULT NULL,
-  `about3_event` text DEFAULT NULL,
   `poster_image` varchar(250) DEFAULT NULL,
   `contact_phone` varchar(100) DEFAULT NULL,
   `contact_email` varchar(250) DEFAULT NULL,
@@ -190,8 +210,8 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`idx`, `name`, `long_name`, `is_active`, `descriptions`, `about_event`, `about1_event`, `about2_event`, `about3_event`, `poster_image`, `contact_phone`, `contact_email`, `agent_open_date`, `agent_close_date`, `agent_open_time`, `agent_close_time`, `agent_address`, `agent_gmap`, `created_at`, `updated_at`) VALUES
-(1, 'SDSB', 'Sumbangsih Dermawan Seni Berhadiah', 1, 'Program Sumbangsih Dermawan Seni Berhadiah (SDSB) merupakan platform seni yang digagas secara kritis dengan semangat kontemporer dan asas kemandirian dalam pemajuan seni, kebudayaan, dan ekosistem masyarakat seni.', 'Program Sumbangsih Dermawan Seni Berhadiah (SDSB) merupakan platform seni yang digagas secara kritis dengan semangat kontemporer dan asas kemandirian dalam pemajuan seni, kebudayaan, dan ekosistem masyarakat seni. Gagasan ini berasal dari Fajar Riyanto, seorang seniman yang berfokus pada praktik seni kontekstual dengan mengamati dan mengeksplorasi fenomena terkini dalam kehidupan sehari-hari. Dalam perjalanannya, program ini juga melibatkan anggota masyarakat seni lainnya seperti: peneliti, kurator, manajer seni, penulis, desainer, musisi, dan seniman dalam pengelolaan dan pengembangan program. \n\nDalam pelaksanaannya, SDSB memelintir sebuah permainan toto (lotre) angka yang pernah populer di era Orde Baru dengan istilah “Sumbangan Dermawan Sosial Berhadiah” pada tahun 1989-1994. Praktik ini dianggap sebagai judi karena pada dasarnya adalah undian atau lotre berhadiah yang dikemas dalam narasi penggalangan dana untuk membiayai penyelenggaraan olahraga. Menyerupai hal tersebut, program SDSB mengapropriasi sistem tukar yang tidak hanya terkonversi dalam bentuk uang perjudian, tetapi apresiasi terhadap karya seni yang dikerjakan oleh praktisi seni.\n\nDi program ini, masyarakat hanya perlu membeli kupon yang telah disediakan untuk mendapatkan peluang meraih hadiah seni yang telah disediakan. Tujuan utama program SDSB adalah untuk menguatkan ekosistem seni dengan membuat sebuah ruang/jaring pengaman antar masyarakat seni agar sistem saling dukung antar masyarakat seni dapat terjalin.\n\nProses transaksi pembelian kupon nantinya akan dilayani melalui sebuah gerobak atau kios portable yang dapat berpindah dan menyusup di dalam perhelatan seni. Selain secara onsite di kios agen SDSB, pembelian kupon juga dapat dilakukan secara online. Setiap pembelian satu (1) kupon, pembeli berhak mendapatkan harapan dan kesempatan untuk memenangkan hadiah utama yang berupa sebuah karya dari seniman yang sudah dipilih. Selain itu, pembeli juga akan mendapatkan hak untuk berkomentar (kritik, saran, dsb)\n\ntentang situasi seni dan kebudayaan yang ada di Indonesia. Sedangkan untuk komentar dapat berupa teks atau gambar yang secara otomatis akan tampil di website SDSB. Fitur komentar ini merupakan kanal aspirasi publik yang pada masa sebelumnya justru tertutup, dibatasi, dan dibungkam di era Orde Baru\n\nSelain sebagai agen distribusi kupon layaknya penjual kupon toto pada umumnya, kios agen SDSB juga akan menampilkan/menyajikan ramalan-ramalan sebagai panduan bagi para pembeli. Ramalan-ramalan yang ada di Kios SDSB ini dapat dibeli (maupun dikoleksi)  sebagai patokan pemilihan angka agar pembeli tidak lagi bingung dalam menentukan pilihan.\n\nEdisi #1 program SDSB ini akan dilaksanakan di Yogyakarta selama masa Jogja Art Weeks 2024. Program SDSB ingin mengajak partisipasi masyarakat seni untuk terlibat sebagai kolaborator dalam membuat karya ramalan. Karya-karya ramalan tersebut akan dipajang pada kios agen SDSB, sehingga publik dapat membeli kupon sesuai dengan ramalan yang diyakini. Selain itu, karya-karya dari para kolaborator ini juga akan ditampilkan dalam website SDSB. Pada edisi #1 program SDSB ini, kami ingin menawarkan sebuah tema yang diambil dari Kitab Musarar yaitu: \n\nNakoda melu wasesa, Kaduk bondo sugih wani, Sarjana sirep sadaya, Wong cilik kawelas asih, Mah omah bosah-basih, Katarajang marga agung, Panji loro dyan sirna, Nuli Rara ngangsu sami, Randha loro nututi pijer tetukar.*\n\nDemikian penjelasan singkat tentang program ini, kami berharap dapat menjalin kolaborasi yang produktif untuk mendukung ekosistem seni dan budaya secara bersama-sama.\nTerima kasih atas perhatiannya.\n\nSalam hangat, Tim Dermawan Seni \nSDSB 2024', 'Produser	: Umma Gumma dan Fajar Riyanto\nProyek Manajer		: Tiara\nAsisten Proyek Manajer	: Arlingga Hari Nugroho\nDirektur Artistik		: Fajar Riyanto \nKeuangan		: Tiara\nDesainer 		: Arya Pradifta\nPenata suara		: Bona Zustama\nWebsite dan IT		: Pujiawan Kurnianto (Scriptmedia)\nDesainer Website		: Alam Alfa\nPublikasi		: Fatoni Purwitoaji\nDesain Kios		: Fajar Riyanto\nDokumentasi		: Edward Francesco\n', 'Kegiatan ini dapat dilihat sebagai sebuah program (atau karya) utuh dari pelaku seni untuk masyarakat seni. Kegiatan ini menjadi penting tidak hanya sebagai bentuk perhelatan acara, tetapi juga peristiwa atau momentum untuk yang mempertemukan beragam masyarakat seni dengan publik. Secara bersamaan, hubungan ini membentuk ekosistem seni menjadi sebuah entitas budaya yang punya kemandirian secara ideologi maupun ekonomi. Dengan adanya penguatan ekonomi dalam entitas seni dan budaya akan semakin menumbuhkan karya-karya yang lebih menarik. \n', '', 'sdsbicon.png', ' 6289537703282', 'sdsb@gmail.com', '2024-07-22', '2024-07-25', '15:00:00', '19:00:00', 'Kedai Kebun Forum, Jl. Tirtodipuran No. 03, Yogyakarta', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.7331553784875!2d110.36017787390247!3d-7.818044677635375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57bdbc81bb53:0x1e337895d1c4e268!2zS2VkYWkgS2VidW4gRm9ydW3qp4vqpo_qprzqpqPqprvqpo_qprzqpqfqprjqpqTqp4DqpqXqprPqprrqprTqpqvqprjqpqnqp4A!5e0!3m2!1sen!2sid!4v1721833544634!5m2!1sen!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '2024-07-09 13:34:33', '2024-07-25 03:35:59');
+INSERT INTO `events` (`idx`, `name`, `long_name`, `is_active`, `descriptions`, `poster_image`, `contact_phone`, `contact_email`, `agent_open_date`, `agent_close_date`, `agent_open_time`, `agent_close_time`, `agent_address`, `agent_gmap`, `created_at`, `updated_at`) VALUES
+(1, 'SDSB', 'Sumbangsih Dermawan Seni Berhadiah', 1, 'Program Sumbangsih Dermawan Seni Berhadiah (SDSB) merupakan platform seni yang digagas secara kritis dengan semangat kontemporer dan asas kemandirian dalam pemajuan seni, kebudayaan, dan ekosistem masyarakat seni.', 'sdsbicon.png', ' 6289537703282', 'sdsb@gmail.com', '2024-07-22', '2024-07-25', '15:00:00', '19:00:00', 'Kedai Kebun Forum, Jl. Tirtodipuran No. 03, Yogyakarta', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.7331553784875!2d110.36017787390247!3d-7.818044677635375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57bdbc81bb53:0x1e337895d1c4e268!2zS2VkYWkgS2VidW4gRm9ydW3qp4vqpo_qprzqpqPqprvqpo_qprzqpqfqprjqpqTqp4DqpqXqprPqprrqprTqpqvqprjqpqnqp4A!5e0!3m2!1sen!2sid!4v1721833544634!5m2!1sen!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '2024-07-09 13:34:33', '2024-07-25 03:35:59');
 
 -- --------------------------------------------------------
 
@@ -90560,6 +90580,8 @@ INSERT INTO `menu` (`idmenu`, `nmmenu`, `tipemenu`, `idkomponen`, `iduser`, `par
 (1002, 'Editions', 2, 3, 0, 1, 'Ctreditions', 1002, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (1003, 'Collaborators', 2, 3, 0, 1, 'Ctrcollabolators', 1003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (1005, 'Posts', 2, 3, 0, 1, 'Ctrposts', 1005, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(1006, 'Event FAQs', 2, 3, 0, 1, 'Ctrfaq', 1006, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(1007, 'Abouts', 2, 3, 0, 1, 'Ctrabouts', 1007, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (2001, 'Members', 2, 3, 0, 2, 'Ctrmembers', 2001, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (2002, 'Registrations', 2, 3, 0, 2, 'Ctrregistrations', 2002, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (2003, 'Coupons', 2, 3, 0, 2, 'Ctrcoupons', 2003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
@@ -90567,7 +90589,6 @@ INSERT INTO `menu` (`idmenu`, `nmmenu`, `tipemenu`, `idkomponen`, `iduser`, `par
 (998001, 'Payment Statuses', 2, 3, 0, 998, 'Ctrpayment_statuses', 998001, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998002, 'Shippers', 2, 3, 0, 998, 'Ctrshippers', 998002, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998003, 'Artists', 2, 3, 0, 998, 'Ctrartists', 998003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
-(998004, 'Event FAQs', 2, 3, 0, 998, 'Ctrfaq', 998004, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998990, 'Provinsi', 2, 3, 0, 998, 'Ctrprovinsi', 998990, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998991, 'Kabupaten', 2, 3, 0, 998, 'Ctrkabupaten', 998991, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (998992, 'Kecamatan', 2, 3, 0, 998, 'Ctrkecamatan', 998992, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
@@ -90811,31 +90832,31 @@ CREATE TABLE `usermenu` (
 --
 
 INSERT INTO `usermenu` (`idx`, `iduser`, `idmenu`, `idaplikasi`) VALUES
-(10093, 1, 999993, NULL),
-(10092, 1, 999992, NULL),
-(10091, 1, 999991, NULL),
-(10090, 1, 999990, NULL),
-(10089, 1, 998993, NULL),
-(10088, 1, 998992, NULL),
-(10087, 1, 998991, NULL),
-(10086, 1, 998990, NULL),
-(10085, 1, 998004, NULL),
-(10084, 1, 998003, NULL),
-(10083, 1, 998002, NULL),
-(10082, 1, 998001, NULL),
-(10081, 1, 2004, NULL),
-(10080, 1, 2003, NULL),
-(10079, 1, 2002, NULL),
-(10078, 1, 2001, NULL),
-(10077, 1, 1005, NULL),
-(10076, 1, 1003, NULL),
-(10075, 1, 1002, NULL),
-(10074, 1, 1001, NULL),
-(10073, 1, 999, NULL),
-(10072, 1, 998, NULL),
-(10071, 1, 2, NULL),
-(10070, 1, 1, NULL),
-(10094, 1, 999999, NULL),
+(10143, 1, 999993, NULL),
+(10142, 1, 999992, NULL),
+(10141, 1, 999991, NULL),
+(10140, 1, 999990, NULL),
+(10139, 1, 998993, NULL),
+(10138, 1, 998992, NULL),
+(10137, 1, 998991, NULL),
+(10136, 1, 998990, NULL),
+(10135, 1, 998003, NULL),
+(10134, 1, 998002, NULL),
+(10133, 1, 998001, NULL),
+(10132, 1, 2004, NULL),
+(10131, 1, 2003, NULL),
+(10130, 1, 2002, NULL),
+(10129, 1, 2001, NULL),
+(10128, 1, 1007, NULL),
+(10127, 1, 1006, NULL),
+(10126, 1, 1005, NULL),
+(10125, 1, 1003, NULL),
+(10124, 1, 1002, NULL),
+(10123, 1, 1001, NULL),
+(10122, 1, 999, NULL),
+(10121, 1, 998, NULL),
+(10120, 1, 2, NULL),
+(10119, 1, 1, NULL),
 (10095, 2, 1, NULL),
 (10096, 2, 2, NULL),
 (10097, 2, 998, NULL),
@@ -90859,7 +90880,8 @@ INSERT INTO `usermenu` (`idx`, `iduser`, `idmenu`, `idaplikasi`) VALUES
 (10115, 3, 2002, NULL),
 (10116, 3, 2003, NULL),
 (10117, 3, 2004, NULL),
-(10118, 3, 999999, NULL);
+(10118, 3, 999999, NULL),
+(10144, 1, 999999, NULL);
 
 -- --------------------------------------------------------
 
@@ -90898,6 +90920,14 @@ INSERT INTO `usersistem` (`idx`, `npp`, `Nama`, `alamat`, `NoTelpon`, `user`, `p
 --
 
 --
+-- Indexes for table `abouts`
+--
+ALTER TABLE `abouts`
+  ADD PRIMARY KEY (`idx`),
+  ADD UNIQUE KEY `abouts_unique` (`about_title`),
+  ADD KEY `abouts_events_FK` (`event_id`);
+
+--
 -- Indexes for table `artists`
 --
 ALTER TABLE `artists`
@@ -90924,7 +90954,6 @@ ALTER TABLE `coupons`
   ADD PRIMARY KEY (`idx`),
   ADD UNIQUE KEY `coupons_edition_id_coupon_number_unique` (`edition_id`,`coupon_number`),
   ADD UNIQUE KEY `coupons_qr_code_unique` (`qr_code`),
-  ADD UNIQUE KEY `generate_uuid` (`payment_unique_id`),
   ADD KEY `coupons_registration_id_foreign` (`registration_id`),
   ADD KEY `coupons_payment_status_id_foreign` (`payment_status_id`),
   ADD KEY `coupons_shippers_FK` (`shipper_id`);
@@ -91073,6 +91102,12 @@ ALTER TABLE `usersistem`
 --
 
 --
+-- AUTO_INCREMENT for table `abouts`
+--
+ALTER TABLE `abouts`
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `artists`
 --
 ALTER TABLE `artists`
@@ -91208,7 +91243,7 @@ ALTER TABLE `usergroup`
 -- AUTO_INCREMENT for table `usermenu`
 --
 ALTER TABLE `usermenu`
-  MODIFY `idx` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10119;
+  MODIFY `idx` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10145;
 
 --
 -- AUTO_INCREMENT for table `usersistem`
@@ -91219,6 +91254,12 @@ ALTER TABLE `usersistem`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `abouts`
+--
+ALTER TABLE `abouts`
+  ADD CONSTRAINT `abouts_events_FK` FOREIGN KEY (`event_id`) REFERENCES `events` (`idx`);
 
 --
 -- Constraints for table `collabolators`

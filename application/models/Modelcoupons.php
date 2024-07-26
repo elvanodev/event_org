@@ -24,7 +24,6 @@ class Modelcoupons extends CI_Model
 	c.valid_until,
 	c.registration_id,
 	c.shipper_id,
-	c.payment_unique_id,
 	ev.name event_name,
 	ed.name edition_name,
 	ps.name payment_status_name,
@@ -55,8 +54,7 @@ from
           or ed.name like '%" . $xSearch . "%'
           or ps.name like '%" . $xSearch . "%'
           or m.name like '%" . $xSearch . "%'
-          or c.coupon_number like '%" . $xSearch . "%'
-          or c.payment_unique_id like '%" . $xSearch . "%'";
+          or c.coupon_number like '%" . $xSearch . "%'";
       }
       $xStr = $this->default_query . "
     $xSearch order by c.idx DESC limit " . $xAwal . "," . $xLimit;

@@ -116,7 +116,6 @@ class Ctrcoupons extends CI_Controller
       tbaddcellhead('Payment Status', '', 'data-field="payment_status_id" data-sortable="true" width=10%') .
       tbaddcellhead('Payment Confirmation', '', 'data-field="payment_confirm_receipt" data-sortable="true" width=10%') .
       tbaddcellhead('Valid Until', '', 'data-field="valid_until" data-sortable="true" width=10%') .
-      tbaddcellhead('Payment Unique Id', '', 'data-field="payment_unique_id" data-sortable="true" width=10%') .
 
       tbaddcellhead('Action', 'padding:5px;width:10%;text-align:center;', 'col-md-2'), '', TRUE);
     $this->load->model('modelcoupons');
@@ -148,7 +147,6 @@ class Ctrcoupons extends CI_Controller
         tbaddcell($row->payment_status_name) .
         tbaddcell($payment_confirm_receipt) .
         tbaddcell($row->valid_until) .
-        tbaddcell($row->payment_unique_id) .
 
         tbaddcell($xButtonEdit . $xButtonHapus));
     }
@@ -197,7 +195,6 @@ class Ctrcoupons extends CI_Controller
     $this->json_data['payment_confirm_receipt'] = $row->payment_confirm_receipt;
     $this->json_data['valid_until'] = $row->valid_until;
     $this->json_data['registration_id'] = $row->registration_id;
-    $this->json_data['payment_unique_id'] = $row->payment_unique_id;
 
     echo json_encode($this->json_data);
   }

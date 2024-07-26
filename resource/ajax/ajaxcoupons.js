@@ -58,7 +58,6 @@ function doeditcoupons(edidx) {
         $("#edregistration_id").val(json.registration_id);
         $("#edshipper_id").val(json.shipper_id);
         $("#edmember_name").val(json.member_name);
-        $("#edpayment_unique_id").val(json.payment_unique_id);
         formatCurrency($("#edcoupon_price_v"));
         formatCurrency($("#edshipper_price_v"));
         formatCurrency($("#edtotal_price_v"));
@@ -88,7 +87,6 @@ function doClearcoupons() {
     $("#edregistration_id").val("");
     $("#edshipper_id").val("");
     $("#edmember_name").val("");
-    $("#edpayment_unique_id").val("");
   });
 }
 
@@ -135,8 +133,6 @@ function dosimpancoupons() {
           $("#edshipper_id").val() +
           "&edmember_name=" +
           $("#edmember_name").val() +
-          "&edpayment_unique_id=" +
-          $("#edpayment_unique_id").val() +
           "&edcreated_at=" +
           $("#edcreated_at").val(),
         cache: false,
