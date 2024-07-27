@@ -72,9 +72,9 @@ from
       return $row;
    }
 
-   function getDetailcouponBycoupon_number($xcoupon_number, $xedition_id)
+   function getDetailcouponByqr_code($xqr_code)
    {
-      $xStr = $this->default_query . " WHERE c.coupon_number = '" . $xcoupon_number . "' and c.edition_id = '" . $xedition_id . "'";
+      $xStr = $this->default_query . " WHERE c.qr_code like '%" . $xqr_code . "%'";
 
       $query = $this->db->query($xStr);
       $row = $query->row();

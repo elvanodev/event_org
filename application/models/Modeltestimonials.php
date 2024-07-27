@@ -47,6 +47,15 @@ from
       return $query;
    }
 
+   function getListtestimonialsByEvent($xevent_id)
+   {
+      $xStr = $this->default_query . " WHERE t.event_id = '".$xevent_id."' order by t.idx ASC";
+      $query = $this->db->query($xStr);
+      $list_testimonials = $query->result();
+      return $list_testimonials;
+   }
+
+
 
    function getDetailtestimonials($xidx)
    {

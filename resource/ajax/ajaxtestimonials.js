@@ -156,22 +156,24 @@ function formhide() {
   });
 }
 
-function onchangecoupon_number(edition_id) {
+function getcoupon(qr_code) {
   $.ajax({
-    url: getBaseURL() + "index.php/ctrcoupons/detailcouponbynumber/",
-    data: "edcoupon_number=" + $("#edcoupon_number").val() + "&ededition_id=" + edition_id,
+    url: getBaseURL() + "index.php/ctrcoupons/detailcouponbyqr/",
+    data: "edqr_code=" + qr_code,
     cache: false,
     dataType: "json",
     type: "POST",
     success: function (json) {
       if (json.coupon_id != 0) {
         $("#edcoupon_id").val(json.coupon_id);
+        $("#edcoupon_number").val(json.coupon_number);
         $("#edevent_name").val(json.event_name);
         $("#edmember_name").val(json.member_name);
         $("#edevent_name_v").val(json.event_name);
         $("#edmember_name_v").val(json.member_name);
       } else {        
         $("#edcoupon_id").val("");
+        $("#edcoupon_number").val("");
         $("#edevent_name").val("");
         $("#edmember_name").val("");
         $("#edevent_name_v").val("");
@@ -197,11 +199,7 @@ function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   console.log(`Code matched = ${decodedText}`, decodedResult);
   
-  var decodedqr = decodeqrnumber(decodedText);
-  console.log(decodedqr);
-
-  $("#edcoupon_number").val(decodedqr.qr_number);
-  onchangecoupon_number(decodedqr.edition_id);
+  getcoupon(decodedText);
 }
 
 function onScanFailure(error) {

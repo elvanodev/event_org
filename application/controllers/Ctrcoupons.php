@@ -299,12 +299,11 @@ class Ctrcoupons extends CI_Controller
     echo json_encode($this->json_data);
   }
 
-  function detailcouponbynumber()
+  function detailcouponbyqr()
   {
-    $xcoupon_number  = $_POST['edcoupon_number'];
-    $xedition_id  = $_POST['ededition_id'];
+    $xqr_code  = $_POST['edqr_code'];
     $this->load->model('modelcoupons');
-    $row = $this->modelcoupons->getDetailcouponBycoupon_number($xcoupon_number, $xedition_id);
+    $row = $this->modelcoupons->getDetailcouponByqr_code($xqr_code);
     $this->load->helper('json');
     if ($row) {
       $this->json_data['coupon_id'] = $row->idx;
