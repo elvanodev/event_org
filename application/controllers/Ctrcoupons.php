@@ -126,6 +126,7 @@ class Ctrcoupons extends CI_Controller
     foreach ($xQuery->result() as $row) {
       $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditcoupons(\'' . $row->idx . '\');" ></i>';
       $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapuscoupons(\'' . $row->idx . '\');"></i>';
+      $xButtonSendEmail = '<i class="fas fa-envelope btn" aria-hidden="true" onclick = "dosendemailcoupons(\'' . $row->idx . '\');"></i>';
       $qr_code = 'Image is not available!';
       if (!empty($row->qr_code)) {
         $qr_code = '<img src="' . base_url() . 'resource/uploaded/qrcodes/' . $row->qr_code . '" onclick="previewimage(this.src);" style="border: solid;width: 70px; height: 80px; align:center;">';
@@ -148,7 +149,7 @@ class Ctrcoupons extends CI_Controller
         tbaddcell($payment_confirm_receipt) .
         tbaddcell($row->valid_until) .
 
-        tbaddcell($xButtonEdit . $xButtonHapus));
+        tbaddcell($xButtonEdit . $xButtonHapus . $xButtonSendEmail));
     }
     $xInput      = form_input_(getArrayObj('edSearch', '', '200'));
     $xButtonSearch = '<span class="input-group-btn">
@@ -175,7 +176,6 @@ class Ctrcoupons extends CI_Controller
       <div id="dialogdata" class="modal-body">Dialog Data</div></div></div></div>';
   }
 
-
   function editreccoupons()
   {
     $xIdEdit  = $_POST['edidx'];
@@ -198,6 +198,7 @@ class Ctrcoupons extends CI_Controller
 
     echo json_encode($this->json_data);
   }
+
   function deletetablecoupons()
   {
     $edidx = $_POST['edidx'];
@@ -280,15 +281,15 @@ class Ctrcoupons extends CI_Controller
     /**
      * end of validation
      */
-    if($isallvalid === 1){
+    if ($isallvalid === 1) {
       $xidpegawai = $this->session->userdata('idpegawai');
-      if (!empty($xidpegawai)) {        
-        $prefix = "COP-ED".$xedition_id."_"."RG".$xregistration_id;
-        $xqr_code = generate_qrcode($prefix);
+      if (!empty($xidpegawai)) {
 
         if ($xidx != '0') {
-          $xStr =  $this->modelcoupons->setUpdatecoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id, $xshipper_id);
+          $xStr =  $this->modelcoupons->setUpdatecoupons($xidx, $xedition_id, $xcoupon_number, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id, $xshipper_id);
         } else {
+          $prefix = "COP-ED" . $xedition_id . "_" . "RG" . $xregistration_id;
+          $xqr_code = generate_qrcode($prefix);
           $xStr =  $this->modelcoupons->setInsertcoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id, $xshipper_id);
         }
       }
@@ -297,7 +298,7 @@ class Ctrcoupons extends CI_Controller
     $this->json_data['message'] = $message;
     echo json_encode($this->json_data);
   }
-  
+
   function detailcouponbynumber()
   {
     $xcoupon_number  = $_POST['edcoupon_number'];
@@ -310,10 +311,66 @@ class Ctrcoupons extends CI_Controller
       $this->json_data['coupon_number'] = $row->coupon_number;
       $this->json_data['event_name'] = $row->event_name;
       $this->json_data['member_name'] = $row->member_name;
-    } else {      
+    } else {
       $this->json_data['coupon_id'] = 0;
     }
 
+    echo json_encode($this->json_data);
+  }
+
+  function sendemailcoupons()
+  {
+    $this->load->helper('html');
+    $this->load->helper('json');
+    $couponId  = $_POST['edidx'];
+    $this->load->model('modelcoupons');
+    $rowCoupon = $this->modelcoupons->getDetailcoupons($couponId);
+    $this->load->model('modelevents');
+    $rowEvent = $this->modelevents->getDetailevents($rowCoupon->event_id);
+
+    $this->load->model('basemodel');
+    $subject = "Kupon " . $rowEvent->name;
+    $html = '<html>
+<header>' .
+      link_tag('resource/css/admin/frmlayout.css') . "\n" . '
+</header>
+<body>
+      <h1>' . $rowEvent->name . '</h1>
+      <p>' . $rowEvent->long_name . '</p>
+      <br>
+      <strong>Berikut nomor kupon yang sudah anda pilih beserta rincian harganya:</strong>
+      <table>
+          <tbody>
+              <tr>
+                  <td><strong>Nomor Kupon</strong></td>
+                  <td><span>' . $rowCoupon->coupon_number . '</span></td>
+              </tr>
+              <tr>
+                  <td><strong>Harga Kupon</strong></td>
+                  <td><span>' . $rowCoupon->coupon_price . '</span></td>
+              </tr>
+              <tr>
+                  <td><strong>Biaya Pengiriman</strong></td>
+                  <td><span>' . $rowCoupon->shipper_price . '</span></td>
+              </tr>
+              <tr>
+                  <td><strong>Harga Total</strong></td>
+                  <td><span>' . $rowCoupon->total_price . '</span></td>
+              </tr>
+          </tbody>
+      </table>
+      <strong>QR Code Kupon:</strong>
+      <img src="' . base_url() . 'resource/uploaded/qrcodes/' . $rowCoupon->qr_code . '" style="border: solid;width: 80px; height: 80px; align:center;"/>
+      <br>
+      <strong>Bukti Pembayaran:</strong>
+      <img src="' . base_url() . 'resource/uploaded/img/' . $rowCoupon->payment_confirm_receipt . '" style="border: solid;width: 80px; height: 80px; align:center;"/>
+      </body></html>';
+    $emailsent = $this->basemodel->newsendmail($rowCoupon->member_email, $subject, $html);
+    $this->json_data['success'] = 0;
+    if ($emailsent) {
+      $this->modelcoupons->setUpdatecouponsemailsent($couponId);
+      $this->json_data['success'] = 1;
+    }
     echo json_encode($this->json_data);
   }
 }

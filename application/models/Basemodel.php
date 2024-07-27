@@ -593,10 +593,10 @@ class basemodel extends CI_Model {
 
         // SMTP configuration
         $mail->isSMTP();
-        $mail->Host = 'kalkulator.scriptmedia.net';
+        $mail->Host = 'sdsb.scriptmedia.net';
         $mail->SMTPAuth = true;
-        $mail->Username = 'no-repaly@kalkulator.scriptmedia.net';
-        $mail->Password = 'y^i8J74)C=L@';
+        $mail->Username = 'no-reply@sdsb.scriptmedia.net';
+        $mail->Password = '?(Ub]80UoJuG';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
         $mail->SMTPOptions = array(
@@ -607,8 +607,8 @@ class basemodel extends CI_Model {
             )
         );
 
-        $mail->setFrom('no-repaly@kalkulator.scriptmedia.net', 'Kalkulator Upah SINDIKASI');
-        $mail->addReplyTo('no-repaly@kalkulator.scriptmedia.net', 'Kalkulator Upah SINDIKASI');
+        $mail->setFrom('no-reply@sdsb.scriptmedia.net', 'Sumbangsih Dermawan Seni Berhadiah');
+        $mail->addReplyTo('no-reply@sdsb.scriptmedia.net', 'Sumbangsih Dermawan Seni Berhadiah');
 
         // Add a recipient
         $mail->addAddress($xemail);

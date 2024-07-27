@@ -293,3 +293,24 @@ function onchangeshipperid() {
     },
   });
 }
+
+function dosendemailcoupons(edidx) {
+  $(document).ready(function () {
+    $.ajax({
+      url: getBaseURL() + "index.php/ctrcoupons/sendemailcoupons/",
+      data: "edidx=" + edidx,
+      cache: false,
+      dataType: "json",
+      type: "POST",
+      success: function (json) {
+        if (json.success === 1)
+          alert("Email sent success");
+        else
+          alert("Email sent failed");
+      },
+      error: function (xmlHttpRequest, textStatus, errorThrown) {
+        console.log("Error juga " + xmlHttpRequest.responseText);
+      },
+    });
+  });
+}

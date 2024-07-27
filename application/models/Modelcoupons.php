@@ -27,7 +27,8 @@ class Modelcoupons extends CI_Model
 	ev.name event_name,
 	ed.name edition_name,
 	ps.name payment_status_name,
-	m.name member_name	
+	m.name member_name,
+	m.email member_email	
 from
 	coupons c
 	join editions ed on ed.idx = c.edition_id 
@@ -119,13 +120,12 @@ from
       return $xidx;
    }
 
-   function setUpdatecoupons($xidx, $xedition_id, $xcoupon_number, $xqr_code, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id, $xshipper_id)
+   function setUpdatecoupons($xidx, $xedition_id, $xcoupon_number, $xcoupon_price, $xshipper_price, $xtotal_price, $xis_winner, $xpayment_status_id, $xpayment_confirm_receipt, $xvalid_until, $xregistration_id, $xshipper_id)
    {
       $xStr =  " UPDATE coupons SET " .
          "idx='" . $xidx . "'" .
          ",edition_id='" . $xedition_id . "'" .
          ",coupon_number='" . $xcoupon_number . "'" .
-         ",qr_code='" . $xqr_code . "'" .
          ",coupon_price='" . $xcoupon_price . "'" .
          ",shipper_price='" . $xshipper_price . "'" .
          ",total_price='" . $xtotal_price . "'" .
@@ -188,5 +188,13 @@ where
    } else {
       return false;
    }
+   }
+   function setUpdatecouponsemailsent($xidx)
+   {
+      $xStr =  " UPDATE coupons SET " .
+         ",payment_status_id='3'" .
+         " WHERE idx = '" . $xidx . "'";
+      $query = $this->db->query($xStr);
+      return $xidx;
    }
 }

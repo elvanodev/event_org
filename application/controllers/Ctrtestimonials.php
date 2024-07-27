@@ -59,7 +59,7 @@ class Ctrtestimonials extends CI_Controller
 
     $xBufResult .= setForm('member_name', 'Member Name', form_input_(getArrayObj('edmember_name_v', '', '200'), '', ' placeholder="Member Name" disabled')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('testimoni_text', 'Testimoni Text', form_input_(getArrayObj('edtestimoni_text', '', '200'), '', ' placeholder="Testimoni Text" ')) . '<div class="spacer"></div>';
+    $xBufResult .= setForm('testimoni_text', 'Testimoni Text', form_textarea_(getArrayObj('edtestimoni_text', '', '200'), '', ' placeholder="Testimoni Text" ')) . '<div class="spacer"></div>';
 
     $xBufResult .= setForm('testimoni_photo', 'Testimoni Photo', '<div id="uploadtestimoni_photo" style="width:150px;">' . form_input_(getArrayObj('edtestimoni_photo', '', '100'), '', 'alt="Unggah"') . '</div>') . '<div class="spacer"></div>';
 
