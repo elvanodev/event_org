@@ -264,4 +264,21 @@ class Ctrevents extends CI_Controller
     }
     echo json_encode(null);
   }
+  public function geteventchart() {    
+    $this->load->helper('json');
+    $this->load->helper('common');
+    $xeventfilter = $_POST['edeventfilter'];
+    $this->load->model('modelevents');
+    $query = $this->modelevents->geteventschart((int) $xeventfilter);
+    if ($query){
+      $arraygrafik = array();
+      foreach ($query->result() as $row) {
+        $arraygrafik[$row->grafikx] = $row->grafiky;
+      }
+      $this->json_data['listgrafik'] = $arraygrafik;
+    } else {
+      $this->json_data['listgrafik'] = '';
+    }
+    echo json_encode($this->json_data);
+  }
 }

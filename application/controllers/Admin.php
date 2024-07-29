@@ -249,6 +249,7 @@ class Admin extends CI_Controller {
             $xAddJs = link_tag('resource/admin/vendor/toaster/toastr.css') . "\n" .
                 '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/admin/vendor/toaster/toastr.min.js"></script>' . "\n" .
                 '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/js/common/fileupload/jquery.ui.widget.js"></script>' . "\n" .
+                '<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>' . "\n" .
                    '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/ajax/ajaxdashboard.js"></script>';
             echo $this->modelgetmenu->setviewadmin($this->setdashboard(), '', '', $xAddJs, '');
             //     echo $this->modelgetmenu->Setviewbretton($this->setawalview(), '', '', '', '');
@@ -363,7 +364,7 @@ class Admin extends CI_Controller {
                   <h1 class="m-0">Dashboard</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-8">'.
-                setForm('event_id', 'Event', form_dropdown_($selected_event, $this->modelevents->getArrayListevents(), '', 'id="edevent_id" class="require" style="width:200px;" placeholder="Event"')).'
+                setForm('event_id', 'Event', form_dropdown_($selected_event, $this->modelevents->getArrayListevents(), '', 'id="edeventfilter" class="require" style="width:200px;" placeholder="Event"')).'
                         </div><!-- /.col2 -->
                     </div><!-- /.row -->
                 </div><!-- /.row -->
@@ -384,9 +385,9 @@ class Admin extends CI_Controller {
                          Member Event by edition
                       </h3>
                     </div>
-                    <div class="card-body">
-                          IMAGE SITE MAP
-                      </div>
+                    <div class="card-body">                          
+                    <div id="dashboardchart"></div>
+                    </div>
                     </div>
                   </div>
                 </section>

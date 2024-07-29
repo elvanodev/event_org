@@ -162,4 +162,19 @@ from
       $row = $query->row();
       return $row;
    }
+
+   function geteventschart($xeventfilter) {
+      $xStr = "select 
+	e.name as grafikx,
+	count(r.idx) as grafiky
+from
+	editions e 
+	join registrations r on r.edition_id = e.idx
+where 
+	e.event_id = '".$xeventfilter."'
+ group by e.idx";
+ $query = $this->db->query($xStr);
+ return $query;
+      
+   }
 }
