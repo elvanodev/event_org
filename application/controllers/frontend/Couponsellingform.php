@@ -86,7 +86,7 @@ class Couponsellingform extends CI_Controller
     $this->load->model("modelfrontend");
     $dataHeader = $this->modelfrontend->getDataHeader();
     $this->load->view('viewfrontend/layout/header', $dataHeader);
-    $this->load->view('viewfrontend/layout/leftmenu', ['showback' => true, 'showmainmenu' => false, 'showadditionalmenu' => false]);
+    $this->load->view('viewfrontend/layout/leftmenu', ['showback' => true, 'showmainmenu' => false, 'showadditionalmenu' => false, 'header'=>$dataHeader]);
     $this->load->view('viewfrontend/couponsellingform', $data );
     $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => false]);
     $this->load->view('viewfrontend/layout/footer', ['ajaxfilename' => 'ajaxcouponsellingform.js']);

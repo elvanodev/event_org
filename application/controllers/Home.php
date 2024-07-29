@@ -19,7 +19,7 @@ class Home extends CI_Controller {
       $this->load->model("modelfrontend");
       $dataHeader = $this->modelfrontend->getDataHeader();
       $this->load->view('viewfrontend/layout/header', $dataHeader);
-      $this->load->view('viewfrontend/layout/leftmenu', ['showback' => false, 'showmainmenu' => true, 'showadditionalmenu' => true]);
+      $this->load->view('viewfrontend/layout/leftmenu', ['showback' => false, 'showmainmenu' => true, 'showadditionalmenu' => true, 'header'=>$dataHeader]);
       $this->load->view('viewfrontend/home', $data);
       $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => true]);
       $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> '']);

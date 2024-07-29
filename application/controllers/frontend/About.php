@@ -26,7 +26,7 @@ class About extends CI_Controller {
       $data = ['event'=>$row_event, 'list_abouts'=>$list_abouts];   
 
       $this->load->view('viewfrontend/layout/header', $dataHeader);
-      $this->load->view('viewfrontend/layout/leftmenu', ['showback' => false, 'showmainmenu' => true, 'showadditionalmenu' => false]);
+      $this->load->view('viewfrontend/layout/leftmenu', ['showback' => false, 'showmainmenu' => true, 'showadditionalmenu' => false, 'header'=>$dataHeader]);
       $this->load->view('viewfrontend/about', $data);
       $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => true]);
       $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> 'ajaxcollabolators.js']);

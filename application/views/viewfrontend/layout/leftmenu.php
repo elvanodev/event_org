@@ -10,7 +10,7 @@
         <a href="<?php echo base_url();?>" type="button" class="btn btn-light mt-2">Beranda</a><br>
             <?php } ?>
             <?php if ($showadditionalmenu) { ?>
-        <a href="#" type="button" class="btn btn-light mt-2 text-nowrap">Jadi Dermawan Seni</a><br>
+        <a href="http://wa.me/<?php echo $header['event']->contact_phone; ?>"  type="button" class="btn btn-light mt-2 text-nowrap" target="_blank">Jadi Dermawan Seni</a><br>
         <a href="<?php echo base_url();?>frontend/couponselling" type="button" class="btn btn-light mt-2 text-nowrap">Beli Kupon Online</a>
             <?php } ?>
         <?php } ?>  

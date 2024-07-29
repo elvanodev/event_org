@@ -26,7 +26,7 @@ class Gallery extends CI_Controller {
       $data = ['event'=>$row_event, 'list_testimonials'=>$list_testimonials];   
 
       $this->load->view('viewfrontend/layout/header', $dataHeader);
-      $this->load->view('viewfrontend/layout/leftmenu', ['showback' => false, 'showmainmenu' => true, 'showadditionalmenu' => false]);
+      $this->load->view('viewfrontend/layout/leftmenu', ['showback' => false, 'showmainmenu' => true, 'showadditionalmenu' => false, 'header'=>$dataHeader]);
       $this->load->view('viewfrontend/gallery', $data);
       $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => true]);
       $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> 'ajaxcollabolators.js']);
