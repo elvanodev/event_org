@@ -29,7 +29,7 @@ class Eventinfo extends CI_Controller {
       $this->load->view('viewfrontend/layout/leftmenu', ['showback' => false, 'showmainmenu' => true, 'showadditionalmenu' => false, 'header'=>$dataHeader]);
       $this->load->view('viewfrontend/eventinfo', $data);
       $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => true]);
-      $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> 'ajaxcollabolators.js']);
+      $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> '']);
     }
  
 }
