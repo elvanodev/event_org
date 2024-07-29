@@ -9,18 +9,20 @@ class Modelposts extends CI_Model
       parent::__construct();
    }
 
-
+   private $default_query = "SELECT " .
+      "p.idx" .
+      ",p.event_id" .
+      ",p.name" .
+      ",p.uploaded_at" .
+      ",p.post_text" .
+      ",ev.name event_name" .
+      " FROM posts p" .
+      " JOIN events ev ON ev.idx = p.event_id";
 
    function getArrayListposts()
    { /* spertinya perlu lock table*/
       $xBuffResul = array();
-      $xStr =  "SELECT " .
-         "idx" . ",event_id" .
-         ",name" .
-         ",uploaded_at" .
-         ",post_text" .
-
-         " FROM posts   order by idx ASC ";
+      $xStr = $this->default_query . " order by p.idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
          $xBuffResul[$row->idx] = $row->idx;
@@ -33,54 +35,35 @@ class Modelposts extends CI_Model
       if (!empty($xSearch)) {
          $xSearch = " Where p.name like '%" . $xSearch . "%'";
       }
-      $xStr =   "SELECT " .
-         "p.idx" .
-         ",p.event_id" .
-         ",p.name" .
-         ",p.uploaded_at" .
-         ",p.post_text" .
-         ",ev.name event_name" .
-         " FROM posts p" .
-         " JOIN events ev ON ev.idx = p.event_id" .
-         " $xSearch order by p.idx DESC limit " . $xAwal . "," . $xLimit;
+      $xStr = $this->default_query . " $xSearch order by p.idx DESC limit " . $xAwal . "," . $xLimit;
       $query = $this->db->query($xStr);
       return $query;
    }
 
+   function getListpostsByEvent($xevent_id)
+   {
+      $xStr = $this->default_query . " Where p.event_id = '" . $xevent_id . "' order by p.idx DESC";
+      $query = $this->db->query($xStr);
+      $list_posts = $query->result();
+      return $list_posts;
+   }
 
    function getDetailposts($xidx)
    {
-      $xStr =   "SELECT " .
-         "idx" .
-         ",event_id" .
-         ",name" .
-         ",uploaded_at" .
-         ",post_text" .
-
-         " FROM posts  WHERE idx = '" . $xidx . "'";
+      $xStr = $this->default_query . " WHERE p.idx = '" . $xidx . "'";
 
       $query = $this->db->query($xStr);
       $row = $query->row();
       return $row;
    }
-
 
    function getLastIndexposts()
    { /* spertinya perlu lock table*/
-      $xStr =   "SELECT " .
-         "idx" .
-         ",event_id" .
-         ",name" .
-         ",uploaded_at" .
-         ",post_text" .
-
-         " FROM posts order by idx DESC limit 1 ";
+      $xStr = $this->default_query . " order by p.idx DESC limit 1 ";
       $query = $this->db->query($xStr);
       $row = $query->row();
       return $row;
    }
-
-
 
    function setInsertposts($xidx, $xevent_id, $xname, $xuploaded_at, $xpost_text)
    {

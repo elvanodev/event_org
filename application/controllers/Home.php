@@ -7,11 +7,20 @@ class Home extends CI_Controller {
 
     function index()
     {
+      $this->load->model("modelevents");
+      $row_event = $this->modelevents->getActiveEvent();
+      $event_id = $row_event->idx;
+
+      $this->load->model("modelposts");
+      $list_posts = $this->modelposts->getListpostsByEvent($event_id);
+
+      $data = ['event'=>$row_event, 'list_posts'=>$list_posts];   
+
       $this->load->model("modelfrontend");
       $dataHeader = $this->modelfrontend->getDataHeader();
       $this->load->view('viewfrontend/layout/header', $dataHeader);
       $this->load->view('viewfrontend/layout/leftmenu', ['showback' => false, 'showmainmenu' => true, 'showadditionalmenu' => true]);
-      $this->load->view('viewfrontend/home');
+      $this->load->view('viewfrontend/home', $data);
       $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => true]);
       $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> '']);
     }

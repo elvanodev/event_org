@@ -16,10 +16,14 @@ class Modeltestimonials extends CI_Model
 	t.event_name,
 	t.member_name,
 	t.testimoni_text,
-	tp.link_photo testimoni_photo
+	tp.link_photo testimoni_photo,
+	c.edition_id,
+	ed.event_id 
 from
 	testimonials t
-	join testimoni_photos tp on tp.testimoni_id = t.idx ";
+	join testimoni_photos tp on tp.testimoni_id = t.idx
+	join coupons c on c.idx = t.coupon_id 
+	join editions ed on ed.idx = c.edition_id ";
 
 
    function getArrayListtestimonials()
@@ -49,7 +53,7 @@ from
 
    function getListtestimonialsByEvent($xevent_id)
    {
-      $xStr = $this->default_query . " WHERE t.event_id = '".$xevent_id."' order by t.idx ASC";
+      $xStr = $this->detaultquery . " WHERE ed.event_id = '".$xevent_id."' order by t.idx ASC";
       $query = $this->db->query($xStr);
       $list_testimonials = $query->result();
       return $list_testimonials;
