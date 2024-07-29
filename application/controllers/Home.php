@@ -11,10 +11,11 @@ class Home extends CI_Controller {
       $row_event = $this->modelevents->getActiveEvent();
       $event_id = $row_event->idx;
 
-      $this->load->model("modelposts");
-      $list_posts = $this->modelposts->getListpostsByEvent($event_id);
+      $this->load->model("modeltestimonials");
+      $limit = 5;
+      $list_testimonials = $this->modeltestimonials->getListtestimonialsByEvent($event_id, $limit);
 
-      $data = ['event'=>$row_event, 'list_posts'=>$list_posts];   
+      $data = ['event'=>$row_event, 'list_testimonials'=>$list_testimonials];   
 
       $this->load->model("modelfrontend");
       $dataHeader = $this->modelfrontend->getDataHeader();

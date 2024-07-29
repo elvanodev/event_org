@@ -15,9 +15,14 @@
     <meta property="og:type" content="website">
     <meta content="summary_large_image" name="twitter:card">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="<?php echo base_url(); ?>resource/css/custom.css">
     <script src="https://kit.fontawesome.com/6f75ab249e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -26,11 +31,18 @@
 </head>
 
 <body>
+    <!-- website background -->
+    <div id="bgOuter">
+        <section id="bgUp"></section>
+        <section id="bgDown"></section>
+        <section id="bgLeft"></section>
+        <section id="bgRight"></section>
+    </div>
 
-    <div class="container-fluid web-head-section pt-4 wrapper text-white">
+    <div class="container-fluid web-head-section pt-4 text-white">
         <div class="row">
             <div class="col-2">
-                <select class="form-control" name="editionId" id="editionId" onchange="seteditionsession()">
+                <select class="form-control earth-2073" name="editionId" id="editionId" onchange="seteditionsession()">
                     <?php
                     foreach ($editions as $edition) {
                         $selected = '';
@@ -46,10 +58,10 @@
             </div>
             <div class="col-8">
                 <div class="d-flex justify-content-center">
-                    <h2><?php echo $event->long_name; ?></h2>
+                    <h2 class="earth-2073"><?php echo $event->long_name; ?></h2>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <strong id="selectedEdition"> </strong>
+                    <strong id="selectedEdition" class="earth-2073"> </strong>
                 </div>
             </div>
             <div class="col-2 d-flex justify-content-end">
@@ -62,6 +74,6 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <marquee width="100%" height="40"><?php echo $event->descriptions; ?></marquee>
+                <marquee width="100%" height="40" class="la-belle-aurore-regular"><h3><?php echo $event->descriptions; ?></h3></marquee>
             </div>
         </div>

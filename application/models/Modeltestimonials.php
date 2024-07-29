@@ -16,6 +16,7 @@ class Modeltestimonials extends CI_Model
 	t.event_name,
 	t.member_name,
 	t.testimoni_text,
+	t.created_at,
 	tp.link_photo testimoni_photo,
 	c.edition_id,
 	ed.event_id 
@@ -51,9 +52,9 @@ from
       return $query;
    }
 
-   function getListtestimonialsByEvent($xevent_id)
+   function getListtestimonialsByEvent($xevent_id, $limit)
    {
-      $xStr = $this->detaultquery . " WHERE ed.event_id = '".$xevent_id."' order by t.idx ASC";
+      $xStr = $this->detaultquery . " WHERE ed.event_id = '".$xevent_id."' order by t.idx DESC limit 0," . $limit;
       $query = $this->db->query($xStr);
       $list_testimonials = $query->result();
       return $list_testimonials;

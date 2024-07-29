@@ -19,6 +19,5 @@
         </div>
         <?php
         } ?>
-        <a href="<?php echo base_url();?>frontend/testimonials">Komentar Lainnya</a>
     </div>
 </div>
