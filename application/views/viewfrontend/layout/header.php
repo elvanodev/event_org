@@ -74,6 +74,6 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <marquee width="100%" height="40" class="la-belle-aurore-regular"><h3><?php echo $event->descriptions; ?></h3></marquee>
+                <h4 class="la-belle-aurore-regular w-100 text-center mt-2"><?php echo $event->descriptions; ?></h4>
             </div>
         </div>

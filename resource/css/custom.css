@@ -1131,7 +1131,7 @@ body {
     left: 50%;
     position: absolute;
     z-index: -99992;
-    animation: up 60s infinite;
+    animation: up 40s infinite;
     background: rgb(34,193,195);
     background: -moz-linear-gradient(53deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
     background: -webkit-linear-gradient(53deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
@@ -1146,7 +1146,7 @@ body {
     left: 50%;
     position: absolute;
     z-index: -99997;
-    animation: down 50s infinite;
+    animation: down 40s infinite;
     background: rgb(34,45,121);
     background: -moz-linear-gradient(103deg, rgba(34,45,121,1) 17%, rgba(24,189,29,1) 62%);
     background: -webkit-linear-gradient(103deg, rgba(34,45,121,1) 17%, rgba(24,189,29,1) 62%);
@@ -1176,7 +1176,7 @@ body {
     top: 50%;
     position: absolute;
     z-index: -99994;
-    animation: right 70s infinite;
+    animation: right 40s infinite;
     background: rgb(49,207,213);
     background: -moz-linear-gradient(30deg, rgba(49,207,213,1) 17%, rgba(163,162,80,1) 62%);
     background: -webkit-linear-gradient(30deg, rgba(49,207,213,1) 17%, rgba(163,162,80,1) 62%);
