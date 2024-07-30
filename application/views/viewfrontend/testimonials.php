@@ -1,4 +1,4 @@
-<div class="card main-content bg-transparent">
+<div class="card main-content">
     <div class="card-body text-light">        
         <?php 
         date_default_timezone_set('Asia/Jakarta');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 26, 2024 at 10:11 AM
+-- Generation Time: Jul 30, 2024 at 04:36 AM
 -- Server version: 11.4.2-MariaDB-log
 -- PHP Version: 8.3.9
 
@@ -149,7 +149,34 @@ CREATE TABLE `coupons` (
 --
 
 INSERT INTO `coupons` (`idx`, `edition_id`, `coupon_number`, `qr_code`, `coupon_price`, `shipper_price`, `total_price`, `is_winner`, `payment_status_id`, `payment_confirm_receipt`, `valid_until`, `registration_id`, `shipper_id`, `created_at`, `updated_at`) VALUES
-(5, 2, '1234', 'COP-ED2_RG7_202407201636048224177513700.png', 50000, 100000, 150000, 0, 1, NULL, '2024-07-19 09:36:05', 7, 2, '2024-07-20 09:36:05', NULL);
+(5, 2, '1234', 'COP-ED2_RG7_20240727230804137946330991200.png', 50000, 50000, 100000, 0, 1, 'Capture4.PNG', '2024-07-19 09:36:05', 7, 1, '2024-07-20 09:36:05', '2024-07-27 16:08:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doorprize`
+--
+
+CREATE TABLE `doorprize` (
+  `idx` bigint(20) UNSIGNED NOT NULL,
+  `event_id` bigint(20) UNSIGNED NOT NULL,
+  `artist_id` bigint(20) UNSIGNED NOT NULL,
+  `dimension` varchar(100) DEFAULT NULL,
+  `title` varchar(100) DEFAULT NULL,
+  `media` varchar(100) DEFAULT NULL,
+  `year` year(4) NOT NULL DEFAULT year(curdate()),
+  `image_art` varchar(100) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `doorprize`
+--
+
+INSERT INTO `doorprize` (`idx`, `event_id`, `artist_id`, `dimension`, `title`, `media`, `year`, `image_art`, `description`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '50x50 cm', 'Testing Art', 'Kanvas', '2024', 'testingartimage.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus ante et malesuada accumsan. Ut elit sem, varius eget pellentesque id, sagittis ut neque. Maecenas at mi ut justo egestas mollis tristique eget quam. Fusce neque velit, ultrices a vestibulum nec, fermentum vel augue. Nam ultrices dapibus placerat. Vestibulum a pellentesque ipsum, vel eleifend metus. Donec pellentesque neque id felis porta, eu efficitur nibh mattis. Nam pharetra bibendum sagittis. Vivamus sit amet nulla et est sollicitudin rutrum ac sit amet orci.', '2024-07-29 14:51:27', '2024-07-29 13:54:47');
 
 -- --------------------------------------------------------
 
@@ -211,7 +238,7 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`idx`, `name`, `long_name`, `is_active`, `descriptions`, `poster_image`, `contact_phone`, `contact_email`, `agent_open_date`, `agent_close_date`, `agent_open_time`, `agent_close_time`, `agent_address`, `agent_gmap`, `created_at`, `updated_at`) VALUES
-(1, 'SDSB', 'Sumbangsih Dermawan Seni Berhadiah', 1, 'Program Sumbangsih Dermawan Seni Berhadiah (SDSB) merupakan platform seni yang digagas secara kritis dengan semangat kontemporer dan asas kemandirian dalam pemajuan seni, kebudayaan, dan ekosistem masyarakat seni.', 'sdsbicon.png', ' 6289537703282', 'sdsb@gmail.com', '2024-07-22', '2024-07-25', '15:00:00', '19:00:00', 'Kedai Kebun Forum, Jl. Tirtodipuran No. 03, Yogyakarta', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.7331553784875!2d110.36017787390247!3d-7.818044677635375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57bdbc81bb53:0x1e337895d1c4e268!2zS2VkYWkgS2VidW4gRm9ydW3qp4vqpo_qprzqpqPqprvqpo_qprzqpqfqprjqpqTqp4DqpqXqprPqprrqprTqpqvqprjqpqnqp4A!5e0!3m2!1sen!2sid!4v1721833544634!5m2!1sen!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '2024-07-09 13:34:33', '2024-07-25 03:35:59');
+(1, 'SDSB', 'SUMBANGSIH DERMAWAN SENI BERHADIAH', 1, 'Program Sumbangsih Dermawan Seni Berhadiah (SDSB) merupakan platform seni yang digagas secara kritis dengan semangat kontemporer dan asas kemandirian dalam pemajuan seni, kebudayaan, dan ekosistem masyarakat seni.', 'sdsbicon.png', '6289537703282', 'sdsb@gmail.com', '2024-07-22', '2024-07-25', '15:00:00', '19:00:00', 'Kedai Kebun Forum, Jl. Tirtodipuran No. 03, Yogyakarta', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.7331553784875!2d110.36017787390247!3d-7.818044677635375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57bdbc81bb53:0x1e337895d1c4e268!2zS2VkYWkgS2VidW4gRm9ydW3qp4vqpo_qprzqpqPqprvqpo_qprzqpqfqprjqpqTqp4DqpqXqprPqprrqprTqpqvqprjqpqnqp4A!5e0!3m2!1sen!2sid!4v1721833544634!5m2!1sen!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '2024-07-09 13:34:33', '2024-07-25 03:35:59');
 
 -- --------------------------------------------------------
 
@@ -90582,6 +90609,7 @@ INSERT INTO `menu` (`idmenu`, `nmmenu`, `tipemenu`, `idkomponen`, `iduser`, `par
 (1005, 'Posts', 2, 3, 0, 1, 'Ctrposts', 1005, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (1006, 'Event FAQs', 2, 3, 0, 1, 'Ctrfaq', 1006, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (1007, 'Abouts', 2, 3, 0, 1, 'Ctrabouts', 1007, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
+(1008, 'Doorprize', 2, 3, 0, 1, 'Ctrdoorprize', 1008, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (2001, 'Members', 2, 3, 0, 2, 'Ctrmembers', 2001, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (2002, 'Registrations', 2, 3, 0, 2, 'Ctrregistrations', 2002, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
 (2003, 'Coupons', 2, 3, 0, 2, 'Ctrcoupons', 2003, 0, 'xbahasa:Bahasa,;xjudul:Judul,;xisi:Isi / Keterangan,kontent;xisiawal:Isi Awal,Isikan Jika Diperlukan;xurut:urutan,urutan saat ditampilkan diweb;xgb1:,Upload Gambar 1;xgb2:,Upload Gambar 2;xgb3:,Upload Gambar 3;', 1, 'N', ''),
@@ -90618,9 +90646,9 @@ CREATE TABLE `payment_statuses` (
 --
 
 INSERT INTO `payment_statuses` (`idx`, `name`, `descriptions`, `created_at`, `updated_at`) VALUES
-(1, 'pending', 'email send already waiting for member payment', '2024-07-09 07:57:37', '2024-07-09 08:04:58'),
-(2, 'expired', 'customer not paid until expired time', '2024-07-09 07:57:37', '2024-07-09 08:04:58'),
-(3, 'paid', 'customer paid success, edit transaction by admin', '2024-07-09 07:57:37', '2024-07-09 08:04:58');
+(1, 'Need to Sent Email', 'Coupon number need to sent to member email', '2024-07-09 07:57:37', '2024-07-09 08:04:58'),
+(3, 'Email Sent', 'Coupon number has been sent to member email', '2024-07-09 07:57:37', '2024-07-09 08:04:58'),
+(4, 'Coupon in Delivery', 'Coupon in delivery to member address', '2024-07-09 07:57:37', '2024-07-09 08:04:58');
 
 -- --------------------------------------------------------
 
@@ -90643,7 +90671,7 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`idx`, `event_id`, `name`, `uploaded_at`, `post_text`, `created_at`, `updated_at`) VALUES
-(2, 1, 'Fajar', '2024-07-30 05:23:00', 'Melalui surel ini, kami ingin mengundang Saudara untuk terlibat sebagai kolaborator pada program Edisi #1 Sumbangsih Dermawan Seni Berhadiah (SDSB) yang akan dilaksanakan di Yogyakarta selama perhelatan Jogja Art Weeks. Sumbangsih Dermawan Seni Berhadiah (SDSB) merupakan sebuah platform yang akan diujicobakan sebagai jaring saling mendukung antar masyarakat seni.', '2024-07-15 05:23:43', NULL);
+(2, 1, 'Fajar', '2024-07-28 15:59:59', 'Melalui surel ini, kami ingin mengundang Saudara untuk terlibat sebagai kolaborator pada program Edisi #1 Sumbangsih Dermawan Seni Berhadiah (SDSB) yang akan dilaksanakan di Yogyakarta selama perhelatan Jogja Art Weeks. Sumbangsih Dermawan Seni Berhadiah (SDSB) merupakan sebuah platform yang akan diujicobakan sebagai jaring saling mendukung antar masyarakat seni.', '2024-07-15 05:23:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -90761,6 +90789,13 @@ CREATE TABLE `testimonials` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `testimonials`
+--
+
+INSERT INTO `testimonials` (`idx`, `coupon_id`, `coupon_number`, `event_name`, `member_name`, `testimoni_text`, `created_at`, `updated_at`) VALUES
+(13, 5, '1234', 'SDSB', 'Jhon Doe', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu est eu eros tincidunt rutrum. Donec accumsan pellentesque purus at ultrices. Aenean facilisis dapibus libero, sed feugiat odio mollis eu. Nam blandit sed est in varius. Pellentesque at velit a velit blandit mollis fringilla ut nulla. Nunc sed lectus ut purus fringilla lobortis dapibus nec risus. Aliquam quis maximus libero, in ultrices nunc. Nunc metus ipsum, malesuada ac ornare id, congue dapibus ligula.\n\nCurabitur ultrices nisl ac mauris ornare viverra. Praesent rutrum risus nec tristique eleifend. Proin tincidunt eros vitae ipsum auctor, id lobortis mi malesuada. Praesent aliquet purus at risus cursus porttitor. Proin auctor sollicitudin turpis maximus tincidunt. Proin a posuere mauris. Praesent mollis dolor id blandit mollis. Nulla quis enim sodales, tempus ex et, dictum libero. Nam venenatis velit ac ligula auctor vehicula. Vivamus consequat metus ut feugiat porta. Quisque erat mauris, commodo et mauris a, pellentesque tempus lacus.\n\nNulla id tellus ut quam blandit ultrices. Donec mattis rhoncus nunc, sit amet rhoncus metus vehicula vitae. Praesent eu pulvinar urna. Donec sagittis est in ipsum bibendum mattis. Maecenas ut convallis mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec pellentesque ornare tortor vitae mollis. Integer ornare consectetur lorem, hendrerit efficitur massa pellentesque nec. Vivamus porttitor elementum nunc, consectetur laoreet magna tincidunt ac. Phasellus vel libero sapien.', '2024-07-27 16:53:56', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -90774,6 +90809,13 @@ CREATE TABLE `testimoni_photos` (
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `testimoni_photos`
+--
+
+INSERT INTO `testimoni_photos` (`idx`, `testimoni_id`, `link_photo`, `created_at`, `updated_at`) VALUES
+(8, 13, 'Capture5.PNG', '2024-07-27 16:53:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -90832,56 +90874,55 @@ CREATE TABLE `usermenu` (
 --
 
 INSERT INTO `usermenu` (`idx`, `iduser`, `idmenu`, `idaplikasi`) VALUES
-(10143, 1, 999993, NULL),
-(10142, 1, 999992, NULL),
-(10141, 1, 999991, NULL),
-(10140, 1, 999990, NULL),
-(10139, 1, 998993, NULL),
-(10138, 1, 998992, NULL),
-(10137, 1, 998991, NULL),
-(10136, 1, 998990, NULL),
-(10135, 1, 998003, NULL),
-(10134, 1, 998002, NULL),
-(10133, 1, 998001, NULL),
-(10132, 1, 2004, NULL),
-(10131, 1, 2003, NULL),
-(10130, 1, 2002, NULL),
-(10129, 1, 2001, NULL),
-(10128, 1, 1007, NULL),
-(10127, 1, 1006, NULL),
-(10126, 1, 1005, NULL),
-(10125, 1, 1003, NULL),
-(10124, 1, 1002, NULL),
-(10123, 1, 1001, NULL),
-(10122, 1, 999, NULL),
-(10121, 1, 998, NULL),
-(10120, 1, 2, NULL),
-(10119, 1, 1, NULL),
-(10095, 2, 1, NULL),
-(10096, 2, 2, NULL),
-(10097, 2, 998, NULL),
-(10098, 2, 1001, NULL),
-(10099, 2, 1002, NULL),
-(10100, 2, 1003, NULL),
-(10101, 2, 1005, NULL),
-(10102, 2, 2001, NULL),
-(10103, 2, 2002, NULL),
-(10104, 2, 2003, NULL),
-(10105, 2, 2004, NULL),
-(10106, 2, 998001, NULL),
-(10107, 2, 998002, NULL),
-(10108, 2, 998003, NULL),
-(10109, 2, 998004, NULL),
-(10110, 2, 999999, NULL),
-(10111, 3, 1, NULL),
-(10112, 3, 2, NULL),
-(10113, 3, 1005, NULL),
-(10114, 3, 2001, NULL),
-(10115, 3, 2002, NULL),
-(10116, 3, 2003, NULL),
-(10117, 3, 2004, NULL),
-(10118, 3, 999999, NULL),
-(10144, 1, 999999, NULL);
+(10222, 1, 999999, NULL),
+(10221, 1, 999993, NULL),
+(10220, 1, 999992, NULL),
+(10219, 1, 999991, NULL),
+(10218, 1, 999990, NULL),
+(10217, 1, 998993, NULL),
+(10216, 1, 998992, NULL),
+(10215, 1, 998991, NULL),
+(10214, 1, 998990, NULL),
+(10213, 1, 998003, NULL),
+(10212, 1, 998002, NULL),
+(10211, 1, 998001, NULL),
+(10210, 1, 2004, NULL),
+(10209, 1, 2003, NULL),
+(10208, 1, 2002, NULL),
+(10207, 1, 2001, NULL),
+(10206, 1, 1008, NULL),
+(10205, 1, 1007, NULL),
+(10204, 1, 1006, NULL),
+(10203, 1, 1003, NULL),
+(10202, 1, 1002, NULL),
+(10201, 1, 1001, NULL),
+(10200, 1, 999, NULL),
+(10199, 1, 998, NULL),
+(10239, 2, 999999, NULL),
+(10238, 2, 998003, NULL),
+(10237, 2, 998002, NULL),
+(10236, 2, 998001, NULL),
+(10235, 2, 2004, NULL),
+(10234, 2, 2003, NULL),
+(10233, 2, 2002, NULL),
+(10232, 2, 2001, NULL),
+(10231, 2, 1008, NULL),
+(10230, 2, 1007, NULL),
+(10229, 2, 1006, NULL),
+(10228, 2, 1003, NULL),
+(10227, 2, 1002, NULL),
+(10226, 2, 1001, NULL),
+(10225, 2, 998, NULL),
+(10245, 3, 999999, NULL),
+(10244, 3, 2004, NULL),
+(10243, 3, 2003, NULL),
+(10242, 3, 2002, NULL),
+(10241, 3, 2001, NULL),
+(10240, 3, 2, NULL),
+(10198, 1, 2, NULL),
+(10197, 1, 1, NULL),
+(10224, 2, 2, NULL),
+(10223, 2, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -90957,6 +90998,14 @@ ALTER TABLE `coupons`
   ADD KEY `coupons_registration_id_foreign` (`registration_id`),
   ADD KEY `coupons_payment_status_id_foreign` (`payment_status_id`),
   ADD KEY `coupons_shippers_FK` (`shipper_id`);
+
+--
+-- Indexes for table `doorprize`
+--
+ALTER TABLE `doorprize`
+  ADD PRIMARY KEY (`idx`),
+  ADD KEY `doorprize_events_FK` (`event_id`),
+  ADD KEY `doorprize_artists_FK` (`artist_id`);
 
 --
 -- Indexes for table `editions`
@@ -91132,6 +91181,12 @@ ALTER TABLE `coupons`
   MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `doorprize`
+--
+ALTER TABLE `doorprize`
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `editions`
 --
 ALTER TABLE `editions`
@@ -91189,7 +91244,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `payment_statuses`
 --
 ALTER TABLE `payment_statuses`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -91219,13 +91274,13 @@ ALTER TABLE `shippers`
 -- AUTO_INCREMENT for table `testimonials`
 --
 ALTER TABLE `testimonials`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `testimoni_photos`
 --
 ALTER TABLE `testimoni_photos`
-  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tipemenu`
@@ -91243,7 +91298,7 @@ ALTER TABLE `usergroup`
 -- AUTO_INCREMENT for table `usermenu`
 --
 ALTER TABLE `usermenu`
-  MODIFY `idx` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10145;
+  MODIFY `idx` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10246;
 
 --
 -- AUTO_INCREMENT for table `usersistem`
@@ -91276,6 +91331,13 @@ ALTER TABLE `coupons`
   ADD CONSTRAINT `coupons_payment_status_id_foreign` FOREIGN KEY (`payment_status_id`) REFERENCES `payment_statuses` (`idx`),
   ADD CONSTRAINT `coupons_registration_id_foreign` FOREIGN KEY (`registration_id`) REFERENCES `registrations` (`idx`),
   ADD CONSTRAINT `coupons_shippers_FK` FOREIGN KEY (`shipper_id`) REFERENCES `shippers` (`idx`);
+
+--
+-- Constraints for table `doorprize`
+--
+ALTER TABLE `doorprize`
+  ADD CONSTRAINT `doorprize_artists_FK` FOREIGN KEY (`artist_id`) REFERENCES `artists` (`idx`),
+  ADD CONSTRAINT `doorprize_events_FK` FOREIGN KEY (`event_id`) REFERENCES `events` (`idx`);
 
 --
 -- Constraints for table `editions`

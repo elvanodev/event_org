@@ -1286,8 +1286,9 @@ body {
 }
 
 .main-content {
-    margin-right: 2vw;
-    margin-left: 2vw;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    background-color: #6C06BCCC;
 }
 
 .iframe-rwd  {

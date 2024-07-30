@@ -14,7 +14,7 @@ class Gallery extends CI_Controller {
       $event_id = $row_event->idx;
 
       $this->load->model("modeltestimonials");
-      $list_testimonials = $this->modeltestimonials->getListtestimonialsByEvent($event_id);
+      $list_testimonials = $this->modeltestimonials->getListtestimonialsByEvent($event_id, 999);
 
       $this->load->model("modelfrontend");
       $dataHeader = $this->modelfrontend->getDataHeader();

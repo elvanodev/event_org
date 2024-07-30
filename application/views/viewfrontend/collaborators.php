@@ -1,4 +1,4 @@
-<div class="card main-content bg-transparent">
+<div class="card main-content">
     <div class="card-body">
         <div class="row">
             <?php foreach ($list_collaborators as $row) {

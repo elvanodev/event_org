@@ -1,4 +1,4 @@
-<div class="card main-content bg-transparent">
+<div class="card main-content">
     <div class="card-body text-light">
         <div class="row">            
             <?php foreach ($list_doorprize as $row) {

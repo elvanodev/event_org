@@ -1,4 +1,4 @@
-<div class="card main-content bg-transparent">
+<div class="card main-content">
     <div class="card-body text-light">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">                      
             <?php 
