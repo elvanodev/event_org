@@ -1131,7 +1131,7 @@ body {
     left: 0;
     position: absolute;
     z-index: -99992;
-    animation: up 40s infinite;
+    animation: up 20s infinite;
     background: rgb(255,215,30);
     background: -moz-linear-gradient(40deg, rgba(255,215,30,1) 12%, rgba(17,201,134,1) 51%, rgba(194,55,221,1) 88%);
     background: -webkit-linear-gradient(40deg, rgba(255,215,30,1) 12%, rgba(17,201,134,1) 51%, rgba(194,55,221,1) 88%);
@@ -1146,11 +1146,11 @@ body {
     right: 0;
     position: absolute;
     z-index: -99997;
-    animation: down 40s infinite;
+    animation: down 20s infinite;
     background: rgb(178,255,30);
-    background: -moz-linear-gradient(40deg, rgba(178,255,30,1) 12%, rgba(17,163,201,1) 51%, rgba(221,55,128,1) 88%);
-    background: -webkit-linear-gradient(40deg, rgba(178,255,30,1) 12%, rgba(17,163,201,1) 51%, rgba(221,55,128,1) 88%);
-    background: linear-gradient(40deg, rgba(178,255,30,1) 12%, rgba(17,163,201,1) 51%, rgba(221,55,128,1) 88%);
+    background: -moz-linear-gradient(20deg, rgba(178,255,30,1) 12%, rgba(17,163,201,1) 51%, rgba(221,55,128,1) 88%);
+    background: -webkit-linear-gradient(20deg, rgba(178,255,30,1) 12%, rgba(17,163,201,1) 51%, rgba(221,55,128,1) 88%);
+    background: linear-gradient(20deg, rgba(178,255,30,1) 12%, rgba(17,163,201,1) 51%, rgba(221,55,128,1) 88%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b2ff1e",endColorstr="#dd3780",GradientType=1);
 }
 #bgLeft {
@@ -1161,11 +1161,11 @@ body {
     top: 0;
     position: absolute;
     z-index: -99993;
-    animation: left 40s infinite;
+    animation: left 20s infinite;
     background: rgb(57,255,30);
-    background: -moz-linear-gradient(40deg, rgba(57,255,30,1) 12%, rgba(17,67,201,1) 51%, rgba(221,55,72,1) 88%);
-    background: -webkit-linear-gradient(40deg, rgba(57,255,30,1) 12%, rgba(17,67,201,1) 51%, rgba(221,55,72,1) 88%);
-    background: linear-gradient(40deg, rgba(57,255,30,1) 12%, rgba(17,67,201,1) 51%, rgba(221,55,72,1) 88%);
+    background: -moz-linear-gradient(60deg, rgba(57,255,30,1) 12%, rgba(17,67,201,1) 51%, rgba(221,55,72,1) 88%);
+    background: -webkit-linear-gradient(60deg, rgba(57,255,30,1) 12%, rgba(17,67,201,1) 51%, rgba(221,55,72,1) 88%);
+    background: linear-gradient(60deg, rgba(57,255,30,1) 12%, rgba(17,67,201,1) 51%, rgba(221,55,72,1) 88%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#39ff1e",endColorstr="#dd3748",GradientType=1);
 }
 #bgRight {
@@ -1176,11 +1176,11 @@ body {
     bottom: 0;
     position: absolute;
     z-index: -99994;
-    animation: right 40s infinite;
+    animation: right 20s infinite;
     background: rgb(30,255,162);
-    background: -moz-linear-gradient(40deg, rgba(30,255,162,1) 12%, rgba(78,17,201,1) 51%, rgba(221,124,55,1) 88%);
-    background: -webkit-linear-gradient(40deg, rgba(30,255,162,1) 12%, rgba(78,17,201,1) 51%, rgba(221,124,55,1) 88%);
-    background: linear-gradient(40deg, rgba(30,255,162,1) 12%, rgba(78,17,201,1) 51%, rgba(221,124,55,1) 88%);
+    background: -moz-linear-gradient(150deg, rgba(30,255,162,1) 12%, rgba(78,17,201,1) 51%, rgba(221,124,55,1) 88%);
+    background: -webkit-linear-gradient(150deg, rgba(30,255,162,1) 12%, rgba(78,17,201,1) 51%, rgba(221,124,55,1) 88%);
+    background: linear-gradient(150deg, rgba(30,255,162,1) 12%, rgba(78,17,201,1) 51%, rgba(221,124,55,1) 88%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1effa2",endColorstr="#dd7c37",GradientType=1);
 }
 
@@ -1243,41 +1243,46 @@ body {
     font-style: normal;
 }
 
-.borderless {    
-    border: 0 none;
-}
-
-.vertical-button {    
-    -moz-transform:rotate(-90deg);
-    -ms-transform:rotate(-90deg);
-    -o-transform:rotate(-90deg);
-    -webkit-transform:rotate(-90deg);
-}
-
-.left-menu {
+.testimonial-section {
     position: absolute;
-    top: 25%;
+    overflow: auto;
+    right: 5%;
+    top: 30%;
+    width: 25%;
+    height: 65%;
+}
+
+.testimonial-section .card {
+    background-color: #6C06BCCC;
+}
+
+.left-menu-section {
+    position: absolute;
+    overflow: hidden;
     left: 0;
-    width: 10vw;
-    z-index: 100000;
+    top: 30%;
+    margin-left: 10px;
 }
 
-.right-menu {
+.right-menu-section {
     position: absolute;
-    top: 25%;
+    overflow: hidden;
     right: 0;
-    width: 10vw;
-    z-index: 100000;
+    top: 30%;
+    margin-right: 10px;
 }
 
-.left-menu .btn {    
-    width: fit-content;
-    margin-left: 10px;
+.left-menu {    
+    writing-mode: vertical-lr;
+    -moz-transform: scale(-1, -1);
+    -webkit-transform: scale(-1, -1);
+    -o-transform: scale(-1, -1);
+    -ms-transform: scale(-1, -1);
+    transform: scale(-1, -1);
 }
 
-.right-menu .btn {    
-    width: fit-content;
-    margin-left: 10px;
+.right-menu {    
+    writing-mode: vertical-rl;
 }
 
 .main-content {
