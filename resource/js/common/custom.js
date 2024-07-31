@@ -4,7 +4,9 @@ $(document).ready(function () {
     settanggal();
     declarecustomtooltip();
     $(".datetimepicker").each(function () {
-        $(this).datetimepicker();
+        $(this).datetimepicker({
+            format: 'y-m-d H:m'
+        });
     });
     $(".timepicker").each(function () {
         $(this).timepicker({ timeFormat: 'HH:mm' });
