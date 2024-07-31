@@ -28,6 +28,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="<?php echo base_url(); ?>/resource/uploaded/img/<?php echo $event->poster_image; ?>" rel="shortcut icon" type="image/x-icon">
     <link href="<?php echo base_url(); ?>/resource/uploaded/img/<?php echo $event->poster_image; ?>" rel="apple-touch-icon">
+    <style>       
+        @font-face {
+            font-family: "earth-2073";
+            src: url(<?php echo base_url();?>resource/font/earth_2073.ttf);
+        }
+    </style>
 </head>
 
 <body>
@@ -54,7 +60,8 @@
                     <?php
                     }
                     ?>
-                </select>
+                </select>                
+                <input type="hidden" id="editionstartdate">
             </div>
             <div class="col-8">
                 <div class="d-flex justify-content-center">

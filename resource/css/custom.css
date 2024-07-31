@@ -1233,10 +1233,6 @@ body {
     font-weight: 400;
     font-style: normal;
 }
-@font-face {
-    font-family: "earth-2073";
-    src: url(http://event_org.test:8080/resource/font/earth_2073.ttf);
-}
 .earth-2073 {
     font-family: "earth-2073";
     font-weight: 400;
@@ -1378,4 +1374,49 @@ body {
     30% { background-color: rgb(58, 23, 19); } 
     45% { background-color: rgb(81, 81, 163); }
     60% { background-color: rgb(15, 44, 15); } 
+}
+
+.countdown-img-rotate {
+    -webkit-animation:spin 60s linear infinite;
+    -moz-animation:spin 60s linear infinite;
+    animation:spin 60s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
+
+.cd-day {
+    position: absolute;
+    left: 30%;
+    top: 18%;
+    -moz-transform: rotate(-34deg);
+    -webkit-transform: rotate(-34deg); 
+    transform:rotate(-34deg);
+}
+
+.cd-hour {
+    position: absolute;
+    left: 67%;
+    top: 27%;
+    -moz-transform: rotate(63deg);
+    -webkit-transform: rotate(63deg); 
+    transform:rotate(63deg);
+}
+
+.cd-minute {
+    position: absolute;
+    left: 58%;
+    top: 63%;
+    -moz-transform: rotate(145deg);
+    -webkit-transform: rotate(145deg); 
+    transform:rotate(145deg);
+}
+
+.cd-second {
+    position: absolute;
+    left: 22%;
+    top: 53%;
+    -moz-transform: rotate(238deg);
+    -webkit-transform: rotate(238deg); 
+    transform:rotate(238deg);
 }

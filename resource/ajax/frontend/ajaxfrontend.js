@@ -39,8 +39,12 @@ function getEdition(editionId) {
             dataType: "json",
             type: "POST",
             success: function (json) {
+                $("#editionstartdate").val(json.started_at);
                 let date = new Date(json.started_at);
                 $("#selectedEdition").html(json.name + " " + json.venue_address + " " + date.getFullYear());
+                if (location.search == "") {
+                    getEditiondatetimestart();
+                }
             },
             error: function (xmlHttpRequest, textStatus, errorThrown) {
                 console.log("Error juga " + xmlHttpRequest.responseText);

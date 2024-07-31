@@ -30,6 +30,21 @@
 <section class="countdown-section">
     <div class="countdown-img-rotate">
         <img src="<?php echo base_url(); ?>/resource/images/countdown.png" class="img-fluid"/>
-        <!-- <div id=""></div> -->
+        <div class="cd-day text-center">
+            <div class="text-white"><h1 class="earth-2073" id="cdDay">00</h1></div>
+            <div class="text-white"><h2 class="la-belle-aurore-regular">Hari</h2></div>
+        </div>
+        <div class="cd-hour text-center">
+            <div class="text-white"><h1 class="earth-2073" id="cdHour">00</h1></div>
+            <div class="text-white"><h2 class="la-belle-aurore-regular">Jam</h2></div>
+        </div>
+        <div class="cd-minute text-center">
+            <div class="text-white"><h1 class="earth-2073" id="cdMinute">00</h1></div>
+            <div class="text-white"><h2 class="la-belle-aurore-regular">Mnt.</h2></div>
+        </div>
+        <div class="cd-second text-center">
+            <div class="text-white"><h1 class="earth-2073" id="cdSecond">00</h1></div>
+            <div class="text-white"><h2 class="la-belle-aurore-regular">Det.</h2></div>
+        </div>
     </div>
 </section>
