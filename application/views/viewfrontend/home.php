@@ -1,9 +1,9 @@
 <section class="testimonial-section">
-    <div class="card">
+    <div class="d-flex justify-content-end" id="testimonialButton">
+        <button type="button" id="testimonialCardOpen" class="btn text-light">Lihat Komentar <i class="fa-solid fa-comment"></i></button>
+    </div>    
+    <div class="card" id="testimonialCard">
         <div class="card-body text-light">   
-            <div class="d-flex justify-content-end">
-                <button type="button" class="btn text-white close">&times;</button> 
-            </div>    
             <?php 
             date_default_timezone_set('Asia/Jakarta');
             foreach ($list_testimonials as $row) {
@@ -25,5 +25,11 @@
             } ?>
             <a href="<?php echo base_url();?>frontend/testimonials" class="text-white">Komentar Lainnya</a>
         </div>
+    </div>
+</section>
+<section class="countdown-section">
+    <div class="countdown-img-rotate">
+        <img src="<?php echo base_url(); ?>/resource/images/countdown.png" class="img-fluid"/>
+        <!-- <div id=""></div> -->
     </div>
 </section>

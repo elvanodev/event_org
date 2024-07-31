@@ -1243,18 +1243,34 @@ body {
     font-style: normal;
 }
 
+.countdown-section {
+    position: fixed;
+    top: 63%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 38%;
+}
+
 .testimonial-section {
     position: absolute;
-    overflow: auto;
     right: 6%;
     top: 30%;
     width: 25%;
-    height: 65%;
+    height: 60%;
+    padding: 2px;
 }
 
 .testimonial-section .card {
-    background-color: #6C06BCCC;
+    background-color: #6C06BCCC;           
+    overflow: auto; 
+    opacity: 0;
+    width: 5%;
+    height: 5%;
+    right: -91%;
+    top: -7%;
+    font-size: 1px;
 }
+
 
 .left-menu-section {
     position: absolute;
