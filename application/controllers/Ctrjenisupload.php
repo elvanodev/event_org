@@ -59,7 +59,7 @@ tbaddcellhead('jenisupload','','data-field="jenisupload" data-sortable="true" wi
          $xQuery = $this->modeljenisupload->getListjenisupload($xAwal,$xLimit,$xSearch);
           $xbufResult ='<thead>'.$xbufResult1.'</thead>';
         $xbufResult .='<tbody>';
-$no = 1;
+$no = $xAwal + 1;
               foreach ($xQuery->result() as $row)
             { 
               $xButtonEdit = '<a href="javascript:void(0);" onclick = "doeditjenisupload(\'' . $row->idx . '\');"><i class="fas fa-edit"></i></a>';

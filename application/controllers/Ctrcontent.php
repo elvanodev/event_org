@@ -222,7 +222,7 @@ class ctrcontent extends CI_Controller {
         //$this->load->model('modelbahasa');
         $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
         $xbufResult .= '<tbody>';
-$no = 1;
+$no = $xAwal + 1;
         foreach ($xQuery->result() as $row) {
 
             $xButtonEdit = '<a href="javascript:void(0);" onclick = "doeditcontent(\'' . $row->idx . '\');"><i class="fas fa-edit"></i></a>';

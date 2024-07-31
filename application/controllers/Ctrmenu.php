@@ -83,7 +83,7 @@ class ctrmenu extends CI_Controller {
         $xQuery = $this->modelmenu->getListmenu($xAwal, $xLimit, $xSearch);
         $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
         $xbufResult .= '<tbody>';
-$no = 1;
+$no = $xAwal + 1;
         foreach ($xQuery->result() as $row) {
             $xButtonEdit = '<a href="javascript:void(0);" onclick = "doeditmenu(\'' . $row->idmenu . '\');"><i class="fas fa-edit"></i></a>';
             $xButtonHapus = '<a href="javascript:void(0);" onclick = "dohapusmenu(\'' . $row->idmenu . '\');"><i class="fas fa-trash" ></i></a>';

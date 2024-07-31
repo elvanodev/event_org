@@ -75,7 +75,7 @@ tbaddcellhead('Tanggal Masuk','','data-field="tglmasuk" data-sortable="true" wid
          $xQuery = $this->modelpegawai->getListpegawai($xAwal,$xLimit,$xSearch);
           $xbufResult ='<thead>'.$xbufResult1.'</thead>';
         $xbufResult .='<tbody>';
-$no = 1;
+$no = $xAwal + 1;
               foreach ($xQuery->result() as $row)
             { 
                   $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditpegawai(\''.$row->idx.'\');" ></i>';

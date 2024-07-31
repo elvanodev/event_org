@@ -73,7 +73,7 @@ class ctrkecamatan extends CI_Controller {
         $xQuery = $this->modelkecamatan->getListkecamatan($xAwal, $xLimit, $xSearch);
         $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
         $xbufResult .= '<tbody>';
-$no = 1;
+$no = $xAwal + 1;
         foreach ($xQuery->result() as $row) {
             $prov = $this->modelprovinsi->getDetailprovinsi($row->idprovinsi);
             $kab = $this->modelkabupaten->getDetailkabupaten($row->idkabupaten);

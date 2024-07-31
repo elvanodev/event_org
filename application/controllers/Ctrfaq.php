@@ -73,7 +73,7 @@ class Ctrfaq extends CI_Controller
     $xQuery = $this->modelfaq->getListfaq($xAwal, $xLimit, $xSearch);
     $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
     $xbufResult .= '<tbody>';
-    $no = 1;
+    $no = $xAwal + 1;
     foreach ($xQuery->result() as $row) {
       $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditfaq(\'' . $row->idx . '\');" ></i>';
       $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapusfaq(\'' . $row->idx . '\');"></i>';

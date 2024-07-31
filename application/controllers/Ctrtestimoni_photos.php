@@ -63,7 +63,7 @@ tbaddcellhead('link_photo','','data-field="link_photo" data-sortable="true" widt
          $xQuery = $this->modeltestimoni_photos->getListtestimoni_photos($xAwal,$xLimit,$xSearch);
           $xbufResult ='<thead>'.$xbufResult1.'</thead>';
         $xbufResult .='<tbody>';
-$no = 1;
+$no = $xAwal + 1;
               foreach ($xQuery->result() as $row)
             { 
                   $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doedittestimoni_photos(\''.$row->idx.'\');" ></i>';

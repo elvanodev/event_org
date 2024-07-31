@@ -122,7 +122,7 @@ class Ctrcoupons extends CI_Controller
     $xQuery = $this->modelcoupons->getListcoupons($xAwal, $xLimit, $xSearch);
     $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
     $xbufResult .= '<tbody>';
-    $no = 1;
+    $no = $xAwal + 1;
     foreach ($xQuery->result() as $row) {
       $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditcoupons(\'' . $row->idx . '\');" ></i>';
       $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapuscoupons(\'' . $row->idx . '\');"></i>';

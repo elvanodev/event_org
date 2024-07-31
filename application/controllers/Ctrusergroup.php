@@ -53,7 +53,7 @@ class ctrusergroup extends CI_Controller {
         $xQuery = $this->modelusergroup->getListusergroup($xAwal, $xLimit, $xSearch);
         $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
         $xbufResult .= '<tbody>';
-$no = 1;
+$no = $xAwal + 1;
         foreach ($xQuery->result() as $row) {
             $xButtonEdit = '<a href="javascript:void(0);" onclick = "doeditusergroup(\'' . $row->idx . '\');"><i class="fas fa-edit"></i></a>';
             $xButtonHapus = '<a href="javascript:void(0);" onclick = "dohapususergroup(\'' . $row->idx . '\',\'' . substr($row->NmUserGroup, 0, 20) . '\');"><i class="fas fa-trash" ></i></a>';

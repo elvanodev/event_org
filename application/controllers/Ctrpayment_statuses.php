@@ -66,7 +66,7 @@ class Ctrpayment_statuses extends CI_Controller
     $xQuery = $this->modelpayment_statuses->getListpayment_statuses($xAwal, $xLimit, $xSearch);
     $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
     $xbufResult .= '<tbody>';
-    $no = 1;
+    $no = $xAwal + 1;
     foreach ($xQuery->result() as $row) {
       $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditpayment_statuses(\'' . $row->idx . '\');" ></i>';
       $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapuspayment_statuses(\'' . $row->idx . '\');"></i>';

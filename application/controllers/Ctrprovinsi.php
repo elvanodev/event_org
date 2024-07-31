@@ -62,7 +62,7 @@ class ctrprovinsi extends CI_Controller {
         $xQuery = $this->modelprovinsi->getListprovinsi($xAwal, $xLimit, $xSearch);
         $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
         $xbufResult .= '<tbody>';
-$no = 1;
+$no = $xAwal + 1;
         foreach ($xQuery->result() as $row) {
             $xButtonEdit = '<a href="javascript:void(0);" onclick = "doeditprovinsi(\'' . $row->idx . '\');"><i class="fas fa-edit"></i></a>';
             $xButtonHapus = '<a href="javascript:void(0);" onclick = "dohapusprovinsi(\'' . $row->idx . '\');"><i class="fas fa-trash" ></i></a>';

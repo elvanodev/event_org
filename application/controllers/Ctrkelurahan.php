@@ -72,7 +72,7 @@ class Ctrkelurahan extends CI_Controller {
         $xQuery = $this->modelkelurahan->getListkelurahan($xAwal, $xLimit, $xSearch);
         $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
         $xbufResult .= '<tbody>';
-$no = 1;
+$no = $xAwal + 1;
         foreach ($xQuery->result() as $row) {
             $kec = $this->modelkecamatan->getDetailkecamatan($row->idkecamatan);
             $xButtonEdit = '<a href="javascript:void(0);" onclick = "doeditkelurahan(\'' . $row->idx . '\');"><i class="fas fa-edit"></i></a>';

@@ -65,7 +65,7 @@ class Ctrmembers extends CI_Controller
     $this->load->helper('common');
     $xbufResult1 = tbaddrow(tbaddcellhead('No', '', 'data-field="idx" data-sortable="true" width=10%') .
       tbaddcellhead('Name', '', 'data-field="name" data-sortable="true" width=10%') .
-      tbaddcellhead('Rmail', '', 'data-field="email" data-sortable="true" width=10%') .
+      tbaddcellhead('Email', '', 'data-field="email" data-sortable="true" width=10%') .
       tbaddcellhead('Password', '', 'data-field="password" data-sortable="true" width=10%') .
       tbaddcellhead('Address', '', 'data-field="address" data-sortable="true" width=10%') .
       tbaddcellhead('Phone', '', 'data-field="phone" data-sortable="true" width=10%') .
@@ -75,7 +75,7 @@ class Ctrmembers extends CI_Controller
     $xQuery = $this->modelmembers->getListmembers($xAwal, $xLimit, $xSearch);
     $xbufResult = '<thead>' . $xbufResult1 . '</thead>';
     $xbufResult .= '<tbody>';
-    $no = 1;
+    $no = $xAwal + 1;
     foreach ($xQuery->result() as $row) {
       $xButtonEdit = '<i class="fas fa-edit btn" aria-hidden="true"  onclick = "doeditmembers(\'' . $row->idx . '\');" ></i>';
       $xButtonHapus = '<i class="fas fa-trash-alt btn" aria-hidden="true" onclick = "dohapusmembers(\'' . $row->idx . '\');"></i>';
