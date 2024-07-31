@@ -97,13 +97,14 @@ from
          ",agent_address" .
          ",agent_gmap" .
          ",created_at" .
-         ") VALUES('" . $xidx . "','" . $xname . "','" . $xlong_name . "','" . $xis_active . "','" . $xdescriptions . "','" . $xposter_image . ",'" . $xcontact_phone . ",'" . $xcontact_email . "'
+         ") VALUES('" . $xidx . "','" . $xname . "','" . $xlong_name . "','" . $xis_active . "','" . $xdescriptions . "','" . $xposter_image . "','" . $xcontact_phone . "','" . $xcontact_email . "'
    ,'" . $xagent_open_date . "'
    ,'" . $xagent_close_date . "'
    ,'" . $xagent_open_time . "'
    ,'" . $xagent_close_time . "'
    ,'" . $xagent_address . "'
    ,'" . $xagent_gmap . "',NOW())";
+   
       $query = $this->db->query($xStr);
       return $xidx;
    }

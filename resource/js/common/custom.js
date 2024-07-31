@@ -7,7 +7,7 @@ $(document).ready(function () {
         $(this).datetimepicker();
     });
     $(".timepicker").each(function () {
-        $(this).timepicker();
+        $(this).timepicker({ timeFormat: 'HH:mm' });
     });
 });
 
