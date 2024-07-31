@@ -24,7 +24,7 @@ class Doorprize extends CI_Controller {
       $this->load->view('viewfrontend/layout/header', $dataHeader);
       $this->load->view('viewfrontend/layout/leftmenu', ['showback' => false, 'showmainmenu' => true, 'showadditionalmenu' => false, 'header'=>$dataHeader]);
       $this->load->view('viewfrontend/doorprize', $data);
-      $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => true]);
+      $this->load->view('viewfrontend/layout/rightmenu', ['showmainmenu' => true, 'active_doorprize' => 'menu-active']);
       $this->load->view('viewfrontend/layout/footer', ['ajaxfilename'=> 'ajaxdoorprize.js']);
     }
  

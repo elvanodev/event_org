@@ -42,7 +42,7 @@
     <div class="container-fluid web-head-section pt-4 text-white">
         <div class="row">
             <div class="col-2">
-                <select class="form-control earth-2073" name="editionId" id="editionId" onchange="seteditionsession()">
+                <select class="form-control earth-2073 custom-border" name="editionId" id="editionId" onchange="seteditionsession()">
                     <?php
                     foreach ($editions as $edition) {
                         $selected = '';

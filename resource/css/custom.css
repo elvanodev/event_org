@@ -1246,7 +1246,7 @@ body {
 .testimonial-section {
     position: absolute;
     overflow: auto;
-    right: 5%;
+    right: 6%;
     top: 30%;
     width: 25%;
     height: 65%;
@@ -1261,7 +1261,7 @@ body {
     overflow: hidden;
     left: 0;
     top: 30%;
-    margin-left: 10px;
+    margin-left: 0px;
 }
 
 .right-menu-section {
@@ -1279,6 +1279,10 @@ body {
     -o-transform: scale(-1, -1);
     -ms-transform: scale(-1, -1);
     transform: scale(-1, -1);
+}
+
+.left-menu.custom-border {    
+    margin-left: 10px;
 }
 
 .right-menu {    
@@ -1303,4 +1307,59 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+}
+.custom-border {
+    border: #ffffff 3px solid;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow:inset 9px 4px 15px -6px #000000;
+    color: #5A5858;
+}
+.custom-border:hover {
+    box-shadow:none;
+    background-color: #ffffff;
+    color: #999999;
+}
+.menu-active {
+    border: #ffffff 3px solid;
+    background-color: #61FF00;
+    box-shadow:none;
+    color: #ffffff;
+}
+.highlight-button {    
+    color: white;
+    padding: 10px;
+    border: none;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: transparent;
+    margin-left: 0px;
+}
+.highlight-button:hover {  
+    color: white;
+    background-color: #6C06BCCC;
+    -webkit-animation: none;
+    animation: none;
+}
+.highlight-button.animated-1 {
+    -webkit-animation: rgbBackground1 5s infinite;
+    animation: rgbBackground1 5s infinite;
+}
+.highlight-button.animated-2 {
+    -webkit-animation: rgbBackground2 5s infinite;
+    animation: rgbBackground2 5s infinite;
+}
+@keyframes rgbBackground1 {
+    15% { background-color: red; } 
+    30% { background-color: yellow; } 
+    45% { background-color: green; } 
+    60% { background-color: blue; }
+}
+@keyframes rgbBackground2 {
+    10% { background-color: yellow; } 
+    15% { background-color: red; } 
+    30% { background-color: blue; }
+    70% { background-color: green; } 
 }
