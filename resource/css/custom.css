@@ -1352,14 +1352,14 @@ body {
     animation: rgbBackground2 5s infinite;
 }
 @keyframes rgbBackground1 {
-    15% { background-color: red; } 
-    30% { background-color: yellow; } 
-    45% { background-color: green; } 
-    60% { background-color: blue; }
+    15% { background-color: rgb(196, 33, 33); } 
+    30% { background-color: rgb(184, 184, 0); } 
+    45% { background-color: rgb(19, 131, 56); } 
+    60% { background-color: rgb(100, 41, 128); }
 }
 @keyframes rgbBackground2 {
-    10% { background-color: yellow; } 
-    15% { background-color: red; } 
-    30% { background-color: blue; }
-    70% { background-color: green; } 
+    15% { background-color: rgb(141, 141, 11); } 
+    30% { background-color: rgb(58, 23, 19); } 
+    45% { background-color: rgb(81, 81, 163); }
+    60% { background-color: rgb(15, 44, 15); } 
 }
