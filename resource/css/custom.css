@@ -1306,6 +1306,37 @@ body {
     margin-left: 5vw;
     background-color: #6C06BCCC;
 }
+.main-content-tab {
+    margin-right: 5vw;
+    margin-left: 5vw;
+    background-color: transparent;
+}
+.main-content-tab .nav-item {
+    margin-right: 10px;
+}
+.main-content-tab .nav-link {
+    border: #ffffff 3px solid;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow:inset 9px 4px 15px -6px #000000;
+    color: #5A5858;
+}
+.main-content-tab .nav-link:hover {
+    box-shadow:none;
+    background-color: #ffffff;
+    color: #999999;
+}
+.main-content-tab .nav-link.active {
+    border: #ffffff 3px solid;
+    background-color: #61FF00;
+    box-shadow:none;
+    color: #ffffff;
+}
+.main-content-tab .nav-link.active:hover {
+    box-shadow:none;
+    background-color: #ffffff;
+    color: #999999;
+}
 
 .iframe-rwd  {
     position: relative;

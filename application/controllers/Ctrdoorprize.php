@@ -33,7 +33,8 @@ class Ctrdoorprize extends CI_Controller
       '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/js/common/fileupload/jquery.ui.widget.js"></script>' . "\n" .
       '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/ajax/ajaxdoorprize.js"></script>' . "\n" .
       '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/js/common/fileupload/jquery.fileupload.js"></script>' . "\n" .
-      '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/js/common/fileupload/myupload.js"></script>';
+      '<script language="javascript" type="text/javascript" src="' . base_url() . 'resource/js/common/fileupload/myupload.js"></script>' . "\n" .
+      '<script src="' . base_url() . 'resource/js/jquery/jquery.multi-select.js"></script>';
     echo $this->modelgetmenu->SetViewAdmin($this->setDetailFormdoorprize($xidx), '', '', $xAddJs, '', 'doorprize');
   }
 
@@ -55,8 +56,8 @@ class Ctrdoorprize extends CI_Controller
     $this->load->model('modelartists');
     $artist = $this->modelartists->getLastIndexartists();
     $selected_artist = array();
-    $selected_artist['selected'] = $artist->idx;
-    $xBufResult .= setForm('artist_id', 'Artist', form_dropdown_($selected_artist, $this->modelartists->getArrayListartists(), '', 'id="edartist_id" class="require" style="width:200px;" placeholder="Artist"')) . '<div class="spacer"></div>';
+    // $selected_artist['selected'] = $artist->idx;
+    $xBufResult .= setForm('artist_id', 'Artist', form_dropdown_($selected_artist, $this->modelartists->getArrayListartists(), '', 'id="edartist_id" name="edartist_id"  class="require" style="min-width:300px;" placeholder="Artist" multiple')) . '<div class="spacer"></div>';
 
     $xBufResult .= setForm('dimension', 'Dimension', form_input_(getArrayObj('eddimension', '', '200'), '', ' placeholder="Dimension" ')) . '<div class="spacer"></div>';
 
@@ -105,7 +106,7 @@ class Ctrdoorprize extends CI_Controller
       }
       $xbufResult .= tbaddrow(tbaddcell($no++) .
         tbaddcell($row->event_name) .
-        tbaddcell($row->artist_name) .
+        tbaddcell($row->artist_names) .
         tbaddcell($row->dimension) .
         tbaddcell($row->title) .
         tbaddcell($row->media) .
@@ -218,9 +219,9 @@ class Ctrdoorprize extends CI_Controller
     $ximage_art = $_POST['edimage_art'];
     $xdescription = $_POST['eddescription'];
 
+    $doorprize_id = $xidx;
     $data = [      
       'event_id' => $xevent_id,
-      'artist_id' => $xartist_id,
       'dimension' => $xdimension,
       'title' => $xtitle,
       'media' => $xmedia,
@@ -235,13 +236,25 @@ class Ctrdoorprize extends CI_Controller
       if ($xidx != '0') {
         date_default_timezone_set('Asia/Jakarta');
         $data['updated_at'] = date('Y-m-d H:i:s');
-        $result =  $this->modeldoorprize->setUpdatedoorprizebatch($xidx, $data);
+        $result = $this->modeldoorprize->setUpdatedoorprizebatch($xidx, $data);
+        $this->modeldoorprize->setDeletedoorprize_artistsbatch($xidx);
       } else {
-        $result =  $this->modeldoorprize->setInsertdoorprizebatch($data);
+        $doorprize_id = $this->modeldoorprize->setInsertdoorprizebatch($data);
       }
+      $datadoorprize_artists = array();
+      $arr_artist_id = explode(',', $xartist_id);
+      foreach ($arr_artist_id as $val) {
+        $datadoorprize_artist = array(      
+          'doorprize_id' => $doorprize_id,
+          'artist_id' => $val
+        );
+        array_push($datadoorprize_artists, $datadoorprize_artist);
+      }
+      $this->modeldoorprize->setInsertdoorprize_artistsbatch($datadoorprize_artists);
     }
     echo json_encode($result);
   }
+
   public function getdoorprizelistbyevent() { 
     $this->load->helper('json');
     $this->load->helper('common');

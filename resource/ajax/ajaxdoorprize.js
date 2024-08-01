@@ -163,4 +163,5 @@ function formhide() {
 }
 $(document).ready(function () {  
   $("#edimage_art").myupload();
+  $('#edartist_id').multiSelect();
 });

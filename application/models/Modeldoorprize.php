@@ -12,7 +12,9 @@ class Modeldoorprize extends CI_Model
    private $default_query = "SELECT 
 d.idx,
 d.event_id,
-d.artist_id,
+group_concat(da.artist_id) as artist_id, 
+group_concat(ar.name) as artist_names,
+group_concat(ar.profile_img) as artist_profile_imgs,
 d.dimension,
 d.title,
 d.media,
@@ -21,11 +23,11 @@ d.image_art,
 d.description,
 d.created_at,
 d.updated_at,
-ev.name event_name,
-a.name artist_name
+ev.name event_name
 FROM doorprize d
 JOIN events ev ON ev.idx = d.event_id
-JOIN artists a ON a.idx = d.artist_id ";
+left join doorprize_artists da on da.doorprize_id = d.idx 
+left join artists ar on ar.idx = da.artist_id ";
 
    function getArrayListdoorprize()
    { /* spertinya perlu lock table*/
@@ -100,6 +102,25 @@ JOIN artists a ON a.idx = d.artist_id ";
    {
       $update = $this->db->update('doorprize', $data, array('idx'=> $idx));
       if ( !$update ) {
+         echo json_encode($this->db->error());
+      }
+   }
+   
+   function setInsertdoorprize_artistsbatch($data)
+   {
+      $insert = $this->db->insert_batch('doorprize_artists', $data);
+      if ( !$insert ) {
+         echo json_encode($this->db->error());
+      }
+      $insert_id = $this->db->insert_id();
+   
+      return $insert_id;
+   }
+
+   function setDeletedoorprize_artistsbatch($doorprize_id)
+   {
+      $delete = $this->db->delete("doorprize_artists", "doorprize_id = '" .$doorprize_id."'");
+      if ( !$delete ) {
          echo json_encode($this->db->error());
       }
    }

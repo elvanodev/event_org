@@ -86,6 +86,7 @@ class modelgetmenu extends CI_Model {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css " /> 
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
   '.
+      link_tag('resource/css/multi-select.css') . "\n" .
                 
   // link_tag('resource/admin/vendor/bootstrap-table/bootstrap-table.css') . "\n" .
   // link_tag('resource/admin/vendor/bootstrap/css/bootstrap.min.css') . "\n" .
