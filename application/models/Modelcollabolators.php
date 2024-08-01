@@ -69,6 +69,14 @@ class Modelcollabolators extends CI_Model
       return $row;
    }
 
+   function getDetailcollabolatorsbyartistid($artistid)
+   {
+      $xStr = $this->default_query . " WHERE c.artist_id = '" . $artistid . "'";
+
+      $query = $this->db->query($xStr);
+      $row = $query->row();
+      return $row;
+   }
 
    function getLastIndexcollabolators()
    { /* spertinya perlu lock table*/

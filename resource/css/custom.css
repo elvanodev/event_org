@@ -1306,6 +1306,11 @@ body {
     margin-left: 5vw;
     background-color: #6C06BCCC;
 }
+
+.modal-content {
+    background-color: #6d06bc;
+}
+
 .main-content-tab {
     margin-right: 5vw;
     margin-left: 5vw;
@@ -1450,4 +1455,8 @@ body {
     -moz-transform: rotate(238deg);
     -webkit-transform: rotate(238deg); 
     transform:rotate(238deg);
+}
+
+.artist-image {
+    max-width: 300px;
 }

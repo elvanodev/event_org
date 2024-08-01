@@ -45,6 +45,49 @@
         <section id="bgRight"></section>
     </div>
 
+    <!-- Modal modalArtist -->
+    <div class="modal fade" id="modalArtist" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content text-light">
+                <div class="modal-header">
+                    <div class="text-light w-100 d-flex justify-content-between">
+                        <p>
+                            <span>Share Artist Profile</span>
+                            <br>
+                            <a href="#" target="_blank" class="text-light" id="waLink"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#" target="_blank" class="text-light"  id="instagramLink"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" target="_blank" class="text-light"  id="twitterLink"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="#" target="_blank" class="text-light"  id="mailLink"><i class="fa-solid fa-envelope"></i></a>
+                        </p>
+                        <button type="button" class="close btn text-light" onclick="onclickclose()" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-4" id="artistPhoto">
+                        </div>
+                        <div class="col-8">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 id="artistName"></h3>
+                                </div>
+                                <div class="col-12">
+                                    <p id="bornPlaceDate" class="text-light"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-12 text-light p-3">
+                    <p class="justify" id="artistBio"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid web-head-section pt-4 text-white">
         <div class="row">
             <div class="col-2">

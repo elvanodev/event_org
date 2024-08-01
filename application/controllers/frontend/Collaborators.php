@@ -23,10 +23,10 @@ class Collaborators extends CI_Controller {
 
     function detail()
     {
-      $collaboratorid = $this->input->post("collaboratorid");
+      $artistid = $this->input->post("artistid");
 
-      $this->load->model("modelcollabolators");
-      $row = $this->modelcollabolators->getDetailcollabolators($collaboratorid);
+      $this->load->model("modelartists");
+      $row = $this->modelartists->getDetailartists($artistid);
       echo json_encode($row);
     }
   

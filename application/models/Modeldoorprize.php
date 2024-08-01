@@ -61,12 +61,27 @@ left join artists ar on ar.idx = da.artist_id ";
       return $query;
    }
 
-   function getListdoorprizeByEvent($xevent_id)
+   function getListdoorprize_artistBydoorprizeid($xdoorprize_id)
    {
-      $xStr = $this->default_query . " WHERE d.event_id = '".$xevent_id."' order by d.idx ASC";
+      $xStr = "SELECT 
+da.idx,
+da.artist_id, 
+ar.name as artist_name,
+ar.profile_img
+FROM doorprize_artists da
+join artists ar on ar.idx = da.artist_id WHERE da.doorprize_id = '".$xdoorprize_id."' order by da.idx ASC";
       $query = $this->db->query($xStr);
-      $list_doorprize = $query->result();
-      return $list_doorprize;
+      $list_doorprize_artists = $query->result();
+      return $list_doorprize_artists;
+   }
+
+   function getDetaildoorprizeByEvent($event_id)
+   {
+      $xStr = $this->default_query." WHERE d.event_id = '" . $event_id . "'";
+
+      $query = $this->db->query($xStr);
+      $row = $query->row();
+      return $row;
    }
 
    function getDetaildoorprize($xidx)
