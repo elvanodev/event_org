@@ -1309,6 +1309,15 @@ body {
 
 .modal-content {
     background-color: #6d06bc;
+    border-radius: 35px;
+}
+
+.popup-detail {
+    position: absolute;
+    background-color: transparent;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .main-content-tab {
@@ -1316,6 +1325,7 @@ body {
     margin-left: 5vw;
     background-color: transparent;
 }
+
 .main-content-tab .nav-item {
     margin-right: 10px;
 }
@@ -1458,5 +1468,46 @@ body {
 }
 
 .artist-image {
-    max-width: 300px;
+    max-width: 150px;
+}
+
+.background-mask {
+    clip-path: circle(7% at 10% 8%);
+}
+
+.mask-surround {
+    animation: surroundImage 40s linear infinite;
+}
+
+@keyframes surroundImage {
+    /* top-left */
+    0% {clip-path: circle(7% at 10% 8%);}
+    /* top-center */
+    8% {clip-path: circle(7% at 50% 8%);}
+    /* top-right */
+    15% {clip-path: circle(7% at 89% 8%);}
+    /* mid-top-left */
+    30% {clip-path: circle(7% at 10% 30%);}
+    /* mid-top-center */
+    26% {clip-path: circle(7% at 50% 30%);}
+    /* mid-top-right */
+    32% {clip-path: circle(7% at 89% 30%);}
+    /* middle-left */
+    38% {clip-path: circle(7% at 10% 50%);}
+    /* center */
+    43% {clip-path: circle(7% at 50% 50%);}
+    /* middle-right */
+    49% {clip-path: circle(7% at 89% 50%);}
+    /* mid-bottom-left */
+    55% {clip-path: circle(7% at 10% 70%);}
+    /* mid-bottom-center */
+    61% {clip-path: circle(7% at 50% 70%);}
+    /* mid-bottom-right */
+    67% {clip-path: circle(7% at 89% 70%);}
+    /* bottom-left */
+    80% {clip-path: circle(7% at 10% 93%);}
+    /* bottom-center */
+    88% {clip-path: circle(7% at 50% 93%);}
+    /* bottom-right */
+    100% {clip-path: circle(7% at 89% 93%);}
 }

@@ -1,9 +1,14 @@
-// $(document).ready( function () {
-//   $(".hoverimage").hover( function () {
-//     $(this).children(".imageview").addClass("d-none");
-//     $(this).children(".tooltipview").removeClass("d-none");
-//   }, function () {
-//     $(this).children(".imageview").removeClass("d-none");
-//     $(this).children(".tooltipview").addClass("d-none");
-//   });
-// });
+$(document).ready( function () {
+    $(".background-mask").hover( function () {
+        $(this).hide();
+        $("#artDetail").removeClass("d-none");
+        console.log("HOVER");
+    }, function () {
+        console.log("HOVER OFF");
+    });    
+    $("#artDetailClose").click(function (e) { 
+        e.preventDefault();
+        $("#artDetail").addClass("d-none");
+        $(".background-mask").show();
+    });
+});
