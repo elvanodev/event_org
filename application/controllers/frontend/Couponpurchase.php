@@ -90,9 +90,9 @@ class Couponpurchase extends CI_Controller {
             $message = "Create Coupon Failed";
           }
         }
-        $data = ['message' => $message, 'formdata' => $formdata];
         $this->load->model("modelfrontend");
         $dataHeader = $this->modelfrontend->getDataHeader();
+        $data = ['message' => $message, 'formdata' => $formdata, 'header' => $dataHeader];
         $this->load->view('viewfrontend/layout/header', $dataHeader);
         $this->load->view('viewfrontend/layout/leftmenu', ['showback' => true, 'showmainmenu' => false, 'showadditionalmenu' => false, 'header'=>$dataHeader]);
         $this->load->view('viewfrontend/couponpurchase', $data );

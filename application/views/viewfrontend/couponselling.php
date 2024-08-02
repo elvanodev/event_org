@@ -1,6 +1,6 @@
-<div class="card main-content">
+<div class="card main-content default-bg-color text-white">
     <div class="card-body">
-        <h3 class="text-center">Tata Cara Pembelian Kupon Secara Online</h3>
+        <h3 class="text-center earth-2073">Tata Cara Pembelian Kupon Secara Online</h3>
         <ol>
             <li>
                 <p>
@@ -27,7 +27,7 @@
             </li>
         </ol>
     </div>
-    <div class="card-footer d-flex justify-content-center">
-        <a class="btn btn-secondary" href="<?php echo base_url()?>frontend/couponsellingform" >Beli Kupon</a>
-    </div>
+</div>
+<div class="d-flex justify-content-center mt-3 mb-4">
+    <a class="btn btn-secondary earth-2073 p-2 default-bg-color" href="<?php echo base_url()?>frontend/couponsellingform" >Beli Kupon</a>
 </div>

@@ -48,7 +48,7 @@
     <!-- Modal modalArtist -->
     <div class="modal fade" id="modalArtist" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content text-light">
+            <div class="modal-content default-bg-color text-light">
                 <div class="modal-header">
                     <div class="text-light w-100 d-flex justify-content-between">
                         <p>

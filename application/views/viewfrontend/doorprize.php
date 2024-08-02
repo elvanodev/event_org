@@ -1,4 +1,4 @@
-<div class="main-content bg-transparent border-0">        
+<div class="main-content default-bg-color bg-transparent border-0">        
     <div class="text-light">
         <div class="row">            
             <?php foreach ($list_doorprize_artists as $row) {
@@ -15,7 +15,7 @@
             } ?>
         </div>
         <div class="card border-0 popup-detail w-50 d-none" id="artDetail">
-            <div class="card-body text-light modal-content">
+            <div class="card-body text-light modal-content default-bg-color">
                 <div class="btn w-100 text-light text-end mr-2" id="artDetailClose"><i class="fa-solid fa-xmark"></i></div>
                 <h4><?php echo $row_doorprize->title; ?></h4>
                 <p><strong><?php echo $row_doorprize->year; ?></strong></p>                        

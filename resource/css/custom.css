@@ -1217,6 +1217,10 @@ body {
     }
 }
 
+.default-bg-color {
+    background-color: #6C06BC;    
+}
+
 /* FONT */
 /* <uniquifier>: Use a unique and descriptive class name
 <weight>: Use a value from 100 to 900 */
@@ -1256,8 +1260,7 @@ body {
     padding: 2px;
 }
 
-.testimonial-section .card {
-    background-color: #6C06BCCC;           
+.testimonial-section .card {       
     overflow: auto; 
     opacity: 0;
     width: 5%;
@@ -1302,13 +1305,11 @@ body {
 }
 
 .main-content {
-    margin-right: 5vw;
-    margin-left: 5vw;
-    background-color: #6C06BCCC;
+    margin-right: 7vw;
+    margin-left: 7vw;
 }
 
 .modal-content {
-    background-color: #6d06bc;
     border-radius: 35px;
 }
 
@@ -1321,8 +1322,8 @@ body {
 }
 
 .main-content-tab {
-    margin-right: 5vw;
-    margin-left: 5vw;
+    margin-right: 7vw;
+    margin-left: 7vw;
     background-color: transparent;
 }
 
@@ -1397,7 +1398,7 @@ body {
 }
 .highlight-button:hover {  
     color: white;
-    background-color: #6C06BCCC;
+    background-color: #6C06BC;
     -webkit-animation: none;
     animation: none;
 }
@@ -1510,4 +1511,24 @@ body {
     88% {clip-path: circle(7% at 50% 93%);}
     /* bottom-right */
     100% {clip-path: circle(7% at 89% 93%);}
+}
+
+.rotate-10 {
+    margin-top: 5rem;
+    -moz-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg); 
+    transform:rotate(-10deg);
+}
+
+.img-event {
+    max-width: 10%;
+}
+
+form .main-content {
+    margin-right: 30%;
+    margin-left: 30%;
+}
+
+.btn.default-bg-color:hover {
+    background-color: #61FF00;
 }

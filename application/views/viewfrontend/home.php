@@ -1,4 +1,4 @@
-<section class="testimonial-section">
+<section class="testimonial-section default-bg-color">
     <div class="d-flex justify-content-end" id="testimonialButton">
         <button type="button" id="testimonialCardOpen" class="btn text-light">Lihat Komentar <i class="fa-solid fa-comment"></i></button>
     </div>    

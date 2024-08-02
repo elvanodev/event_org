@@ -1,4 +1,4 @@
-<div class="card main-content">
+<div class="card main-content default-bg-color">
     <div class="card-body text-light">
         <div class="row">            
             <?php foreach ($list_testimonials as $row) {

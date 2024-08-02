@@ -1,4 +1,4 @@
-<div class="main-content-tab">
+<div class="main-content default-bg-color-tab">
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">                      
         <?php 
         $i = 0;
@@ -21,9 +21,10 @@
         } ?>
     </ul>
 </div>
-<div class="card main-content">
+<div class="card main-content default-bg-color">
     <div class="card-body text-light">
-        <div class="tab-content" id="pills-tabContent">                              
+        
+        <div class="tab-content" id="pills-tabContent">   
             <?php 
             $i = 0;
             $active = '';
@@ -35,7 +36,9 @@
                 }
                 $i++;
             ?>
-            <div class="tab-pane fade <?php echo $active; ?>" id="pills-<?php echo $row->idx; ?>" role="tabpanel" aria-labelledby="pills-<?php echo $row->idx; ?>-tab" tabindex="0"><?php echo $row->about_detail; ?></div>          
+            <div class="tab-pane fade <?php echo $active; ?>" id="pills-<?php echo $row->idx; ?>" role="tabpanel" aria-labelledby="pills-<?php echo $row->idx; ?>-tab" tabindex="0">                            
+                <?php echo $row->about_detail; ?>
+            </div>          
             <?php
             } ?>
         </div>
