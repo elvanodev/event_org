@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 function getEditiondatetimestart() {
     var countDownDate = new Date($("#editionstartdate").val()).getTime();
-    console.log($("#editionstartdate").val());
+    // console.log($("#editionstartdate").val());
     var x = setInterval(function() {
 
         var now = new Date().getTime();

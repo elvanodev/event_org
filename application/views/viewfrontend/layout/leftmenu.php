@@ -9,7 +9,7 @@
     <a href="<?php echo base_url();?>" type="button" class="btn btn-light mt-2 left-menu earth-2073 custom-border <?php echo isset($active_home) ? $active_home : '';?>">Beranda</a><br>
         <?php } ?>
         <?php if ($showadditionalmenu) { ?>
-    <a href="http://wa.me/<?php echo $header['event']->contact_phone; ?>"  type="button" class="btn btn-light mt-2 text-nowrap highlight-button animated-1" target="_blank">Jadi Dermawan Seni</a><br>
+    <a href="https://saweria.co/dermawanseni"  type="button" class="btn btn-light mt-2 text-nowrap highlight-button animated-1" target="_blank">Jadi Dermawan Seni</a><br>
     <a href="<?php echo base_url();?>frontend/couponselling" type="button" class="btn btn-light mt-2 text-nowrap highlight-button animated-2">Beli Kupon Online</a>
         <?php } ?>
     <?php } ?>  

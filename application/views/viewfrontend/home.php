@@ -1,8 +1,8 @@
-<section class="testimonial-section default-bg-color">
+<section class="testimonial-section">
     <div class="d-flex justify-content-end" id="testimonialButton">
         <button type="button" id="testimonialCardOpen" class="btn text-light">Lihat Komentar <i class="fa-solid fa-comment"></i></button>
     </div>    
-    <div class="card" id="testimonialCard">
+    <div class="card default-bg-color" id="testimonialCard">
         <div class="card-body text-light">   
             <?php 
             date_default_timezone_set('Asia/Jakarta');
