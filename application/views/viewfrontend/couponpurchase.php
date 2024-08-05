@@ -43,13 +43,16 @@
                 <label for="total_price" class="text-white">Total Biaya</label>
                 <input type="text" maxlength="250" class="form-control" id="total_price" name="total_price" placeholder="Total Biaya" required value="<?php echo $formdata['total_price']; ?>" readonly>
             </div>
-            <small class="text-white">Silahkan melakukan pembayaran dengan nominal sesuai Total Biaya diatas, lalu upload bukti transfer</small>
+            <small class="text-white">Silahkan melakukan pembayaran dengan klik link dibawah
+                 <br><span><a href="http://saweria.co/dermawanseni" target="_blank" class="text-white default-bg-color btn">LINK PEMBAYARAN</a></span>
+                 <br>lalu upload bukti pembayaran
+            </small>
             <div class="mt-3 text-white">
                 <div id="uploadpayment_confirm_receipt" style="width:300px;">
                     <input type="text" class="form-control" alt="Upload Bukti Pembayaran" id="payment_confirm_receipt" name="payment_confirm_receipt" />
                 </div>
             </div>
-            <small class="text-white">Klik Konfirmasi Pembayaran, jika sudah upload bukti transfer</small>
+            <small class="text-white">Klik Konfirmasi Pembayaran, jika sudah upload bukti pembayaran</small>
         </div>
     </div>
     <div class="d-flex justify-content-center mt-3 mb-4">
