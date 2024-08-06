@@ -11,7 +11,7 @@ require_once(APPPATH.'libraries/phpqrcode/qrlib.php');
  */
 function generate_qrcode($prefix) : string {    
     date_default_timezone_set('Asia/Jakarta');
-    $unique_key = date('YmdHis').hrtime(true);
+    $unique_key = hrtime(true);
     $qrcode = $prefix . "_" . $unique_key;
     $dir = "resource/uploaded/qrcodes/";
     if (!file_exists($dir))

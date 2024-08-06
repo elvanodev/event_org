@@ -53,6 +53,9 @@ class Ctrtestimonials extends CI_Controller
     $xBufResult .= 'Scan QR disini' . '<div class="spacer"></div>';
     $xBufResult .= '<div id="reader" width="600px"></div>' . '<div class="spacer"></div>';
 
+    $xBufResult .= 'atau input Kode QR disini' . '<div class="spacer"></div>';
+    $xBufResult .= setForm('qr_code', 'Kode QR', form_input_(getArrayObj('edqr_code', '', '200'), '', ' placeholder="Kode QR"')) . '<div class="spacer"></div>';
+
     $xBufResult .= setForm('coupon_number', 'Coupon Number', form_input_(getArrayObj('edcoupon_number', '', '200'), '', ' placeholder="Coupon Number" readonly')) . '<div class="spacer"></div>';
 
     $xBufResult .= setForm('event_name', 'Event Name', form_input_(getArrayObj('edevent_name_v', '', '200'), '', ' placeholder="Event Name" disabled')) . '<div class="spacer"></div>';
