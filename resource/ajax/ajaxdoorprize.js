@@ -40,9 +40,14 @@ function doeditdoorprize(edidx) {
       dataType: "json",
       type: "POST",
       success: function (json) {
+        console.log(json);
         $("#edidx").val(json.idx);
         $("#edevent_id").val(json.event_id);
-        $("#edartist_id").val(json.artist_id);
+        // $("#edartist_id").val(json.artist_id);
+        $.each(json.artist_id.split(","), function(i,e){
+          console.log(e)
+            $("#edartist_id option[value='" + e + "']").prop("selected", true);
+        });
         $("#eddimension").val(json.dimension);
         $("#edtitle").val(json.title);
         $("#edmedia").val(json.media);
@@ -105,11 +110,16 @@ function dosimpandoorprize() {
           onclick: null,
         });
       },
-      success: function (msg) {
+      success: function (response) {
         doCleardoorprize();
         dosearchdoorprize("-99");
         toastr.clear();
-        toastr.success("Data berhasil disimpan");
+        // console.log("MYDEBUG", response);
+        if (response.error === true) {
+          toastr.error("Satu event hanya bisa 1 Doorprize");
+        } else {
+          toastr.success("Data berhasil disimpan");
+        }
       },
       error: function (xmlHttpRequest, textStatus, errorThrown) {
         alert("Error juga " + xmlHttpRequest.responseText);

@@ -238,19 +238,23 @@ class Ctrdoorprize extends CI_Controller
         $data['updated_at'] = date('Y-m-d H:i:s');
         $result = $this->modeldoorprize->setUpdatedoorprizebatch($xidx, $data);
         $this->modeldoorprize->setDeletedoorprize_artistsbatch($xidx);
+        $doorprize_id = $xidx;
       } else {
-        $doorprize_id = $this->modeldoorprize->setInsertdoorprizebatch($data);
+        $result = $this->modeldoorprize->setInsertdoorprizebatch($data);
+        $doorprize_id = $result;
       }
-      $datadoorprize_artists = array();
-      $arr_artist_id = explode(',', $xartist_id);
-      foreach ($arr_artist_id as $val) {
-        $datadoorprize_artist = array(      
-          'doorprize_id' => $doorprize_id,
-          'artist_id' => $val
-        );
-        array_push($datadoorprize_artists, $datadoorprize_artist);
+      if (!isset($result['error'])){
+        $datadoorprize_artists = array();
+        $arr_artist_id = explode(',', $xartist_id);
+        foreach ($arr_artist_id as $val) {
+          $datadoorprize_artist = array(      
+            'doorprize_id' => $doorprize_id,
+            'artist_id' => $val
+          );
+          array_push($datadoorprize_artists, $datadoorprize_artist);
+        }
+        $this->modeldoorprize->setInsertdoorprize_artistsbatch($datadoorprize_artists);
       }
-      $this->modeldoorprize->setInsertdoorprize_artistsbatch($datadoorprize_artists);
     }
     echo json_encode($result);
   }

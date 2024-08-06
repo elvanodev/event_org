@@ -106,7 +106,7 @@ join artists ar on ar.idx = da.artist_id WHERE da.doorprize_id = '".$xdoorprize_
    {
       $insert = $this->db->insert('doorprize', $data);
       if ( !$insert ) {
-         echo json_encode($this->db->error());
+         return ['error'=>true, 'message'=>json_encode($this->db->error())];
       }
       $insert_id = $this->db->insert_id();
    
