@@ -1,4 +1,4 @@
-<div class="main-content default-bg-color-tab">
+<div class="main-content-tab default-bg-color-tab">
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">                      
         <?php 
         $i = 0;
