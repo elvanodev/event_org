@@ -4,18 +4,22 @@ $(document).ready(function () {
   $(".datetimepicker").each(function () {
     $(this).datetimepicker();
   });
-  $("#selectedEdition").html("");
+  $(".selectedEdition").html("");
   getEdition($("#editionId").val());
   $("#editionId").change(function (e) {
     e.preventDefault();
     getEdition($(this).val());
   });
+  $("#editionIdMobile").change(function (e) {
+    e.preventDefault();
+    getEdition($(this).val());
+  });
 });
 
-function seteditionsession() {
+function seteditionsession(edition_id) {
   $.ajax({
     url: getBaseURL() + "index.php/home/seteditionsession/",
-    data: "ededition_id=" + $("#editionId").val(),
+    data: "ededition_id=" + edition_id,
     cache: false,
     dataType: "json",
     type: "POST",
@@ -38,11 +42,15 @@ function getEdition(editionId) {
       success: function (json) {
         $("#editionstartdate").val(json.started_at);
         let date = new Date(json.started_at);
-        $("#selectedEdition").html(
+        seteditionsession(json.idx);
+        $(".selectedEdition").html(
           json.name + " " + json.venue_address + " " + date.getFullYear()
         );
         if (location.pathname == "/") {
           getEditiondatetimestart();
+        }
+        if (editionId !== $('#editionId').val() || editionId !== $('#editionIdMobile').val() ) {
+          location.reload();
         }
       },
       error: function (xmlHttpRequest, textStatus, errorThrown) {

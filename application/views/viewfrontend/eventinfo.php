@@ -1,14 +1,14 @@
 <div class="card main-content default-bg-color">
     <div class="card-body text-light">
         <div class="row">
-            <div class="col-5">
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                 <h3>Info</h3>
                 <p><strong>Contact</strong></p>
                 <p><?php echo $event->contact_phone; ?><br>
                     <?php echo $event->contact_email; ?></p>
                 <a href="http://wa.me/<?php echo $event->contact_phone; ?>" target="_blank" type="button" class="btn btn-secondary">Hubungi Kami</a>
             </div>
-            <div class="col-7">
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                 <p><strong>Lokasi Agen</strong></p>
                 <p>
                     <?php echo $event->agent_open_date; ?> - <?php echo $event->agent_close_date; ?>

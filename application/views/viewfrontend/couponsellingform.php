@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label for="memberPhone" class="text-white">Nomor Telepon</label>
-                <input type="tel" pattern="[0-9]" class="form-control" id="memberPhone" name="memberPhone" placeholder="Nomor Telepon" required value="<?php echo $formdata['memberPhone']; ?>">
+                <input type="tel" pattern="[0-9]{10,12}" class="form-control" id="memberPhone" name="memberPhone" placeholder="Nomor Telepon" required value="<?php echo $formdata['memberPhone']; ?>">
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@
         <div class="row">
             <?php foreach ($list_collaborators as $row) {
             ?>
-                <div class="col-4">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                     <div class="btn p-2 border border-success rounded collaboratorPoster" onclick="onclickartist(<?php echo $row->artist_id; ?>)">
                         <img class="img-fluid imgPoster" style="min-height: 325px;" src="<?php echo base_url(); ?>resource/uploaded/img/<?php echo $row->poster_img; ?>">
                         <div class="d-none text-center text-light quoteArtist" style="min-height: 325px;">
