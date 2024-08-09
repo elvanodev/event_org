@@ -78,7 +78,7 @@ from
    $xagent_gmap)
    {
       if ($xis_active==1) {
-         $toinactivestr = "UPDATE event_org.events SET is_active=0 WHERE is_active=1;";
+         $toinactivestr = "UPDATE events SET is_active=0 WHERE is_active=1;";
          $this->db->query($toinactivestr);
       }
       $xStr =  " INSERT INTO events( " .
@@ -118,7 +118,7 @@ from
    $xagent_gmap)
    {
       if ($xis_active==1) {
-         $toinactivestr = "UPDATE event_org.events SET is_active=0 WHERE is_active=1;";
+         $toinactivestr = "UPDATE events SET is_active=0 WHERE is_active=1;";
          $this->db->query($toinactivestr);
       }
       $xStr =  " UPDATE events SET " .
