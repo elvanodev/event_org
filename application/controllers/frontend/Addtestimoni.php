@@ -35,7 +35,7 @@ class Addtestimoni extends CI_Controller {
 
         
         if (isset($response_db['error'])) {
-          $message = $response_db['message'];
+          $message = 'Coupon anda sudah dipakai untuk upload komentar.';
         } else {
           $xtestimoni_id = $response_db;
   

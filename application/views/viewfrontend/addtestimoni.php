@@ -6,11 +6,19 @@
             <?php
             if ($message != '') {
             ?>
-                <small class="text-danger"><?php echo $message; ?></small>
+            <div class="rounded bg-white text-center">
+                <p class="text-danger"><?php echo $message; ?></p>
+            </div>
             <?php
             }
             ?>
-            <small class="text-white">Scan QR disini</small>
+            <br>
+            <small class="text-white">
+            Terima Kasih telah mendukung Program Sumbangsih Dermawan Seni Berhadiah. anda mempunyai Hak satu (1) kali untuk memberikan komentar (kritik, saran, dan lainnya) berkaitan dengan Seni dan Kebudayaan indonesia dalam bentuk teks, Suara maupun gambar.
+            </small>
+            <br>
+            <br>
+            <small class="text-white">Scan QR disini untuk memasukan kode QR anda</small>
             <div id="reader" width="600px"></div>
             <small class="text-white">atau input Kode QR disini</small>
             <div class="form-group">
@@ -28,10 +36,12 @@
             <div class="form-group">
                 <label for="edusername" class="text-white">Username</label>
                 <input type="text" maxlength="250" class="form-control" id="edusername" name="edusername" placeholder="Username" required value="<?php echo $formdata['edusername']; ?>">
+                <small class="text-white">Nama yang muncul di kolom komentar hanyalah 
+                user name </small>
             </div>
             <div class="form-group">
                 <label for="edtestimoni_text" class="text-white">Komentar</label>
-                <textarea type="text" maxlength="1000" class="form-control" id="edtestimoni_text" name="edtestimoni_text" placeholder="Komentar" required><?php echo $formdata['edtestimoni_text']; ?></textarea>
+                <textarea type="text" maxlength="1000" class="form-control" id="edtestimoni_text" name="edtestimoni_text" placeholder="Tulisakan Komentarmu" required><?php echo $formdata['edtestimoni_text']; ?></textarea>
             </div>
             <div class="form-group">
                 <label for="edtestimoni_photo" class="text-white">Photo</label>
