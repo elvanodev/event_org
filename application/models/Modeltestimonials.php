@@ -102,7 +102,7 @@ from
       ];
       $insert = $this->db->insert('testimonials', $post_data);
       if ( !$insert ) {
-         echo json_encode($this->db->error());
+         return ['error' => true, 'message'=>json_encode($this->db->error())];
       }
       $insert_id = $this->db->insert_id();
    

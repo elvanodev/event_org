@@ -17,6 +17,7 @@
     <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>resource/ajax/frontend/ajaxfrontend.js"></script>
     <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>resource/js/common/fileupload/jquery.fileupload.js"></script>
     <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>resource/js/common/fileupload/myupload.js"></script>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <?php if ($ajaxfilename != "") { ?>
     <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>resource/ajax/frontend/<?php echo $ajaxfilename; ?>"></script>
     <?php } ?>
