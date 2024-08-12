@@ -64,7 +64,7 @@ class Ctrtestimonials extends CI_Controller
 
     $xBufResult .= setForm('testimoni_text', 'Testimoni Text', form_textarea_(getArrayObj('edtestimoni_text', '', '200'), '', ' placeholder="Testimoni Text" ')) . '<div class="spacer"></div>';
 
-    $xBufResult .= setForm('testimoni_photo', 'Testimoni Photo', '<div id="uploadtestimoni_photo" style="width:150px;">' . form_input_(getArrayObj('edtestimoni_photo', '', '100'), '', 'alt="Unggah"') . '</div>') . '<div class="spacer"></div>';
+    // $xBufResult .= setForm('testimoni_photo', 'Testimoni Photo', '<div id="uploadtestimoni_photo" style="width:150px;">' . form_input_(getArrayObj('edtestimoni_photo', '', '100'), '', 'alt="Unggah"') . '</div>') . '<div class="spacer"></div>';
 
     $xBufResult .= '<div class="garis"></div></div></div>' . form_button('btNew', 'New', 'onclick="doCleartestimonials();"') . form_button('btSimpan', 'Simpan', 'onclick="dosimpantestimonials();" id="btSimpan"') . form_button('btTabel', 'Tabel', 'onclick="dosearchtestimonials(0);"') . '<div class="spacer"></div></div><div id="tabledatatestimonials">' . $this->getlisttestimonials(0, '') . '</div><div class="spacer"></div>';
     return $xBufResult;
@@ -80,7 +80,7 @@ class Ctrtestimonials extends CI_Controller
       tbaddcellhead('Event Name', '', 'data-field="event_name" data-sortable="true" width=10%') .
       tbaddcellhead('Member Name', '', 'data-field="member_name" data-sortable="true" width=10%') .
       tbaddcellhead('Testimoni Text', '', 'data-field="testimoni_text" data-sortable="true" width=10%') .
-      tbaddcellhead('Testimoni Photo', '', 'data-field="testimoni_photo" data-sortable="true" width=10%') .
+      // tbaddcellhead('Testimoni Photo', '', 'data-field="testimoni_photo" data-sortable="true" width=10%') .
 
       tbaddcellhead('Action', 'padding:5px;width:10%;text-align:center;', 'col-md-2'), '', TRUE);
     $this->load->model('modeltestimonials');
@@ -100,7 +100,7 @@ class Ctrtestimonials extends CI_Controller
         tbaddcell($row->event_name) .
         tbaddcell($row->member_name) .
         tbaddcell($row->testimoni_text) .
-        tbaddcell($testimoni_photo) .
+        // tbaddcell($testimoni_photo) .
 
         tbaddcell($xButtonEdit . $xButtonHapus));
     }
@@ -142,7 +142,7 @@ class Ctrtestimonials extends CI_Controller
     $this->json_data['event_name'] = $row->event_name;
     $this->json_data['member_name'] = $row->member_name;
     $this->json_data['testimoni_text'] = $row->testimoni_text;
-    $this->json_data['testimoni_photo'] = $row->testimoni_photo;
+    // $this->json_data['testimoni_photo'] = $row->testimoni_photo;
 
     echo json_encode($this->json_data);
   }
@@ -201,8 +201,8 @@ class Ctrtestimonials extends CI_Controller
     $xevent_name = $_POST['edevent_name'];
     $xmember_name = $_POST['edmember_name'];
     $xtestimoni_text = $_POST['edtestimoni_text'];
-    $xtestimoni_photo = $_POST['edtestimoni_photo'];
-    $xlink_photo = $xtestimoni_photo;
+    // $xtestimoni_photo = $_POST['edtestimoni_photo'];
+    // $xlink_photo = $xtestimoni_photo;
 
     $this->load->model('modeltestimonials');
     $this->load->model('modeltestimoni_photos');
@@ -211,12 +211,12 @@ class Ctrtestimonials extends CI_Controller
       if ($xidx != '0') {
         $xStr =  $this->modeltestimonials->setUpdatetestimonials($xidx, $xcoupon_id, $xcoupon_number, $xevent_name, $xmember_name, $xtestimoni_text);
 
-        $xStr =  $this->modeltestimoni_photos->setUpdatetestimoni_photosbytestimoni_id($xidx, $xlink_photo);
+        // $xStr =  $this->modeltestimoni_photos->setUpdatetestimoni_photosbytestimoni_id($xidx, $xlink_photo);
       } else {
         $insert_id =  $this->modeltestimonials->setInserttestimonials($xidx, $xcoupon_id, $xcoupon_number, $xevent_name, $xmember_name, $xtestimoni_text);
 
         $xtestimoni_id = $insert_id;
-        $xStr =  $this->modeltestimoni_photos->setInserttestimoni_photos($xidx, $xtestimoni_id, $xlink_photo);
+        // $xStr =  $this->modeltestimoni_photos->setInserttestimoni_photos($xidx, $xtestimoni_id, $xlink_photo);
       }
     }
     echo json_encode($_POST);
