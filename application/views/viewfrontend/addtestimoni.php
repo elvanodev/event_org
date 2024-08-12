@@ -14,7 +14,7 @@
             ?>
             <br>
             <small class="text-white">
-            Terima Kasih telah mendukung Program Sumbangsih Dermawan Seni Berhadiah. anda mempunyai Hak satu (1) kali untuk memberikan komentar (kritik, saran, dan lainnya) berkaitan dengan Seni dan Kebudayaan indonesia dalam bentuk teks, Suara maupun gambar.
+            Terima Kasih telah mendukung Program Sumbangsih Dermawan Seni Berhadiah. anda mempunyai Hak satu (1) kali untuk memberikan komentar (kritik, saran, dan lainnya) berkaitan dengan Seni dan Kebudayaan indonesia.
             </small>
             <br>
             <br>
@@ -43,12 +43,12 @@
                 <label for="edtestimoni_text" class="text-white">Komentar</label>
                 <textarea type="text" maxlength="1000" class="form-control" id="edtestimoni_text" name="edtestimoni_text" placeholder="Tulisakan Komentarmu" required><?php echo $formdata['edtestimoni_text']; ?></textarea>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="edtestimoni_photo" class="text-white">Photo</label>
                 <div id="uploadtestimoni_photo" style="width:150px;">
                     <input type="text" class="form-control" id="edtestimoni_photo" name="edtestimoni_photo" placeholder="Upload Photo" alt="Unggah Foto" required value="<?php echo $formdata['edtestimoni_photo']; ?>">
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="d-flex justify-content-center mt-3 mb-4">

@@ -18,7 +18,7 @@ class Addtestimoni extends CI_Controller {
         "edmember_name"=> $this->input->post('edmember_name') ? $this->input->post('edmember_name') : null,
         "edusername"=> $this->input->post('edusername') ? $this->input->post('edusername') : null,
         "edtestimoni_text"=> $this->input->post('edtestimoni_text') ? $this->input->post('edtestimoni_text') : '',
-        "edtestimoni_photo"=> $this->input->post('edtestimoni_photo') ? $this->input->post('edtestimoni_photo') : null,
+        // "edtestimoni_photo"=> $this->input->post('edtestimoni_photo') ? $this->input->post('edtestimoni_photo') : null,
       ];
       if ($this->input->post('submit')) {      
         $this->load->model('modeltestimonials');
@@ -29,7 +29,7 @@ class Addtestimoni extends CI_Controller {
         $coupon_number = $this->input->post('edcoupon_number');
         $username = $this->input->post('edusername');
         $testimoni_text = $this->input->post('edtestimoni_text');
-        $testimoni_photo = $this->input->post('edtestimoni_photo');
+        // $testimoni_photo = $this->input->post('edtestimoni_photo');
         
         $response_db =  $this->modeltestimonials->setInserttestimonials(0, $coupon_id, $coupon_number, $event_name, $username, $testimoni_text);
 
@@ -39,7 +39,7 @@ class Addtestimoni extends CI_Controller {
         } else {
           $xtestimoni_id = $response_db;
   
-          $xStr =  $this->modeltestimoni_photos->setInserttestimoni_photos(0, $xtestimoni_id, $testimoni_photo);
+          // $xStr =  $this->modeltestimoni_photos->setInserttestimoni_photos(0, $xtestimoni_id, $testimoni_photo);
         }
       }
 
