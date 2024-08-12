@@ -14,13 +14,15 @@ class Doorprize extends CI_Controller {
       $event_id = $row_event->idx;
 
       $this->load->model("modeldoorprize");
-      $row_doorprize = $this->modeldoorprize->getDetaildoorprizeByEvent($event_id);
-      $list_doorprize_artists = $this->modeldoorprize->getListdoorprize_artistBydoorprizeid($row_doorprize->idx);
-
+      $list_doorprize = $this->modeldoorprize->getListdoorprizeByEvent($event_id);
+      foreach ($list_doorprize as $row_doorprize) {
+        $list_doorprize_artists = $this->modeldoorprize->getListdoorprize_artistBydoorprizeid($row_doorprize->idx);
+        $row_doorprize->list_doorprize_artists = $list_doorprize_artists;  
+      }
       $this->load->model("modelfrontend");
       $dataHeader = $this->modelfrontend->getDataHeader();
 
-      $data = ['event'=>$row_event, 'row_doorprize'=>$row_doorprize, 'list_doorprize_artists'=>$list_doorprize_artists];   
+      $data = ['event'=>$row_event, 'list_doorprize'=>$list_doorprize];   
 
       $this->load->view('viewfrontend/layout/header', $dataHeader);
       $this->load->view('viewfrontend/layout/leftmenu', ['showback' => false, 'showmainmenu' => true, 'showadditionalmenu' => false, 'header'=>$dataHeader]);

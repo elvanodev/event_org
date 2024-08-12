@@ -1,14 +1,18 @@
 $(document).ready( function () {
     $(".background-mask").hover( function () {
-        $(this).hide();
-        $("#artDetail").removeClass("d-none");
-        console.log("HOVER");
+        $(this).removeClass('mask-surround');
+        var doorprizeid = $(this).data('id');
+        $("#artDetail_"+doorprizeid).removeClass("d-none");
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#artDetail_"+doorprizeid).offset().top - 50
+        }, 500);
+        // console.log("HOVER");
     }, function () {
-        console.log("HOVER OFF");
-    });    
-    $("#artDetailClose").click(function (e) { 
-        e.preventDefault();
-        $("#artDetail").addClass("d-none");
-        $(".background-mask").show();
+        $(this).addClass('mask-surround');
+        // console.log("HOVER OFF");
     });
 });
+function onclickartdetailclose(doorprizeid) {
+    $("#artDetail_"+doorprizeid).addClass("d-none");
+    $("#artMask_"+doorprizeid).show();
+}

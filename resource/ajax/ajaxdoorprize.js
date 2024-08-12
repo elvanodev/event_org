@@ -40,12 +40,13 @@ function doeditdoorprize(edidx) {
       dataType: "json",
       type: "POST",
       success: function (json) {
-        console.log(json);
+        // console.log(json);
         $("#edidx").val(json.idx);
         $("#edevent_id").val(json.event_id);
-        // $("#edartist_id").val(json.artist_id);
+        $("#edis_primary_doorprize").val(json.is_primary_doorprize);
+        // $("#edartist_id").multiSelect('select',json.artist_id);
         $.each(json.artist_id.split(","), function(i,e){
-          console.log(e)
+          console.log(e);
             $("#edartist_id option[value='" + e + "']").prop("selected", true);
         });
         $("#eddimension").val(json.dimension);
@@ -67,7 +68,8 @@ function doCleardoorprize() {
     formshow();
     $("#edidx").val("0");
     $("#edevent_id").val("");
-    $("#edartist_id").val("");
+    $("#edis_primary_doorprize").val("0");
+    $("#edartist_id").multiSelect("");
     $("#eddimension").val("");
     $("#edtitle").val("");
     $("#edmedia").val("");
@@ -86,6 +88,8 @@ function dosimpandoorprize() {
         $("#edidx").val() +
         "&edevent_id=" +
         $("#edevent_id").val() +
+        "&edis_primary_doorprize=" +
+        $("#edis_primary_doorprize").val() +
         "&edartist_id=" +
         $("#edartist_id").val() +
         "&eddimension=" +

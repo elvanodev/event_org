@@ -53,6 +53,8 @@ class Ctrdoorprize extends CI_Controller
     $selected_event['selected'] = $event->idx;
     $xBufResult .= setForm('event_id', 'Event', form_dropdown_($selected_event, $this->modelevents->getArrayListevents(), '', 'id="edevent_id" class="require" style="width:200px;" placeholder="Event"')) . '<div class="spacer"></div>';
 
+    $xBufResult .= setForm('is_primary_doorprize', 'Is Primary Doorprize', form_dropdown_('edis_primary_doorprize', array(1 => 'Yes', 0 => 'No'), '', ' id="edis_primary_doorprize" placeholder="Is Primary Doorprize" ')) . '<div class="spacer"></div>';
+
     $this->load->model('modelartists');
     $artist = $this->modelartists->getLastIndexartists();
     $selected_artist = array();
@@ -83,6 +85,7 @@ class Ctrdoorprize extends CI_Controller
     $this->load->helper('common');
     $xbufResult1 = tbaddrow(tbaddcellhead('No', '', 'data-field="idx" data-sortable="true" width=10%') .
       tbaddcellhead('Event', '', 'data-field="event_id" data-sortable="true" width=10%') .
+      tbaddcellhead('Is Primary Doorprize', '', 'data-field="is_primary_doorprize" data-sortable="true" width=10%') .
       tbaddcellhead('Artist', '', 'data-field="artist_id" data-sortable="true" width=10%') .
       tbaddcellhead('Dimension', '', 'data-field="dimension" data-sortable="true" width=10%') .
       tbaddcellhead('Title', '', 'data-field="title" data-sortable="true" width=10%') .
@@ -104,15 +107,20 @@ class Ctrdoorprize extends CI_Controller
       if (!empty($row->image_art)) {
         $image_art = '<img src="' . base_url() . 'resource/uploaded/img/' . $row->image_art . '" onclick="previewimage(this.src);" style="border: solid;width: 70px; height: 80px; align:center;">';
       }
+      $description = $row->description;
+      if (strlen($description) > 50){
+        $description = '<p title="'.$row->description.'">'. substr($row->description, 0, 50) . '...</p>';
+      }
       $xbufResult .= tbaddrow(tbaddcell($no++) .
         tbaddcell($row->event_name) .
+        tbaddcell($row->is_primary_doorprize == 1 ? 'Yes' : 'No') .
         tbaddcell($row->artist_names) .
         tbaddcell($row->dimension) .
         tbaddcell($row->title) .
         tbaddcell($row->media) .
         tbaddcell($row->year) .
         tbaddcell($image_art) .
-        tbaddcell($row->description) .
+        tbaddcell($description) .
 
         tbaddcell($xButtonEdit . $xButtonHapus));
     }
@@ -150,6 +158,7 @@ class Ctrdoorprize extends CI_Controller
     $this->load->helper('json');
     $this->json_data['idx'] = $row->idx;
     $this->json_data['event_id'] = $row->event_id;
+    $this->json_data['is_primary_doorprize'] = $row->is_primary_doorprize;
     $this->json_data['artist_id'] = $row->artist_id;
     $this->json_data['dimension'] = $row->dimension;
     $this->json_data['title'] = $row->title;
@@ -211,6 +220,7 @@ class Ctrdoorprize extends CI_Controller
       $xidx = '0';
     }
     $xevent_id = $_POST['edevent_id'];
+    $xis_primary_doorprize = $_POST['edis_primary_doorprize'];
     $xartist_id = $_POST['edartist_id'];
     $xdimension = $_POST['eddimension'];
     $xtitle = $_POST['edtitle'];
@@ -222,6 +232,7 @@ class Ctrdoorprize extends CI_Controller
     $doorprize_id = $xidx;
     $data = [      
       'event_id' => $xevent_id,
+      'is_primary_doorprize' => $xis_primary_doorprize,
       'dimension' => $xdimension,
       'title' => $xtitle,
       'media' => $xmedia,

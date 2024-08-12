@@ -12,6 +12,7 @@ class Modeldoorprize extends CI_Model
    private $default_query = "SELECT 
 d.idx,
 d.event_id,
+d.is_primary_doorprize,
 group_concat(da.artist_id) as artist_id, 
 group_concat(ar.name) as artist_names,
 group_concat(ar.profile_img) as artist_profile_imgs,
@@ -32,7 +33,8 @@ left join artists ar on ar.idx = da.artist_id ";
    function getArrayListdoorprize()
    { /* spertinya perlu lock table*/
       $xBuffResul = array();
-      $xStr = $this->default_query."  order by d.idx ASC ";
+      $xStr = $this->default_query." 
+      group by d.idx order by d.idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
          $xBuffResul[$row->idx] = $row->doorprize_title;
@@ -42,7 +44,8 @@ left join artists ar on ar.idx = da.artist_id ";
    function getArrayListdoorprizebyevent_id($event_id)
    { /* spertinya perlu lock table*/
       $xBuffResul = array();
-      $xStr = $this->default_query." where d.event_id = '".$event_id."' order by d.idx ASC ";
+      $xStr = $this->default_query." where d.event_id = '".$event_id."' 
+group by d.idx order by d.idx ASC ";
       $query = $this->db->query($xStr);
       foreach ($query->result() as $row) {
          $xBuffResul[$row->idx] = $row->title;
@@ -56,7 +59,8 @@ left join artists ar on ar.idx = da.artist_id ";
          $xSearch = "Where d.title like '%" . $xSearch . "%'";
       }
       $xStr = $this->default_query .
-         $xSearch . " order by d.idx DESC limit " . $xAwal . "," . $xLimit;
+         $xSearch . " 
+group by d.idx order by d.idx DESC limit " . $xAwal . "," . $xLimit;
       $query = $this->db->query($xStr);
       return $query;
    }
@@ -75,13 +79,13 @@ join artists ar on ar.idx = da.artist_id WHERE da.doorprize_id = '".$xdoorprize_
       return $list_doorprize_artists;
    }
 
-   function getDetaildoorprizeByEvent($event_id)
+   function getListdoorprizeByEvent($event_id)
    {
-      $xStr = $this->default_query." WHERE d.event_id = '" . $event_id . "'";
+      $xStr = $this->default_query." WHERE d.event_id = '" . $event_id . "' group by d.idx order by is_primary_doorprize desc";
 
       $query = $this->db->query($xStr);
-      $row = $query->row();
-      return $row;
+      $list_doorprize = $query->result();
+      return $list_doorprize;
    }
 
    function getDetaildoorprize($xidx)
