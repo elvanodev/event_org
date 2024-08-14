@@ -584,7 +584,7 @@ class basemodel extends CI_Model {
         }
     }
 
-    function newsendmail($xemail, $subject, $mailContent, $path = '', $file_name = '', $type = '') {
+    function newsendmail($xemail, $subject, $mailContent, $attachments = []) {
         // Load PHPMailer library
         $this->load->library('phpmailer_lib');
 
@@ -593,10 +593,10 @@ class basemodel extends CI_Model {
 
         // SMTP configuration
         $mail->isSMTP();
-        $mail->Host = 'sdsb.scriptmedia.net';
+        $mail->Host = 'dermawanseni.id';
         $mail->SMTPAuth = true;
-        $mail->Username = 'no-reply@sdsb.scriptmedia.net';
-        $mail->Password = '?(Ub]80UoJuG';
+        $mail->Username = 'no-reply@dermawanseni.id';
+        $mail->Password = 'hidden';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
         $mail->SMTPOptions = array(
@@ -607,8 +607,8 @@ class basemodel extends CI_Model {
             )
         );
 
-        $mail->setFrom('no-reply@sdsb.scriptmedia.net', 'Sumbangsih Dermawan Seni Berhadiah');
-        $mail->addReplyTo('no-reply@sdsb.scriptmedia.net', 'Sumbangsih Dermawan Seni Berhadiah');
+        $mail->setFrom('no-reply@dermawanseni.id', 'Sumbangsih Dermawan Seni Berhadiah');
+        $mail->addReplyTo('no-reply@dermawanseni.id', 'Sumbangsih Dermawan Seni Berhadiah');
 
         // Add a recipient
         $mail->addAddress($xemail);
@@ -622,8 +622,10 @@ class basemodel extends CI_Model {
         // Set email format to HTML
         $mail->isHTML(true);
         $mail->Body = $mailContent;
-        if ($path != '') {
-            $mail->addStringAttachment(file_get_contents($path . $file_name . '.pdf'), $file_name . $type);
+        if ($attachments != []) {
+            foreach ($attachments as $row) {
+                $mail->addStringAttachment(file_get_contents($row['file_path']), $row['file_name']);
+            }
         }
         // Send email
         if (!$mail->send()) {

@@ -335,9 +335,9 @@ class Ctrcoupons extends CI_Controller
 </header>
 <body>
       <h1>' . $rowEvent->name . '</h1>
-      <p>' . $rowEvent->long_name . '</p>
+      <strong>' . $rowEvent->long_name . '</strong>
       <br>
-      <strong>Berikut nomor kupon yang sudah anda pilih beserta rincian harganya:</strong>
+      <p>Berikut nomor kupon yang sudah anda pilih beserta rincian harganya:</p>
       <table>
           <tbody>
               <tr>
@@ -346,25 +346,37 @@ class Ctrcoupons extends CI_Controller
               </tr>
               <tr>
                   <td><strong>Harga Kupon</strong></td>
-                  <td><span>' . $rowCoupon->coupon_price . '</span></td>
+                  <td><span>Rp' . number_format($rowCoupon->coupon_price) . '</span></td>
               </tr>
               <tr>
                   <td><strong>Biaya Pengiriman</strong></td>
-                  <td><span>' . $rowCoupon->shipper_price . '</span></td>
+                  <td><span>Rp' . number_format($rowCoupon->shipper_price) . '</span></td>
               </tr>
               <tr>
                   <td><strong>Harga Total</strong></td>
-                  <td><span>' . $rowCoupon->total_price . '</span></td>
+                  <td><span>Rp' . number_format($rowCoupon->total_price) . '</span></td>
+              </tr>
+              <tr>
+                  <td><strong>Kode QR Kupon Anda</strong></td>
+                  <td><span>' . substr($rowCoupon->qr_code, 0, -4) . '</span></td>
               </tr>
           </tbody>
       </table>
-      <strong>QR Code Kupon:</strong>
-      <img src="' . base_url() . 'resource/uploaded/qrcodes/' . $rowCoupon->qr_code . '" style="border: solid;width: 80px; height: 80px; align:center;"/>
+      <p>Silahkan download file QR Code pada attachment email ini</p>
+      <p>Kami juga menyertakan bukti pembayaran anda</p>
       <br>
-      <strong>Bukti Pembayaran:</strong>
-      <img src="' . base_url() . 'resource/uploaded/img/' . $rowCoupon->payment_confirm_receipt . '" style="border: solid;width: 80px; height: 80px; align:center;"/>
       </body></html>';
-    $emailsent = $this->basemodel->newsendmail($rowCoupon->member_email, $subject, $html);
+      $attachments = array(
+        [
+          'file_path' => base_url() . 'resource/uploaded/qrcodes/'.$rowCoupon->qr_code,
+          'file_name' => 'qr_code.png',
+        ],
+        [
+          'file_path' => base_url() . 'resource/uploaded/img/'.$rowCoupon->payment_confirm_receipt,
+          'file_name' => 'payment_confirm_receipt.png',
+        ],
+      );
+    $emailsent = $this->basemodel->newsendmail($rowCoupon->member_email, $subject, $html, $attachments);
     $this->json_data['success'] = 0;
     if ($emailsent) {
       $this->modelcoupons->setUpdatecouponsemailsent($couponId);
