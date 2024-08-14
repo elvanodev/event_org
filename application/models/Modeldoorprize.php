@@ -146,6 +146,7 @@ join artists ar on ar.idx = da.artist_id WHERE da.doorprize_id = '".$xdoorprize_
 
    function setDeletedoorprize($xidx)
    {
+      $this->setDeletedoorprize_artistsbatch($xidx);
       $xStr =  " DELETE FROM doorprize WHERE doorprize.idx = '" . $xidx . "'";
 
       $query = $this->db->query($xStr);
