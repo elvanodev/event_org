@@ -17,12 +17,10 @@ class Modeltestimonials extends CI_Model
 	t.member_name,
 	t.testimoni_text,
 	t.created_at,
-	tp.link_photo testimoni_photo,
 	c.edition_id,
 	ed.event_id 
 from
 	testimonials t
-	join testimoni_photos tp on tp.testimoni_id = t.idx
 	join coupons c on c.idx = t.coupon_id 
 	join editions ed on ed.idx = c.edition_id ";
 

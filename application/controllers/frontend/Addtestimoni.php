@@ -10,6 +10,7 @@ class Addtestimoni extends CI_Controller {
       $this->load->helper('common');
 
       $message = "";
+      $success = 0;
       $formdata = [
         "edqr_code"=> $this->input->post('edqr_code') ? $this->input->post('edqr_code') : null,
         "edcoupon_id"=> $this->input->post('edcoupon_id') ? $this->input->post('edcoupon_id') : null,
@@ -33,17 +34,20 @@ class Addtestimoni extends CI_Controller {
         
         $response_db =  $this->modeltestimonials->setInserttestimonials(0, $coupon_id, $coupon_number, $event_name, $username, $testimoni_text);
 
+
+        
+        
         
         if (isset($response_db['error'])) {
           $message = 'Coupon anda sudah dipakai untuk upload komentar.';
+          $success = 0;
         } else {
-          $xtestimoni_id = $response_db;
-  
-          // $xStr =  $this->modeltestimoni_photos->setInserttestimoni_photos(0, $xtestimoni_id, $testimoni_photo);
+          $message = 'Komentar anda berhasil diupload';
+          $success = 1;
         }
       }
 
-      $data = ['message' => $message, 'formdata' => $formdata];
+      $data = ['message' => $message, 'success'=>$success,'formdata' => $formdata];
 
       $this->load->model("modelfrontend");
       $dataHeader = $this->modelfrontend->getDataHeader();

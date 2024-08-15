@@ -5,9 +5,16 @@
         <div class="card-body earth-2073">
             <?php
             if ($message != '') {
+                $color_msg = 'text-danger';
+                $back_to_komentar = '';
+                if($success == 1) {
+                    $color_msg = 'text-success';
+                    $back_to_komentar = '<a href="'.base_url().'" class="link">Kembali ke halaman beranda</a>';
+                }
             ?>
             <div class="rounded bg-white text-center">
-                <p class="text-danger"><?php echo $message; ?></p>
+                <p class="<?php echo $color_msg; ?>"><?php echo $message; ?></p>
+                <small><?php echo $back_to_komentar; ?></small>
             </div>
             <?php
             }
@@ -23,7 +30,10 @@
             <small class="text-white">atau input Kode QR disini</small>
             <div class="form-group">
                 <label for="edqr_code" class="text-white">Kode QR</label>
-                <input type="text" class="form-control" id="edqr_code" name="edqr_code" placeholder="Kode QR" required value="<?php echo $formdata['edqr_code']; ?>">
+                <input type="text" class="form-control" id="edqr_code" name="edqr_code" placeholder="Kode QR" required value="<?php echo $formdata['edqr_code']; ?>">                
+                <div class="rounded bg-white text-center mt-2 d-none" id="qrnotfound">
+                    <p class="text-danger">Kode QR tidak terdaftar</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="edcoupon_number" class="text-white">Nomor Kupon</label>
