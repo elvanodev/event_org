@@ -41,6 +41,7 @@ function getEdition(editionId) {
       type: "POST",
       success: function (json) {
         $("#editionstartdate").val(json.started_at);
+        $("#editionenddate").val(json.ended_at);
         let date = new Date(json.started_at);
         seteditionsession(json.idx);
         $(".selectedEdition").html(

@@ -12,7 +12,7 @@ $(document).ready(function(){
 });
 
 function getEditiondatetimestart() {
-    var countDownDate = new Date($("#editionstartdate").val()).getTime();
+    var countDownDate = new Date($("#editionenddate").val()).getTime();
     // console.log($("#editionstartdate").val());
     var x = setInterval(function() {
 

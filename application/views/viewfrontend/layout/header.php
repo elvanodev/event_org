@@ -106,6 +106,7 @@
                         ?>
                     </select>
                     <input type="hidden" id="editionstartdate">
+                    <input type="hidden" id="editionenddate">
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="d-flex justify-content-center">
